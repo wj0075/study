@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var ary = [4,3,2,5,6,1,7];
+
+    function insertSort(ary){
+        var left = [];//存储左手中的牌
+        left.push(ary[0]);
+//    从第二张牌开始依次比较
+        for(var i=1;i<ary.length;i++){
+            var cur = ary[i];
+//        抓第二张牌与左手中的牌依次比较（从后往前依次比较）
+            for(var j=left.length-1;j>=0;){
+                if(cur<left[j]){
+                    j--;
+                    if(j==-1){
+//                    如果比做手中第一张牌还要小
+                        left.unshift(cur);
+                    }
+
+                }else{
+//                如果拿到的牌，比左手中的牌大 left[j]，放到这张牌的后面
+//                splice(i,0,x)  在索引i前面增加x
+//                相当于在索引j+1的前面增加一项
+//                当前的索引j  后一项的索引j+1
+//                splice(n,0,x)
+                    left.splice(j+1,0,cur);
+//                j=-1;//循环结束
+                    break;
+                }
+            }
+        }
+        return left;
+    }
+    console.log(insertSort(ary))
+
+//    console.log(left);
+    /*for(var i=0;i<left.length;i++){
+
+    }
+    for(var i=left.length-1;i>=0;i--){
+
+    }*/
+
+
+
+</script>
+
+</body>
+</html>

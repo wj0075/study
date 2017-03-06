@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .icon{
+            width: 64px;
+            height: 64px;
+            background: url(images/yl.png) no-repeat  -90px -4px;
+            margin: 200px auto;
+        }
+        @-webkit-keyframes move {
+            0%,100%{
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            25%{
+                -webkit-transform: rotate(-30deg);
+                transform: rotate(-30deg);
+            }
+            75%{
+                -webkit-transform: rotate(30deg);
+                transform: rotate(30deg);
+            }
+        }
+        @keyframes move {
+            0%,100%{
+               -webkit-transform: rotate(0deg);
+               transform: rotate(0deg);
+            }
+            25%{
+                -webkit-transform: rotate(-30deg);
+                transform: rotate(-30deg);
+            }
+            75%{
+                -webkit-transform: rotate(30deg);
+                transform: rotate(30deg);
+            }
+        }
+        .icon:hover{
+            -webkit-animation:move 0.3s linear infinite both;
+            animation:move 0.3s linear infinite both;
+        }
+    </style>
+</head>
+<body>
+<div class="icon"></div>
+</body>
+</html>

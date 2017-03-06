@@ -1,0 +1,140 @@
+实现页面和页面之间的通信方式有哪些(A页面/B页面)?
+  1)A是列表页面，B页面是详情页面，点击A页面中的某一条记录，进入到B页面，在B页面中需要展示A页面中点击这条记录的详细信息
+    问号传参
+    A:
+    [记录一] window.location.href='b.html?id=12'
+    [记录二] window.location.href='b.html?id=13'
+    B:
+    获取传递过来的问号后面的参数值,通过参数值的不一样展示不同的数据
+
+  2)购物车或者是记住用户名密码，再或者是我们只能支持一次等案例,这类项目都有一个特点，在A页面中的操作信息，我们在B页面中也需要获取到，但是B页面可能是我们把网站关掉后过了一段时间才打开的，也可能是直接的把A刷新，但是A上次操作的信息还在...
+   本地存储或者服务器存储
+
+
+1、本地存储(PC+移动端)
+   在一个页面中,我们可以把一些信息通过相关的技术手段(cookie/webStorage...)存储到客户端的本地,这样不管是页面刷新还是页面跳转,再或者页面关闭重新打开,只要我们需要这些信息,就在客户端的本地把这些信息获取到即可
+
+   ->本地存储的信息不能跨浏览器：在谷歌浏览器下存储的信息在IE浏览器中获取不到
+   ->本地存储的信息不能跨域：我在百度网站中存储的信息，在京东中是无法获取到的，二级域名存储的信息在一级域名中如果想获取到，需要特殊手段来操作
+
+
+2、本地存储都有哪些技术?
+  [cookie]
+    cookie兼容所有的浏览器,包括IE低版本浏览器,目前市场上最常用的本地存储只有cookie操作
+    弊端:
+    ->cookie存储内容的大小是有限制的,一般每一个浏览器只允许同一个域下,最多存储4KB的信息
+    ->cookie存储的信息有过期时间(过期时间程序猿可以自己设置)
+    ->用户可以使用360安全卫士或者浏览器自带的清理历史记录等功能把存储的cookie清除掉(不管是否到期)
+    ->用户可能出于安全的角度禁用cookie的存储:无痕浏览模式、隐身模式...
+    ->cookie不是严格意义上的本地存储,因为它存储的数据和服务器之间是有千丝万缕的联系的
+
+
+  [webStorage:localStorage、sessionStorage]
+    webStorage是HTML5中提供的,不兼容IE8及以下的低版本浏览器
+    优势:
+    ->webStorage存储内容也有大小限制,同一个域下最多只能存储5MB的内容
+    ->webStorage是永久存储,只要程序猿不特意去删除的话,一直存储着
+    ->不管是360还是浏览器清理,都清除不掉webStorage存储的信息
+    ->不管你开启什么模式,webStorage是依然可以存储和使用的
+    ->webStorage就是本地存储和服务器之间没有任何的关系
+
+    localStorage和sessionStorage的区别?
+      localStorage.setItem([key],[value]) ->设置本地存储,存储的数据都是字符串格式的数据,哪怕不是,浏览器也会自动转换为字符串然后存入进去
+      localStorage.getItem([key]) ->通过KEY值获取到对应的VALUE值,获取到的值也是字符串格式的
+      localStorage.removeItem([key]) ->移除指定的存储的信息
+      localStorage.clear() ->清除当前域下存储的全部信息
+      localStorage.key(index) ->通过索引获取指定位置存储的属性名(KEY)是什么
+
+      localStorage是持久化本地存储,而sessionStorage是临时会话本地存储,localStorage不管页面刷新还是关闭,存储的信息都不会消失;但是sessionStorage存储的信息页面刷新不会消失，但是页面一但关闭就会自动清除;
+
+  [本地数据库存储:webSQL、IndexedDB]
+  [本地应用缓存:Application Cache、Cache Storage]
+
+
+3、所有本地存储的信息都可以在谷歌浏览器控制台的Resources或者Application中查看
+   本地存储的信息都是明文存储的,所以对于一些需要进行安全处理的信息(电话、银行卡、密码...)尽量不要存储,如果非要存储的话也一定要进行加密存储
+   [可逆转的加密]
+     按照一定的规则加密，加密的结果还可以在解析回来
+
+   [不可逆转加密]
+     md5加密方式(最常用的)，所有的密码都是不可逆转的加密
+     hex_md5([value]) ->给指定的值进行MD5加密,为了不让某些网站能够碰撞到原始的密码,我们还可以把加密后的结构进行二次加密(去掉前四位和后四位,剩下的按照规则打乱顺序)
+
+
+==========================================
+布局：HTML5
+样式：LESS
+JS框架：Zepto
+JS插件：IScroll
+数据绑定：EJS
+本地存储：localStorage
+
+==========================================
+.nav {
+  padding: .1rem 0;
+  li {
+    float: left;
+    width: 16%; /*按照父级UL内容的宽度,划分100份,我们这里占了16份*/
+    &:nth-child(6n+1) {
+      margin-left: 2%;
+    }
+
+    a {
+      display: block;
+      height: .74rem;
+      line-height: .74rem;
+      text-align: center;
+      color: @color-text;
+      font-size: .32rem;
+    }
+  }
+}
+====================
+.nav {
+  padding: .1rem 0;
+  li {
+    float: left;
+    width: 100%/6;
+
+    a {
+      display: block;
+      height: .74rem;
+      line-height: .74rem;
+      text-align: center;
+      color: @color-text;
+      font-size: .32rem;
+    }
+  }
+}
+===================
+Zepto就是移动端的小型JQ,用法和JQ一样，但是Zepto比JQ库小很多:
+ ->Zepto不兼容IE低版本浏览器,它是专门为移动端开发,这样在编写Zepto库的时候,不需要考虑兼容问题,节省了很多的代码
+ ->Zepto只是实现了JQ中最常用的方法,例如:children、find、filter、addClass、css、attr、ajax...这些Z都支持而且和JQ的用法一样；除此之外也有一些Z不支持的：stop、slideDown、slideUp... (报错:$(...).stop is not a function)
+
+Zepto更适合移动端的开发,移动端的开发事件大部分都是由TOUCH事件模拟出来的,例如：点击、双击、单击、长按、滑动(四个方向)。Zepto把我们平时常用的操作封装成为了方法,我们无需自己在使用touchstart、touchmove、touchend三个事件模拟.
+
+  $('#box').tap(function(){
+
+  });
+  $('#box').singleTap
+  $('#box').doubleTap
+  $('#box').longTap
+  $('#box').swipe
+  $('#box').swipeLeft
+  $('#box').swipeRight(function(){
+
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+

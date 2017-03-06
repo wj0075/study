@@ -1,0 +1,156 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font: 14px Helvetica,Tahoma,Arial,"Hiragino Sans GB","Microsoft YaHei",SimSun,Heiti,sans-serif;
+    color: #515151;
+}
+ul,ol{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+img{
+    border: 0;
+    vertical-align: top;
+}
+i,em{
+    font-style: normal;
+}
+b,strong{
+    font-weight: normal;
+}
+.clearfix:after{
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+}
+.clearfix{
+    zoom: 1;
+}
+.container{
+    position: relative;
+    height: 761px;
+    background: url("../images/bg.jpg") no-repeat;
+}
+.container .pagination{
+    width: 500px;
+    height: 20px;
+    padding: 0 10px;
+    position: absolute;
+    left: 50%;
+    margin-left: -260px;
+    bottom: 10px;
+    text-align: center;
+    z-index: 20;
+}
+.container .pagination li{
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin: 3px 12px;
+    background: url("../images/icon-circle_a1102e1.png") no-repeat -38px 0;
+    cursor: pointer;
+}
+.container .pagination .crcle{
+    background-position: -24px 0;
+}
+.mainnav{
+    width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.mainnav h1{
+    float: left;
+    padding: 30px 0;
+}
+.user{
+    position: relative;
+    float: right;
+    padding: 32px 12px 0 30px;
+    text-align: right;
+    font-size: 12px;
+    position: relative;
+    z-index: 30;
+}
+.user img{
+    width: 22px;
+    height: 22px;
+    position: relative;
+    z-index: 28;
+}
+.user i{
+    position: absolute;
+    top: 40px;
+    left: 54px;
+    display: block;
+    width: 0;
+    height: 0;
+    border: 6px solid;
+    border-color: #999 transparent transparent transparent;
+    z-index: 16;
+
+}
+.user i s{
+    position: absolute;
+    top: -6px;
+    left: -5px;
+    display: block;
+    width: 0;
+    height: 0;
+    border: 5px solid;
+    border-color: #ffc3cd transparent transparent;
+}
+.user .smart{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 15px;
+    width: 60px;
+    height: 78px;
+    border: 1px solid #ccc;
+    border-top: 3px solid #1395E4;
+    border-bottom: transparent;
+    background: #fff;
+    z-index: 13;
+}
+.user .big{
+    display: none;
+    position: absolute;
+    right: -13px;
+    top: 80px;
+    width:155px ;
+    height: 200px;
+    border: 1px solid #ccc;
+    background: #fff;
+}
+.user:hover .smart,.user:hover .big{
+    display: block;
+}
+.mainnav h1 a{
+    display: block;
+    width: 115px;
+    height: 20px;
+    background: url("../images/logo-new-toggle.png") no-repeat;
+}
+.mainnav .nav{
+    float: right;
+}
+.mainnav .nav li{
+    float: left;
+}
+.mainnav .nav li a{
+    color: #333;
+    display: block;
+    padding: 31px 22px 30px;
+    line-height: 21px;
+    transition: color .1s linear;
+}
+.mainnav .nav li a:hover{
+    color: #31a5e7;
+}
+

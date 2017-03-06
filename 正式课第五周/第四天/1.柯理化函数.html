@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body{
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<script>
+    //柯理化函数：本质就是预处理机制；
+    var obj={};
+    function fn(n,m){
+        console.log(this,(n+m))
+        console.log(arguments[2])
+    }
+    Function.prototype.myBind=function(context){
+        //this->实例 fn
+        var _this=this;
+        var outArg=Array.prototype.slice.call(arguments,1);
+        if('bind' in Function.prototype){//当浏览器支持bind的时候
+            return this.bind.apply(this,[context].concat(outArg));
+        }
+        return function(){//返回值一定要是函数的定义阶段；
+            var innerArg=Array.prototype.slice.call(arguments);
+            innerArg.length==0?innerArg[innerArg.length]=window.event:null;
+            _this.apply(context,outArg.concat(innerArg))
+        }
+    };
+    /*
+    * 1.bind应该在哪里封装？
+    *   - Function.prototype.MyBind
+    * 2.bind有几个参数？
+    *   - context:改变this指向；
+    * 3.bind有返回值吗？返回值是什么？
+    *   - 返回值是已经修改过this，并且传过参数的函数的定义阶段；
+    * */
+    //document.body.onclick=fn.bind(obj,2,3,4,5,6,67)
+    document.body.onclick=fn.myBind(obj,2,3)
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        table{
+            width: 800px;
+            margin:50px auto;
+            box-shadow: 0 0 10px #333;
+            border-radius: 10px;
+            overflow: hidden;
+            font-size: 20px;
+        }
+        table thead tr{
+            text-align: center;
+            width: 100%;
+            height: 50px;
+            background: darkgreen;
+        }
+        table thead th{
+            width: 200px;
+            line-height: 50px;
+            color: white;
+        }
+        table tbody tr{
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+        table tbody tr.bg0{
+            background: lightgoldenrodyellow;
+        }
+        table tbody tr.bg1{
+            background: lightgray;
+        }
+        table tbody tr.bg2{
+            background: lightcyan;
+        }
+        .cursor{
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<table cellpadding="0" cellspacing="0" id="tab">
+    <thead>
+        <tr>
+            <th class="cursor">姓名</th>
+            <th class="cursor">年龄</th>
+            <th class="cursor">分数</th>
+            <th>性别</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--<tr class="bg0">
+            <td>赵老大</td>
+            <td>45</td>
+            <td>89</td>
+            <td>0</td>
+        </tr>
+        <tr class="bg1">
+            <td>赵老大</td>
+            <td>45</td>
+            <td>89</td>
+            <td>0</td>
+        </tr>-->
+    </tbody>
+</table>
+<script src="js/utils.js"></script>
+<script src="js/tab.js"></script>
+</body>
+</html>

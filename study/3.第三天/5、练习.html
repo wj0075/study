@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+          *{
+              margin: 0px;
+              padding: 0px;
+          }
+          .box1
+
+          /*.box1{*/
+              /*width: 100px;*/
+              /*height: 200px;*/
+              /*border: 100px solid red;*/
+              /*margin: 100px 200px 100px;*/
+              /*padding-bottom: 100px;*/
+          /*}*/
+          /*/!*box1上边缘距离box2下边缘的距离*!/*/
+          /*.box2{*/
+              /*width: 200px;*/
+              /*height: 100px;*/
+              /*margin-top: 200px;*/
+              /*padding: 50px;*/
+          /*}*/
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+<style>
+    .div1{
+        width: 200px;
+        height: 200px;
+        background: darkblue;
+        font-size: 40px;
+        padding: 50px;
+        margin: 50px;
+    }
+    /*给盒设置上左外边距，就可以确定位置*/
+    span{
+        background: firebrick;
+        font-size: 45px;
+        margin: 100px;
+    }
+</style>
+<!--行内元素只可以设置水平方向的margin,padding只可以设置水平方向竖直方向有问题-->
+<div class="div1">你好</div>
+<span>文字</span>
+
+
+ie6下，浮动的块级元素，设置水平方向的margin，会出现双倍边距的bug。
+解决：
+1）display:inline  转为行内元素
+
+</body>
+</html>

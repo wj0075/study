@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基础版拖拽</title>
+    <style>
+        div{
+            position: absolute;
+            width: 200px;
+            height: 200px;
+        }
+        .div0{
+            left: 0;
+            background: red;
+        }
+        .div1{
+            left: 250px;
+            background: blue;
+        }
+        .div2{
+            left: 480px;
+            background: yellow;
+        }
+        .div3{
+            left: 700px;
+            background: green;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="div0"></div>
+<div class="div1"></div>
+<div class="div2"></div>
+<div class="div3"></div>
+<script src="js/utils.js"></script>
+<script src="js/event.js"></script>
+<script src="js/Drag.js"></script>
+<script>
+    var aDiv = document.getElementsByTagName('div');
+    for (var i=0;i<aDiv.length;i++){
+        var oLi = aDiv[i];
+        var drag = new Drag(oLi);
+        drag.jump();
+        if (i==2){
+            drag.range({
+                left:0,
+                top:0,
+                right:400,
+                bottom:400
+            })
+
+
+        }
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+        div{
+            width: 1550px;
+            margin:10px auto;
+        }
+        div ul{
+            width: 300px;
+            margin:5px;
+            float: left;
+        }
+        div ul li{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+</div>
+<script src="js/utils.js"></script>
+<script>
+    //布局：如果要5列，那我需要5个ul（浮动）；每创建一个li，都往ul最短（sort排序）的里面插入；
+    //1.封装创建一个元素的方法； 2.批量创建元素，每创建一个，都往ul最短的额里面插入；
+    //2.当满足一定条件，再批量创建一批li;再逐个插入；
+    var aUl=document.getElementsByTagName('ul');
+    //1.封装创建一个元素的方法：高度随机，背景色随机
+    function createLi(){
+        var oLi=document.createElement('li');
+        oLi.style.height=utils.rnd(80,200)+'px';
+        oLi.style.background='rgb('+utils.rnd(0,255)+','+utils.rnd(0,255)+','+utils.rnd(0,255)+')';
+        return oLi;
+    }
+    //需求：创建50个li，每创建一个li，都插入到ul最短的里面去；
+    /*
+    * 1.创建50个li？
+    * 2.排序如何来实现？高度
+    * 3.插入ul最短的；
+    * */
+    function li50 (){
+        //1.创建50个li；
+        for(var i=0; i<50; i++){
+            var oLi=createLi();
+            //2.每创建一个li，都往ul最短的里面插入；
+            //排序三步骤：1）类数组转数组 2）sort排序 3）往最短的里面插入
+            var ary=utils.makeArray(aUl);
+            ary.sort(function(a,b){//a:当前的ul b:下一个ul
+                return a.offsetHeight- b.offsetHeight;
+            })
+            ary[0].appendChild(oLi);
+        }
+    }
+
+    li50 ();
+    window.onscroll=function(){
+        var scrollBottom=utils.win('scrollTop')+utils.win('clientHeight');
+        if(document.body.scrollHeight+50>=scrollBottom){
+            li50();
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

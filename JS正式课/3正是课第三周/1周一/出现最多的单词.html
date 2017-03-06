@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str = 'dddddddddddddffffffffffFFFFFFFfffsssssssddddff';
+    //思路1
+    //先转换为数组，进行排序，在转换成字符串，运用重复子项的思路在找
+    str=str.split('').sort(function(a,b){return a.localeCompare(b)}).join('');
+    console.log(str);
+    var max = 0;
+    var maxSrr = '';
+    str.replace(/(\w)\1+/gi,function($0,$1){
+        if(max<$0.length){
+            max=$0.length;
+            maxSrr = $1;
+        }else if (max==$0.length){
+            maxSrr+=$1;
+        }
+    });
+    console.log(max,maxSrr);
+
+
+    //思路2
+    //利用键值对的方法，遍历整个字符串，相同的就++,可以找出最多的次数；然后通过最多的次数找出对应的属性。通过最大次的属性找到相同的
+  /*  var obj = {};
+    for(var i=0;i<str.length;i++){
+        var cur = str[i].toString();
+        if(obj[cur]){
+            obj[cur]++;
+        }else {
+            obj[cur]=1;
+        }
+    }
+    console.log(obj);
+    //假设一个最大值
+    var max = obj.d;
+    for(var key in cur){
+        if (max<obj[key]){
+            max = obj[key];
+        }
+    }
+    console.log(max);
+    //通过找出的最多次，找到对应的属性名
+    var maxA = [];
+    for(var key in obj){
+        if(obj[key]===max){
+            maxA.push(key);
+        }
+    }
+    console.log(maxA)*/
+
+
+
+
+</script>
+</body>
+</html>

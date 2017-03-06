@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #s{
+            position: relative;
+            width: 430px;
+            height: 430px;
+            background: url("img/1.jpg") no-repeat;
+            float: left;
+
+        }
+        #mark{
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            background: blue;
+            opacity: .3;
+            left: 0;
+            top: 0;
+        }
+        #b{
+            position: relative;
+            margin-left: 5px;
+            float: left;
+            width: 430px;
+            height: 430px;
+            overflow: hidden;
+            display: none;
+        }
+        #b img{
+            /*width: 100%;*/
+           /* width: 860px;
+            height: 860px;*/
+            position: absolute;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="s">
+    <div id="mark">
+
+    </div>
+</div>
+<div id="b">
+    <img src="img/2.jpg" alt="">
+</div>
+<script>
+
+    var oS= document.getElementById('s');
+    var oM = document.getElementById('mark');
+    var oB = document.getElementById('b');
+    var oImg = oB.getElementsByTagName('img')[0];
+    oS.onmouseover =function(){
+        oM.style.display='block';
+        oB.style.display = 'block'
+    };
+    /*oS.onmousemove = function(e){
+        e = e||window.event;
+        var l = e.clientX-this.offsetLeft-oM.offsetWidth/2;
+        var t = e.clientY-this.offsetTop-oM.offsetHeight/2;
+        var maxL = this.offsetWidth-oM.offsetWidth;
+        var maxT = this.offsetHeight -oM.offsetHeight;
+        if (l<=0){
+            l=0;
+        }else if(l>=maxL){
+            l=maxL
+        }
+        if (t<=0){
+            t=0
+        }else if(t>=maxT){
+            t=maxT
+        }
+
+        oM.style.left= l+'px';
+        oM.style.top= t+'px';
+        oImg.style.left=-2*l+'px';
+        oImg.style.top = -2*t+'px';
+    };*/
+    oS.onmousemove = function(e){
+        e=e||window.event;
+        var l =e.clientX-this.offsetLeft-oM.offsetWidth/2;
+        var t = e.clientY-this.offsetTop-oM.offsetHeight/2;
+        console.log(l);
+        var maxL = this.offsetWidth-oM.offsetWidth;
+        var maxT = this.offsetHeight - oM.offsetHeight;
+        if (l<=0){
+            l=0
+        }else if(l>=maxL){
+            l=maxL
+        }
+        if(t<=0){
+            t=0
+        }else if (t>=maxT){
+            t=maxT;
+        }
+        oM.style.left = l+'px';
+        oM.style.top = t+'px';
+        oImg.style.left = l/(oS.offsetWidth-oM.offsetWidth)*(oB.offsetWidth-oImg.offsetWidth)+'px';
+        oImg.style.top = t/(oS.offsetHeight-oM.offsetHeight)*(oB.offsetHeight-oImg.offsetHeight)+'px';
+    };
+    oS.onmouseout=function(){
+        oM.style.display='none';
+        oB.style.display='none'
+    }
+
+</script>
+</body>
+</html>

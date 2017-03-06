@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .tab{
+            width: 800px;
+            margin:100px auto;
+            box-shadow: 0 0 20px #000;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .tab thead tr{
+            width: 100%;
+            overflow: hidden;
+            height: 50px;
+            line-height: 50px;
+            background: darkgreen;
+            color: white;
+        }
+        .tab tbody tr{
+            height: 40px;
+            line-height: 40px;
+        }
+        .tab tbody tr.bg0{
+            background: lightgreen;
+        }
+        .tab tbody tr.bg1{
+            background: lightcyan;
+        }
+        .cursor{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<table class="tab" id="tab">
+    <thead>
+        <tr>
+            <th class="cursor">姓名</th>
+            <th class="cursor">年龄</th>
+            <th class="cursor">分数</th>
+            <th>性别</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--<tr class="bg0">
+            <td>赵老大</td>
+            <td>45</td>
+            <td>89</td>
+            <td>0</td>
+        </tr>
+        <tr class="bg1">
+            <td>赵老大</td>
+            <td>45</td>
+            <td>89</td>
+            <td>0</td>
+        </tr>-->
+    </tbody>
+</table>
+<script src="js/utils.js"></script>
+<script src="js/tab.js"></script>
+</body>
+</html>

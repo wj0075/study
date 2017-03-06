@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rem</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style>
+        .box{
+            width: 0.86rem;
+            height: 0.86rem;
+            background: red;
+        }
+        /*640 100 86px 0.86rem
+          320  x  43px  0.86rem
+          640/320 = 100/50
+        */
+        /*假设设备宽度=设计稿宽度，这样我们就可以像pc端页面一样去写，只需要把单位px转换成rem就行*/
+    </style>
+    <script>
+        //根据上面的公式，我们转换成JS代码
+        var desW = 640;
+        var winW = document.documentElement.clientWidth;
+        document.documentElement.style.fontSize = winW/desW*100+'px'
+    </script>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>

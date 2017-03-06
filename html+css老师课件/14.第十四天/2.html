@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        p{
+            width: 200px;
+            background: red;
+            white-space: nowrap;
+            /*强制不换行*/
+            overflow: hidden;
+            text-overflow: ellipsis;
+            /*超出的部分以...代替*/
+
+        }
+    </style>
+</head>
+<body>
+<p>正在下雨的秋，适合想起一些古老的往事正在下雨的秋，适合想起一些古老的往事</p>
+
+
+<style>
+    /*div{*/
+        /*width: 200px !important;*/
+        /*height: 200px;*/
+        /*border: 1px solid red;*/
+        /*overflow: scroll;*/
+    /*}*/
+</style>
+<div>
+    第一次到大兰州！有点兴hùn～拉面们，我杀过来啦！
+    第一次到大兰州！有点兴hùn～拉面们，我杀过来啦！
+    第一次到大兰州！有点兴hùn～拉面们，我杀过来啦！
+    第一次到大兰州！有点兴hùn～拉面们，我杀过来啦！
+    第一次到大兰州！有点兴hùn～拉面们，我杀过来啦！
+    第一次到大兰州！有点兴hùn～拉面们，我杀过来啦！
+    第一次到大兰州！有点兴hùn～拉面们，我杀过来啦！
+    <img src="bg.jpg" alt=""/>
+</div>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .box{
+        width: 100px;
+        height: 100px;
+        background: greenyellow;
+    }
+    .box:hover h3{
+        display: none;
+    }
+    .box:after{
+        content: '末尾';
+        color: red;
+    }
+    .box:before{
+        content: '开始';
+        color: blue;
+    }
+</style>
+<div class="box">
+    <h3>标题</h3>
+</div>
+
+</body>
+</html>

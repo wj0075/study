@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        p{
+            width: 100px;
+            height: 30px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<p></p>
+<script>
+
+    var oP = document.getElementsByTagName('p')[0];
+
+    oP.innerHTML = getTime();
+
+    window.setInterval(function(){
+        oP.innerHTML = getTime();
+    },1000);
+
+
+//    补0
+    function zero(num){
+        return num<10?'0'+num:num;
+    }
+
+    function getTime(){
+        var now = new Date();
+        var tag = new Date('2016/10/21 19:00:00');
+
+//    距离1970
+        var tagTime = tag.getTime();
+        var nowTime = now.getTime();
+
+//    目标时间与当前时间的毫秒差值 ms 毫秒
+        var diff = tagTime -nowTime;
+
+//    一小时有多少毫秒
+        var a = 1000*60*60;
+//   多少小时
+        var hour = Math.floor(diff/a);
+
+//    这些小时中包含多少毫秒
+        var hs = hour*a;
+
+//    减去小时剩余的毫秒数
+        var b = diff- hs;
+
+//    多少分钟
+        var min = Math.floor(b/(1000*60));
+
+//    这些分钟包含多少秒
+        var c = min*(1000*60)
+
+//    减去分钟的毫秒数
+        var d = b-c;
+
+//    剩余的毫秒数中多少秒
+        var second = Math.floor(d/1000);
+
+        var str = zero(hour)+':'+zero(min)+':'+zero(second);
+
+        return str;
+
+    }
+
+//    00:00:00
+
+//    定时器
+//    window.setTimeout(函数,时间ms)
+//    window.setInterval(函数,时间ms)
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

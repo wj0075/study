@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+标签语义化：合理的标签做合理的事
+
+列表ul,ol,li
+定义列表dl,dt,dd
+无意义  div,span
+
+标签语义化的好处：
+1、在没有css样式的时候，页面依然显示清晰的结构
+2、有利于搜素引擎的爬虫抓取页面（h1、em、strong）
+3、利于移动端页面的加载
+
+
+写html结构时需要注意：
+1、减少标签的嵌套
+2、块级元素可以嵌套块级和行内元素，但是行内元素不可以嵌套块级元素，a标签可以嵌套块级元素
+3、Ul里面最好放Li,ol,li都是一起出现
+<ul>
+    <li></li>
+</ul>
+<ol>
+    <li></li>
+</ol>
+
+4、p标签不可以嵌套块级元素
+<p>
+    <div></div>
+</p>
+以上结构，在浏览器中会解析为：
+<p></p>
+<div></div>
+<p></p>
+
+<p><a href=""></a></p>
+
+5、能用p标签就不用div
+6、尽量不用em、strong这种加强语气的标签，用i、b
+
+
+
+
+</body>
+</html>

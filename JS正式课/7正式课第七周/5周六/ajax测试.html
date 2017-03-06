@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if (xhr.readyState===4){
+            if (xhr.status===200){
+                console.log('ok')
+            }
+        }
+    };
+    xhr.open('get','use.html');
+
+    console.log('ob');
+    xhr.send();
+    console.log('ol');
+
+    console.log('sss');
+    console.log('xxx')
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>照片墙</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        img{
+            vertical-align: top;
+            border: none;
+        }
+        .box{
+            position: relative;
+            width: 480px;
+            height: 640px;
+            margin: 30px auto;
+            background: #ccc;
+            padding: 5px;
+        }
+        .box li{
+            float: left;
+            width: 150px;
+            height: 150px;
+            margin: 5px;
+            background: lightskyblue;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .box li img{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<ul class="box" id="box">
+    <li><img src="img/1.png" alt=""></li>
+    <li><img src="img/2.png" alt=""></li>
+    <li><img src="img/3.png" alt=""></li>
+    <li><img src="img/4.png" alt=""></li>
+    <li><img src="img/5.png" alt=""></li>
+    <li><img src="img/6.png" alt=""></li>
+    <li><img src="img/7.png" alt=""></li>
+    <li><img src="img/8.png" alt=""></li>
+    <li><img src="img/9.png" alt=""></li>
+    <li><img src="img/10.png" alt=""></li>
+    <li><img src="img/11.png" alt=""></li>
+    <li><img src="img/12.png" alt=""></li>
+</ul>
+<script src="../../utils.js"></script>
+<script src="js/event.js"></script>
+<script src="js/move.js"></script>
+<script src="js/Drag.js"></script>
+<script>
+    //1.首先第一步，让所有的li从浮动布局转换为定位布局。因为要向改变位置，必须要有left值和top值，而浮动是没有这些属性的。
+    var aLi = document.getElementsByTagName('li');
+    //2.如果从前往后的循环，则会出现，第一张改变为定位布局，由于后面的时候浮动元素，会自动补位都第一个的位置，所以后面的所有元素都会重叠到第一张的位置。因此换成从后往前循环，这样定位就不会受到浮动的影响，浮动还是会从第一张那开始，
+    var zIndex = 0;
+    for (var i= aLi.length-1;i>=0;i--){
+        var oLi = aLi[i];
+        oLi.oldColor = utils.css(oLi,'backgroundColor');
+        //将元素从浮动改变为定位；
+        //要先保存offsetLeft和offsetTop的值，因为如果先定位的话，会让元素直接到left和top为0的位置，这样其他元素也是一样。如果已经设置了left和top的值，这时在定位就会在原有位置显示
+        oLi.style.left = (oLi.l=oLi.offsetLeft)+'px';
+        oLi.style.top = (oLi.t=oLi.offsetTop)+'px';
+        oLi.style.position='absolute';
+        //由于你存下的offsetLeft中包含margin,所以在定位的时候，定位的距离就是包含margin的距离。而在css样式中还存在着margin，这时需要将margin设置为0；
+        oLi.style.margin = 0;
+        new Drag(oLi).on('selfDown',creaseIndex).on('selfMove',hited).on('selfUp',changePos);
+        //这时由于层级的问题，需要创建一个方法来然拖动的元素增加层级
+    }
+    function creaseIndex(){
+        this.ele.style.zIndex = ++zIndex;
+    }
+    //判断任意两个元素是否相撞
+    function isHited(l,r){
+        //如何判断，两个元素是否相撞，相撞的意思就是，两个元素的定位发生重叠，只要是重叠，就证明相撞了。但是相撞的判断条件不好掌握，可是不相撞的条件却好整理，只要它们的定位不发生重叠即可。只要第一个盒子的左右定位加上自己的宽高小于第二个盒子的左右定位，就表明没有发生碰撞，第二个条件就是，第一个盒子的左右定位大于第二个盒子的左右定位加上宽高，也表明没有发生碰撞。这样就可以判断出在这个条件以外都发生了碰撞。没有发生碰撞就返回false,因为我们需要的是与发生碰撞的盒子进行比较。所以发生碰撞后就返回true进行后续的操作。
+        if(l.offsetLeft+l.offsetWidth< r.offsetLeft|| l.offsetTop+ l.offsetHeight< r.offsetTop|| l.offsetLeft> r.offsetLeft+ l.offsetWidth|| l.offsetTop> r.offsetTop+ r.offsetHeight){
+            return false;
+        }else {
+            return true;
+        }
+    }
+    //找到当前元素碰到的所有的元素。这个方法是为了收集碰到的元素的信息，要为后续的交换位置做铺垫。你要知道你拖拽到的位置，离哪一个最近。首先遍历整个aLi，当拖拽的元素与其他元素发生碰撞的时候，将这个元素放到建好的一个数组。因为只有拖拽才会触发hited方法，所以每一次触发都新建一次数组，所以每一次最多保存四个li。而且遍历的每一次，都会循环完来进行判断。如果拖拽的对象与自己比较，直接结束循环，进行下一轮循环。
+    function hited(){
+        this.ary = [];
+        for(var i=0;i<aLi.length;i++){
+            var oLi = aLi[i];
+            if (this.ele==oLi) continue;
+            if (isHited(this.ele,oLi)){
+                this.ary.push(oLi);
+                oLi.style.background= 'red';
+            }else {
+                oLi.style.background = oLi.oldColor
+            }
+        }
+    }
+    //当鼠标抬起的时候交换位置。这时候需要计算出，拖拽的元素距离哪个Li最近，这个距离，就是定位的相对距离。勾股定理
+    //首先要得到碰撞时的存下的数组，由于一开始是var 的一个私有变量，这时其他方法要使用，因为这是new出来的实例，所以可以把变量挂在实例上，成为实例的私有属性。然后对数组中的每一个li进行计算运用勾股定理，计算出距离拖拽元素最短的元素。将最短的距离当作li的私有属性挂在每一个li上。
+    function changePos(){
+        var ary = this.ary;
+        if(ary && ary.length){
+            for (var i=0;i<ary.length;i++){
+                var oLi = ary[i];
+                //获取到每一个li，距离拖拽元素的距离
+                oLi.dis = Math.pow(this.ele.offsetLeft-oLi.offsetLeft,2)+Math.pow(this.ele.offsetTop-oLi.offsetTop,2);
+                oLi.style.background = oLi.oldColor
+            }
+            //然后根据距离进行排序，找到最短的那一个
+            ary.sort(function(a,b){
+                return a.dis- b.dis;
+            });
+            var shortest = ary[0];
+            //交换位置，应用运动裤，对元素进行移动
+            animate({
+                id:this.ele,
+                target:{
+                    left:shortest.l,
+                    top:shortest.t
+                }
+            });
+            animate({
+                id:shortest,
+                target:{
+                    left:this.ele.l,
+                    top:this.ele.t
+                }
+            });
+            //让各自的l和t值也叫调换，否则移动过来后，原有保存的l和t值没有变，在移动的时候，就会混乱
+            var l = this.ele.l,t = this.ele.t;
+            this.ele.l=shortest.l,this.ele.t = shortest.t;
+            shortest.l=l,shortest.t=t;
+            ary=[];
+        }else {//在没有碰撞的情况下，拖出去了，抬手的时候回到原有位置就可以
+            animate({
+                id:this.ele,
+                target:{
+                    left:this.ele.l,
+                    top:this.ele.t
+                }
+            });
+        }
+    }
+</script>
+</body>
+</html>

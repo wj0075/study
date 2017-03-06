@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //浏览器异常捕获完整格式：try{...}catch(e){...}finally{....};
+    //但是因为无论走try,还是catch，finally都会执行，所以，一般情况下，不用finally；
+    var a=123;
+    try{
+        if(a){
+            alert(a);
+        }
+    }catch(e){
+        console.log('错了错了：'+e)
+    }finally {
+        alert('我来了')
+    }
+</script>
+</body>
+</html>

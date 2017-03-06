@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function CreatePerson(name,age){
+        //系统默认为你创建一个对象：this；
+        this.name=name;
+        this.age=age;
+        this.showName=function(){
+            alert('我的名字是：'+this.name)
+        }
+        //默认为你返回已经加工好的对象；
+    }
+    /*function CreatePerson(name,age){
+        var obj={};//1.创建空对象
+        //2.加工对象
+        obj.name=name;
+        obj.age=age;
+        obj.showName=function(){
+            alert('我的名字是：'+this.name)
+        };
+        return obj;//3.输出对象；
+    }*/
+    var p1=new CreatePerson('zhufeng',8);
+    alert(p1.name);
+    p1.showName();
+    var p2=CreatePerson('liuxiaoyang',18);
+    /*alert(p2.age);
+    p2.showName();*/
+    var ary=new Array('1','2','3');
+    /*alert(ary.length);
+    ary.push('4');
+    console.log(ary)*/
+    /*var p1={
+        name:'zhufeng',
+        age:8,
+        showName:function(){
+            alert('我的名字是：'+this.name)
+        }
+    };
+    var p2={
+        name:'liuxiaoyang',
+        age:18,
+        showName:function(){
+            alert('我的名字是：'+this.name)
+        }
+    }*/
+
+</script>
+</body>
+</html>

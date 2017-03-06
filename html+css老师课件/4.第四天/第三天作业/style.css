@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    font:14px  "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+}
+ul{
+    list-style: none;
+}
+img{
+    border: none;
+    /*去掉边框   在ie6、ie7img标签自带1px黑色的边框*/
+    vertical-align: top;
+    /*去掉img自带的3px间距*/
+}
+ul{
+    width: 1226px;
+    margin: 0 auto;
+    /*auto 自适应*/
+    /*在父级元素中水平居中*/
+}
+ul li{
+    width: 234px;
+    height: 339px;
+    background: #fafafa;
+    border-top: 1px solid #ffac13;
+    display: inline-block;
+    margin-right: 14px;
+}
+ul .list2{
+    border-color: #83c44e;
+}
+ul .list5{
+    margin-right: 0;
+}
+ul li img{
+    width: 120px;
+    height: 80px;
+    margin: 79px 0 0 57px;
+}
+ul li h4{
+    color: #212121;
+    text-align: center;
+    /*内容水平居中   盒子必须有宽度
+    行内元素不可以设置 */
+    padding-top: 70px;
+}
+ul li p{
+    color: #b0b0b0;
+    text-align: center;
+    padding: 7px 0 15px 0;
+}
+ul li span{
+    color: #ff6709;
+    text-align: center;
+    /*宽度>内容的宽度的盒子*/
+    display: block;
+}
+

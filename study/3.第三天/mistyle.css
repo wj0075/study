@@ -1,0 +1,79 @@
+/*����Ĭ����ʽ*/
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif
+;
+}
+ul{
+    list-style: none;
+    /*ȥ��ǰ��ĵ�*/
+}
+i{
+    font-style: normal;
+    /*��б�����*/
+}
+b{
+    font-weight: normal;
+    /*ȥ���Ӵֵ���ʽ*/
+}
+img{
+    border: none;
+    /*ȥ���߿�*/
+    /*�Դ�3px�ı߾�*/
+    vertical-align: top;
+    /*display: block;*/
+}
+.main{
+    background: #f5f5f5;
+
+    /*��ɫ�ı�ʾ
+    1��red
+    2��#f5f5f5   ʮ������
+    3��rgb(245,245,245)   ��ԭɫ
+    4��rgba(0,0,0)   ��͸���ȵ���ɫ   a��Ӧ����͸���ȣ�0~1֮�������  ��css�е�ǰ����㾡��ȥ����ȫ͸������ɫ  transparent
+    */
+
+}
+ul li{
+    width: 296px;
+    height: 415px;
+    display: inline-block;
+    margin-left: 14px;
+}
+li img{
+    width: 296px;
+    height: 220px;
+    /*imgһ��Ҫ���ÿ��*/
+}
+li div{
+    height: 163px;
+    background: #fff;
+    padding:32px 30px 0 28px;
+    /*��ps�����������ӵĿ�Ⱥ͸߶ȣ����������padding����Ӧ��width��heightҪ��ȥ���Ӧ��paddingֵ*/
+}
+li div .article{
+    font-size: 14px;
+    color: #333;
+    /*
+    #333333-->#333
+    #aabbcc-->#abc
+    */
+    line-height: 24px;
+}
+li div .from{
+    font-size: 14px;
+    color: #e9cebb;
+    margin: 23px 0 14px 0;
+}
+li div span{
+    font-size: 14px;
+    color: #333;
+}
+li i{
+    color: #ebe4e0;
+}
+li b{
+    color: #ff6700;
+    font-size: 14px;
+}

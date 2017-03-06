@@ -1,0 +1,62 @@
+服务器端要做的几件事情:
+  ->创建一个服务(监听一个端口号)
+  ->获取到客户端需要请求的资源文件
+  ->把客户端想要的文件中的源代码获取到
+  ->把源代码返回给客户端
+
+1、NODE中的内置模块
+  [http]
+    var server1=http.createServer([function]):创建一个服务,返回值(server1)就是创建的那个服务;方法中传递的回调函数并不是在创建服务成功后就执行了,而是需要等到，客户端(浏览器)向当前的这个服务发送请求的时候，此回调函数才会被触发执行;
+    当客户端向本地80服务发送一次请求，回调函数就会被执行一次，不仅执行了，还给回调函数传递了两个参数值，我们一般使用request和response两个形参变量接收这个值.
+    request:存储了客户端的全部请求信息
+    response:存储了很多的方法，这些方法都是用来给客户端返回相关信息
+
+    server1.listen([port],[function]):给创建的服务监听一个端口号(0-65535之间),当监听成功后执行回调函数
+
+
+  [url]
+    url.parse([url],true):把一个URL中的每一部分进行解析
+    http://www.zhufengpeixun.com:80/index.html?name=zxt#aa
+    Url {
+      protocol: 'http:', 协议
+      slashes: true, 是否有斜杠
+      auth: null, 作者
+      host: 'www.zhufengpeixun.com:80', 域名+端口
+      port: '80', 端口
+      hostname: 'www.zhufengpeixun.com', 域名
+      hash: '#aa', HASH值
+      search: '?name=zxt', 问号传参
+      query: { name: 'zxt' }, 把问号传递进来的参数值都以对象键值对的方式解析出来了
+      pathname: '/index.html', 请求的资源文件的路径和名称
+      path: '/index.html?name=zxt', 路径名称+问号传参
+      href: 'http://www.zhufengpeixun.com:80/index.html?name=zxt#aa' 解析的完整URL
+    }
+
+
+  [fs]
+    就是在NODE环境下进行I/O操作的模块，这个模块中提供了很多的方法，供我们对服务器上的文件进行增删改查
+    fs.readFileSync([pathname],[encode 'utf-8']):同步读取某一个文件中的内容,读取出来的内容都是字符串格式的
+    fs.readFile:异步读取
+
+    fs.writeFileSync([pathname],[content],[encode]):同步向某一个文件中写入内容；当前的写入是覆盖式写入；写入的内容都应该是字符串格式的；
+
+
+  sync:同步
+  async:异步
+
+  有的谷歌浏览器会默认的向服务器发送一个请求favicon.ico,具体做什么咱们不用管,我们项目中是没有这个资源文件的
+
+2、问题
+ ->我在本地通过相关的JS代码创建了一个80服务，如何向这个服务发送请求呢?
+  1)在本地浏览器的地址栏中输入:  http://localhost:80/index.html ...
+  2)在本地浏览器的地址栏中输入:  http://本机IP:80/index.html ...
+
+    如何查看自己电脑的IP地址:
+       在DOS窗口中输入 ipconfig 即可
+
+    如果我们连接的是同一个wifi，说明我们在同一个局域网中，这样大家就可以互相访问其他人的服务了(http://别人的IP:别人的端口/xxx.html ...) =>需要别人把自己电脑的防火墙关掉
+
+
+
+
+

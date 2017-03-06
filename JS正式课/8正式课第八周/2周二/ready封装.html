@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var myReady = (function () {
+        if (window.addEventListener) {
+            return function (callback) {
+                //判断一下页面是否已经加载完成，如果已经加载完成就直接运行callback
+                if (document.readyState !== 'loading') {
+                    callback();
+                } else {
+                    window.addEventListener('DOMContentLoaded', function () {
+                        callback();
+                    }, false)
+                }
+            };
+        }
+        return function (callback) {
+            if (document.readyState !== 'loading') {
+                callback();
+                return;
+            }
+            document.onreadystatechange = function () {
+                if (document.readyState == 'interactive' || document.readyState == 'complete') {
+                    document.onreadystatechange = null;
+                    callback()
+
+                }
+            }
+        }
+    }());
+
+    window.onload=function(){
+        console.log('hello')
+    };
+    myReady(function(){
+        console.info('fuck')
+    })
+
+
+</script>
+</body>
+</html>

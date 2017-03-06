@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input{
+            width: 200px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="按钮1">
+<input type="button" value="按钮2">
+<input type="button" value="按钮3">
+<input type="button" value="按钮4">
+<script>
+    var aBtn=document.getElementsByTagName('input');
+    for(var i=0; i<aBtn.length; i++){
+        aBtn[i].onclick=function(){
+            //alert(i)//所有事件中的i值，都是错的，永远拿到的都是最大值；
+            alert(i)
+            for(i=0; i<aBtn.length; i++){
+                aBtn[i].style.background='red';
+            }
+        }
+    }
+</script>
+</body>
+</html>

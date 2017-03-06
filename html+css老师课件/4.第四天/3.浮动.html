@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        li,span{
+            width: 200px;
+            height: 200px;
+            background: red;
+            font-size: 40px;
+            margin: 10px;
+            /*padding: 100px;*/
+            float: left;
+            /*从左开始，从左到右依次显示*/
+            /*float: right;*/
+            /*从右开始，从浮动的第一个元素开始 从右到左显示*/
+        }
+    </style>
+</head>
+<body>
+
+<!--ul>li{$}*4-->
+<ul style="background: orange">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+
+<!--1、元素浮动 就不区分行内元素还是块级元素，都可以设置宽度、高度、margin、padding-->
+
+<!--文档流：自然布局
+
+脱离文档流：只要元素浮动了，就不在原来的平面内，来到一个稍高的一个平面内，但还是和原来平行
+-->
+
+<!--ul的背景颜色没有显示？  高度：0
+ul没有识别到li（浮动）
+-->
+
+
+
+
+
+
+</body>
+</html>

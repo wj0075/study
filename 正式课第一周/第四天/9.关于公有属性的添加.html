@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ary=[1,1,1,2,2,1,1,1,3,3,3,2,2];
+    var ary1=[4,4,5,3,4,5];
+    //1.模拟系统方法；
+    //2.每个实例都可以调用这个方法；--因为我们把这个方法挂在原型；
+    //思路2：sort思想
+    Array.prototype.rmsame=function(){
+        //1.sort排序
+        var ary=this.sort(function(a,b){return a-b});
+        for(var i=0; i<ary.length; i++){
+            if(ary[i]===ary[i+1]){
+                ary.splice(i,1);
+                i--;
+            }
+        }
+        return ary;
+    };
+    /*//思路1：双循环思想->拿当前项 跟 他后面的每一项进行比较，相同就删除； 注意：数组塌陷；
+    Array.prototype.rmsame=function(){
+        //this->实例；
+        for(var i=0; i<this.length; i++){
+            var oLi=this[i];
+            for(var j=i+1; j<this.length; j++){
+                if(oLi===this[j]){//说明重复了
+                    this.splice(j,1);
+                    j--;
+                }
+            }
+        }
+        return this;
+    };*/
+    ary.rmsame();
+    ary1.rmsame();
+
+    /*Array.prototype={};//系统为了避免开发者通过Array.prototype={}批量修改系统内置类的共有方法，所以禁止了用户的这种行为--系统自我保护；
+    ary.pop();
+    console.log(ary);*/
+    //Array.prototype.pop=function(){};
+    /*ary.__proto__.pop=function(){};
+    ary.pop();
+    console.log(ary);*/
+</script>
+</body>
+</html>

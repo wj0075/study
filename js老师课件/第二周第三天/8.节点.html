@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>标题</h1>
+
+文字<ul><!--列表-->
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<script>
+    //节点：标签、文本、注释、空格回车
+    //1)childNodes  所有的子节点
+    console.log(document.body.childNodes)
+
+//    节点             节点名称nodeName   nodeType   nodeValue
+//    元素节点（标签）    标签名            1           null
+//    文本节点（文字，空格）#text           3           对应的内容
+//    注释节点           #comment        8          注释的内容
+//    document          #document       9           null
+
+//    2)children:子元素节点
+    console.log(document.body.children)
+
+//    3)parentNode:父节点
+    var ul = document.getElementsByTagName('ul')[0];
+    console.log(ul.parentNode);
+
+//    4)previousSibling  哥哥节点
+    console.log(ul.previousSibling.nodeType)
+    console.log(ul.previousSibling.nodeValue)
+
+//    5）nextSibling   弟弟节点
+    console.log(ul.nextSibling);
+
+//    6)firstChild 第一个子级节点
+    console.log(ul.firstChild)
+    console.log(ul.firstChild.nodeValue)
+
+//    7)lastChild  最后一个子级节点
+    console.log(ul.lastChild.nodeType)
+
+//
+    console.log(ul.nodeName)
+    console.log(ul.nodeType)
+    console.log(ul.nodeValue)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

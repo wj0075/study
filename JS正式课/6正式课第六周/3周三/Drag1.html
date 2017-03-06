@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹力球1</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            position: absolute;
+            left: 0;
+            top:0;
+            width: 100px;
+            height: 100px;
+            background: red;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div class="main"></div>
+<script src="../../utils.js"></script>
+<script src="js/event.js"></script>
+<script src="js/Drag2.js"></script>
+<script>
+    var oDiv = document.getElementsByClassName('main')[0];
+    var drag1 = new Drag3(oDiv);
+    drag1.range({
+        left:0,
+        right:600,
+        top:0,
+        bottom:400
+    });
+    drag1.border();
+    drag1.elastic();
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ary=[20,3,12,6,34,5];
+    //思路1：sort排序
+    /*ary.sort(function(a,b){return a-b});
+    var max=ary.pop(),min=ary.shift();
+    console.log(max,min);*/
+    //思路2：假设法-假设法假设的数字
+    /*var max=ary[0];
+    var min=ary[0];
+    for(var i=0; i<ary.length; i++){
+        if(ary[i]>max) max=ary[i];
+        if(ary[i]<min) min=ary[i];
+    }*/
+    //思路3：Math.max配合eval;
+    /*var str1=ary.toString();
+    //eval：作用-》把字符串的作为JS代码来执行；
+    alert(eval('Math.max('+str1+')'))
+    alert(eval('Math.min('+str1+')'))*/
+    //思路4：
+    //alert(Math.max.apply(undefined,ary));
+</script>
+</body>
+</html>

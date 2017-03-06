@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            position: absolute;
+            left:300px; /*begin*/
+            top:0;
+            width: 200px;
+            height:200px;
+            background: red;
+        }
+        #target{
+            position: absolute;
+            left:1200px;
+            top:0px;
+            width: 1px;
+            height: 300px;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+<div id="div"></div>
+<div id="target"></div>
+<script src="js/utils.js"></script>
+<script src="js/move2.js"></script>
+<script>
+    var oDiv=document.getElementById('div');
+    animate(oDiv,{
+        left:1200,
+        top:400
+    },2000,function(){
+        this.style.background='green';
+    })
+</script>
+</body>
+</html>

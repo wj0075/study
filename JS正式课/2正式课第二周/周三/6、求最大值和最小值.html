@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //思路1、sort排序
+//    var ary = [3,2,5,4,1];
+//    ary.sort(function(a,b){
+//        return a-b;
+//    }) ;
+//    var max = ary.pop();
+//    var min = ary.shift();
+//    console.log(max,min);
+    //思路2、假设发
+//    var ary = [3,2,5,4,1];
+//    var max = ary[0];
+//    var min = ary[0];
+//    for (var i = 0;i < ary.length;i++){
+//        if (ary[i]>max){
+//            max = ary[i];
+//        }
+//        if (ary[i]<min){
+//            min = ary[i];
+//        }
+//    }
+//    console.log(max,min);
+
+    //思路3、Math.max/min  字符串拼接，运用eval方法，将字符串转换为表达式执行
+//    var ary = [3,2,5,4,1];
+//    var str = ary.toString();
+//    var max = eval('Math.max('+str+')');
+//    var min = eval('Math.min('+str+')');
+//    console.log(max,min);
+    //思路4、Math.max/min  运用apply中第二个参数为数组，进行一个个传参来
+    var ary = [3,2,5,4,1];
+    var max = Math.max.apply(null,ary);
+    var min = Math.min.apply(null,ary);
+    console.log(max,min);
+
+
+
+</script>
+</body>
+</html>

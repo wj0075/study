@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    getPrev();
+    function getPrev(ele){
+        if(ele.previousElementSibling){
+            return ele.previousElementSibling;
+        }else {
+            var pre = ele.previousSibling;
+            while(pre && pre.nodeType!==1){
+                pre = pre.previousSibling;
+            }
+        }
+        return pre;
+    }
+
+
+</script>
+</body>
+</html>

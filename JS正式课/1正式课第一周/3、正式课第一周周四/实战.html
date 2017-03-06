@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width:200px;
+            height:200px;
+            border-radius:50%;
+            background:-webkit-linear-gradient(top,lightblue,lightcyan,lightgoldenrodyellow);
+            font-size:100px;
+            color:white;
+            text-align:center;
+            line-height:200px;
+            margin:100px auto;
+            -webkit-user-select:none;
+
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div id="box">0</div>
+
+<script>
+    var oDiv=document.getElementById('box')
+    //需求：当点击div时，数字递增
+    //思路一；
+   /* var n=0;
+    oDiv.onclick=function(){
+        this.innerHTML=++n;
+    }*/
+    //思路二；闭包
+    /*(function(){
+        var n=0;
+        oDiv.onclick=function(){
+            this.innerHTML= ++n;
+        }
+    })();*/
+
+    /*oDiv.onclick=(function(){
+        var n=0;
+        return function(){
+            this.innerHTML=++n;
+        }
+    })();
+    */
+    //思路4：DOM操作
+
+    /*oDiv.onclick=function(){
+        this.innerHTML++;
+    }*/
+
+
+    //思路五：自定义属性:最常用的就是：当需要全局变量的时候，可以把全局变量要存的东西，存到自定义属性上。
+
+    oDiv.n=0;
+    oDiv.onclick=function(){
+        this.innerHTML=++this.n;
+    }
+
+
+
+</script>
+</body>
+</html>

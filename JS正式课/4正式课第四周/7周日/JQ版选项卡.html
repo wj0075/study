@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 300px;
+            margin: 40px auto;
+        }
+        input{
+            float: left;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border: none;
+        }
+        input.on{
+            background: #cf1132;
+        }
+        .box div{
+            display: none;
+            width: 300px;
+            height: 200px;
+            border: 1px solid #ccc;
+            font-size: 40px;
+        }
+        .box div.show{
+            display: block;
+            background: #cf1132;
+        }
+
+
+
+    </style>
+</head>
+<div class="box" id="box">
+    <input type="button" value="按钮一" class="on">
+    <input type="button" value="按钮二">
+    <input type="button" value="按钮三">
+    <div class="show">腾讯新闻</div>
+    <div>腾讯体育</div>
+    <div>腾讯阅读</div>
+</div>
+
+
+
+<body>
+<script src="../../jquery-1.11.3.js"></script>
+<script src="js/extend.js"></script>
+<script>
+//    var $box = $('#box');
+//    var $aBtn = $box.children('input');
+//    var $aDiv = $box.children('div');
+//    $aBtn.click(function(){
+//        $(this).addClass('on').siblings().removeClass('on');
+//        $aDiv.eq($(this).index()).addClass('show').siblings().removeClass('show');
+//    })
+//$.myTab('#box');
+
+    $('#box').myTab();
+
+
+
+</script>
+</body>
+</html>

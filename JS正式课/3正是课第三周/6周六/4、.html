@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //setGroupCss
+    setGroupCss(aDiv[0],{
+        width:100,
+        background:'red',
+
+    });
+    function setGroupCss(curEle,obj){
+        for(var key in obj){
+            var cur = obj[key];
+            this.setCss(curEle,key,cur);
+        }
+    }
+    function setCss(curEle,attr,val){
+        //3.对浮动的处理
+        if(attr==='float'){
+            curEle.cssFloat = val;
+            curEle.stylefloat = val;
+        }
+        //2.对透明度的处理
+        if(attr==='opacity'){
+            curEle.style.opacity = val;
+            curEle.style.filter = 'alpha(opacity='+val*100+')';
+            return;
+        }
+        //1.对单位的处理
+        var reg = /^([+-])?(\d+(\.\d+)?)(px|pt|rem|em|%)?$/;
+        if(reg.test(val)){
+            //当用户没有传单位的时候，默认按照pc端的样式设置
+            if(Number(val)||Number(val)==0){
+                val = val+'px';
+            }
+        }
+        curEle.style[attr]=val;
+    }
+
+
+</script>
+</body>
+</html>

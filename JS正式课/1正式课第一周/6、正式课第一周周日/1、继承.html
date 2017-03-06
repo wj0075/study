@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //
+    //var obj={};
+   /* function  fn(){
+        alert(this)
+    }
+    fn();*/
+    // fn.call(obj);
+    //call作用：是用来改变this指向；
+    //fn.call(arg1,arg2)
+    //arg1:改变this指向
+    //arg2:从第二个参数开始相当于给call前面的函数从左到右传参数,参数以逗号形式分隔
+
+    //关于继承：
+    //1）call继承：核心--》把父类私有的属性和方法，继承给子类私有的
+    //跟公有属性无关
+
+    function F(){
+        this.x=100;
+        this.y=200;
+        this.showX=function(){};
+        this.z='我是谁';
+    }
+    F.prototype.db=function(){};
+
+    var f1=new F();
+    console.dir(f1);
+
+
+    function S(){
+        F.call(this);
+        this.bb='去死吧'
+    }
+    var s=new S();
+    console.dir(s);
+
+    //2）原型链继承：核心--》把父类私有和公有的属性，都给了子类公有的；
+    //跟子类私有属性无关
+    //思考：可以把子类公有的作为父类的实例；
+   /* function F(){
+        this.x=100;
+        this.y=200;
+        this.showX=function(){};
+        this.z='我是谁';
+    }
+    F.prototype.db=function(){};
+
+    var f1=new F();
+    console.dir(f1);
+
+    function  S(){
+
+    }
+    S.prototype=new F();
+    var s1=new S;
+    console.dir(s1);*/
+    //3）冒充继承：核心--》把父类私有+共有的属性，都给了子类私有的；
+    //子类公有跟父类公有无关
+    //思考：可以把 子类共有，当作父类私有
+
+   /* function F(){
+        this.x=100;
+        this.y=200;
+        this.showX=function(){};
+        this.z='我是谁';
+    }
+    F.prototype.db=function(){};
+
+    var f1=new F();
+    console.dir(f1);
+
+    function S(){
+        //for in 循环只能遍历自定义的属性和方法，拿不到系统的属性和方法
+        for(var attr in f1){
+            this[attr]=f1[attr];
+        }
+    }
+    var s=new S;
+    console.dir(s);*/
+    //
+
+    //4）混合继承1：call继承+原型链继承
+    //call继承：把父类私有 给了 子类 私有
+    //原型链继承：把父类私有+公有  给了  子类公有
+    //问题：
+
+    /*function F(){
+        this.x=100;
+        this.y=200;
+        this.showX=function(){};
+        this.z='我是谁';
+    }
+    F.prototype.db=function(){};
+
+    var f1=new F();
+    console.dir(f1);
+
+    function  S(){
+        F.call(this);//子类私有继承父类私有
+    }
+    S.prototype=new F();
+    var s=new S();
+    console.dir(s);*/
+    //5)混合继承2：call继承+拷贝继承
+    //
+    /*function F(){
+        this.x=100;
+        this.y=200;
+        this.showX=function(){};
+        this.z='我是谁';
+    }
+    F.prototype.db=function(){};
+
+    var f1=new F();
+    console.dir(f1)
+
+    function  S(){
+        F.call(this);
+    }*/
+    //6）混合继承3：call继承+Object.create()
+
+
+</script>
+</body>
+</html>

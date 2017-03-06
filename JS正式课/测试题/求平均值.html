@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function average(){
+        var ary = Array.prototype.slice.call(arguments);
+        ary.sort(function(a,b){
+            return a-b
+        });
+        ary.pop();
+        ary.shift();
+        return (eval(ary.join('+'))/ary.length).toFixed(2);
+    }
+    console.log(average(2.333,3.4444,2.3333,5.4444));
+
+
+
+</script>
+</body>
+</html>

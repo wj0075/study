@@ -1,0 +1,195 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+i{
+    font-style: normal;
+}
+b{
+    font-weight: normal;
+}
+img{
+    border: none;
+    vertical-align: top;
+}
+input{
+    border: none;
+}
+.clearfix:after{
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+}
+.register{
+    width: 387px;
+    height: 451px;
+    background: #fffbeb;
+    position: relative;
+}
+h3{
+    font-size: 18px;
+    color: #323232;
+    padding: 29px 0 11px 24px;
+}
+ul .list1{
+    padding: 20px 0 0 24px;
+}
+ul .list1 input{
+    width: 262px;
+    height: 42px;
+    padding: 0 38px;
+    line-height: 42px;
+    color: #999999;
+}
+ul .list3{
+    padding: 20px 0 0 24px;
+}
+ul .list3 input{
+    width: 100px;
+    height: 42px;
+    padding: 0 38px;
+    float: left;
+}
+img{
+    width: 90px;
+    height: 46px;
+    margin-left: 10px;
+}
+.list3 a{
+    float: right;
+    font-size: 14px;
+    padding-right: 28px;
+    line-height: 46px;
+}
+.list4{
+    padding: 13px 0 0 24px;
+}
+.list4 label{
+    font-size: 12px;
+}
+.list4 p{
+    width: 206px;
+    height: 24px;
+    line-height: 24px;
+    border: 1px solid #ffcc66;
+    padding-left: 34px;
+    color: #333333;
+    float: right;
+    font-size: 12px;
+    margin-right: 22px;
+}
+ul .list5{
+    padding: 20px 0 0 24px;
+}
+ul .list5 input{
+    border: none;
+    width: 341px;
+    height: 45px;
+    font-size: 20px;
+    color: #ffffff;
+    background: #ff9c00;
+    font-weight: bold;
+}
+.register .lianjie{
+    padding: 8px 0 0 24px;
+}
+.register .lianjie span a{
+    font-size: 12px;
+    color: #ff9900;
+}
+.register .lianjie .forget{
+    float: right;
+    padding-right: 14px;
+    font-size: 12px;
+    color: #333333;
+    margin-top: 4px;
+}
+.register .footer{
+    margin: 24px 0 0 24px;
+    border-top: 1px solid #dddddd;
+}
+.register .footer li{
+    float: left;
+    padding: 20px 20px 0 0;
+    color: #333333;
+    font-size: 12px;
+}
+.register .zhegai{
+
+    font-size: 12px;
+    color: #999;
+    width: 116px;
+    text-align: center;
+    position: absolute;
+    top: 395px;
+    left: 131px;
+    background: #fffbeb;
+}
+.register .xb1{
+    width: 53px;
+    height: 53px;
+    background: url("spritesheet.png") no-repeat;
+    position: absolute;
+    top: 0px;
+    left: 330px;
+    background-position: 0px -24px;
+}
+.register .xb2{
+     width: 20px;
+    height: 20px;
+    background: url("spritesheet.png") no-repeat;
+    position: absolute;
+    top: 90px;
+    left: 36px;
+    background-position: -110px  -24px;
+    
+}
+.register .xb3{
+    width: 20px;
+    height: 20px;
+    background: url("spritesheet.png") no-repeat;
+    position: absolute;
+    top: 152px;
+    left: 36px;
+    background-position: -110px  -44px;}
+.register .xb4{
+    width: 16px;
+    height: 17px;
+    background: url("spritesheet.png") no-repeat;
+    position: absolute;
+    top: 215px;
+    left: 36px;
+    background-position: -162px  -1px;}
+.register .xb5{
+    width: 16px;
+    height: 16px;
+    background: url("xx.png") no-repeat;
+    position: absolute;
+    top: 269px;
+    left: 133px;
+    background-position: 0px  0px;}
+.register input[type=text]:focus{
+    box-shadow: 0 0 4px #8bd6fb;
+}
+.register .lianjie a:hover{
+    color: #F60;
+    text-decoration: underline;
+}
+.register .footer a:hover{
+    color: #F60;
+    text-decoration: underline;
+}
+.register .list5 input:hover{
+    background: #fb0;
+}
+.register .list3 a:hover{
+    text-decoration: underline;
+}

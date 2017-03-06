@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function fn(){
+        return function fn1(){
+            alert(123)
+        }
+    }
+    fn()();
+    var name='珠峰';
+    var age=500;
+    name=(function(name,age){
+        arguments[0]='珠峰培训';
+        age=age||this.age;
+        console.log(name,age);
+    })(name);
+    console.log(name,age)
+</script>
+</body>
+</html>

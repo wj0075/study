@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form action="" id="form1" novalidate >
+    <!--0<input type="range" name="range" value="10" min="0" max="100" id="range"/>100-->
+
+    <!--<input type="color"/>-->
+    <!--<input type="text" name="text" placeholder="请输入姓名" autocomplete="off" autofocus required/>-->
+    <label for="text">姓名</label><input type="text" name="text" pattern="\d{2}" required id="text" tabindex="1"/>
+    <input type="text" tabindex="3"/>
+    <input type="text" tabindex="2"/>
+    <input type="text" tabindex="4"/>
+    <input type="submit" value="提交" />
+</form>
+<!--<input type="email" name="email" form="form1"/>-->
+<p spellcheck="false">111</p>
+
+<p id="op" data-name-age="zf"  contenteditable="true">1111</p>
+</body>
+</html>
+<script>
+//    var range = document.querySelector("#range");
+//    range.onchange = function(){
+//        console.log(this.value);
+//    }
+    var text = document.querySelector("#text");
+
+    text.addEventListener("invalid",function(){/*验证不通过时会触发invalid这个事件*/
+      if(this.validity.patternMismatch){/*正则不匹配时返回true*/
+          this.setCustomValidity("请输入两位的数字");
+      }else{
+          this.setCustomValidity("");
+      }
+    },false)
+    var oP = document.querySelector("#op");
+   /* console.log(oP.dataset.name);*/
+/* console.log(oP.dataset.nameAge);通过dataset获得自定义属性值*/
+    /*页面上所有的内容都可以编辑*/
+    window.document.designMode = "on";
+</script>

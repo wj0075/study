@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: -webkit-linear-gradient(top,lightcyan,lightgray,lightgreen);
+            margin:100px auto;
+            font-size: 100px;
+            text-align: center;
+            line-height: 300px;
+            -webkit-user-select: none;
+        }
+    </style>
+</head>
+<body>
+<div>0</div>
+<script>
+    var oDiv=document.getElementsByTagName('div')[0];
+    var n=0;
+    //思路1.全局变量-不建议
+    /*oDiv.onclick=function(){
+        this.innerHTML=++n;
+    }*/
+    //思路2：--不建议
+    /*(function(){
+        var n=0;
+        oDiv.onclick=function(){
+            this.innerHTML=++n;
+        }
+    })();*/
+    /*oDiv.onclick=(function(){
+        var n=0;
+        return function (){
+            this.innerHTML=++n;
+        }
+    })();*/
+    //思路4：自定义属性--提倡的
+    /*oDiv.n=0;
+    oDiv.onclick=function(){
+        this.innerHTML=++this.n;
+    }*/
+    //5:DOM操作
+    oDiv.onclick=function(){
+        this.innerHTML++;
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

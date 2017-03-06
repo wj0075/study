@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,html{
+            height: 300%;
+            background: -webkit-linear-gradient(top,lightblue,lightcyan,lightcoral,lightpink);
+        }
+        a{
+            display: none;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            text-align: center;
+            line-height:100px;
+            font-size: 40px;
+            position: fixed;
+            right:10px;
+            bottom:10px;
+            background: darkgreen;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<a href="javascript:;" id="btn">toTop</a>
+<script src="js/utils.js"></script>
+<script>
+    var oBtn=document.getElementById('btn');
+    var timer=null;
+    var bOk=false;
+    //2.首屏不显示按钮，只有滚动距离大于一屏的时候，才显示按钮
+    window.onscroll=function(){//定时器+手动影响；
+        if(bOk) clearInterval(timer);
+        bOk=true;
+        if(utils.win('scrollTop')>utils.win('clientHeight')){
+            oBtn.style.display='block';
+        }else{
+            oBtn.style.display='none';
+        }
+    };
+    //1.当点击按钮的时候，让滚轮回到顶部；
+    oBtn.onclick=function(){
+        var target=utils.win('scrollTop');//被浏览器卷去的高度
+        var duration=1000;
+        var interval=30;//10ms是个坑！
+        var step=target/duration*interval;
+        //每次在最新的距离上，减去固定的步长；同时，赋值最新的距离；
+        timer=setInterval(function(){//纯定时器在影响onscroll
+            var curTop=utils.win('scrollTop');
+            if(curTop<=0){
+                clearInterval(timer);
+                return;
+            }
+            curTop-=step;
+            utils.win('scrollTop',curTop);
+            bOk=false;
+        },interval);
+    }
+</script>
+</body>
+</html>

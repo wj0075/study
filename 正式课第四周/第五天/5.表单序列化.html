@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input{
+            font-size:50px;
+        }
+    </style>
+</head>
+<body>
+<form action="" id="form">
+    <input type="text" name="zhufeng" >
+    <p><input type="radio" name="sex" value="girl">女</p>
+    <p><input type="radio" name="sex" value="boy">男</p>
+    <p><input type="checkbox" name="like" value="jump">蹦极</p>
+    <p><input type="checkbox" name="like" value="smoking">抽烟</p>
+    <p><input type="checkbox" name="like" value="drinking">喝酒</p>
+    <input type="button" value="提交按钮" id="btn">
+</form>
+<script src="js/jquery-2.0.3.js"></script>
+<script>
+   $('#btn').click(function(){
+       var res=$('form').serializeArray();
+       console.log(res);
+   })
+   $.ajax({
+       type:'get',
+       url:'json/data.txt',
+       async:false,
+       dataType:'json',
+       data:$('form').serialize(),//表单序列化；
+       success:function(val){
+           console.log(val);
+       }
+   });
+</script>
+</body>
+</html>

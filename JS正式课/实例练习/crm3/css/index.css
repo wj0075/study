@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul,li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.main{
+    width: 450px;
+    border: 1px solid #ccc;
+    margin: 40px auto;
+}
+.add{
+    font-size: 30px;
+}
+.add:hover{
+    color: red;
+    text-decoration: underline;
+}
+.title,.list li{
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+}
+.title{
+    background: green;
+    font-size: 24px;
+}
+.title span,.list li span{
+    float: left;
+    width: 150px;
+    height: 100%;
+    text-align: center;
+}
+.list li span a:hover{
+    color: red;
+    text-decoration: underline;
+}
+/*detail*/
+.detail{
+    width: 300px;
+    height: 200px;
+    border: 1px solid #ccc;
+    margin: 40px auto;
+}
+.detail div{
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+}
+.detail div span{
+    display: inline-block;
+    width: 50px;
+    margin: 10px 0 0 20px;
+}
+.detail div input{
+    width: 150px;
+    height: 35px;
+}
+.detail .submit{
+    width: 120px;
+    margin: 20px auto;
+    line-height: 45px;
+    text-align: center;
+    background: green;
+    cursor: pointer;
+    border-radius: 10px;
+}

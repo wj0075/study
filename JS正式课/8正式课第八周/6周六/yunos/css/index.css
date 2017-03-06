@@ -1,0 +1,361 @@
+.head{
+    width: 100%;
+    height: 638px;
+}
+.head .nav{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 3;
+    width: 100%;
+    height: 83px;
+    background: rgba(0,0,0,.5);
+}
+.navCon{
+    width: 100%;
+    height: 100%;
+}
+.navCon h1{
+    float: left;
+    margin-top: 25px;
+}
+.navCon h1 a{
+    display: block;
+    width: 325px;
+    height: 33px;
+    background: url("../images/logo1.png") no-repeat;
+
+}
+.navCon ul{
+    float: right;
+    line-height: 83px;
+    font-size: 16px;
+}
+.navCon ul li{
+    float: left;
+    margin: 0 25px;
+}
+.navCon ul li a{
+    color: #fff;
+}
+.bar{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.slide{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.slide1{
+    background: url("../images/banner1.jpg") no-repeat center top;
+}
+.slide2{
+    background: url("../images/banner2.jpg") no-repeat center top;
+}
+.channel{
+    padding: 30px 0;
+}
+.channel ul{
+    width: 100%;
+    text-align: center;
+}
+.channel ul li{
+    display: inline-block;
+    margin: 0 20px;
+}
+.channel ul li a{
+    display: block;
+    color: #666;
+}
+.channel ul li a span{
+    display: block;
+    padding-top: 20px;
+    font-size: 16px;
+}
+.home{
+    width: 100%;
+    position: relative;
+    height: 751px;
+    background: url("../images/slide-phone.jpg") no-repeat center top;
+}
+.slide-nav{
+    position: absolute;
+    bottom: 65px;
+    width: 100%;
+    text-align: center;
+}
+.slide-nav li{
+    position: relative;
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+    margin: 17px;
+    font-size: 18px;
+    line-height: 90px;
+    text-align: center;
+    cursor: pointer;
+
+}
+.slide-nav li a{
+    border-radius: 50%;
+    background: #fff;
+    display: block;
+    font-size: 18px;
+    color: #000;
+    box-shadow: 0 0 0 0 rgba(0,204,153,.5);
+}
+.slide-nav li a:hover{
+    color: #fff;
+    background: #00cc99;
+    box-shadow: 0 0 0 30px transparent;
+    -webkit-transition: box-shadow 1s;
+    -moz-transition: box-shadow 1s;
+    -ms-transition: box-shadow 1s;
+    -o-transition: box-shadow 1s;
+    transition: box-shadow 1s;
+}
+/*.slide-nav li a{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url("../images/ciecle.png") no-repeat;
+    color: #000;
+}*/
+.point{
+    position: relative;
+    height: 800px;
+    overflow: hidden;
+}
+.inner{
+    height: 100%;
+}
+.inner div{
+    position: absolute;
+    width: 145px;
+    height: 145px;
+    border-radius: 50%;
+}
+.blue{
+    background: #00b3b1;
+    /*0 179 177*/
+}
+.green{
+    background: #2ee4a7;
+    /*46 228 167 */
+}
+.yw{
+    background: #fc0;
+    /*255 204 0*/
+}
+.inner .bg1{
+    left: 50%;
+    top: 50%;
+    margin-left: -72.5px;
+    margin-top: -72.5px;
+    box-shadow: 0 0 0 0 rgba(0,179,177,.5);
+}
+.inner .bg2{
+    left: 400px;
+    top: 400px;
+    box-shadow: 0 0 0 0 rgba(255,204,0,.5);
+}
+.inner .bg3{
+    left: 500px;
+    top: 600px;
+    box-shadow: 0 0 0 0 rgba(46,228,167,.5);
+}
+.inner .bg4{
+    left: 500px;
+    top: 250px;
+    box-shadow: 0 0 0 0 rgba(0,179,177,.5);
+}
+.inner .bg5{
+    left: 900px;
+    top: 500px;
+    box-shadow: 0 0 0 0 rgba(46,228,167,.5);
+}
+.inner .bg6{
+    left: 700px;
+    top: 600px;
+    box-shadow: 0 0 0 0 rgba(255,204,0,.5);
+}
+.inner .bg7{
+    left: 800px;
+    top: 200px;
+    box-shadow: 0 0 0 0 rgba();
+}
+.inner div.bl{
+    box-shadow: 0 0 0 30px transparent;
+    -webkit-transition: box-shadow 1s;
+    -moz-transition: box-shadow 1s;
+    -ms-transition: box-shadow 1s;
+    -o-transition: box-shadow 1s;
+    transition: box-shadow 1s;
+}
+@keyframes move {
+    0%{
+        box-shadow: 0 0 0 rgba(46,228,167,.5);
+    }
+    100%{
+        box-shadow: 0 0 0 30px transparent;
+    }
+}
+
+.service{
+    padding: 40px 0;
+    background: #f0f0f0;
+}
+.service ul{
+    width: 100%;
+    text-align: center;
+}
+.service ul li{
+    display: inline-block;
+    width: 263px;
+    background: #fff;
+    border-right: 1px solid #f0f0f0;
+}
+.service ul li h4{
+    font-size: 20px;
+    padding: 15px 25px;
+}
+.service ul li p{
+    line-height: 25px;
+    font-size: 12px;
+    padding: 0 25px 20px 25px;
+    text-align: left;
+}
+@media screen and (min-width: 1000px) {
+    .navCon,.inner{
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+}
+@media screen and (max-width: 999px) {
+    .head{
+        height: 465px;
+    }
+    .head ul li{
+        margin: 0 15px;
+    }
+    .slide{
+        background-size: 1399px 465px;
+    }
+    .head h1 a{
+        width: 135px;
+        background: url("../images/logo2.png") no-repeat;
+        background-size: 272px 33px;
+    }
+    .channel li{
+        max-width: 16%;/*如果li的宽度大于16%，则显示成16%的宽度，如果小于16%,则显示子自身的大小*/
+    }
+    .channel li a img{
+        max-width: 100px;
+    }
+    .channel .pic1 a img{
+        width: 80px;
+    }
+    .channel .pic2 a img{
+        width: 40px;
+    }
+    .home{
+        height: 465px;
+        background-size: 1399px 465px;
+    }
+    .service ul li {
+        width: 30%;
+        vertical-align: top;
+    }
+    .service ul li img{
+        width: 100%;
+    }
+    .service ul li h4{
+        font-size: 14px;
+    }
+
+
+}
+@media screen and (max-width: 795px){
+    .head ul li{
+        margin: 0 6px;
+    }
+
+}
+@media screen and (max-width: 480px){
+    .head{
+        height: 300px;
+
+    }
+    .head .nav{
+        position: inherit;
+    }
+    .slide{
+        background-size: 902px 300px;
+    }
+    .head .nav{
+        background: red;
+        height: 50px;
+    }
+    .nav h1{
+        margin-top: 8px;
+    }
+    .nav ul{
+        display: none;
+        width: 100%;
+        background: red;
+    }
+    .nav ul li{
+        float: none;
+        margin: 0;
+        line-height: 40px;
+    }
+    .channel ul li{
+        width: 35%;/*这是在页面上调试出来的*/
+        max-width: 100%;/*为了把之前写的max-width覆盖掉*/
+        margin: 0;
+    }
+    .slide-nav{
+        bottom: 20px;
+    }
+    .slide-nav li{
+        width: 45px;
+        height: 45px;
+        line-height: 45px;
+        margin: 0 5px;
+    }
+    .slide-nav li a{
+        font-size: 12px;
+    }
+    .home{
+        height: 300px;
+        background: url("../images/slide-phone.jpg") no-repeat center top 50%;
+    }
+    .service ul li{
+        width: 96%;
+        margin: 0 4%;
+        background: none;
+    }
+    .service ul li img{
+        float: left;
+        width: 20px;
+        height: 20px;
+        margin: 15px 5px 0 0;
+    }
+    .service ul li h4{
+        text-align: left;
+        padding: 15px 25px 5px 25px;
+    }
+    .service ul li p{
+        line-height: 20px;
+        padding: 0;
+    }
+
+
+
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div></div>
+<script>
+    var oDiv=document.getElementsByTagName('div')[0];
+    console.dir(oDiv);
+    //构造函数：一定要首字母大写；
+    function Fn(){//1.构造函数中的this，都是new出来的实例--很重要；2.构造函数中存放的都是私有的属性和方法；
+        this.x=100;
+        this.y=200;
+        //return {};
+    }
+    //prototype:放的都是共有的属性和方法；
+    Fn.prototype.showX=function(){
+        alert(this.x);//原型上的this也是实例；
+    };
+    var f1=new Fn;
+    var f2=new Fn;
+    /*alert(f1.x)
+    f1.showX();*/
+    var ary=new Array('1','2');
+    var obj={};
+    var str=new String('123')
+    alert(ary instanceof Object)//
+    alert(obj instanceof Object)//
+    alert(str instanceof Object)//
+    /*alert(f1.showX===f2.showX);*/
+
+    /*var ary1=new Array('1');
+    var ary2=new Array('1');
+    alert(ary1.pop===ary2.pop)*/
+
+
+</script>
+</body>
+</html>

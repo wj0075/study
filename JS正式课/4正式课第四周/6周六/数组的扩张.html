@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function likeToAry(arg){
+        var ary = [];
+        if ('getComputedStyle' in window){
+            return Array.prototype.slice.call(arg);
+        }else{
+            for (var i=0;i<arg.length;i++){
+                ary.push(arg[i])
+            }
+        }
+        return ary;
+    }
+    var ul = document.createElement('ul');
+    for(var i=0;i<20;i++){
+        var li = document.createElement('li');
+        li.innerHTML = i;
+        ul.appendChild(li);
+    }
+    document.body.appendChild(ul);
+    var aLi = document.getElementsByTagName('li');
+    var aBtn = document.createElement('button');
+    var oUl = document.getElementsByTagName('ul')[0];
+
+    document.body.appendChild(aBtn);
+    aBtn.innerHTML='按钮';
+    var btn = document.getElementsByTagName('button')[0];
+    btn.onclick = function(){
+        var ary = likeToAry(aLi);
+        ary.sort(function(a,b){
+            return b.innerHTML- a.innerHTML;
+        });
+       for (var j=0;j<ary.length;j++){
+           oUl.appendChild(ary[j])
+       }
+    };
+    var aryFind = [1,2,3,4,5,6,7];
+   var num= aryFind.find(function(val,index,ary){
+        return val>4;
+    });
+    console.log(num);
+
+
+
+
+
+</script>
+</body>
+</html>

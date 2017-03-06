@@ -1,0 +1,243 @@
+/*文字相关*/
+*{
+    font-size: 12px;
+    /*字号*/
+    font-style:normal;
+    /*字体风格*/
+    font-family: Arial;
+    /*字体*/
+    font-weight: bold;
+    /*加粗*/
+    color: red;
+    /*文字的颜色*/
+    text-indent: 2em;
+    /*首行缩进两个字符*/
+    text-align: center;
+    /*文字对齐方式  文字、行内元素、行内块级元素、input、img水平方向居中
+    盒子的宽度>内容的宽度
+    */
+    line-height: 24px;
+    /*行高：
+    单行文字、行内元素、input 垂直居中
+    */
+    letter-spacing: 2px;
+    /*字符之间的距离*/
+    word-spacing: 10px;
+    /*单词之间的距离*/
+    vertical-align: baseline;
+    /*垂直对齐方式 ：基线对齐
+    middle 居中对齐
+    top   父级元素顶端对齐
+    text-top  文字顶端对齐
+    text-bottom  文字底端对齐
+    可以设置一个具体的值 可以为负值
+    行内元素 行内块级元素可以设置vertical-align
+    块级元素不能设置vertical-align
+    */
+    font: 12px/26px "微软雅黑";
+    /*    字号  行高   字体*/
+
+}
+/*盒子模型*/
+*{
+    width: 100px;
+    /*内容的宽度*/
+    height: 10px;
+    /*内容的高度*/
+    margin:10px 20px 30px 40px;
+    /*外边距：盒子与盒子之间的距离*/
+    padding: 10px 20px 30px 40px;
+    /*内边距：边框与内容之间的距离
+    1） 上下左右
+    2） 上下 左右
+    3） 上  左右 下
+    4） 上 右  下 左  顺时针
+    没有border、background，margin和padding的效果是一样的
+    padding不可以设置负值
+    */
+    border:1px solid red;
+    /*
+    边框： 宽度   样式  颜色
+    solid  实线
+    dotted  点状线
+    dashed  虚线
+    double   双实线
+    */
+    border-top:1px solid red;
+    border-width: 10px;
+    /*边框的宽度*/
+    border-style: solid;
+    /*样式*/
+    border-color: red;
+    /*颜色*/
+    border-top-width: 10px;
+    /*上边框的宽度*/
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    /*边框的圆角*/
+    border-radius: 50%;
+    /*圆形*/
+
+}
+/*浮动相关*/
+*{
+    float: left;
+    /*
+    left
+    right
+    none  设置为不浮动
+    inherit  继承父级的浮动方式
+    */
+    clear:both;
+    /*
+    清除浮动：清除浮动元素对其他元素的影响
+    left
+    right
+    */
+
+}
+/*清除浮动*/
+.clearfix:after{
+    content:'';
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+}
+.clearfix{
+    zoom: 1;
+}
+
+/*定位相关*/
+*{
+    position: relative;
+    /*相对定位：自己原来的位置*/
+    position: absolute;
+    /*绝对定位：
+    没有设置参照物：body
+     可以将父级元素设置为参照物 ，给父级元素设置：position：relative
+     */
+    position: fixed;
+    /*固定定位：可视窗口*/
+    /*inherit  继承父级
+    static  静态
+    */
+    /*top、盒子的上边距离参照物上边的距离
+    bottom、left、right  可以为负值*/
+    z-index: 1;
+    /*设置层级关系：必须有position*/
+
+}
+/*背景*/
+*{
+    background-color: red;
+    background-image: url("背景图片的路径");
+    background-repeat: no-repeat;
+    /*
+    背景图片重复
+    repeat 默认值 重复
+    repeat-x   水平方向重复
+    repeat-y  垂直方向重复
+
+    */
+    background-position: top center;
+    /*背景图片的位置  top、bottom、left、right、center居中
+    具体的值
+    1）水平      +右移  -左移
+    2）竖直方向   + 下   -上
+    */
+    background-size: 100px 100px;
+    /*
+    背景图片的大小
+    可以为百分比：相对盒子的宽度和高度的百分比
+    */
+    background-attachment: fixed;
+    /*背景图片固定：参照物可视窗口*/
+
+}
+/*display*/
+*{
+    display: none;
+    /*隐藏 不占位置*/
+    display: block;
+    /*转为块级元素   显示*/
+    display: inline;
+    /*转为行内元素*/
+    display: inline-block;
+    /*行内块级*/
+
+
+}
+/*隐藏*/
+*{
+    visibility: hidden;
+    /*隐藏   占位置*/
+    visibility: visible;
+    /*显示*/
+}
+/*透明度*/
+*{
+    opacity: .5;
+    /*0~1   0完全透明  1不透明  盒子所有的内容都有透明度*/
+    filter: Alpha(opacity=50);
+    /*0-100*/
+}
+/*溢出隐藏：溢出padding的部分隐藏*/
+*{
+    overflow: hidden;
+}
+
+/*形变*/
+*{
+    transform: rotate(180deg);
+    /*旋转180度  +顺时针方向  -逆时针方向*/
+    transform-origin: 50% 50%;
+    /*旋转的中心位置   百分比：盒子的宽度和高度*/
+}
+/*过渡*/
+*{
+    transition: height .3s linear 0s;
+    /*
+    1)css属性   all所有可以设置过渡效果的css属性
+    2）过渡的时间
+    3）速度    linear 匀速  ease-in   ease-out  ease-in-out先加速再减速
+    4）等待的时间
+    */
+}
+
+/*伪元素*/
+div:before{
+    /*在div里最开始的位置加内容*/
+    content: '';
+}
+div:after{
+    /*在div里最末尾的位置*/
+    content: '';
+}
+/*div与div:after是父子级关系*/
+/*伪类选择器*/
+div:hover{
+    /*鼠标经过时的效果:鼠标经过谁就给谁加：hover */
+}
+/*后代选择器：空格*/
+div:hover span{
+    /*父级元素：hover 子级元素*/
+}
+input:focus{
+    /*获取光标时的样式*/
+}
+
+a:link{
+    /*默认的样式*/
+}
+a:visited{
+    /*访问后的样式*/
+}
+a:active{
+    /*点击时的样式*/
+}
+
+
+
+

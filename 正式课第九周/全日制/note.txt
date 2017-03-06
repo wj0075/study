@@ -1,0 +1,118 @@
+1、完成一个实战项目(腾讯看比赛官网-PC)
+  ->HTML5
+  ->CSS3 (LESS)
+  ->jQuery
+  ->数据获取,直接的从腾讯的服务器上获取,JSONP
+  ->告别字符串拼接,直接的使用EJS模板引擎做数据绑定
+  ->iscroll.js
+  ->有关于一些SEO优化的知识
+
+2、HTML5 && CSS3 && 响应式布局
+
+  [一:HTML5]
+    1、新增加的构建页面语义化结构的标签,以及这些标签的兼容性解决
+
+    2、对于INPUT标签新增加了很多的类型:search、url、email、tel、number、range、date、time、color...
+      1)新增加类型的优势
+        ->调取出最符合用户输入的键盘,方便用户的操作
+        ->可以让我们告别传统的正则表单验证方式,可以使用自己本身提供的CSS和JS验证方式(当然我们自己也可以选择正则验证)
+      2)在移动端表单元素没有keyup和keydown事件,我们统一使用input事件来代替这两个事件
+        oInput.addEventListener('input',[function],false);
+      3)HTML5对于表单元素提供了一个新的属性placeholder,做文本框默认提示用的(我们需要掌握在IE浏览器中不支持这个属性,我们如何使用JS自己来模拟)
+
+      课时170：HTML5表单元素的新特性
+
+    3、音视频处理,音频:audio,视频:video
+
+    4、canvas
+       [图形图表]
+         echarts:http://echarts.baidu.com/examples.html
+         highcharts:http://www.highcharts.com/demo/
+         ...
+
+       [使用工具绘制]
+         adobe edge
+
+    5、svg 和 字体图标
+
+    6、离线缓存 xxx.manifest (不常用)
+
+    7、本地存储(cookie、web storage)
+
+    8、对于JS方面的提高
+       拖拽:dragstart、draging、dragend...
+       数据:data-xxx自定义属性来做数据存储
+
+    9、websocket && webworks
+
+    10、提供一些新的API,例如：获取地理位置信息
+
+
+  [二:CSS3]
+    1、选择器，例如：:nth-child  :nth-of-type :not(:nth-child(1))...
+
+    2、导入网络字体包@font-face(项目中很少用,因为耗性能和流量)
+
+    3、一些新增加的样式属性
+       border-radius
+       box-shadow
+       text-shadow
+       ...
+
+    4、对于背景的变革
+       background-color/image/repeat/position/attachment
+       background-size:100% 100%/100px 200px/cover...
+       background:-webkit-linear(radial)-gradient
+       background-clip:border-box/padding-box/content-box
+       background-origin:border-box/padding-box/content-box
+       -webkit-filter:blur()
+
+    5、transform变形
+       [3D]
+       transform-style:preserve-3d; (perspective:2000px)
+       transform-origin:center center 0;
+
+       rotate(X|Y|Z)
+       scale
+       skew(X|Y|Z)
+       translate(X|Y|Z)
+       matrix
+
+    6、transition过渡动画:[property] [duration] [time-function] [delay]
+
+    7、animation帧动画:
+       [animation-name] [duration] [time-function] [delay] [count:1/infinite] [fill-mode:forwards、backwards、both]
+
+       @key-frames [animation-name]{
+          form/0%{
+
+          }
+          ...
+          to/100%{
+
+          }
+       }
+
+    8、CSS3的盒子模型
+      columns实现多列布局
+      box-sizing:border-box、padding-box、content-box...
+      flexbox
+
+    9、@media媒体查询
+
+  [三:响应式布局]
+    场景宣传
+    webApp+微信的二次开发(webApp)
+    phoneGap/React Native
+
+    viewport、dpi适配
+
+    1、hybrid模式:混合式开发
+
+    2、流式布局法(PC和移动端使用的是同一套项目,我们使用@media设置条件重写样式)
+
+    3、rem响应式布局(移动端和PC分开的项目,我们做移动端使用REM)
+
+    4、目前市场上很多大项目，老项目的响应式特别的混乱:流式布局+REM+flexbox三者结合的方式来做的
+
+  [四:移动端JS和事件]

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        input{
+            width: 200px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="按钮1">
+<input type="button" value="按钮2">
+<input type="button" value="按钮3">
+<input type="button" value="按钮4">
+<script>
+    var aBtn=document.getElementsByTagName('input');
+    //需求：点击任何一个按钮，弹出对应的索引；
+    //1.自定义属性
+    /*for(var i=0; i<aBtn.length; i++){
+        //保存正确的i值；保存到元素的自定义属性上；
+        var oBtn=aBtn[i];
+        oBtn.zIndex=i;
+        oBtn.onclick=function(){
+            alert(this.zIndex)
+        }
+    }*/
+    //2.闭包：
+    for(var i=0; i<aBtn.length; i++){//把正确的i值，保存在不同的私有作用域中；
+        //alert(i);
+        //函数自己执行自己，就是自执行函数；
+        (function(index){
+            //我们把正确的i值，保存在函数的私有作用域中，当循环4次的时候，形成4个私有作用域，每个作用域中分别保存不同的i值；
+            aBtn[index].onclick=function(){
+                alert(index);
+            }
+        })(i)
+    }
+
+    /*var obj={};
+    obj.zIndex=0;
+    alert(obj.zIndex)*/
+</script>
+</body>
+</html>

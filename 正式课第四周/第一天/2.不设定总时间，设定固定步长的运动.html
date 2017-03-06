@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left:0;
+            top:0;
+            background: red;
+        }
+        #target{
+            position: absolute;
+            left:1000px;
+            top:0px;
+            width: 1px;
+            height: 300px;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+<div id="div"></div>
+<div id="target"></div>
+<script>
+    var oDiv=document.getElementById('div');
+    /*
+    * var step=8;
+    * var target=1000;
+    * 每次在最新的距离上，+=step；
+    * */
+    var target=1000;
+    var step=37.7777;
+    var timer=setInterval(function(){
+        var curLeft=oDiv.offsetLeft;
+        if(curLeft+step>=target){
+            oDiv.style.left=target+'px';
+            clearInterval(timer);
+            return;
+        }
+        curLeft+=step;
+        oDiv.style.left=curLeft+'px';
+    },10)
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //step 1:获取ajax对象
+    var xhr = new XMLHttpRequest();
+    //step 2:打开http请求
+    /**
+     * 参数1：http方法，不区别大小写
+     * 参数2：请求地址，会把参数放到请求起始行的第二部分。可以传相对路径（.开头）也可以传绝对路径（以/开头）
+     * 参数3：是否为异步请求，默认为true(选填)
+     * 参数4：用户名，默认值为undefined
+     * 参数5：密码，
+     */
+    xhr.open('http method','request URI','isAsync','username','password');
+
+    //step3；接受http响应
+    /**
+     * 该事件触发的时机
+     * 每当xhr的对象readyState属性改变，该事件
+     */
+    xhr.onreadystatechange = function(){
+        //判断http事务是否完成
+        if(xhr.readyState ===xhr.DONE){
+            //判断服务器返回状态码是否成功
+            if (/^2\d{2}$/.test(xhr.status) || xhr.status ===304){
+                //方法1 将响应主体格式化为字符串格式返回
+                var response1 = xhr.responseText;
+                //方法2  将响应主体格式化为xml对象并返回
+                var response2 = xhr.responseXML;
+                //方法3 = 直接将响应主体返回，
+                var response3 = xhr.response
+
+
+            }
+        }
+
+    };
+    //XMLHttpRequest对象将readyState进行了枚举
+    /**
+     * xhr.readyState
+     * 标识xhr对象的状态
+     * 0 默认值ajax对象刚刚实例化完成，没有任何操作  枚举值巍峨xhr.UNSENT
+     * 1 ajax对象执行玩open方法后，该属性变为1.枚举值为xhr.OPENED
+     * 2 浏览器开始接收服务器响应首部，该属性变为2，枚举值为xhr.HEADERS_RECEIVED
+     * 3 开始接收响应主体，该属性为3
+     * 4
+     */
+
+    //step 4 发送http请求
+    /**
+     * 该方法可以传以下几种参数
+     * 字符串、BLOb（h5，不透明的二进制块）、ArrayBuffer(h5.可读写的二进制流)、FormData(h5,封装表单数据)、null、undefined
+     * 注意事项：
+     * 1、该方法会将参数放到请求主体中
+     * 2、get系列方法，不需要给该方法传递参数
+     * 3、ajax从该方法开始阻塞
+     *
+     *
+     */
+    xhr.send();
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

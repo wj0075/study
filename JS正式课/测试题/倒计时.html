@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>距离下课<span>00天 00时00分00秒</span></div>
+<script>
+    var odiv = document.getElementsByTagName('div')[0];
+    var span = odiv.getElementsByTagName('span')[0];
+    function zero(num){
+        return num>=0&&num<10?'0'+num:num
+    }
+    setInterval(countDown,1000);
+    countDown();
+    function countDown(){
+        var now = new Date();
+        var s = Math.floor((new Date('2016/11/17 08:00:00')-now)/1000);
+        var d=Math.floor(s/86400);
+        s%=86400;
+        var h = Math.floor(s/3600);
+        s%=3600;
+        var m = Math.floor(s/60);
+        s%=60
+        var str =zero(d)+'天'+zero(h)+'时'+zero(m)+'分'+zero(s)+'秒'
+        span.innerHTML=str
+    }
+
+
+</script>
+</body>
+</html>

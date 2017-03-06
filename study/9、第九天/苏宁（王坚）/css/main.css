@@ -1,0 +1,1536 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    font: 12px arial,tahoma,宋体;
+}
+ul,ol{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+i,em{
+    font-style: normal;
+}
+b,em{
+    font-weight: normal;
+}
+img{
+    border: none;
+    vertical-align: top;
+}
+input{
+    outline: none;
+}
+.clearfix:after{
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+}
+.clearfix{
+    zoom: 1;
+}
+.header{
+    height: 35px;
+    background: #f5f5f5;
+    border-bottom: 1px solid #eee;
+}
+.nav{
+    width: 1190px;
+    margin: 0 auto;
+}
+.navleft{
+    float: left;
+}
+.navleft li{
+    position: relative;
+    float: left;
+    padding: 0 15px 0 10px;
+    line-height: 35px;
+}
+.navleft li a{
+    color: #666;
+}
+.navleft li i{
+    position: relative;
+    width: 0px;
+    height: 0px;
+    display: inline-block;
+    border: 5px solid;
+    border-color: #c0c0ce transparent transparent;
+    vertical-align: -4px;
+    transition: transform .3s;
+    transform-origin: 50% 25%;
+}
+.navleft li b{
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    border: 3px solid;
+    border-color: #f5f5f5 transparent transparent;
+    top: -5px;
+    left: -3px;
+}
+.navleft>li:hover{
+    background: #fff;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    padding-left: 9px;
+    padding-right: 14px;
+}
+.navleft li:hover i{
+    transform: rotate(-180deg);
+}
+.navleft li:hover i b{
+    border-top-color: #fff;
+}
+.navlist{
+    width: 988px;
+    height: 0px;
+    overflow: hidden;
+    background: white;
+    position: absolute;
+    top: 34px;
+    left: 0px;
+    z-index: 5;
+    transition: heihgt .3s;
+}
+.navleft li>s{
+    display: none;
+    width: 85px;
+    height: 1px;
+    background: red;
+    position: absolute;
+    top: 35px;
+    left: 0;
+}
+.navleft li:hover s{
+    display: block;
+    z-index: 8;
+}
+.navleft li dl{
+    float: left;
+    width: 176px;
+    height: 200px;
+    margin-top: 20px;
+    border-right: 1px solid #ddd;
+    padding-left: 20px;
+}
+.navleft li dt{
+    font-size: 14px;
+    color: #333;
+    padding-bottom: 6px;
+}
+.navleft li dd{
+    float: left;
+    width: 78px;
+    line-height: 25px;
+}
+.navleft li dd a{
+    color: #666;
+    position: relative;
+}
+.navleft li dd .hot:after{
+    content: "";
+    width: 14px;
+    height: 14px;
+    background: url("../images/npbg.png") no-repeat 0 -205px;
+    position: absolute;
+    right: -17px;
+}
+.navleft li:hover .navlist{
+    height: 240px;
+    border: 1px solid #ddd;
+}
+.navlist span{
+    width: 16px;
+    height: 14px;
+    background: url("../images/close.png") no-repeat;
+    position: absolute;
+    top: 12px;
+    right: 11px;
+    transition: transform .3s;
+}
+.navlist span:hover{
+    background-position: -16px 0;
+    transform: rotate(180deg);
+    cursor: pointer;
+}
+.navlist1{
+    position: absolute;
+    width: 162px;
+    height: 0px;
+    top: 34px;
+    left: -1px;
+    overflow: hidden;
+    background: white;
+}
+.navleft li:hover .navlist1{
+    height: 140px;
+    border: 1px  solid #ddd;
+}
+.navleft .navlist a:hover,.navleft .navlist1 a:hover{
+    color: #ff6600;
+    text-decoration: underline;
+}
+.navright{
+    float: right;
+    width: 670px;
+}
+.navright .login{
+    float: left;
+    width: 81px;
+    line-height: 35px;
+}
+.navright .login:hover{
+    background: #eee;
+}
+.navright .login a{
+    color: #666;
+}
+.navright .login1 {
+    padding: 0 13px 0 10px;
+}
+.navright .login a:hover {
+    color: #f60;
+    text-decoration: underline;
+}
+.hideBox{
+    width: 85px;
+    height: 0px;
+    position: absolute;
+    top: 34px;
+    left: -1px;
+    overflow: hidden;
+    transition: height .3s;
+    background: white;
+}
+.hideBox li{
+    line-height: 30px;
+}
+.navright .navleft li{
+    position: relative;
+}
+.navright .navleft li:hover .hideBox{
+    height: 125px;
+    border-right: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.navright .navleft li a:hover{
+    color: #f60;
+    text-decoration: underline;
+}
+.hideBox1{
+    width: 162px;
+    height: 0px;
+    overflow: hidden;
+    position: absolute;
+    top: 34px;
+    left: -1px;
+    transition: height .3s;
+    background: white;
+}
+.navleft li:hover .hideBox1{
+    height: 161px;
+    border: 1px solid #ddd;
+}
+.hideBox1 div img{
+    width: 56px;
+    height: 56px;
+    float: left;
+    margin: 6px 0 0 10px;
+}
+.hideBox1 .hidelogin{
+    padding: 11px 0 0 77px;
+    display: block;
+    line-height: 12px;
+}
+.hideBox1 .card{
+    width: 64px;
+    height:22px;
+    display: block;
+    color: #fff;
+    background: #f60;
+    margin: 8px 0 0 76px;
+    line-height: 22px;
+    text-align: center;
+    border-radius: 3px;
+}
+.hideBox1 .card:hover{
+    color: #fff;
+    text-decoration: underline;
+}
+.hideBox1 ul li{
+    padding: 0;
+    line-height: 30px;
+}
+.hideBox1 ul .list{
+    width: 81px;
+    padding-left: 11px;
+}
+.navright .cart{
+    position: relative;
+    float: left;
+    padding-left: 10px;
+    line-height: 35px;
+    width: 85px;
+}
+.navright .cart i{
+    width: 17px;
+    height: 14px;
+    display: inline-block;
+    background: url("../images/sun.png") no-repeat;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.navright .cart a{
+    color: #333;
+}
+.navright .cart b{
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    background: #f7a705;
+    border-radius: 50%;
+    color: #fff;
+    position: absolute;
+    top: 3px;
+    left: 75px;
+}
+.navright .cart:hover i{
+    background-position: -21px 0;
+}
+.navright .cart:hover a{
+    color: #f60;
+    text-decoration: underline;
+}
+.navleft>li>em{
+    width: 12px;
+    height: 16px;
+    display: inline-block;
+    background: url("../images/sun.png") no-repeat -42px 0;
+    vertical-align: -4px;
+}
+.hidePhone{
+    width: 340px;
+    height: 0px;
+    overflow: hidden;
+    background: white;
+    position: absolute;
+    top: 34px;
+    left: -52px;
+    padding: 20px 20px 0 19px;
+}
+.hidePhone:after{
+    content: "";
+    height: 98px;
+    display: block;
+    border: 1px solid #dedede;
+    position: absolute;
+    top: 50px;
+    left: 180px;
+}
+.hidePhone li {
+    width: 141px;
+    float: left;
+    line-height: 0;
+}
+.hidePhone li img{
+    width: 141px;
+    height: 141px;
+    line-height: 0;
+}
+.hidePhone li .imgText{
+    width: 151px;
+    height: 16px;
+}
+.hidePhone li span{
+    color: #666;
+    line-height: 24px;
+    display: block;
+    padding-top: 7px;
+    text-align: center;
+}
+.hidePhone li .imright{
+    width: 141px;
+    height: 141px;
+    line-height: 0px;
+}
+.hidePhone li p{
+    padding-left: 40px;
+    color: #666;
+}
+.navleft li:hover .hidePhone{
+    height: 200px;
+    border: 1px solid #ddd;
+}
+.navright .navbuy{
+    float: left;
+}
+.navright .navbuy li{
+    float: left;
+    line-height: 35px;
+    padding-right: 15px;
+}
+.navright .navbuy a{
+    color: #666;
+}
+.navright .navbuy a:hover{
+    color: #f60;
+    text-decoration: underline;
+}
+.navright .navleft .hideBox2{
+    width: 180px;
+    height: 0px;
+    overflow: hidden;
+    position: absolute;
+    top: 35px;
+    left: -96px;
+    background: white;
+}
+.navleft .hideBox2 li{
+     padding: 10px 0 0 28px;
+     line-height: 24px;
+ }
+.navleft:hover .hideBox2{
+     height: 120px;
+     border: 1px solid #ddd;
+ }
+.navleft .hideBox2 li a{
+    position: relative;
+}
+.navleft .hideBox2 li .icon:after{
+    content: "";
+    width: 22px;
+    height: 23px;
+    background: url("../images/npbg.png") no-repeat -141px -100px;
+    position: absolute;
+}
+.navleft .hideBox2 li .icon:hover{
+    text-decoration: none;
+}
+.search{
+    width: 1190px;
+    margin: 0 auto;
+}
+.search .logo{
+    float: left;
+    width: 190px;
+    height: 90px;
+}
+.search .logo img{
+    width: 190px;
+    height: 90px;
+}
+.search .gif{
+    float: left;
+}
+.search .seaconter{
+    width: 620px;
+    float: left;
+}
+.search .seaconter div{
+    float: left;
+    margin-top: 38px;
+}
+.seaconter input[type=text] {
+    width: 468px;
+    height: 18px;
+    padding: 8px 10px 8px 30px;
+    border: 2px solid #ffc100;
+    background: url("../images/search.png") no-repeat;
+}
+.seaconter input[type=button]{
+    width: 98px;
+    height: 38px;
+    border: none;
+    background: #ffc100;
+    color: #323232;
+    font-size: 16px;
+    vertical-align: -1px;
+}
+.seaconter li{
+    float: left;
+    padding: 6px 12px 0 0 ;
+}
+.seaconter li a{
+    font-size: 12px;
+    color: #999;
+}
+.seaconter li .orange{
+    color: #ff6600;
+}
+.seaconter li a:hover{
+    color: #ff6600;
+    text-decoration: underline;
+}
+.seaconter img{
+    float: left;
+    width: 180px;
+    height: 100px;
+}
+.w1190{
+    width: 1190px;
+    height: 36px;
+    margin: 0 auto;
+}
+.ww1190{
+    width: 1190px;
+    margin: 0 auto;
+}
+.banner h4{
+    float: left;
+    width: 177px;
+    height: 36px;
+    font-size: 13px;
+    line-height: 36px;
+    display: inline-block;
+    color: #333;
+    font-weight: 700;
+    background: #ffc100;
+    padding-left: 13px;
+}
+.banner h4 a{
+    color: #333;
+}
+.banner h4 a:hover{
+    text-decoration: underline;
+}
+.bannertop ul{
+    float: left;
+    padding-left: 23px;
+}
+.bannertop ul li{
+    float: left;
+    line-height: 36px;
+    padding-right: 26px;
+    font-size: 13px;
+}
+.bannertop ul li a{
+    color: #323232;
+}
+.bannertop ul .hot:after{
+    content: "";
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    background: url("../images/npbg.png") no-repeat 0 -205px;
+    margin-left: 2px;
+}
+.bannertop ul li a:hover{
+    color: #f60;
+    text-decoration: underline;
+}
+.banner .banbg{
+    height: 455px;
+    background: rgb(234, 44, 44);
+    border: 2px solid #323232;
+}
+.banleft{
+    float: left;
+    width: 190px;
+    height: 457px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.3);
+    background: #fffdf2;
+    border-top: 2px solid #e9e9e9;
+    position: relative;
+    top: -2px;
+}
+.banleft>ul>li{
+    height: 35px;
+    line-height: 35px;
+    padding-left: 12px;
+    font-weight: bold;
+}
+.banleft>ul>li>a{
+    color: #3b3b3b;
+    padding-right: 7px;
+}
+.banleft>ul>li>a:hover{
+    text-decoration: underline;
+}
+.banleft>ul>li:hover{
+    background: #f1534d;
+}
+.banleft>ul>li:hover>a{
+    color: #f6fef8;
+}
+.banleft>ul>li>s{
+    width: 0;
+    height: 0;
+    border: 5px solid;
+    border-color: transparent transparent transparent #f6fef8;
+    float: right;
+    margin: 12px 11px 0 0;
+}
+.banleft  .hide{
+    display: none;
+    overflow: hidden;
+    width: 1000px;
+    height: 457px;
+    background: white;
+    position: absolute;
+    top: -0px;
+    left: 190px;
+    z-index: 12;
+}
+.banleft>ul>li:hover .hide{
+    display: block;
+}
+.hidel{
+    float: left;
+    padding-left: 20px;
+}
+.hidel .hideltop{
+    padding: 10px 0 0 0px;
+    width: 600px;
+}
+.hidel .hideltop li{
+    float: left;
+    line-height: 29px;
+    padding: 0 13px 0 13px;
+    margin-right: 20px;
+    background: #fa4c4c;
+    border-radius: 8px;
+}
+.hidel .hideltop li a{
+    color: #fff;
+}
+.hide .hideb h3{
+    font-size: 12px;
+    width: 80px;
+    font-weight: 800;
+    float: left;
+    padding-top: 17px;
+    line-height: 12px;
+}
+.hide .hideb h3 a:hover{
+    color: #f60;
+    text-decoration: underline;
+}
+.hide .hideb h3 a{
+    color: #333;
+}
+.hide .hideb p{
+    float: left;
+    width: 560px;
+    border-bottom: 1px solid #eee;
+    line-height: 20px;
+    padding: 14px 0 8px 0;
+}
+.hideb p a{
+    display: block;
+    float: left;
+    color: #666;
+    padding-right: 14px;
+}
+.hideb p a:hover{
+    color: #f60;
+    text-decoration: underline;
+}
+.hideb p .huangse{
+    color: #f60;;
+}
+.hider{
+    float: right;
+    width: 256px;
+    padding-top: 11px;
+    margin-right: 5px;
+}
+
+.hider ul li{
+    float: left;
+    margin: 0 5px 5px 0;
+}
+.hider ul li img{
+    width: 123px;
+    height: 50px;
+}
+.hider>img{
+    width: 251px;
+    height: 120px;
+}
+.hider .imtop{
+    margin: 16px 0 5px 0;
+}
+.bancenter{
+    float: left;
+    width: 770px;
+    height: 455px;
+}
+.bancenter img{
+    width: 770px;
+    height: 455px;
+}
+.banright{
+    float: left;
+    width: 218px;
+    height: 431px;
+    background: #fffdf2;
+    margin: 12px 0 17px 0;
+}
+.banRtop{
+    width: 182px;
+    height: 162px;
+    margin: 0 18px 0 18px;
+}
+.banRtop ul{
+    width: 182px;
+    height: 29px;
+    border-bottom: 1px solid #eee;
+}
+.banRtop ul li{
+    float: left;
+    line-height: 29px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.banRtop ul li:hover{
+    cursor: pointer;
+}
+.banRtop ul .list1{
+    position: relative;
+    padding-left: 28px;
+}
+.banRtop ul .list2{
+    position: relative;
+    padding-left: 70px;
+}
+.banRtop ul .list1 i{
+    display: none;
+    width: 35px;
+    height: 2px;
+    background: red;
+    position: absolute;
+    top: 28px;
+    left: 25px;
+}
+.banRtop ul .list1:hover i{
+    display: block;
+}
+.banRtop ul .list2 i{
+    display: none;
+    width: 35px;
+    height: 2px;
+    background: red;
+    position: absolute;
+    top: 28px;
+    right: -5px;
+}
+.banRtop ul .list2:hover i{
+    display: block;
+}
+
+.banRtop ol li{
+    padding-top: 14px;
+}
+.banRtop ol li a{
+    color: #666;
+}
+.banRtop ol li a:hover{
+    color: #ff6000;
+    text-decoration: underline;
+}
+.banRtop ol li .yelow{
+    color: #ff6000;
+}
+.bancen{
+    width: 218px;
+    height: 190px;
+    border-top: 1px solid #eee;
+}
+.bancen li{
+    float: left;
+
+    width: 70px;
+    height: 60px;
+    border: 1px solid  #eee;
+}
+.bancen li a{
+    color: #333;
+}
+.bancen li a:hover{
+    color: #f60;
+}
+.bancen i{
+    float: left;
+    margin: 8px 26px 3px 26px;
+    width: 21px;
+    height: 23px;
+    display: block;
+    background: url("../images/sun.png") no-repeat 1px -63px;
+}
+.bancen .i1{
+    background-position: -90px -63px;
+}
+.bancen .i2{
+    background-position: -21px -63px;
+}
+.bancen .i3{
+    background-position: -64px -63px;
+}
+.bancen .i4{
+    background-position: -43px -63px;
+}
+.bancen .i5{
+    background-position: -65px -89px;
+}
+.bancen .i6{
+    background-position: -2px -89px;
+}
+.bancen .i7{
+    background-position: -30px -89px;
+}
+.bancen .i8{
+    background-position: -116px -63px;
+}
+.bancen em{
+    display: block;
+    text-align: center;
+    padding-top: 5px;
+}
+.bancen .lileft{
+    border-left: 1px solid transparent;
+}
+.bancen .liright{
+    border-right: 1px solid transparent;
+}
+.banright p{
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+    padding: 15px 0 0 17px;
+}
+.banright>ul{
+    margin-top: 10px;
+}
+.banright>ul>li{
+    width: 32px;
+    height: 32px;
+    display: block;
+    background: url("../images/indexNew-bg.png") no-repeat -168px -38px;
+    float: left;
+    margin-left: 15px;
+}
+.banright .l1{
+    background-position: -168px 0;
+}
+.banright .l2{
+    background-position: -88px 0;
+}
+.banright .l3{
+    background-position: -128px 0;
+}
+.add{
+    margin-top: 20px;
+}
+.add ul{
+    background: #f20000;
+}
+.add ul img{
+    width: 230px;
+    height: 180px;
+
+}
+.add ul li{
+    float: left;
+    padding-right: 10px;
+}
+.add ul .addR{
+    padding-right: 0;
+}
+.ad{
+    padding-top: 40px;
+    position: relative;
+}
+.ad li{
+    position: relative;
+    float: left;
+    width: 290px;
+    height: 184px;
+    padding-right: 10px;
+}
+.ad li img{
+    width: 290px;
+    height: 184px;
+}
+.ad .adright{
+    padding-right: 0;
+}
+.ad li .adhide{
+    display: none;
+    width: 290px;
+    height: 184px;
+    background: rgba(255,255,255, .1);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.ad li:hover .adhide{
+    display: block;
+}
+.ad li:hover{
+    cursor: pointer;
+}
+.ad i{
+    display: none;
+    position: absolute;
+    top: 93px;
+    left: 0;
+    width: 38px;
+    height: 78px;
+    background: url("../images/indexNew-bg.png") no-repeat 0 -52px;
+}
+.ad .hider{
+    background-position: -43px -52px;
+    top: 93px;
+    left: 1152px;
+}
+.ad:hover i{
+    display: block;
+}
+.title{
+    font: bold 20px 'microsoft yahei';
+    color: #222;
+    padding-top: 30px;
+}
+.title i{
+    width: 15px;
+    height: 16px;
+    display: inline-block;
+    padding-left: 7px;
+    background: url("../images/sun.png") no-repeat
+-21px -42px;
+    vertical-align: middle;
+}
+.title a{
+    float: right;
+    color: #333;
+    padding-top: 7px;
+    font-size: 14px;
+    font-weight: normal;
+}
+.title a:hover{
+    color: #f60;
+}
+.title a:hover i{
+    background-position: -1px -42px;
+}
+.like ul{
+    float: left;
+    width: 381px;
+    margin-top: 17px;
+}
+.like ul li{
+    border: 1px solid #eee;
+    margin-top: -1px;
+}
+.like ol{
+    float: right;
+    width: 796px;
+    margin: 17px 0 0 1px;
+}
+.like ol li img{
+    width: 198px;
+    height: 188px;
+}
+.like ol li{
+    float: left;
+    border: 1px solid #eee;
+    margin: -1px 0 0 -1px;
+}
+.like ol li:hover{
+    box-shadow: 0 2px 5px #999;
+    position: relative;
+    z-index: 1;
+}
+.big a img{
+    width: 379px;
+    height: 278px;
+}
+.big>a{
+   padding-top: 17px;
+    float: left;
+}
+.big ul li img{
+    width: 131px;
+    height: 92px;
+}
+.big ul{
+    width: 799px;
+    height: 281px;
+    float: right;
+    margin:17px 0 0 12px;
+}
+.big ul li{
+    position: relative;
+    float: right;
+    border: 1px solid #eee;
+    margin: -1px 0 0 -1px;
+}
+.bighide{
+    display: none;
+    width: 131px;
+    height: 92px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.3);
+}
+.bighide i{
+    width: 16px;
+    height: 15px;
+    display: block;
+    float: right;
+    background: url("../images/indexNew-bg.png") no-repeat -140px -40px;
+    margin: 6px 5px 0 0;
+}
+.bighide p{
+    text-align: center;
+    margin-top: 28px;
+    color: #f8f8f8;
+    font-weight: bold;
+}
+.bighide em{
+    text-align: center;
+    width: 65px;
+    height: 22px;
+    display: block;
+    line-height: 22px;
+    background: #ffaa00;
+    border-radius: 8px;
+    margin: 12px auto 0;
+}
+.bighide em a{
+    color: #fffcf7;
+}
+.big ul li:hover .bighide{
+    display: block;
+}
+.addd{
+    padding-top: 20px;
+}
+.addd img{
+    width: 1190px;
+    height: 120px;
+}
+.love{
+    padding-top: 17px;
+    padding-left: 1px;
+}
+.love>li{
+    float: left;
+    width: 159px;
+    height: 281px;
+    border: 1px solid #eee;
+    padding: 0 19px;
+    margin-left: -1px;
+}
+.love>li>img{
+    width: 160px;
+    height: 160px;
+    margin-top: 19px;
+}
+.love li .info{
+    color: #333;
+    line-height: 22px;
+    display: block;
+    height: 44px;
+    padding: 13px 0 6px 0;
+}
+.love li .info:hover{
+    color: #f60;
+    text-decoration: underline;
+}
+.love li span{
+    font-size: 20px;
+    color: #e12228;
+}
+.love li i{
+    float: right;
+    color: #fff;
+    background: #fa4b4b;
+    width: 47px;
+    height: 18px;
+    border-radius: 1px;
+    line-height: 18px;
+    text-align: center;
+    margin-top: 3px;
+}
+.f1{
+    padding-top: 28px;
+}
+.f1 h4{
+    float: left;
+    font: bold 20px "微软雅黑";
+    color: #222;
+}
+.f1 ul{
+    float: right;
+    padding-top: 17px;
+}
+.f1 ul li{
+    position: relative;
+    float: left;
+    padding-left: 20px;
+    width: 56px;
+}
+.f1 ul li a{
+    color: #666;
+}
+.f1 ul li i{
+    display: none;
+    position: absolute;
+    top: 7px;
+    left: 37px;
+    width: 0px;
+    height: 0px;
+    border: 9px solid;
+    border-color: transparent transparent #783e18;
+}
+.f1 ul li:hover i,.f1 ul li:hover a{
+    display: block;
+    color: #783e18;
+    font-weight: bold;
+}
+.clothing{
+    padding-top: 3px;
+}
+.clothleft{
+    position: relative;
+    width: 382px;
+    float: left;
+}
+.clothleft .climg{
+    width: 389px;
+    height: 319px;
+}
+.clothleft ul{
+    position: absolute;
+    top: 225px;
+    left: 0px;
+    width: 383px;
+    height: 94px;
+    background: rgba(255,255,255,.5);
+}
+.clothleft ul li{
+    float: left;
+    width: 127px;
+    height: 33px;
+    text-align: center;
+    line-height: 33px;
+    padding: 7px 0;
+}
+.clothleft ul li a{
+    color: #d18592;
+}
+.clothleft ul li i{
+    display: inline-block;
+    width: 20px;
+    height: 21px;
+    background: url("../images/sun.png")  no-repeat -84px -21px;
+    vertical-align: -5px;
+    margin-right: 10px;
+}
+.clothcen{
+    width: 346px;
+    height: 124px;
+    padding: 0 18px;
+    border-left: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+.clothcen ol{
+    float: left;
+    width: 128px;
+    padding-top: 13px;
+}
+.clothcen ol li{
+    float: left;
+    width: 64px;
+    line-height: 25px;
+}
+.clothcen ol li a{
+    color: #666;
+}
+.clothcen .clothcenr{
+    float: right;
+}
+.clothcen ol li a:hover{
+    color: #f60;
+    text-decoration: underline;
+}
+.clothb{
+    position: relative;
+    width: 382px;
+    height: 145px;
+    border-left: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+.clothb img{
+    width: 381px;
+    height: 145px;
+}
+.clothb p{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 382px;
+    height: 145px;
+    background: rgba(255,255,255,.3);
+}
+.clothb:hover p{
+    display: block;
+}
+.clothm{
+    float: left;
+    width: 404px;
+    height: 582px;
+    border: 1px solid #eee;
+    margin-top: 6px;
+    position: relative;
+    z-index: 1;
+}
+.clothmt{
+    position: relative;
+}
+.clothmt img{
+    width: 404px;
+    height: 291px;
+}
+.clothmt p{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 404px;
+    height: 291px;
+    background: rgba(255,255,255,.3);
+}
+.clothmt:hover p{
+    display: block;
+}
+.clothmt ul{
+    position: absolute;
+    left: 179px;
+    bottom: 8px;
+    width: 44px;
+    height: 18px;
+    background: rgba(0,0,0,.3);
+    border-radius: 8px;
+}
+.clothmt ul li{
+    float: left;
+    margin: 5px 0 0 4px;
+}
+.clothmt ul li a{
+    width: 8px;
+    height: 8px;
+    display: block;
+    border-radius: 50%;
+    background: red;
+}
+.clothmt ul li .point{
+    margin-left: 2px;
+}
+.clothmt ul li a:hover{
+    background: black;
+}
+.clothmt i{
+    display: none;
+    width: 38px;
+    height: 78px;
+    position: absolute;
+    top: 107px;
+    left: 0;
+    background: url("../images/indexNew-bg.png") no-repeat 0 -51px;
+    opacity: .5;
+
+}
+.clothmt .middr{
+    background-position: -42px -51px;
+    top: 107px;
+    left: 366px;
+}
+.clothmt:hover i{
+    display: block;
+}
+.clothmt i:hover{
+    opacity: .7;
+}
+.clothm ol{
+    float: left;
+}
+.clothm ol li img{
+    width: 404px;
+    height: 145px;
+}
+.clothm>ol>li{
+    position: relative;
+border-top: 1px solid #eee;
+}
+.clothm ol li .bott{
+    height: 144px;
+}
+.clothm ol li p{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 404px;
+    height: 145px;
+    background: rgba(255,255,255,.3);
+}
+.clothm ol li:hover p{
+    display: block;
+}
+.clothr{
+    float:right;
+    width: 400px;
+    padding-top: 7px;
+}
+.clothr li{
+    width: 199px;
+    height: 291px;
+    float: left;
+    border: 1px solid #eee;
+    margin-left: -3px;
+    margin-top: -1px;
+}
+.clothr li img{
+    width: 199px;
+    height: 291px;
+}
+.f1 .hangnav{
+    height: 60px;
+
+}
+
+
+.hand{
+    padding-top: 11px;
+}
+.hand li{
+    float: left;
+    position: relative;
+    width: 223px;
+    height: 331px;
+    padding-left: 13px;
+    border: 1px solid #eee;
+}
+.hand li img{
+    margin-top: 14px;
+    width: 209px;
+    height: 153px;
+}
+.hand p{
+    padding-top: 6px;
+    line-height: 22px;
+    height: 65px;
+    width: 210px;
+}
+.hand span{
+    color: #e12228;
+    padding-right: 10px;
+}
+.hand b{
+    display: block;
+    width: 99px;
+    height: 23px;
+    background: #fa4b4b;
+    border-radius: 2px;
+    line-height: 23px;
+    text-align: center;
+    margin-top: 9px;
+}
+.hand .xiaotiao{
+    position: relative;
+    width: 150px;
+    height: 8px;
+    background: #eee;
+    border-radius: 5px;
+    margin-top: 22px;
+}
+.hand .xiaotiao i{
+    width: 80px;
+    height: 8px;
+    display: inline-block;
+    background: url("../images/zsq-line.png") repeat-x;
+    border-radius: 5px;
+    vertical-align: top;
+}
+.hand .xiaotiao span{
+    position: absolute;
+    top: -4px;
+    left: 160px;
+    width: 70px;
+    color: #999;
+}
+.hand .handhide{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 212px;
+    height: 331px;
+    background: rgba(0,0,0,.5);
+    padding: 0 12px;
+}
+.hand .handhide img{
+    width: 210px;
+    height: 210px;
+    margin: 43px 0 18px 0;
+}
+.hand .handhide p{
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+}
+.hand li:hover .handhide{
+    display: block;
+}
+.handnavm{
+    padding-top: 17px;
+}
+.handnavm h4{
+    font: bold 20px "微软雅黑";
+    color: #222;
+    float: left;
+}
+.handnavm ul{
+    float: right;
+}
+.handnavm ul li{
+    position: relative;
+    width: 50px;
+    height: 35px;
+    float: left;
+    padding-left: 30px;
+}
+.handnavm ul li span{
+    display: block;
+    width: 38px;
+    margin: 0 auto;
+    color: #666;
+    font-size: 14px;
+    font-weight: bold;
+}
+.handnavm ul li a{
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    line-height: 25px;
+}
+.handnavm ul li i{
+    display: none;
+    position: absolute;
+    top: 28px;
+    left: 45px;
+    width: 0px;
+    height: 0px;
+    border: 9px solid;
+    border-color: transparent transparent #783e18;
+}
+.handnavm ul li:hover a,.handnavm ul li:hover span{
+    color: #783e18;
+}
+.handnavm ul li:hover i{
+    display: block;
+}
+.change{
+    width: 1188px;
+    height: 41px;
+    border: 1px solid #eee;
+    margin-top: -1px;
+}
+.change ul{
+    width: 47px;
+    height: 13px;
+    background: #b3b3b3;
+    border-radius: 2px;
+    margin: 14px auto 0;
+    padding-left: 5px;
+}
+.change ul li{
+    width: 12px;
+    height: 5px;
+    float: left;
+    background: #fff;
+    margin: 4px 3px 0 0;
+}
+.change ul li:hover{
+    background: #ffaa00;
+}
+.footer{
+    background: #f5f5f5;
+    height: 253px;
+    border-top: 1px solid #eee;
+    margin-top: 17px;
+}
+.footermain ul{
+    height: 72px;
+    border-bottom: 1px solid #eaeaea;
+}
+.footermain ul li{
+    float: left;
+    width: 250px;
+    padding-top: 13px;
+}
+.footermain ul li i{
+    float: left;
+    width: 47px;
+    height: 47px;
+    display: block;
+    background: url("../images/npbg.png") no-repeat 0 -1px;
+}
+.footermain ul li a{
+    padding: 3px 0 0 56px;
+    display: block;
+    color: #333;
+    font-weight: bold;
+
+}
+.footermain ul li a:hover{
+    color: #f60;
+    text-decoration: underline;
+}
+.footermain ul li p{
+    color: #545454;
+    padding: 9px 0 0 56px;
+}
+.footermain ul .width{
+    width: 189px;
+}
+.footermain .list dl{
+    float: left;
+    width: 210px;
+    padding-top: 12px;
+}
+.footermain .list dl dt{
+    color: #545454;
+    font-weight: 700;
+    padding-bottom: 7px;
+}
+.footermain .list dl dd{
+    line-height: 22px;
+}
+.footermain .list dl dd a{
+    color: #545454;
+}
+.footermain .list dl dd a:hover{
+    color: #f60;
+    text-decoration: underline;
+}
+.footermain .list .weight{
+    width: 140px;
+}
+.footermain .list .weight img{
+    width: 87px;
+    height: 87px;
+}

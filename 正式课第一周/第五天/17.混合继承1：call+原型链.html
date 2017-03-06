@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //混合继承：call+原型链
+    function F(){
+        this.x=100;
+    }
+    F.prototype.aa=function(){};
+
+    function S(){
+        F.call(this);
+    }
+    S.prototype=new F;
+    S.prototype.constructor=S;
+</script>
+</body>
+</html>

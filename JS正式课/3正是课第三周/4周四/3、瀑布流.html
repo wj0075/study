@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 1250px;
+            margin: 10px auto;
+        }
+        div ul{
+            list-style: none;
+            float: left;
+            width: 200px;
+            margin: 5px;
+            /*height: 200px;*/
+            /*background: red;*/
+        }
+    </style>
+</head>
+<body>
+<div>
+
+
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+</div>
+<script src="utils.js"></script>
+<script>
+    //布局：如果要5列，那我需要5个ul(浮动)；每创建一个li,都往ul最短（sort排序）的里面插入
+    //每加载一次，可能会一次性的创建30-50元素，然后把每个Li元素，分别往ul最多中插入
+    //封装一个方法：创建一个元素的方法；
+    //1.封装创建一个元素的方法；2.批量创建元素，每创建一个，都往ul最短的里面插入
+    //2.当满足一定条件，在批量创建一批li,再逐个插入
+    var oUl=document.getElementsByTagName('ul');
+    function createLi(){
+        var oLi = document.createElement('li');
+        oLi.style.height = utils.rnd(100,200)+'px';
+        oLi.style.background = 'rgb('+utils.rnd(0,255)+','+utils.rnd(0,255)+','+utils.rnd(0,255)+')';
+        oLi.style.marginTop='5px';
+        return oLi;
+    }
+    //oUl[0].appendChild(createLi());
+
+    /*for(var i=0;i<oUl.length;i++){
+        var cur=oUl[i];
+        for (var j=0;j<=50;j++){
+            cur.appendChild(createLi());
+        }
+    }*/
+    li50();
+    function li50() {
+        for (var i = 0; i < 50; i++) {
+            var LiEle = createLi();
+            var ary = utils.makeArray(oUl);
+            ary.sort(function (a, b) {
+                a = a.offsetHeight;
+                b = b.offsetHeight;
+                return a - b;
+            });
+            ary[0].appendChild(LiEle);
+        }
+    }
+    window.onscroll=function(){
+        var scrollBottom = utils.win('scrollTop')+utils.win('clientHeight');
+        if (document.body.scrollHeight+20>=scrollBottom){
+            li50();
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

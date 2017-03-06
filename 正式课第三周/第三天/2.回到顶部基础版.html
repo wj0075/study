@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,html{
+            height: 300%;
+        }
+        a{
+            display: none;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            text-align: center;
+            line-height:100px;
+            font-size: 40px;
+            position: fixed;
+            right:10px;
+            bottom:10px;
+            background: darkgreen;
+            color: white;
+            text-decoration: none;
+        }
+        /*div{
+            width: 100%;
+        }
+        #div1{
+            height: 600px;
+            background: lightgreen;
+        }
+        #div2{
+            height: 500px;
+            background: lightcyan;
+        }
+        #div3{
+            height: 800px;
+            background: lightblue;
+        }
+        #div4{
+            height: 600px;
+            background: lightgoldenrodyellow;
+        }
+        a{
+            font-size: 50px;
+            display: block;
+        }*/
+    </style>
+</head>
+<body>
+<!--<a href="javascript:void(0);">toTop</a>-->
+<a href="javascript:;">toTop</a>
+<!--<div id="div1">div1</div>
+<div id="div2">div2</div>
+<div id="div3">div3</div>
+<div id="div4">div4</div>
+<a href="#div1">回到模块div1</a>
+<a href="#div2">回到模块div2</a>
+<a href="#div3">回到模块div3</a>
+<a href="#div4">回到模块div4</a>-->
+<script src="js/utils.js"></script>
+<script>
+    //需求：升级1：首屏不显示回到顶部的按钮，只有滚动距离(scrollTop)超过一屏(clientHeight)的时候，才显示按钮；
+    //升级2：点击按钮，按钮立即隐藏，滚轮回到顶部；
+    var oBtn=document.getElementsByTagName('a')[0];
+    //1.总距离target  2.总时间：duration  3.频率：interval 4.步长：target/duration*interval;
+    //每次在最新的距离上-固定的步长=新距离；给元素赋值他最新的距离；
+    window.onscroll=computedDisplay;
+    function computedDisplay(){
+        if(utils.win('scrollTop')>utils.win('clientHeight')){
+            oBtn.style.display='block';
+        }else{
+            oBtn.style.display='none';
+        }
+    }
+    oBtn.onclick=function(){
+        oBtn.style.display='none';
+        window.onscroll=null;
+        var target=utils.win('scrollTop');
+        var duration=1000;
+        var interval=10;
+        var step=target/duration*interval;
+        var timer=setInterval(function(){
+            //1.拿到最新的距离，并且用最新的距离-step；
+            var curTop=utils.win('scrollTop');
+            curTop-=step;
+            if(curTop<=0){
+                clearInterval(timer);
+                window.onscroll=computedDisplay;
+                return;
+            }
+            utils.win('scrollTop',curTop);
+            console.log(curTop)
+        },interval)
+    }
+</script>
+</body>
+</html>

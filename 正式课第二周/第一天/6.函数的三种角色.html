@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Fn(){
+        var a=123;
+        this.x=100;
+        alert(a);
+    }
+    Fn.prototype.showX=function(){
+        alert(123);
+    }
+    var f=new Fn();//此时Fn是类；123
+    alert(f.x)//100;
+    Fn();//此时Fn是普通函数； 123
+    Fn.aa=456;
+    Fn.bb=function(){
+        alert('hello');
+    }
+    Fn.bb();//hello
+</script>
+</body>
+</html>

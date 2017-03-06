@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+1、基本选择器
+1）标签选择器
+格式：标签名{}
+    p{}   div{}  ul{}
+2)类选择器
+格式：.className{}
+<style>
+    .art{
+        color: red;
+    }
+</style>
+<p class="art"></p>
+<p class="art"></p>
+<div class="art"></div>
+
+3)id选择器：
+格式：#idName{}
+<style>
+    #div1{
+        color: blue;
+    }
+</style>
+<div id="div1">id选择器</div>
+4、通配符选择器:选择所有的标签
+*{}
+<style>
+    *{
+        /*display: none;*/
+        padding: 0;
+        margin: 0;
+    }
+</style>
+
+           权重
+标签选择器   1
+类选择器     10
+id选择器     100
+*           0.1
+相同的css属性 作用于同一个元素时，谁的权重大用谁的样式
+
+<style>
+    i{
+        /*color: red;*/
+    }
+    .text{
+        color: blue;
+    }
+    #word{
+        color: green;
+    }
+    ul li #span .art{
+
+    }
+</style>
+<i class="text" id="word"></i>
+
+1、子代选择器：只能选择下一代
+<style>
+    div>i{
+        color: plum;
+    }
+</style>
+
+<div>
+    <p>
+        <i>子代选择器123</i>
+    </p>
+</div>
+2、后代选择器：可以选择器隔代的
+<style>
+    div p i{}
+    div i{}
+</style>
+3、交集选择器:选择一个元素,增加权重
+<style>
+    span.word{
+
+    }
+    span{}
+    .word{}
+</style>
+<span class="word">文字</span>
+4、并集选择器：给不同的元素 设置相同的样式,逗号两边的选择器没有任何关系
+<div>
+    <ul>
+        <li>
+            <span></span>
+        </li>
+    </ul>
+</div>
+<span></span>
+<style>
+    div ul li,span{
+
+    }
+</style>
+5、类型选择器
+<input type="text"/>
+<style>
+    input[type=text]{}
+</style>
+6、伪类选择器
+:hover  鼠标经过时的样式
+<style>
+    a:hover{
+        color: #ff6700;
+    }
+</style>
+<a href="">zhufengpeixun</a>
+7、伪元素
+:after  在元素里面最末尾的位置加样式
+:before  在元素里面最开始的位置加样式
+<style>
+    div:after{
+        content: '内容';
+    }
+</style>
+<div>1234566</div>
+
+
+
+
+
+
+</body>
+</html>

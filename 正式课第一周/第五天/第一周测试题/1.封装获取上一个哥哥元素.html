@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul><li>0</li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script>
+    var aLi=document.getElementsByTagName('li');
+    console.log(aLi[0].previousSibling);//这就是节点不存在的情况；
+    //需求：获取 当前元素的 上一个哥哥元素；
+    /*
+    *参数：当前元素
+    *返回值：上一个哥哥元素
+    * */
+    function prev(curEle){
+        if(curEle.previousElementSibling){//标准浏览器
+            return curEle.previousElementSibling;
+        }else{//IE-自己处理兼容
+            var pre=curEle.previousSibling;
+            while(pre && pre.nodeType!=1){
+                pre=pre.previousSibling;
+            }
+            return pre;
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .list1{
+            /*10*/
+            color: blue;
+        }
+        li{
+            /*1*/
+            color: red;
+        }
+        #li3{
+            color: black;
+        }
+        .list2{
+            color: yellow;
+        }
+
+
+    </style>
+</head>
+<body>
+<!--ul>li{选项 $}*5-->
+<ul>
+    <li class="list1">选项 1</li>
+    <li class="list2">选项 2</li>
+    <li class="list2 list1">选项 3</li>
+    <li>选项 4</li>
+    <li>选项 5</li>
+</ul>
+<!--可以给同一个标签 设置多个类名，每个类名之间用空格隔开-->
+
+<!--权重
+           权重
+标签选择器   1
+类选择器    10
+id选择器   100
+*         0.1
+
+相同的css属性作用在同一个标签时，谁的权重大用谁的样式
+
+如果权重相同，哪个样式写在后面用谁的样式
+
+-->
+
+</body>
+</html>

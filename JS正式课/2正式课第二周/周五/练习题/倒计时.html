@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            font-size: 50px;
+        }
+        div span{
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+<div>距离下课<span>00天 00时00分00秒</span></div>
+<script>
+    var oDiv = document.getElementsByTagName('div')[0];
+    var oSpan = oDiv.getElementsByTagName('span')[0];
+    function todou(num){
+        return num>=0&&num<10?'0'+num:''+num;
+    }
+    setInterval(countDown,1000);
+    countDown();
+    function countDown(){
+        var now = new Date();
+        var s = Math.floor((new Date('2016/11/5 16:45:34')-now)/1000);
+        var d = Math.floor(s/86400);
+        s%=86400;
+        var h = Math.floor(s/3600);
+        s%=3600;
+        var m = Math.floor(s/60);
+        s%=60;
+        var str=todou(h)+':'+todou(m)+':'+todou(s);
+        oSpan.innerHTML = str;
+    }
+
+
+
+</script>
+</body>
+</html>

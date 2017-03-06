@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        li{
+            width: 200px;
+            height: 200px;
+            background: red;
+            font-size: 40px;
+            margin: 10px;
+            float: left;
+
+        }
+        /*用伪元素的方式*/
+        .clearfix:after{
+            /*:after  在元素里面最末尾的位置 加样式*/
+            content: '';
+            /*内容*/
+            display: block;
+            /*将空的内容转为块级元素*/
+            clear: both;
+            /*清除左右浮动元素 对其他元素的影响*/
+            height: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<!--清除浮动：清除浮动元素对其他元素的影响
+clear：left     清除左浮动
+       right    清除右浮动的元素对其他元素的影响
+       both     清除左右浮动的元素对其他元素的影响
+
+float：none   设置为不浮动
+-->
+
+<ul style="background: orange" class="box clearfix">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <!--在最后一个浮动的元素后面  加一个空的块级元素，clear：both-->
+    <!--<p style="clear: both"></p>-->
+</ul>
+
+<ul style="background: blue;overflow: hidden" >
+    <li>111111111文字要子级元素浮动了，就要给父级元素清除浮动，直接给父级元素加clearfix这个类名</li>
+    <li>22</li>
+    <li>33</li>
+    <li>44</li>
+</ul>
+
+
+
+<!--<div class="clearfix" style="background: red">
+    <span>文字</span>
+    <span>文字</span>
+    <span>文字</span>
+    <span>文字</span>
+    <span>文字</span>
+
+</div>-->
+<!--*******只要子级元素浮动了，就要给父级元素清除浮动，直接给父级元素加clearfix这个类名-->
+
+
+清除浮动的方法：
+1、<p style="clear: both"></p>
+2、用伪元素
+<style>
+    .clearfix:after{
+        /*:after  在元素里面最末尾的位置 加样式*/
+        content: '';
+        /*内容*/
+        display: block;
+        /*将空的内容转为块级元素*/
+        clear: both;
+        /*清除左右浮动元素 对其他元素的影响*/
+        height: 0;
+        overflow: hidden;
+    }
+</style>
+3、给父级元素设置 overflow:hidden
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+    var length = 10;
+    function fn(){
+        console.log(this.length);
+    }
+    var obj = {
+        length: 5,
+        method: function(fn) {
+            fn(); // ?
+            arguments[0](); //?
+        }
+    };
+    obj.method(fn)
+
+
+    /*~function () {
+        alert(typeof next) ;// ?
+        /!*~function next() {
+            alert(typeof next); // ?
+        }()*!/
+    }();*/
+
+
+    /*var func = function a() {
+        alert(typeof a)
+    };
+    func() ;// ?
+    alert(typeof a) ;// ?*/
+
+   /* str = 'a';
+     str.prop = 'b';
+     alert(str + str.prop) ;// ?*/
+
+
+
+    /*var a = 1;
+     function func() {
+     a = b = 2
+     }
+     func();
+     alert(a);
+     alert(b);// ?*/
+
+</script>
+</body>
+</html>

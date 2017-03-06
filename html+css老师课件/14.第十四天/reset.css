@@ -1,0 +1,48 @@
+@charset "utf-8";
+/************* Reset CSS *************/
+/* 清除内外边距 */
+*{
+    margin: 0;
+    padding: 0;
+}
+h1 ,h2 ,h3 ,h4, h5, h6 { font-size: 100%; }
+code, kbd, pre, samp, tt { font-family: "Courier New", Courier, monospace; } /* 统一等宽字体 */
+small { font-size: 12px; } /* 小于 12px 的中文很难阅读，让 small 正常化 */
+
+/* 重置列表元素 */
+ul, ol { list-style: none; }
+
+/* 重置文本格式元素 */
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* 重置表单元素 */
+fieldset, img, button{ border: none;vertical-align: top;}
+/* 注：optgroup 无法扶正 */
+button, input, select, textarea {
+    font-size: 100%; /* 使得表单元素在 ie 下能继承字体大小 */
+}
+
+img, iframe, table, form{ vertical-align: top;}
+
+/* 重置表格元素 */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* 重置 hr */
+hr {
+    border: none;
+    height: 1px;
+}
+/************* Reset CSS *************/
+.clearfix {zoom: 1; }
+.clearfix:after, .clearfix:before {
+    content: "\200B";
+    /*零宽度空格*/
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str='zhufeng';
+    //var reg=/^"+str+"$/;//字面量创建方式-1）不能进行变量拼接
+    var reg=new RegExp('^'+str)
+    alert(reg.test('0zhufeng123ssdfasfajfjklafjkljaf'))
+</script>
+</body>
+</html>

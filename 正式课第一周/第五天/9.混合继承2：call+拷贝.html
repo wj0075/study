@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function extend(obj2,obj1){
+        for(var attr in obj1){
+            obj2[attr]=obj1[attr];
+        }
+        return obj2;
+    }
+    function F(){//构造函数：里面放的都是私有的属性和方法；
+        this.x=100;
+        this.y=200;
+        this.showX=function(){};
+    }
+    F.prototype.aa=function(){};//原型：原型中放的都是公有的属性和方法；
+    var f=new F;
+
+    function S(){
+        F.call(this);
+    }
+    //公有通过extend方法，进行拷贝继承
+    extend(S.prototype, F.prototype);
+    var s=new S;
+    console.dir(s);
+    /*
+    * x:100,
+    * y:200,
+    * showX:function
+    * __proto__:
+    * aa:function
+    * constructor:S
+    *
+    *
+    *
+    *
+    * */
+</script>
+</body>
+</html>

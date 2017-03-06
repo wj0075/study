@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box"></div>
+
+
+<script>
+    //1、alert(要输出的内容)  在页面中弹出一个层
+    alert('大家好');
+
+//    2、console.log(要输出的内容)   按F12显示控制台-》console
+//       一般用来调错
+    console.log('樊东来','704072802','18310348509');
+
+//    js中不区分双引号和单引号  ''
+
+//    3、 document.write(要输出的内容)  直接在页面中显示 在页面不停的写
+//    document.write('第十二期js免费课');
+//    document.write('陆杨杨');
+
+//    4、innerHTML、innerText  动态的向指定的元素中添加内容
+//    innerHTML  可以识别html标签
+//    innerText  不可以识别html标签
+
+    document.getElementById('box').innerHTML = '<h1>珠峰培训</h1>';
+//    在整个文档中  get获取  element一个元素  By通过  id id名字
+
+
+
+
+</script>
+
+</body>
+</html>

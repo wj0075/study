@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--页面中三种常用的布局：
+1、自然布局
+块级元素从上到下显示，行内元素从左到右显示，宽度到大最大范围自动着行。
+
+2、浮动布局、流动布局
+给元素设置浮动的属性 改变元素的位置，可以让元素在一行显示
+
+3、层布局
+通过定位属性改变元素的位置，让元素之间有层级关系-->
+
+<!--float:left  左浮动
+      right  右浮动
+      none   设置为不浮动
+      inherit  默认继承父级元素的浮动方式-->
+
+<!--ul>li{$}*4-->
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul{
+        list-style: none;
+    }
+    li,span{
+        width: 100px;
+        height: 100px;
+        background: red;
+        margin: 10px;
+        font-size: 36px;
+        float: left;
+        /*padding:100px;*/
+        /*从左开始，从浮动的第一个盒子开始，从左到右依次显示
+        */
+        /*float: right;*/
+        /*从右开始，从浮动的第一个盒子开始，从右到左依次显示*/
+        /* 浮动的元素可以识别父级元素的宽度，宽度达到最大值会自动折行*/
+    }
+
+
+</style>
+<ul style="background: yellow">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+<!--<div>
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+</div>-->
+
+<!--浮动的元素  不区分行内元素还是块级元素，都可以设置宽度和高度，margin,padding-->
+
+<!--
+脱离正常的文档流-->
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

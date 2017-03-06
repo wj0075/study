@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str='zhufengpeixun123zhufeng';
+    var reg=/zh(u)fen(g)/g;
+    str=str.replace(reg,function(){
+        console.log(arguments)
+        //replace的参数，拿到的是个数组：数组中一般情况下有三项：
+        //1.符合大正则的内容
+        //2.找到的内容对应的索引
+        //3.原始字符串；
+        //如果说，正则中有小分组的时候，小分组从数组的第二项开始；
+        return 'zhufengpeixun';
+    })
+</script>
+</body>
+</html>

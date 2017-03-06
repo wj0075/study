@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input{
+            outline: none;
+        }
+        input[type=text]{
+            padding: 0 10px;
+        }
+        input[type=submit]{
+            border: none;
+        }
+    </style>
+</head>
+<body>
+<form action="">
+    <input type="text"/>
+    <input type="password"/>
+    <input type="button"/>
+    <input type="submit"/>
+    <input type="reset"/>
+</form>
+<select>
+    <option value=""></option>
+</select>
+<input type="radio" name="sex"/>
+<input type="radio" name="sex"/>
+<input type="checkbox" checked/>
+
+<label for="name">姓名</label>
+<input type="text" id="name" placeholder="请输入姓名"/>
+
+<table border="1" cellpadding="10" cellspacing="10">
+    <caption>标题</caption>
+    <thead>
+        <tr>
+            <th>文字</th>
+            <th>文字</th>
+            <th>文字</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td>10</td>
+            <td>10</td>
+            <td>10</td>
+        </tr>
+    </tfoot>
+    <tbody>
+        <tr>
+            <td colspan="2" rowspan="2">1111111111</td>
+            <!--<td>1</td>-->
+            <td>1</td>
+        </tr>
+        <tr>
+            <!--<td>1111111111</td>-->
+            <!--<td>1</td>-->
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>1111111111</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+    </tbody>
+
+</table>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    p{
+        width: 0;
+        height: 0;
+        border: 10px solid;
+        border-color: transparent transparent red;
+        /*上右下左
+            上  左右  下
+        */
+    }
+    .box{
+        height: 100px;
+        background: lightblue;
+    }
+    i{
+        position: relative;
+        width: 0;
+        height: 0;
+        display: block;
+        border: 20px solid ;
+        border-color: black transparent transparent;
+        transition: transform .3s linear 0s;
+        /*过渡
+            1）哪个css属性过渡的效果
+            2）过渡持续的时间     s秒
+            3）过渡的速度   linear匀速   ease-in  加速   ease-out减速    ease-in-out  先加速再减速
+            4）等待的时间
+        */
+        transform-origin: 50% 25%;
+        /*
+        1）宽度的百分比
+        2）高度的百分比
+        */
+    }
+    b{
+        width: 0;
+        height: 0;
+        border: 16px solid;
+        border-color: lightblue transparent transparent;
+        position: absolute;
+        top: -20px;
+        left: -16px;
+    }
+    .box:hover i{
+        transform: rotate(-180deg);
+        /* 形变       旋转180度  +顺时针*/
+    }
+
+
+</style>
+<!--<div>-->
+    <!--<p></p>-->
+
+<!--</div>-->
+<div class="box">
+    <i>
+        <b></b>
+    </i>
+</div>
+<style>
+    .box1{
+        width: 300px;
+        height: 300px;
+        background: blue;
+        /*-webkit-border-radius: 50%;*/
+        /*-moz-border-radius: 50%;*/
+        /*border-radius: 50%;*/
+        /*圆形*/
+        border-radius: 10px 50px 100px 150px;
+        /*左上角   顺时针方向*/
+
+    }
+</style>
+
+<div class="box1"></div>
+
+
+
+
+</body>
+</html>

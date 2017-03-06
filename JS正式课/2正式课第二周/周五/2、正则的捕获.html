@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //exex:正则的捕获
+    //每一次捕获的时候都先进行默认的匹配，如果没有匹配成功，结果是null，只有有匹配的内容我们才能捕获到
+    //正则捕获的特点
+    //1）懒惰性-》每一次执行exec只捕获第一个匹配的内容，在不进行任何处理的情况下，在执行多次捕获，捕获的还是第一个匹配的内容
+    //lastIndex:是正则每一次捕获在字符串中开始查找的位置，默认值为0；
+    //2）如何解决懒惰性：在正则的末尾加一个修饰符"g"
+    //修饰符：g、i、m
+    //global(g):全局匹配
+    //ignoreCase(i)：或略大小写匹配
+    //multiline(m)：多行匹配
+    //加了全局修饰符g,正则每一次捕获结束后，我们的lastIndex的值都变为最新的值。下一次从最新的位置开始捕获，
+    //3)自己编写程序获取正则捕获的所有内容（一定不要忘记加g）
+//    var reg = /\d+/g;
+//    var str = 'zhufeng2015peixun2016yangfan2017';
+//    var ary = [];
+//    var res = reg.exec(str);
+//    while (res){
+//        ary.push(res[0]);
+//        res=reg.exec(str);
+//    }
+//    console.log(ary);
+
+    //4）贪婪性：正则每一次匹配捕获都是按照最长的结果捕获的，例如：2符合正则，2015也符合正则，我们默认捕获2015；
+    //var reg = /\d+/g;
+    //var str = 'zhufeng2015peixun2016yangfan2017';
+
+    //5）如何解决正则的贪婪性：在量词元字符后面添加?号即可
+    //?在正则中有很多作用，
+    //1。放在一个普通元字符后面代表出现0~1次 /\d?/ 一个数字可能出现也可能不出现
+    //2.放在一个量词元字符后面是取消捕获时候的贪婪性。
+//    var reg = /\d+?/g;
+//    var str = 'zhufeng2015peixun2016yangfan2017';
+
+
+    //6）字符串中的Mach方法-》把所有和正则匹配的字符都找到
+    //在当前的情况下，我们matc比我们的exec更加的简洁一些，但是Mach中存在一些自己处理不了的问题，在分组捕获的时候，mach只能捕获到大正则捕获的内容，而对于小正则捕获的内容是无法获取的
+    var reg = /\d+?/g;
+    var str = 'zhufeng2015peixun2016yangfan2017';
+    var ary = str.match(reg);
+    console.log(ary);
+
+    //捕获的内容格式
+    //1.捕获的内容是一个数组。数组中的第一项是当前的正则捕获的内容
+    //index:捕获的内容在字符串中开始的索引位置
+    //input:捕获的原始字符串
+    //2.
+//    var reg = /\d+/;
+//    var str = 'zhufeng2015peixun2016';
+//    var res = reg.exec(str);
+//    console.log(res);//-->["2015", index: 7, input: "zhufeng2015peixun2016"]
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

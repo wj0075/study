@@ -1,0 +1,239 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+ul,ol{
+    list-style: none;
+}
+i{
+    font-style: normal;
+}
+b{
+    font-weight: normal;
+}
+img{
+    border: none;
+    vertical-align: top;
+}
+.header{
+    height: 106px;
+    background: #8c4ce8;
+}
+.header img{
+    width: 1190px;
+    height: 106px;
+    display: block;
+    margin: 0 auto;
+}
+.bg{
+    height: 44px;
+    background: #f5f5f5;
+}
+.nav{
+    width: 1190px;
+    margin: 0 auto;
+}
+.nav .navleft .nav-web{
+    
+    position: relative;
+    float: left;
+    height: 44px;
+    line-height: 44px;
+    font-size: 14px;
+    color: #666666;
+    /*width: 73px;*/
+}
+.nav .navleft  i{
+    position: absolute;
+    top: 21px;
+    left: 60px;
+    width: 0px;
+    height: 0;
+    display: inline-block;
+    border: 5px solid;
+    border-color: #c9d3e4 transparent transparent;
+}
+.nav .navleft  b{
+    width: 0;
+    height: 0;
+    border: 3px solid;
+    border-color: #f5f5f5 transparent transparent;
+    position: absolute;
+    top: -5px;
+    left: -3px;
+}
+.nav .navleft .nav-web{
+    margin-right: 40px;
+    line-height: 44px;
+}
+.nav .navleft .nav-web a{
+    color: #666;
+}
+/*.nav .navright{*/
+    /*float: right;*/
+/*}*/
+.nav .navright ol .r1 {
+    position: relative;
+    float: right;
+    height: 44px;
+    font-size: 14px;
+    color: #666;
+    /*line-height: 44px;*/
+    margin-right: 36px;
+    margin-top: 16px;
+}
+/*.nav .navright ol .r1 .no{*/
+    /*line-height: 44px;*/
+/*}*/
+
+.nav .navright  i{
+    position: absolute;
+    top: 5px;
+    left: 60px;
+    width: 0px;
+    height: 0;
+    display: inline-block;
+    border: 5px solid;
+    border-color: #c9d3e4 transparent transparent;
+    transition: transform .3s linear 0s;
+    transform-origin: 50% 25%;
+}
+.nav .navright  b{
+    width: 0;
+    height: 0;
+    border: 3px solid;
+    border-color: #f5f5f5 transparent transparent;
+    position: absolute;
+    top: -5px;
+    left: -3px;
+}
+.nav .navright .shop span{
+    width: 16px;
+    height: 14px;
+    display: inline-block;
+    background: url("xb.png") no-repeat;
+    vertical-align: -1px;
+    background-position: 0 0;
+    margin-right: 7px;
+}
+.nav .navright .phone span{
+    width: 16px;
+    height: 14px;
+    display: inline-block;
+    background: url("xb.png") no-repeat;
+    background-position: 0 -31px;
+}
+.nav .navright .phone{
+    width: 80px;
+    position: relative;
+}
+.nav .navright .phone i{
+    position: absolute;
+    top: 5px;
+    left: 75px;
+}
+.nav .navright .shop em{
+    width: 20px;
+    height: 15px;
+    display: inline-block;
+    background: url("s6.jpg") no-repeat;
+}
+.nav .navright .shop1{
+    position: relative;
+}
+.nav .navright .shop1 .box{
+    width: 162px;
+    height: 0px;
+    /*border: 1px solid #ddd;*/
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    transition: height .3s;
+    overflow: hidden;
+}
+.nav .navright .shop1 .box img{
+    float: left;
+    margin: 5px 0 0 10px;
+}
+.nav .navright .shop1 .box .box1{
+    height: 56px;
+    width: 80px;
+    float: right;
+
+}
+.nav .navright .shop1 .box .l1{
+    display: inline-block;
+    margin-top: 13px;
+}
+.nav .navright .shop1 .box .l2{
+    text-align: center;
+    width: 64px;
+    line-height: 22px;
+    display: inline-block;
+    background: #F60;
+    margin-top: 8px;
+}
+.nav .navright .shop1 .box .box2{
+    width: 162px;
+    height: 72px;
+    float: left;
+    margin: 11px 0 0 0px;
+}
+.nav .navright .shop1 .box .box2 .x1{
+    float: left;
+    width: 70px;
+    margin:0 0px 14px 5px;
+}
+.nav .navright .shop1:hover .box{
+    height: 161px;
+    border: 1px solid #ddd;
+}
+.nav .navright .shop1:hover{
+    background: white;
+}
+.nav .navright .shop1:hover i{
+    transform: rotate(-180deg);
+}
+.nav .navright .phone .pmain{
+    width: 370px;
+    height: 0px;
+    position: absolute;
+    top: 30px;
+    left: -50px;
+    overflow: hidden;
+    transition: height .6s;
+}
+.nav .navright .phone .pmain li{
+    float: left;
+    width: 165px;
+    height: 188px;
+
+    margin: 18px 0 0 19px;
+}
+.nav .navright .phone .pmain .p1 .i1{
+    width: 142px;
+    height: 142px;
+}
+.nav .navright .phone .pmain .p1 .i2{
+    width: 151px;
+    height: 16px;
+}
+.nav .navright .phone:hover .pmain{
+    height: 220px;
+    border: 1px solid #ddd;
+}
+.nav .navright .phone:hover i{
+    transform: rotate(-180deg);
+}
+.nav .center{
+    float: right;
+    line-height: 44px;
+    margin-right: 10px;
+    font-size: 14px;
+}
+.nav .center span a{
+    color: #666;
+}

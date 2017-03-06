@@ -1,0 +1,98 @@
+*{
+    margin:0;
+    padding:0;
+
+}
+ul{
+    list-style: none;
+}
+input{
+    outline: none;
+}
+html,body{
+    font-size: 12px;
+    font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+    -webkit-user-select: none;
+}
+.box{
+    width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid green;
+    cursor: pointer;
+    text-align: center;
+}
+.box h2{
+    height: 35px;
+    line-height: 35px;
+}
+.box h2 span{
+    float: left;
+    width: 200px;
+    line-height: 35px;
+    text-align: center;
+    background: green;
+    color: white;
+}
+.content{
+    height: 300px;
+}
+.content li{
+    height: 30px;
+    line-height: 30px;
+}
+.content li:nth-child(even){
+    background: lightgray;
+}
+.content li span{
+    float: left;
+    width: 200px;
+    text-align: center;
+}
+.page{
+    display: inline-block;
+    height: 22px;
+    line-height: 22px;
+    margin-top: 20px;
+}
+.page span,.page ul,.page ul li,.page input{
+    float: left;
+    height: 20px;
+    line-height: 20px;
+    border: 1px solid green;
+    margin: 0 3px;
+    text-align: center;
+}
+.page ul{
+    border: none;
+}
+.page ul li{
+    width: 20px;
+}
+.page span,.page input{
+    width: 45px;
+}
+.page li.bg{
+    background: green;
+    color: white;
+}
+.box2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -100px 0 0 -100px;
+    width: 200px;
+    border: 1px solid green;
+}
+.box2 li{
+    height: 30px;
+    line-height: 30px;
+}
+.box2 li:nth-child(even){
+    background: lightgray;
+}
+.box2 li span{
+    float: left;
+    width: 100px;
+    text-align: center;
+}

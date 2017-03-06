@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    String.prototype.queryURLParameter=function(){
+        var reg = /([?=&]+)=([?=&]+)/g;
+        var obj = {};
+        this.replace(reg,function($0,$1,$2){
+            obj[$1]=$2
+        });
+        return obj;
+    }
+
+
+
+</script>
+</body>
+</html>

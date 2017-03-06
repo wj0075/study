@@ -1,0 +1,7 @@
+@import "另一个css文件的路径";
+div{
+    height: 100px;
+}
+h3{
+    color: green;
+}

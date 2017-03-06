@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Fn(){
+        this.x=100;
+    }
+    Fn.prototype.showX=function(){
+        console.log("我是谁");
+    };
+    var f1=new Fn();
+    //判断一个属性是否存在他所属的对象，用in
+    console.log('y' in f1);
+
+    //判断一个属性是不是私有属性
+    console.log(f1.hasOwnProperty('x'));
+
+    //判断一个属性是不是公有属性的封装
+    function hasPubProperty(attr,obj){
+        return attr in obj && !obj.hasOwnProperty(attr);
+    }
+
+    console.log(hasPubProperty('showX',f1));
+
+
+
+</script>
+</body>
+</html>

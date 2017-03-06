@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery的ajax演示</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+    <script>
+        window.name = 'global';
+        jQuery.ajax({
+            async: true,
+            beforeSend: function () {
+                console.log('beforeSend');
+            },
+            cache: true,
+            complete: function () {
+                console.log('compete');
+                console.log(this.name);
+            },
+            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+            context: {name: 'local'},
+            data: {'中文': '123'},
+            dataType: 'text',
+            error: function (err) {
+                console.log('[err]: ', err);
+            },
+            headers: {a: 1, b: 2},
+            method: 'post',
+            processData: true,
+            success: function (data) {
+                console.warn('[success]: ', data);
+            },
+            timeout: 0,
+            url: './demo1.html'
+        });
+
+        /**
+         * 只能发起最简单的get请求
+         * 参数1 url地址（必填）
+         * 参数2 发送的参数 （选填）
+         * 参数3 成功时的回调函数 （选填）
+         * 参数4 数据格式 （选填）
+         */
+        $.get('url','data',function(){},'dataType');
+
+        /**
+         * 只能发起最简单的post请求
+         * 参数1 url地址（必填）
+         * 参数2 发送的参数 （选填）
+         * 参数3 成功时的回调函数 （选填）
+         * 参数4 数据格式 （选填）
+         *
+         * 和$.get参数一模一样，只有http方法不一样
+         */
+        $.post('url','data',function(){},'dataType');
+
+        /**
+         * 发起最简单个get请求，来获取json对象
+         * 参数1 url地址（必填）
+         * 参数2 发送的参数 （选填）
+         * 参数3 成功时的回调函数 （选填）
+         *
+         * 注意事项：该函数相当于 $.get('url','data',function(){},'json');
+         */
+        $.getJSON('url','data',function(){});
+
+        /**
+         * 发起最简单的get请求来获取script脚本
+         * 参数1 url地址（必填）
+         * 参数2 成功时的回调函数 （选填）
+         *
+         * 注意事项：该函数相当于 $.get('url',undefined,function(){},'script');
+         */
+        $.getScript('url',function(){});
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

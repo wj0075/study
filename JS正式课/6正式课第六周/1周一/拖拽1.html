@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        div img{
+            width: 100%;
+            height: 100%;
+        }
+
+
+    </style>
+</head>
+<body>
+<div><img src="img/1.jpg"></div>
+<script>
+    var oDiv = document.getElementsByTagName('div')[0];
+    oDiv.onmousedown=down;
+    function down(e){
+        e=e|| window.event;
+        this.left = this.offsetLeft;
+        this.top = this.offsetTop;
+        this.x = e.clientX;
+        this.y = e.clientY;
+        if(this.setCapture){
+            this.setCapture();
+            this.onmousemove=move;
+            this.onmouseup=up
+        }else {
+            var _this = this;
+            document.onmousemove=function(e){
+                move.call(_this,e)
+            };
+            document.onmouseup=function(e){
+                up.call(_this,e)
+            };
+            e.preventDefault();
+        }
+    }
+    function move(e){
+        e=e||window.event;
+        var curL = e.clientX-this.x+this.left;
+        var curT = e.clientY-this.y+this.top;
+
+        //解决边界值
+        var minL = 0,maxL = (document.documentElement.clientWidth||document.body.clientWidth)-this.offsetWidth;
+        var minT = 0,maxT = (document.documentElement.clientHeight||document.body.clientHeight)-this.offsetHeight;
+        curL=curL<minL?minL:(curL>maxL?maxL:curL);
+        curT = curT<minT?minT:(curT>maxT?maxT:curT);
+        this.style.left = curL+'px';
+        this.style.top = curT+'px';
+    }
+    function up(e){
+        if (this.releaseCapture){
+            this.releaseCapture();
+            this.onmousemove=null;
+            this.onmouseup=null;
+        }else {
+            document.onmousemove=null;
+            document.onmouseup=null;
+        }
+    }
+    //解决鼠标消失的问题
+    //IE中和火狐中用setCaputer来绑定this
+    //谷歌中给document绑定
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+        }
+        @media all and (min-width: 320px){/*显示区域的宽度大于等于320px*/
+            .box{
+                /*background: red;*/
+            }
+        }
+        @media screen and (min-width: 414px){
+            .box{
+                /*background: seagreen;*/
+            }
+        }
+        @media screen and (min-width: 640px) and (max-width: 800px){
+            .box{
+                /*background: gold;*/
+            }
+        }
+        @media screen and (orientation: portrait){/*纵向*/
+            .box{
+                background: greenyellow;
+            }
+        }
+        @media screen and (-webkit-device-pixel-ratio: 1){
+            .box{
+                background: url("../1x.png") no-repeat;
+            }
+        }
+        @media screen and (-webkit-device-pixel-ratio: 2){
+            .box{
+                background: url("../2x.png") no-repeat;
+            }
+        }
+        @media screen and (-webkit-device-pixel-ratio: 3){
+            .box{
+                background: url("../3x.png") no-repeat;
+            }
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>

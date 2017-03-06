@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var obj={name:'zhufeng',age:8};
+    //var obj1=Object.create(obj);//把obj放在obj1的原型上；->obj1是实例； obj是原型；
+    var obj1=myCreate(obj);
+    //myCreate:对Object.create的兼容处理；
+    function myCreate(obj){
+        function Tmp(){};
+        Tmp.prototype=obj;
+        return new Tmp;
+    }
+    function F(){
+        this.x=100;
+    }
+    F.prototype=obj;//这么写constructor会出问题，其他Ok;
+    console.dir(new F)
+    function S(){};
+    S.prototype=obj1;
+    S.prototype.aa=123;
+    console.dir(new S)
+
+
+</script>
+</body>
+</html>

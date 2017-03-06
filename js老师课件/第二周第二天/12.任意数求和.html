@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function sum(){
+//        arguments
+//        callee  函数本身
+        console.log(arguments);
+        var total = null;
+        for(var i=0;i<arguments.length;i++){
+            var cur = Number(arguments[i]);
+            if(!isNaN(cur)){
+                total+=cur;
+            }
+        }
+        return total;
+    }
+    console.log(sum(1,2,3,4,5,'1000','zfpx'))
+
+
+</script>
+
+</body>
+</html>

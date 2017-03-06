@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>照片墙</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul{
+            position: relative;
+            width: 480px;
+            height: 640px;
+            margin: 30px auto;
+            padding: 5px;
+            background: #ccc;
+        }
+        ul li{
+            float: left;
+            width: 150px;
+            height: 150px;
+            margin: 5px;
+            background: lightblue;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        ul li img{
+            width: 100%;
+        }
+
+
+
+    </style>
+
+
+</head>
+<body>
+<ul id="box"></ul>
+
+<script src="js/utils.js"></script>
+<script src="js/event.js"></script>
+<script src="js/move.js"></script>
+<script src="js/Drag.js"></script>
+<script>
+    var oBox = document.getElementById('box');
+    var aLi = document.getElementsByTagName('li');
+    function createLi(n){
+        var frg = document.createDocumentFragment();
+        for (var i=0;i<n;i++){
+            var oLi = document.createElement('li');
+            oLi.innerHTML = '<img src="img/'+(i+1)+'.png" alt="">';
+            frg.appendChild(oLi)
+        }
+        oBox.appendChild(frg);
+        frg = null;
+    }
+    createLi(12);
+    for (var i=aLi.length-1;i>=0;i--){
+        var oLi = aLi[i];
+        oLi.oldColor = utils.css(oLi,'backgroundColor');
+        oLi.style.left = (oLi.l=oLi.offsetLeft)+'px';
+        oLi.style.top = (oLi.t=oLi.offsetTop)+'px';
+        oLi.style.position = 'absolute';
+        oLi.style.margin=0;
+        var drag = new Drag(oLi);
+        drag.photo(aLi);
+    }
+
+
+
+
+</script>
+</body>
+</html>

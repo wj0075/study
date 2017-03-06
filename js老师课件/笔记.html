@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--1、什么是js？
+是一个客户端（运行在浏览器中）轻量级（规则比较开放）的脚本语言（有开发功能）
+2、js是做什么用的？
+1）可以完成交互&#45;&#45;效果
+2）可以完成数据搜集和反馈&#45;&#45;数据
+3、js的组成，组成的每一项是什么？
+ECMAScript：es5、es6、es7（是js的API）
+规定了js的基本规则、操作语句、命名规范、数据类型等
+DOM 文档对象模型  操作上下文 （文档）&#45;&#45; html这个根元素开始 里面所有的内容都是document下的元素
+BOM 浏览器对象模型 操作window 浏览器
+4、js的命名方式？
+1）区分大小写 test Test
+2）驼峰命名法
+a、当单词组合命名的时候，第一个有意义的单词首字母小写，其余有意义的单词首字母小写
+js：className  css：class-name  class_name
+b、不能用数字作为开头 也不能完全使用数字 可以用$ _
+在代码中无论什么命名都不能使用汉字，预防的是乱码
+3）不能使用关键字和保留字
+关键字：在ECMAScript里面定义有意义的
+保留字：将来可能会变成关键字
+5、js的引入方式？
+a、行内式
+b、内嵌式 嵌入式
+c、外链式 外联式
+p.s：如果将js代码块写在了外链式的script标签中，不执行
+p.s：js内嵌式或者外联式应放在body结束标签之前
+6、js的输出方式？
+7、变量
+存储值和代表值 js中的变量可以代表任何东西 因为他是松散数据类型
+var 声明  变量名（是人为取名）=（赋值，将等号右侧的值给到等号左侧的变量）
+变量名在js中不用引号包裹*******
+8、数据类型
+基本数据类型：数字 布尔 字符串 null undefined
+引用数据类型：对象数据类型：{} [] // ****
+            函数数据类型: function
+9、
+对象  {属性名:属性值,.....}
+布尔  true false
+数字  正数 负数 小数 0 NaN
+函数  function 函数名(形参){函数体（js代码块）}   函数名(实参);
+数组  [第一项,第二项,第三项...]--数组里面的每一项都是属性值 属性名是索引
+索引：是从0开始到length-1结束的一组数字，他也是属性名
+对象.属性名
+对象['属性名']
+如果对象中属性名是数字，不能用.的形式获取，只能用[]的形式获取，只有数字才能省略中括号中的引号
+如果不加引号 那么中括号中的内容不是属性名，而是一个变量***************
+
+10、一个等号、两个等号和三个等号****
+两个等号 == 返回值是布尔值  当等号两侧的值都相等的时候 返回true 反之返回false
+比较的时候遵循什么规则：
+1、对象==对象 永远不相等 {} [] //
+[]==[] false
+{}=={} false
+[]=={} false
+function sum(){}==function sum(){}  false
+2、对象==字符串  对象转化为字符串，调用的是 对象.toString()
+{}.toString()==>'[object Object]'
+[].toString()==>''
+3、对象==布尔    对象转化为字符串，调用的是 对象.toString()，字符串转化为数字，调用的是Number()
+                {}==>Number([object Object])==>NaN
+                []==>Number('')==>0
+                布尔转化为数字  true==>1  false==>0
+                []==false ==>true
+                {}==false ==>false
+4、对象==数字    对象转化为字符串，调用的是 对象.toString()，字符串转化为数字，调用的是Number()
+5、字符串==布尔  字符串转化为数字，调用的是Number()
+               布尔转化为数字  true==>1  false==>0
+6、字符串==数字  字符串转化为数字，调用的是Number()
+7、布尔==数字    布尔转化为数字  true==>1  false==>0
+8、null==undefined  ==》true     null===undefined  ==》false
+9、null和undefined与其他数据类型比较 永远不相等
+10、NaN==NaN--》false
+
+
+-->
+
+<!--本就是对象的内置属性
+innerHTML
+innerText-->
+
+<!--<div id="div">
+    <ul>
+        <li>我是一个列表项</li>
+        <li>我是一个列表项</li>
+        <li>我是一个列表项</li>
+        <li>我是一个列表项</li>
+        <li>我是一个列表项</li>
+    </ul>
+</div>-->
+<script>
+    /*var oList = document.getElementsByTagName('li');
+    console.log(oList);
+    oList[0].style.backgroundColor = 'red';
+    oList[3].style.backgroundColor = 'green';*/
+    //oList[0] 是通过索引获取这一组元素中的第一个li
+    //.是的 的意思
+    //style.backgroundColor  style样式   backgroundColor 背景颜色的属性名
+    //=赋值
+    //'red'属性值
+    //    var oDiv=document.getElementById('div');
+    //    console.log(oDiv.innerText);
+    //oDiv.innerHTML="我是一个div";
+    //oDiv.innerText="我是一个div";
+    //    oDiv.innerHTML="<p style='background: red;'>我是一个div</p>";
+    //oDiv.innerText="<p style='background: red;'>我是一个div</p>";
+
+    //[]==!{};==>true
+    /*
+    * 对象==布尔
+    * [].toString()==>''
+    * Number('')==>0
+    * !先将！后的值转化为布尔值 再取反 Boolean()
+    * 0 '' null undefined NaN为false
+    * Boolean({})==》true
+    * !true==>false
+    * false==>0
+    * */
+    //[]=={}==>false
+    //!(NaN==0)==》true
+    /*
+    * ()在js中有优先运算的功能
+    * NaN==0==》false
+    * ！false==》true
+    * */
+    //false==[] ==》true
+
+    //false==![]==》true
+
+    //''==!0    ==》false
+
+
+    //每一种运算的返回值 都要记清楚
+    //isNaN()  --> 返回布尔值
+    //Number() --> 有效数字或者NaN
+    //parseFloat()/parseInt() --> 有效数字或者NaN
+    //.toString() --> 字符串
+    //!   先将！后的值转化为布尔值 再取反-->返回布尔值
+    //!!  先将第二个！后的值转化为布尔值 再取反 再取反 -->返回布尔值
+    //Boolean() -->返回布尔值
+
+    //对象的内置属性：对象天生自带的属性
+    //对象的自定义属性：人为给对象添加的属性
+
+
+
+
+
+
+
+
+
+</script>
+
+<!--
+js中的三种判断语句
+判断用在什么地方：在不同的情况下得到的不同结果
+if else--可以用在任何的判断情况中
+if(条件1){
+    条件1成立时执行的代码
+}else if(条件2){
+    条件2成立时执行的代码
+}...else{
+    以上条件都不成立执行的代码
+}
+if判断中()内的条件返回值是什么？--布尔值
+
+
+三元（三目）运算符--用在简单的if判断情况中
+条件?条件成立时执行的代码:条件不成立执行的代码;
+条件?条件成立时执行的代码:void 0;
+条件?条件成立时执行的代码:void (0);
+条件?(条件成立时执行的代码1,条件成立时执行的代码2):条件不成立执行的代码;
+
+switch--用在不同值的不同操作
+他本身有一个条件，我们用这个条件分别和不同的条件去进行比较，如果条件成立，执行一段代码，需要注意switch判断是===的判断
+条件===条件1
+条件===条件2
+... ...
+switch (条件){
+            case 条件1:
+                当条件===条件1 的时候执行的代码
+                break;
+            case 条件2:
+                当条件===条件2 的时候执行的代码
+                break;
+            case 条件3:
+                当条件===条件3 的时候执行的代码
+                break;
+            default:
+                以上都不成立执行的代码
+        }
+        break的作用：跳出本次判断
+        如果判断中不加入break 那么当一个条件成立后，后面的代码都会执行一遍，直到遇到下一个break停止
+        如果整个判断中都没break 那么当一个条件成立后，后面的代码都会执行一遍
+        default和default后的break都可以省略
+
+-->
+<!--<ul>
+    <li><a href="javascript:;"></a></li>
+    <li><a href="javascript:;"></a></li>
+    <li><a href="javascript:void (0);"></a></li>
+</ul>-->
+<script>
+    /*if(0){
+        console.log('我是巨蟹座');
+        console.log('6.21-7.21');
+    }else{
+        console.log('我是天蝎座');
+        console.log('10.23-11.21 ');
+    }*/
+    //0?(console.log('我是巨蟹座'),console.log('6.21-7.21')):(console.log('我是天蝎座'),console.log('10.23-11.21 '));
+    //0?console.log('我是巨蟹座'):console.log('我是天蝎座');
+    /*if(0){
+        console.log('我是巨蟹座');
+    }*/
+    //0?console.log('我是巨蟹座'):void (0);
+    /*if(!(0==false)){
+        console.log('我是巨蟹座');
+    }else{
+        console.log('我是天蝎座');
+    }*/
+    /*var num=1;
+    if(num<1){
+        console.log('珠峰');
+    }else if (num=='1'){//1=='1' -- 1==1
+        console.log('珠峰培训');
+    }else{
+        console.log('耿大爷');
+    }*/
+
+    /*switch (0){
+        case 0:
+            //0===0
+            console.log(4);
+            break;
+        case 1:
+            //0===1
+            console.log(5);
+            break;
+        default:
+            console.log(6);
+    }*/
+</script>
+
+
+<!--
+js中的循环
+for--用在一直长度的循环（你知道要循环多少次）
+
+定义for循环
+1、声明一个变量 设置一个初始值(根据实际需求，人为设定)
+2、设定循环的范围
+3、执行循环体中的内容
+4、进行自增操作
+for(var i=0;i<10;i++){
+    循环体
+}
+break出现在循环中，结束整个循环，break后面的代码都不会执行了
+continue出现在循环中，循环体中continue后面的代码不执行，但是循环正常执行
+
+for in 循环  对象中有多少项 就循环多少次
+用来遍历对象的一种循环  {} []
+var obj={
+    name:'zhufeng',
+    age:7
+}
+for(var 变量名 in obj){
+
+}
+变量名  代表这个对象中的属性名
+in     在...里
+obj   我们要遍历的对象
+
+获取属性值的时候 属性名只能用[]进行调取，因为我们遍历对象中的每一项的时候，不知道属性名是否是数字
+-->
+<script>
+    /*var obj={
+        name:'zhufeng',
+        age:7,
+        1:'6798'
+    };
+    for(var key in obj){
+        console.log(key);
+        console.log(obj[key]);
+    }*/
+    var ary=[1,"珠峰",function () {},true];
+    console.dir(ary);
+    for (var i in ary){
+        console.log(i);
+        console.log(ary[i]);
+    }
+    //length 是不可枚举属性 for in循环是不能打印出来的
+    // （基本上不可枚举属性都是内置属性）
+</script>
+<script>
+    /*for(var i=0;i<10;i++){
+        //i=0 0<10 console-->0 i++ -->1
+        //i=1 1<10 console-->1 i++ -->2
+        //...
+        //i=9 9<10 console-->9 i++ -->10
+        //i=10 10<10 到此整个循环结束
+        console.log(i);
+        //0-9
+    }
+    console.log(i);*/
+    //10 循环后i的最终值是10 所以在循环外获取这个变量里面的值就是i最终循环后的值
+    /*for(var i=0;i++;i<10){//i++;i<10 整体为循环条件
+        console.log(i);
+    }*/
+    /*for(var i=1;i<=i;i++){ i永远等于i 无限循环
+        alert(i);
+    }*/
+    /*for(var i=1;i<=7;i+=2){
+        console.log(i);
+    }*/
+    /*for(var i=0;i<7;i++){
+        console.log(i);
+        continue;
+        break;
+        i+=2;
+    }*/
+    //console.log(i);
+</script>
+
+
+<!--
+基本数据类型和引用数据类型的区别
+== 的10个规则
+break
+for循环
+if  switch 的区别
+返回值
+内置属性和自定义属性
+自定义属性*********
+-->
+<ul>
+    <li class="list"></li>
+    <li class="list"></li>
+    <li class="list"></li>
+</ul>
+[li,li,li]
+for(var i=0;i<oLis.length;i++){
+    oLis[i].index=oLis[i].className;
+    oLis[i].className="bg";
+}
+我向获取到原来这个li的className？
+
+
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="animate.min.css">
+    <style>
+
+        #div {
+            width: 300px;
+            height: 400px;
+            background: red;
+            opacity: .4;
+            filter: alpha(opacity=40);
+        }
+    </style>
+</head>
+
+<div id="div" class="animated zoomInLeft infinite"></div>
+<div class="box1 box2"></div>
+<div class="box1 box2 box3"></div>
+<body>
+<script>
+    var oDiv = document.getElementById('div');
+    //getByClass: 功能：通过class名来获取一组元素；
+    //参数：类名。和父级元素
+    function getByClass(strClass, parent) {
+        parent = parent || document;
+
+        if ('getComputedStyle' in window) {
+            ary = Array.prototype.slice.call(parent.getElementsByClassName(strClass));
+        } else {
+            var nodeList = parent.getElementsByTagName('*');
+            var classArr = strClass.replace(/(^ +)|( +$)/g, '').split(/\s+/g);
+            var ary = [];
+            for (var i = 0; i < nodeList.length; i++) {
+                var cur = nodeList[i];
+                var bOk = true;
+                for (var j = 0; j < classArr.length; j++) {
+                    var reg = new RegExp('(^| +)' + classArr[i] + '( +|$)', 'g');
+                    if (!reg.test(cur.className)) {
+                        bOk = false;
+                        break;
+                    }
+                }
+                if (bOk) {
+                    ary.push(cur);
+                }
+            }
+        }
+        return ary;
+    }
+    // console.log(getgetByClass('box2'))
+    //hasClass    功能：判断元素身上时候有某个class名
+    //参数；类名   元素
+    function hasClass(curEle, cName) {
+        var reg = new RegExp('(^| +)' + cName + '( +|$)', 'g');
+        return reg.test(curEle.className);
+    }
+    // console.log(hasClass(oDiv,'box1'));
+
+    //addClass  功能：给呀元素身上添加一堆类名；
+    function addClass(curEle, strClass) {
+        var ary = strClass.replace(/(^ +)|( +$)/g, '').split(/\s+/g);
+        for (var i = 0; i < ary.length; i++) {
+            if (!hasClass(curEle, ary[i])) {
+                curEle.className += ' ' + ary[i];
+            }
+        }
+        curEle.className = curEle.className.replace(/(^ +)|( +$)/g, '').replace(/\s+/g, ' ');
+    }
+    // addClass(oDiv,'box2 box3');
+    //removeClass  功能：移除元素身上的class名（当元素身上有这个class名才能移除）；
+    function removeClass(curEle, strClass) {
+        var classArr = strClass.replace(/(^ +)|( +$)/g, '').split(/\s+/g);
+        for (var i = 0; i < classArr.length; i++) {
+            if (hasClass(curEle, classArr[i])) {
+                var reg = new RegExp('(^| +)' + classArr[i] + '( +|$)', 'g');
+                curEle.className = curEle.className.replace(reg, '').replace(/(^ +)|( +$)/g).replace(/\s+/g, ' ')
+            }
+        }
+    }
+    //removeClass(oDiv,'box1 box4')
+
+    //getCss  功能：获取样式
+    function getCss(curEle, attr) {
+        var val = null;
+        var reg = null;
+        if ('getComputedStyle' in window) {
+            val = getComputedStyle(curEle, null)[attr];
+            // console.log(val)
+        } else {
+            if (attr === 'opacity') {
+                val = curEle.currentStyle['filter'];
+                reg = /^alpha\(opacity[=:](\d+(\.\d+)?)\)$/g;
+                return reg.test(val) ? RegExp.$1 / 100 : 1;
+            }
+            val = curEle.currentStyle[attr];
+
+        }
+        reg = /^(left|right|top|bottom|width|height|((margin|padding)(left|right|top|bottom)?))$/gi;
+        return reg.test(attr) ? parseFloat(val) : val;
+    }
+    //console.log(getCss(oDiv,'opacity'));
+    //setCss   功能：给当前元素设置一个样式
+    function setCss(curEle, attr, value) {
+        //对透明度做兼容处理
+
+        if (attr === 'opacity') {
+            curEle.style.opacity = value;
+            curEle.style.filter = 'alpha(opacity=' + value * 100 + ')';
+            return;
+        }
+        if (attr === 'float') {
+            curEle.style.cssFloat = value;
+            curEle.style.styleFloat = value;
+            return;
+        }
+        //对单位做处理
+        var reg = /^([+-])?(\d|(\.\d+)?)|(px|pt|rem|em)?$/g;
+        if (reg.test(value)) {
+            if (Number(value) || Number(value) === 0) {
+                value = value + 'px';
+            }
+        }
+        curEle.style[attr] = value
+    }
+    //setCss(oDiv,'background','green')
+    //setGroupCss; 功能：给元素设置一组样式
+    function setGroupCss(curEle, obj) {
+        if (Object.prototype.toString.call(obj) === '[object Object]') {
+            for (var key in obj) {
+                setCss(curEle, key, obj[key])
+            }
+        }
+    }
+
+    //css,功能：功能齐全
+    function css(curEle) {
+        var argTwo = arguments[1];
+        if (typeof argTwo === 'string') {
+            var value = arguments[2];
+            if (value) {
+                setCss(curEle, argTwo, value)
+            } else {
+                return getCss(curEle, argTwo)
+            }
+        }
+        if (Object.prototype.toString.call(argTwo) === '[object Object]') {
+            setGroupCss(curEle, argTwo);
+        }
+    }
+    //css(oDiv,'height',200);
+    //win  功能：盒子模型兼容
+    function win(attr, value) {
+        if (value === undefined) {
+            return document.documentElement[attr] || document.body[attr];
+        } else {
+            document.documentElement[attr] = document.boty[attr] = value;
+        }
+    }
+    //offset  功能：获取当前元素距离body的偏移量
+    function offset(curEle) {
+        var par = curEle.offsetParent;
+        var l = curEle.offsetLeft;
+        var t = curEle.offsetTop;
+        while (par) {
+            if (window.navigator.userAgent.indexOf('MSIE 8') === -1) {
+                l += par.clientLeft;
+                t += par.clientTop;
+            }
+            l += par.offsetLeft;
+            t += par.offsetTop;
+            par = par.offsetParent;
+        }
+        return {left: l, top: t};
+    }
+
+    function getByClass(strClass, parent) {
+        parent = parent || document;
+
+        if ('getComputedStyle' in window) {
+            return Array.prototype.slice.call(parent.getElementsByClassName(strClass));
+        } else {
+            var classArr = strClass.replace(/(^ +)|( +$)/g, '').split(/\s+/g);
+            var nodeList = parent.getElementsByTagName('*');
+            var ary = [];
+            for (var i = 0; i < nodeList.length; i++) {
+                var cur = nodeList[i];
+                var bOk = true;
+                for (var j = 0; j < classArr.length; j++) {
+                    var reg = new RegExp('(^| +)' + classArr[i] + '( +|$)', 'g');
+                    if (!reg.test(cur.className)) {
+                        bOk = false;
+                        break;
+                    }
+                }
+                if (bOk) {
+                    ary.push(cur);
+                }
+            }
+        }
+        return ary;
+    }
+
+    //移除类名
+    function removeClass(curEle, strClass) {
+        var classArr = strClass.replace(/(^ +)|( +$)/g, '').split(/\s+/g);
+        for (var i = 0; i < classArr.length; i++) {
+            var reg = new RegExp('(^| +)' + classArr[i] + '( +|$)', 'g');
+            if (reg.test(curEle.className)) {
+                curEle.className = curEle.className.replace(reg, '').replace(/(^ +)|( +$)/g, '').replace(/\s+/g, ' ');
+            }
+        }
+    }
+    //添加样式
+    function setCss(curEle, attr, val) {
+        if (attr === 'float') {
+            curEle.style.cssFloat = val;
+            curEle.atyle.styleFloat = val;
+            return;
+        }
+        if (attr === 'opacity') {
+            curEle.style.opacity = val;
+            curEle.style.filter = 'alpha(opacity=' + val * 100 + ')';
+            return;
+        }
+        //对单位处理
+        var reg = /^([+|-])?(\d+(\.\d+)?)(px|pt|rem|em|%)?$/;
+        if (reg.test(val)) {
+            if (Number(val) || Number(val) === 0) {
+                curEle.style[attr] = val + 'px'
+            }
+        }
+        curEle.style[attr] = val;
+    }
+
+
+</script>
+</body>
+</html>

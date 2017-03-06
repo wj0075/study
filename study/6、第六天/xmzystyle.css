@@ -1,0 +1,68 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+ul{
+    list-style: none
+}
+a{
+    text-decoration: none;
+    color: #86a5a5;
+}
+.header{
+    height: 40px;
+    background: #323232;
+}
+.nav{
+    width: 1200px;
+    margin: 0 auto;
+}
+.navleft ul{
+    width: 800px;
+}
+.navleft ul li{
+    float: left;
+    padding-right: 5px;
+    line-height: 40px;
+    font-size: 14px;
+}
+.navright{
+    line-height: 40px;
+    width: 120px;
+    height: 40px;
+    float: right;
+    margin-left: 10px;
+}
+.navright i{
+    width: 20px;
+    height: 13px;
+    display: inline-block;
+    background-image: url("shoppingcar.png");
+    background-position: 0 -22px;
+    vertical-align: -1px;
+}
+.navright:hover{
+    background: white;
+}
+.navright:hover .bianhua{
+    color: red;
+}
+.navright:hover i{
+    background-image: url("shoppingcar.png");
+    background-position: 0 0;
+}
+/*.navright:hover span{
+    color: red;
+}*/
+.navcen{
+    width: 300px;
+    float: right;
+}
+.navcen ul li{
+    line-height: 40px;
+    float: right;
+    padding-right: 10px;
+}
+a:hover{
+    color: white;
+}

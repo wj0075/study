@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //var strCode='2016-6-23 6:41:30';
+   // var tmp = '{0}年{1}月{2}日 {3}时{4}分{5}秒';
+//    var ary = [2016,11,6,11,5,30];
+//    tem=tem.replace(/{(\d)}/g,function($0,$1){
+//        console.log($0);
+//        return ary[$1];
+//    });
+//    console.log(tem);
+
+///*需求：strCode.formatDate(tmp);->'2016年11月6日 11时5分30秒'；
+/*    String.prototype.formatDate=function(tmp){
+     var ary = [];
+     ary = this.match(/\d+/g);
+     tmp = tmp.replace(/{(\d)}/g,function($0,$1){
+     console.log($1);
+     return ary[$1];
+     });
+     console.log(tmp);
+     return tmp;
+     };
+
+     var aa=strCode.formatDate(tmp);
+     console.log(aa);
+
+
+     //老师的封装方法
+     String.prototype.formatDate=function(tmp){
+     //1.把实例字符串中的数组存到数组中
+     var ary = this.match(/\d+/g);
+     var tmpStr = tmp||'{0}年{1}月{2}日 {3}时{4}分{5}秒';
+     tmpStr = tmpStr.replace(/{(\d)}/g,function($0,$1){
+     var n = ary[$1];
+     n=n>=0&&n<10?'0'+Number(n):n;
+     return n;
+     });
+     return tmpStr;
+     };*/
+   /* var strCode='2016-6-23 6:41:30';
+    var tmp = '{0}年{1}月{2}日 {3}时{4}分{5}秒';
+    String.prototype.formatDate=function(tmp){
+      //1.把实例字符串中的数字存到数组中去
+        var ary = this.match(/\d+/g);
+        var tmpStr = tmp||'{0}年{1}月{2}日 {3}时{4}分{5}秒';
+        tmpStr = tmpStr.replace(/{(\d)}/g,function($0,$1){
+            var n=ary[$1];
+            n=n>=0&&n<10?'0'+Number(n):n;
+            return n;
+        });
+        return tmpStr;
+
+    };
+
+    var aa = strCode.formatDate();
+    console.log(aa);*/
+
+    //日期格式化封装
+
+    var strCode = '2016-6-23 6:41:30';
+    var tmp = '{0}{1}{2}{3}{4}{5}';
+    String.prototype.formatDate = function(tmp){
+        var tmpStr = tmp||'{0}年{1}月{2}日 {3}时{4}分{5}秒'
+        var ary = this.match(/\d+/g);
+        tmpStr = tmpStr.replace(/{(\d+)}/g,function($0,$1){
+            var n = ary[$1];
+            n=n>=0&&n<10?'0'+Number(n):n;
+            return n;
+        });
+        return tmpStr;
+    };
+    var bb = strCode.formatDate();
+    console.log(bb)
+
+
+
+
+
+
+</script>
+</body>
+</html>

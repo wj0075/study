@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Fn(){
+        this.x=100;
+        this.y=200;
+    }
+    Fn.prototype.aa=function(){};
+    var f=new Fn;
+    //for：可以打印出自定义的属性和方法： 私有+公有；
+    //propertyIsEnumerable:可以打印出自定义的属性和方法:私有；
+    //hasOwnProperty;
+    for(var attr in f){
+        /*if(f.propertyIsEnumerable(attr)){
+            console.log(attr);
+        }*/
+        if(f.hasOwnProperty(attr)){
+            console.log(attr);
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大小展示型图片放大</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            position: relative;
+            width: 840px;
+            height: 200px;
+            margin: 20px auto;
+
+        }
+        .box li{
+            display: inline-block;
+            margin-left: 10px;
+            width: 200px;
+            height: 200px;
+        }
+        .box li img{
+            width: 100%;
+            height: 100%;
+        }
+        #hide{
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 400px;
+            height: 400px;
+        }
+        #hide img{
+            width: 100%;
+
+        }
+
+
+
+    </style>
+</head>
+<body>
+<ul class="box" id="box">
+    <li><img src="img/apple_1.jpg" realImg="img/apple_1_bigger.jpg" alt=""></li><li><img src="img/apple_2.jpg" realImg="img/apple_2_bigger.jpg" alt=""></li><li><img src="img/apple_3.jpg" realImg="img/apple_3_bigger.jpg" alt=""></li><li><img src="img/apple_4.jpg" realImg="img/apple_4_bigger.jpg" alt=""></li>
+    <div id="hide"><img src="" alt=""></div>
+</ul>
+<script src="../../jquery-1.11.3.js"></script>
+<script>
+    var $oBox = $('#box');
+    var $oHide = $("#hide");
+    var $pos = $oBox.offset();
+    $oBox.on('mouseover',function(e){
+        $oHide.show().find('img').attr("src", e.target.getAttribute('realImg'))
+    });
+    $oBox.on("mousemove",function(e){
+        $oHide.css({
+            left: e.clientX-$pos.left+10,
+            top: e.clientY-$pos.top+10
+        })
+    });
+    $oBox.on('mouseleave',function(){
+        $oHide.hide();
+    })
+
+
+
+
+</script>
+</body>
+</html>

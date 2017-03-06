@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            padding: 40px;
+            margin: 50px;
+            border: 1px solid #ccc;
+            background-color: dodgerblue;
+        }
+    </style>
+</head>
+<body>
+<div>
+</div>
+
+<script>
+//解构赋值   var{top,left}={top:l,left:t}
+
+    function offset(ele){
+        let par = ele.offsetParent;
+        let l=ele.offsetLeft;
+        let t=ele.offsetTop;
+        while (par){
+            if (window.navigator.userAgent.indexOf('MSIE 8')===-1){
+                l+=par.clientLeft;
+                t+=par.clientTop;
+            }
+            l+=par.offsetLeft;
+            t+=par.offsetTop;
+            par=par.offsetParent
+        }
+        return {left:l,aa:t};
+    }
+    var oDiv = document.getElementsByTagName('div')[0];
+    var {left,aa} = offset(oDiv);
+    console.log(left,aa);
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str = 'dsfjksjdfaksjdfksjdfffdksasldkf';
+    //思路1，先转换成数组进行排序，在转换成字符串；利用重复子项来捕捉，利用分组捕捉到具体的某一个值
+ /*   str = str.split('').sort(function(a,b){return a.localeCompare(b)}).join('');
+    console.log(str);
+    var max = 0;
+    var maxStr = '';
+    str.replace(/(\w)\1+/gi,function($0,$1){
+        if(max<$0.length){
+            max = $0.length;
+            maxStr = $1;
+        }else if (max==$0.length){
+            maxStr+=$1;
+        }
+    });
+
+    console.log(max,maxStr);*/
+
+    //思路2，利用键值对，来记录次数。通过找到的最到次数一次来找对应的字母
+    var obj = {};
+    for(var i=0;i<str.length;i++){
+        var cur = str[i];
+        if(obj[cur]){
+            obj[cur]++;
+        } else {
+            obj[cur]=1;
+        }
+    }
+    console.log(obj);
+    var max = obj.a;
+    for(var key in obj){
+        if (max<obj[key]){
+            max=obj[key];
+        }
+    }
+    console.log(max);
+    var maxAry=[];
+    for (var key in obj){
+        if(obj[key]==max){
+            maxAry.push(key);
+        }
+    }
+    console.log(maxAry)
+
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>forEach理解</title>
+</head>
+<body>
+<script>
+    //forEach:用来遍历数组中的每一项
+    //1）数组中有几项，那么我们传递进去的匿名回调函数就需要执行几次
+    //2）每一次执行匿名函数的时候，还给其传递了三个参数值；数组中的当前项item,当前项的索引index，原始数组input。
+    //3）理论上我们的方法没有返回值，仅仅是遍历数组中的每一项，部队原来的数组进行修改，但是我们可以通过数组的索引来修改原来的数组
+    /*ary=[12,32,43,54,65];
+    var res=ary.forEach(function(item,index,input){
+        //console.log(arguments);
+        input[index]=item*10;
+
+    });
+    console.log(res);//undefind
+    console.log(ary);//会对原来的数组产生改变*/
+
+
+    //map:和forEach非常相似，都是用来遍历数组中的每一项
+    //1)map的回调函数支持return返回值，return的是啥，相当于把数组中的这一项给变为啥（但不影响原来的数组，只是相当于把原数组克隆一项。把克隆的这一份的数组中的对应项改变）
+    /*ary=[12,32,43,54,65];
+    var res = ary.map(function(item,index,input){
+        return item*10;
+    });
+    console.log(res);
+    console.log(ary);*/
+
+    //2-》兼容模式
+    var obj = {name:'zhufengpeixun'};
+    var ary=[12,32,43,54,65];
+
+    Array.prototype.myForEach=function(callback,context){
+        context=context||window;
+        if ("forEach" in Array.prototype){
+            this.forEach(callback,context);
+            return;
+        }
+        //兼容模式
+        for(var i=0;i<this.length;i++){
+            callback && callback.call(context,this[i],i,this);
+        }
+    };
+    Array.prototype.myMap=function(callback,context){
+        context=context||window;
+        if ('map' in Array.prototype){
+            return this.map(callback,context);
+        }
+        var ary = [];
+        for(var i=0;i<this.length;i++){
+            if (typeof callback=== "function") {
+                var val=callback.call(context, this[i], i, this);
+                ary[ary.length]=val;
+            }
+        }
+        return ary;
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+1.sort(function(a,b){return b-a});
+2.ary.length--; ary.length=ary.length-1; ary.length-=1; ary.pop(); ary.splice(ary.length-1,1) ary.splice(ary.length-1);
+3.slice(n-1,m);
+4.获取当前浏览器可视区域的宽度(兼容所有的浏览器)
+document.documentElement.clientWidth||document.body.clientWidth;
+5.父级.appendChild(newEle);
+父级.insertBefore(newEle,oldEle);
+
+oDiv.innerHTML+='<div></div>';
+6.
+7.Math.round(Math.random()*(m-n)+n);
+8.replace();
+    字符串方法中，跟正则配合方法：
+    1）replace('xxx',reg);
+    2)search(reg);
+    3)match(reg);
+9.
+10.true true;
+二大题：
+1）undefined undefined;
+2)珠峰 5000；  undefined 5000;
+3)[300]  [100]
+4)9 16 36 64;
+5)
+
+
+
+
+
+
+
+
+
+

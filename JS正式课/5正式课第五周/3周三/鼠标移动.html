@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background: #ccc;
+            margin: 10px auto;
+
+        }
+        #mark{
+            position: absolute;
+            left: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var oBox = document.getElementById('box');
+    var oDiv = null;
+    oBox.onmouseover = function(){
+       oDiv = document.createElement('div');
+        oDiv.id = 'mark';
+       /* oDiv.onmouseover=function(e){
+            e=e||window.event;
+            e.stopPropagation? e.stopPropagation(): e.cancelBubble=true
+        };*/
+        this.appendChild(oDiv);
+    };
+    oBox.onmousemove = function(e){
+        e = e||window.event;
+        oDiv.style.left= e.clientX-this.offsetLeft+'px';
+        oDiv.style.top= e.clientY-this.offsetTop+'px'
+    };
+    oBox.onmouseout=function(){
+       /* oDiv.onmouseover=function(e){
+            e=e||window.event;
+            e.stopPropagation? e.stopPropagation(): e.cancelBubble=true
+        };*/
+        this.removeChild(oDiv);
+    }
+
+
+
+</script>
+</body>
+</html>

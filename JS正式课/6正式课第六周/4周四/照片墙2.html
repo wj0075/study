@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>照片墙2</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        img{
+            vertical-align: top;
+            border: none;
+            width: 100%;
+        }
+        .box{
+            position: relative;
+            width: 480px;
+            height: 640px;
+            margin: 30px auto;
+            background: #ccc;
+            padding: 5px;
+        }
+        .box li{
+            float: left;
+            width: 150px;
+            height: 150px;
+            margin: 5px;
+            background: lavender;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+<ul class="box" id="box">
+   <!-- <li><img src="img/1.png" alt=""></li>
+    <li><img src="img/2.png" alt=""></li>
+    <li><img src="img/3.png" alt=""></li>
+    <li><img src="img/4.png" alt=""></li>
+    <li><img src="img/5.png" alt=""></li>
+    <li><img src="img/6.png" alt=""></li>
+    <li><img src="img/7.png" alt=""></li>
+    <li><img src="img/8.png" alt=""></li>
+    <li><img src="img/9.png" alt=""></li>
+    <li><img src="img/10.png" alt=""></li>
+    <li><img src="img/11.png" alt=""></li>
+    <li><img src="img/12.png" alt=""></li>-->
+</ul>
+<script src="../../utils.js"></script>
+<script src="js/event.js"></script>
+<script src="js/move.js"></script>
+<script src="js/Drag.js"></script>
+<script>
+    var oUl =document.getElementById('box');
+    var aLi = document.getElementsByTagName('li');
+    function li12(n){
+        var frg = document.createDocumentFragment();
+        for(var i=0;i<n;i++){
+            var oLi = document.createElement('li');
+            oLi.innerHTML = '<img src="img/'+(i+1)+'.png" alt="">';
+            frg.appendChild(oLi);
+        }
+        oUl.appendChild(frg);
+        frg=null;
+    }
+    li12(12);
+   for (var i=aLi.length-1;i>=0;i--){
+       //浮动元素转定位元素
+       var oLi = aLi[i];
+       oLi.zIndex=0;
+       oLi.oldColor = utils.css(oLi,'backgroundColor');
+       oLi.style.left = (oLi.l=oLi.offsetLeft)+'px';
+       oLi.style.top = (oLi.t=oLi.offsetTop)+'px';
+       oLi.style.position = 'absolute';
+       oLi.style.margin = 0;
+       //进行拖动
+       new Drag(oLi).on('selfDown',creaseIndex).on('selfMove',hited).on('selfUp',changePos);
+   }
+    //提升以下层级
+    function creaseIndex(){
+        this.ele.style.zIndex = ++oLi.zIndex
+    }
+    //判断任意两个元素相撞
+    function isHited(l,r){
+        if (l.offsetLeft+ l.offsetWidth< r.offsetLeft|| l.offsetTop+ l.offsetHeight< r.offsetTop|| l.offsetLeft> r.offsetLeft+ r.offsetWidth|| l.offsetTop> r.offsetTop+ r.offsetHeight){
+            return false
+        }else {
+            return true;
+        }
+    }
+    //找到当前元素所有碰撞到的元素。
+    function hited(){
+        this.ary=[];
+        for(var i=0;i<aLi.length;i++){
+            var oLi = aLi[i];
+            if (this.ele==oLi) continue;
+            if (isHited(this.ele,oLi)){
+                this.ary.push(oLi);
+                oLi.style.background = 'red';
+            }else {
+                oLi.style.background = oLi.oldColor;
+            }
+        }
+    }
+    function changePos(){
+        //先得到数组，求出距离
+        var ary = this.ary;
+        if(ary && ary.length){
+            for(var i=0;i<ary.length;i++){
+                var oLi = ary[i];
+                oLi.dis = Math.pow(this.ele.offsetLeft-oLi.offsetLeft,2)+Math.pow(this.ele.offsetTop-oLi.offsetTop,2);
+                oLi.style.background=oLi.oldColor;
+            }
+            ary.sort(function(a,b){
+                return a.dis- b.dis;
+            });
+            var shortest = ary[0];
+            animate({
+                id:this.ele,
+                target:{
+                    left:shortest.l,
+                    top:shortest.t
+                }
+            });
+            animate({
+                id:shortest,
+                target:{
+                    left:this.ele.l,
+                    top:this.ele.t
+                }
+            });
+            var l=this.ele.l,t = this.ele.t;
+            this.ele.l=shortest.l,this.ele.t=shortest.t;
+            shortest.l=l,shortest.t=t;
+            this.ary=[];
+        }else {
+            animate({
+                id:this.ele,
+                target:{
+                    left:this.ele.l,
+                    top:this.ele.t
+                }
+            });
+        }
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

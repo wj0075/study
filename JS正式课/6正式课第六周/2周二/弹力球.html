@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹力</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 200px;
+            background: blue;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script src="../../utils.js"></script>
+<script src="js/event.js"></script>
+<script>
+
+
+    var oDiv = document.getElementsByTagName('div')[0];
+    var tmp = 0;
+    ev.on(oDiv,'selfdown',time1);
+    ev.on(oDiv,'selfdown',time2);
+    ev.on(oDiv,'selfup',fly1);
+    ev.on(oDiv,'selfup',drop1);
+    ev.on(oDiv,'mousedown',down);
+
+
+    function time1(){
+        clearTimeout(this.flyTimer)
+    }
+    function time2(){
+        clearTimeout(this.dropTimer);
+    }
+    function fly1(){
+        fly.call(this)
+    }
+    function drop1(){
+        drop.call(this)
+    }
+
+
+    function down(e){
+        e = e||window.event;
+        this.left = this.offsetLeft;
+        this.top = this.offsetTop;
+        this.x = e.clientX;
+        this.y = e.clientY;
+        this.MOVE = ev.processThis(move,this);
+        this.UP = ev.processThis(up,this);
+        if(this.setCapture){
+            this.setCapture();
+            ev.on(oDiv,'mousemove',move);
+            ev.on(oDiv,'mouseup',up);
+        }else {
+            ev.on(document,'mousemove',this.MOVE);
+            ev.on(document,'mouseup',this.UP)
+        }
+        //clearTimeout(this.flyTimer);
+        //clearTimeout(this.dropTimer);
+        ev.fire(this,'selfdown',e);
+        this.prev=null;
+    }
+    function move(e){
+        e = e || window.event;
+        var curL = e.clientX-this.x+this.left;
+        var curT = e.clientY-this.y+this.top;
+        this.style.left = curL+'px';
+        this.style.top = curT+'px';
+        //在移动过程中，需要计算鼠标箭头移动了多少，以及快慢
+        if(!this.prev){
+            this.prev = e.clientX;//没有的情况下，先给它当前的值
+        }else {
+            //在有了的情况。只要鼠标移动就给他重新赋值，看最后移动了多少,求以下速度
+            this.speedX = e.clientX-this.prev;
+            this.prev = e.clientX;
+        }
+        ev.fire(oDiv,'selfmove',e)
+    }
+    function up(e){
+        e = e || window.event;
+        if (this.releaseCapture){
+            this.releaseCapture();
+            ev.off(oDiv,'mousemove',move);
+            ev.off(oDiv,'mouseup',up);
+        }else {
+            ev.off(document,'mousemove',this.MOVE);
+            ev.off(document,'mouseup',this.UP)
+        }
+        ev.fire(oDiv,'selfup',e);
+        //fly.call(this);//当抬起的时候，让元素动起来左右；
+        //drop.call(this);
+    }
+    function fly(){
+        clearTimeout(this.flyTimer);
+        this.speedX*=0.8;
+        var l = this.offsetLeft+this.speedX;
+        var minL = 0,maxL = utils.win('clientWidth')-this.offsetWidth;
+        /*l=l<minL?minL:(l>maxL?maxL:l);*/
+        if (l<minL){
+            l=0;
+            this.speedX*=-1;
+        }else if(l>maxL){
+            l=maxL;
+            this.speedX*=-1;
+        }
+
+        if (Math.abs(this.speedX)>=0.5){
+            this.style.left = l+'px';
+            this.flyTimer=setTimeout(ev.processThis(fly,this),10);
+        }
+    }
+    function drop(){
+        if (!this.speedY){
+            this.speedY= 9.8
+        }else {
+            this.speedY+=9.8;
+        }
+        this.speedY*=0.93;
+        var t = this.offsetTop+this.speedY;
+        var maxT= utils.win('clientHeight')-this.offsetHeight;
+        if (t>=maxT){
+            t=maxT;
+            this.speedY*=-1;
+            tmp++;
+        }else {
+            tmp=0;
+        }
+        if (tmp<2){
+            this.style.top = t+'px';
+            this.dropTimer=setTimeout(ev.processThis(drop,this),10)
+        }
+    }
+</script>
+</body>
+</html>

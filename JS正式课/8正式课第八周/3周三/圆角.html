@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul li{
+            width: 100px;
+            height: 100px;
+            margin: 20px;
+            border: 1px solid red;
+            background: blue;
+            list-style: none;
+        }
+        ul :first-child{
+            border-radius: 10px 30px 40px 50px/50px 40px 30px 10px;
+        }
+        ul :nth-child(2){
+            /*水平半径之和等于宽度，垂直半径之和等于高度*/
+            border-radius: 50px;
+        }
+        ul :nth-child(3){
+            /*半圆*/
+            height: 50px;
+            border-radius: 50px 50px 0 0 ;
+        }
+        ul :nth-child(4){
+            width: 50px;
+            height: 50px;
+            border-radius: 50px 0 0 0;
+        }
+        ul :nth-child(5){
+            /*水平椭圆*/
+            height: 50px;
+            border-radius: 50px/25px;
+        }
+        ul :nth-child(6){
+            border: 10px solid skyblue;/*当边框比较大的时候，*/
+            border-radius: 10px 60px 10px 80px;
+            /*内圆的半径=外圆的半径-边框 如果小于等于则显示成直角*/
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>

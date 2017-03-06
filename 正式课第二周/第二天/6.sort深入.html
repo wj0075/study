@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li{
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <!--<li>12</li>
+    <li>2</li>
+    <li>36</li>
+    <li>24</li>
+    <li>18</li>-->
+    <li>中国</li>
+    <li>珠峰</li>
+    <li>刘小洋</li>
+    <li>北京</li>
+    <li>爱国者</li>
+</ul>
+<script src="utils.js"></script>
+<script>
+    var aLi=document.getElementsByTagName('li');
+    var oUl=document.getElementsByTagName('ul')[0];
+    //1、类数组转数组；
+    var ary=utils.makeArray(aLi);
+    //2.按照每个li中的内容进行排序；[<li>2</li>,<li>12</li>.....]
+    ary.sort(function(a,b){
+        //a:代表当前项  b:代表下一项；
+       // return (a.innerHTML- b.innerHTML)*-1;//按照内容进行排序；
+        return a.innerHTML.localeCompare(b.innerHTML);
+    });
+    //3.把排好序的元素，重新插入页面；
+    for(var i=0; i<ary.length; i++){
+        oUl.appendChild(ary[i]);//appendChild起了一个剪切的功能；
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- 内嵌式-->
+    <style>
+        div{
+            color: red;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css"/>
+
+    <style>
+        @import "style.css";
+    </style>
+</head>
+<body>
+1、行内式
+<div style="width: 100px">11</div>
+<div>111</div>
+
+2、内嵌式
+
+3、外链式
+
+4、导入式
+
+引入方式的优先级
+
+
+选择器
+1、标签选择器  标签名{}
+div{}  h2{}
+<div>内容</div>
+
+2、类选择器
+<style>
+    .title{
+        color: yellow;
+    }
+</style>
+<h3 class="title"></h3>
+
+3、id选择器
+<style>
+    #art{
+        background: blue;
+    }
+</style>
+<p id="art">段落</p>
+
+4、选择所有的标签
+*{}
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+1、后代选择器:可以选择隔代的（最常用）
+<style>
+    .box .baidu{
+
+    }
+    p a{
+
+    }
+</style>
+<div class="box">
+    <p>
+        <a href="" class="baidu">链接</a>
+    </p>
+</div>
+2、子代选择器:不能选择隔代
+div>p>.baidu{
+
+}
+3、交集选择器：选择的是同一个元素
+<style>
+    div.box1{
+
+    }
+</style>
+<div class="box1"></div>
+4、并集选择器：选择多个元素
+<style>
+    div,p{
+
+    }
+</style>
+<div></div>
+<p></p>
+
+5、伪类选择器
+:hover  鼠标经过时的样式
+<style>
+    a:hover{
+
+    }
+</style>
+
+6、类型选择器
+<style>
+    input[type=password]{
+
+    }
+</style>
+<input type="password"/>
+
+权重
+标签     1
+类选择器  10
+id选择器 100
+*       0.1
+
+****id的值不可以出现重复的
+
+<style>
+    div.text{
+
+    }
+    span.text{
+
+    }
+</style>
+<span class="text" id="word">几个文字</span>
+<div class="text">文字</div>
+
+<script>
+//    document.getElementById('word')
+</script>
+
+
+
+
+</body>
+</html>

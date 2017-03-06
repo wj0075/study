@@ -1,0 +1,79 @@
+移动端基础知识第一发：常用的META标签
+http://old.zhufengpeixun.cn/qianduanjishuziliao/mobileDevelopment/2016-06-29/457.html
+
+移动端基础知识第二发：常用的META标签(移动端)
+http://old.zhufengpeixun.cn/qianduanjishuziliao/mobileDevelopment/2016-07-02/480.html
+
+1、程序猿的基本素养
+    做一些有利于SEO优化的内容(HEAD)
+    <title>珠峰培训-实战练习</title>
+    <meta name="keywords" content="关键词或者关键字"/>
+    <meta name="description" content="网站页面的描述"/>
+    例如:
+    <title>珠峰培训 - javascript培训,JS培训,北京JS培训,HTML5培训,node培训,nodeJS培训,移动端培训,珠峰培训 - Powered By EduSoho</title>
+    <meta name="keywords" content="javascript培训,js培训,HTML5培训,css培训,前端开发培训,node.js培训,nodeJS培训,移动端培训,北京珠峰培训" />
+    <meta name="description" content="珠峰培训是中国前端开发知名品牌，七年JS前端培训，以专注立身；70%的同学来自老学员推荐，以诚信立业。先学习考试通过后交学费；四周内可无条件退学费；工资不到9千退学费。我们专注的特色培训有：javascript培训,node.JS培训,前端开发培训,HTML5培训,移动端培训"/>
+
+2、设置网站图标
+   <link type="image/x-icon" rel="icon" href="图标的地址"/>
+
+3、一页页面中的h1标签只能出现一次,h1的权重非常的高,有利于SEO的重点收录,我们一般都会给这里面设置一段文字,但是有时候文字不需要展示(font-size:0),这样做的目的仅仅是为了SEO优化
+
+
+===================================
+1、what's seo
+   百度或者谷歌等搜索引擎都有一个小虫子(爬虫/蜘蛛),会每隔一段时间去每一个网站中抓取内容,把抓取到的内容放到自己的词库中;
+   当用户输入某一个词语的时候,搜索引擎会到词库中去查找,把对应关键词涉及到的网站展示出来,如果我们网站的关键词被收录的越多,我们的展示越靠前
+   ==>需要我们把网站中重点要推广的词语多次优化的展示,例如:title、keywords、h1~h6...都是我们做SEO优化的一些手段,市场上有专门的SEO专员,就是做一些有利于收录和抓取的工作
+
+2、what's sem
+   百度竞价推广(无节操的机制)，我们花钱在百度做一个关键词竞价，谁出的钱多，谁就靠前
+
+================================
+
+1、what's less
+  css不是编程语言,它属于标记语言,所以我们不能在css中像js一样使用变量函数等(使用变量函数等是有自己的作用的:可以实现封装和组件化,方便我们的快速开发); 为了让CSS也能快速开发,市场上出现了CSS预编译机制：LESS、SASS、Stylus...，我们按照编程语言的思想去开发CSS代码，但是浏览器不支持这些语言代码的渲染，我们写完的代码还需要通过用具或者其他的方式转换成正常的CSS代码。
+
+  LESS的编译：
+    ->开发中:我们可以导入一个JS来编译,这样我们只需要正常的去写LESS代码即可,最后都会由JS为我们编译了.
+    ->上线前：我们使用工具或者NODE把LESS编译为正常的CSS，项目引入的也是正常的CSS，然后在上线
+
+
+=======================================
+一个容器的背景颜色实现透明
+  ->background: rgba(255, 255, 255, 0.8); 不兼容IE6~8，在不兼容的情况下连基本的背景颜色都没有
+
+  ->
+  background:#FFF;
+  opacity:0.8;
+  filter:alpha(opacity=80);
+  这样写的话,会导致里面的子元素也都跟着透明了
+
+  ->多嵌套一层
+
+=====================================
+在CSS中制作一个三角箭头
+  ->切图:简单而粗暴的方式
+
+  ->设置盒子的两个边框,然后旋转一定的角度来实现箭头 [PC端不兼容]
+     width: 20px;
+     height: 20px;
+     border-top: 3px solid red;
+     border-right: 3px solid red;
+     -webkit-transform: rotate(45deg);
+     transform: rotate(45deg);
+
+  ->使用&gt|&lt大于号和小于号来实现(但是受字体的限制)
+
+  ->ICON图标/SVG图标/字体图标/CANVAS
+
+  ->两个三角形的叠加
+
+
+
+
+
+
+
+
+

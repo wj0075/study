@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--表格相关的标签都是块级元素-->
+<!--cellspacing  单元格与单元格的距离-->
+<!--cellpadding   内容与边框的距离-->
+<table border="1" cellspacing="10" cellpadding="10">
+    <!-- 表格的标题-->
+    <caption>表格的标题</caption>
+    <!-- 表头-->
+    <thead>
+    <!-- 行-->
+    <tr>
+        <!-- 列  默认加粗 -->
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>住址</th>
+    </tr>
+    </thead>
+    <!-- 表尾   一般放在thead和tbody之间-->
+    <tfoot>
+    <tr>
+        <td>单元格单元格</td>
+    </tr>
+
+    </tfoot>
+    <!-- 表格主要内容部分-->
+    <tbody>
+      <tr>
+          <!-- colspan   合并列
+               rowspan   合并行
+          -->
+          <td colspan="2" rowspan="2">赵铁映</td>
+          <!--<td>18</td>-->
+          <td>北京</td>
+      </tr>
+      <tr>
+          <!--<td>石晓娇</td>-->
+          <!--<td>20</td>-->
+          <td>北京</td>
+      </tr>
+    </tbody>
+
+</table>
+</body>
+</html>

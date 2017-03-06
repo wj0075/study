@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body{
+            height: 300%;
+            background: -webkit-linear-gradient(top,lightgreen,lightpink,lightcyan,lightgoldenrodyellow,lime);
+        }
+        *{
+            margin:0;
+            padding:0;
+        }
+        a{
+            position: fixed;
+            right:10px;
+            bottom:10px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            line-height: 100px;
+            font-size: 30px;
+            background: darkgreen;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<a href="javascript:;" id="btn1">toTop</a>
+<script src="js/jquery-2.0.3.js"></script>
+<script src="js/toTop.js"></script>
+<script>
+    //创建实例；
+    var t1=new Totop({
+        id:'btn1'
+    })
+</script>
+</body>
+</html>

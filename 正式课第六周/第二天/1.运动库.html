@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div{
+            width: 200px;
+            height:200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="div"></div>
+<script src="js/event.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/move.js"></script>
+<script>
+    var oDiv=document.getElementById('div');
+    ev.on(oDiv,'selfEnd',fn1);
+    ev.on(oDiv,'selfEnd',fn2);
+    ev.on(oDiv,'selfEnd',fn3);
+    animate({
+        id:oDiv,
+        target:{
+            width:500,
+            height:400
+        }
+    })
+    function fn1(){
+        console.log(1)
+    }
+    function fn2(){
+        console.log(2)
+    }
+    function fn3(){
+        console.log(3)
+    }
+</script>
+</body>
+</html>

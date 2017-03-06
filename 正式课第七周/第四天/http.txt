@@ -1,0 +1,212 @@
+URI 统一资源标识符
+
+URL 统一资源定位符
+作用：标识该资源在整个互联网上的唯一位置。
+
+格式：
+http://zhangyatao:123456@www.baidu.com:80
+http://www.baidu.com/s?wd=a&b=2&c=3
+<方案>://<<用户名>>:<<密码>>@<域名>:<端口>/<请求路径>?<请求参数>#<hash>hash
+
+名词解释：
+方案：标识该请求使用什么协议去请求，如果不填写，浏览器设置默认方案为http
+端口：指定与服务器交互的端口。如果不填写会根据方案选择默认端口。
+默认端口：
+http -> 80
+https -> 443
+ftp -> 21
+请求路径：指定请求的资源路径
+请求参数的格式是固定的：?key=value&key1=value1&key2=value2
+请求参数：针对该次请求的过滤条件
+锚点：高级功能->实现前端路由
+
+URI是URL的超集->URI包括URL URN
+
+
+
+网址访问的流程
+1、解析URL
+2、DNS解析（domain naming service） 把域名解析为ip地址
+3、使用URL指定的协议，通过ip和端口去连接服务器
+4、等待服务器响应
+5、连接成功之后，发送请求
+6、等到服务器响应
+7、接收服务器响应
+8、渲染收到的数据并断开连接
+
+http协议：
+原因：全世界90%的互联网流量都是通过http协议传输；ajax的内部原始就是操作的http协议；每一个前端开发人员必须掌握该协议；
+
+超文本传输协议
+
+作用：负责连接并传输http客服端和http服务器之间的数据。
+
+请求：http客户端发送给http服务器
+响应：http服务器返回给http客户端
+
+顺序是固定的：先请求 后响应
+请求和响应中的数据，统称为报文。
+
+事务：事务包含[1,无限大)个事件，只有当包含的所有事件都完成，那么这个事务才算完成，否则失败。
+
+http协议是一个事务，包含请求和响应两个事件。当请求和响应都完成之后，http才算完成，否则失败。
+
+
+报文的结构：
+
+请求报文：
+1、起始行（请求行）
+作用：标识该请求基本信息
+http方法、请求地址、http版本号
+2、首部(附属信息)
+cookie
+user-agent
+
+PC:
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2679.0 Safari/537.36
+mobile:
+Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1
+
+3、主体（存放数据）
+文件上传、注册用户
+
+响应报文：
+1、起始行（响应的基本信息）
+http版本号、服务器响应码、状态码描述符
+2、首部
+date
+content-length
+3、主体
+
+http方法
+作用：标识该请求使用什么方法传输数据。
+
+GET 从服务器获取资源
+POST 往服务器发送资源
+HEAD 服务器响应报文只需包含起始行和首部，不需要返回响应主体。
+DELETE 告诉服务器删除某个资源
+PUT 往服务器发送资源
+
+GET特点：
+1、html中所有的href和src以及通过地址栏访问的资源，都是get方法
+2、没有请求主体
+3、因为该方法没有请求主体，所以需要把参数格式为请求参数，拼接到URL后面
+4、对发送的数据有大小限制（因为浏览器对URL的长度有大小限制 ie 2k，chrome 8k，ff 7k）
+5、可以被浏览器缓存（通过响应首部实现）
+
+POST特点：
+1、有请求主体
+2、没有大小限制
+3、永远不会被浏览器缓存
+4、数据即可以放在请求主体中，也可以放在请求参数中
+
+HEAD特点：
+1、和GET特点一模一样
+2、没有响应主体
+3、该方法既没有请求主体，也没有响应主体
+
+DELETE特点：
+1、和GET特点一模一样
+2、响应成功的状态码为202
+
+PUT特点：
+1、和POST特点一模一样
+2、该方法有幂等性，而POST没有
+
+幂等性= X^n===X
+
+不同的方法做不同的事
+
+增删改查
+
+接口：/userinfo
+
+增加一个用户：post  /userinfo  {name:'zhufeng',age:18}
+删除id为1的用户：delete /userinfo?id=1
+修改id为1的用户：put /userinfo?id=1 {name:'zhangsan',age:20}
+查询id为1的用户；get /userinfo?id=1
+查询所有用户:get /userinfo
+
+这是一个后端处理数据的架构：RESTful（表征状态转移）
+
+
+http状态码：
+作用：告诉http客户端，服务器对该请求处理的结果
+
+1xx http协议正在初始化
+101 切换协议 websocket
+
+2xx http客户端请求成功
+200 成功
+202 服务器接受该请求
+
+3xx 重定向和缓存
+301 永久移动
+302 临时移动
+站点或者页面之前的跳转，需要设置Location响应首部，来指定跳转的地址
+
+301会降低搜索引擎权重，而302不会。
+
+
+304 请求的静态资源未改变（缓存）
+需要使用2个响应首部和2请求首部
+响应首部：
+last-modified 标识请求的静态资源在服务器上最后一次修改的时间（GMT格式）
+etag 实体标签，服务器会给每个静态资源打上一个标签，只要这个静态资源已修改，那么将会生成一个新标签。
+请求首部：
+if-modified-since 该静态资源上一次请求时在服务器最后一次修改的时间
+if-none-match 该静态资源上一次请求时再服务器中的实体标签
+
+强缓存
+expire
+过期时间，单位是GMT。过期时间没有到期之前，一直使用不会去服务器请求该资源。
+缺点：因为每次校验该资源有没有到期，都是根据浏览器时间去校验，而浏览器时间是可以更改的。所以该缓存方案有一定的误差。
+cache-control：max-age 缓存多少秒
+
+
+4xx http客户端请求失败
+400 错误的请求
+缺少参数、方案错误、端口错误、url长度过长
+401 未认证
+403 禁止访问
+404 未找到该资源
+
+5xx http服务器错误
+只要出现5xx的状态码，一定是服务器的错误，和前端没有任何关系。
+
+MIME Type
+多用途因特网邮件扩展
+
+作用：标识请求或响应数据的格式
+MIME Type在http协议是通过通用首部Content-Type来标识。
+
+html text/html
+css text/css
+js text/javascript
+json application/json
+png image/png
+jpg image/jpeg
+jpeg image/jpeg
+gif image/gif
+
+格式：父类型/子类型
+注意事项：当内容为文本时，可以通过content-type来指定内容的编码格式
+返回UTF-8格式的html
+content-type: text/html; charset=utf-8
+
+http版本号之间的区别：
+http的版本号 0.9、 1.0、 1.1、 2.0
+
+1.1和2.0的区别
+1、多路复用
+2、首部压缩
+3、服务器推送
+4、数据格式从字符串改为数据帧
+
+
+
+表单提交有一个专门的Content-Type application/x-ww-form-urlencoded
+
+
+
+

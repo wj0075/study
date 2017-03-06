@@ -1,0 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+div{
+    height: 455px;
+    /* background: #c30fb0;
+     /!*background相关的属性 写在后面*!/
+     background-image: url("background.jpg");
+     background-repeat: no-repeat;
+     background-position: top center;*/
+    background:#c30fb0  url("background.jpg") no-repeat  center top;
+
+}

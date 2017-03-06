@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任意数求和</title>
+</head>
+<body>
+<script>
+    function sum(){
+      var total = null;
+        for (var i=0;i<arguments.length;i++){
+            var cur = Number(arguments[i]);
+            if (!isNaN(cur)){
+                total+=cur;
+            }
+        }
+        return total;
+    };
+    console.log(sum(3,4,5,3,2,'345','fdsf',NaN));
+
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class="box" id="box"></div>
+
+<input type="radio" name="sex"/>
+<input type="radio" name="sex"/>
+
+<p></p>
+<script>
+    //1)document.getElementById('元素的id值')
+//    var oDiv = document.getElementById('box');
+//    console.log(oDiv)
+//    2) document.getElementsByTagName('元素的标签名')
+//    var oDiv = document.getElementsByTagName('div');
+//    console.log(oDiv)
+
+//    3)document.getElementsByClassName('类名') 不兼容ie6-ie8
+    var oDiv = document.getElementsByClassName('box');
+    console.log(oDiv)
+
+//    4)document.getElementsByName()  主要用于表单元素
+    var oInput = document.getElementsByName('sex');
+    console.log(oInput);
+
+
+//    5）document.body  获取body
+//    document.documentElement  获取html
+    var w = document.body.clientWidth||document.documentElement.clientWidth;
+    var h = document.body.clientHeight||document.documentElement.clientHeight;
+
+//    6)
+//    document.querySelector()  获取一个元素
+//    document.querySelectorAll()  获取一组元素
+   var div = document.querySelector('div');
+   var div = document.querySelector('.box');
+   var div = document.querySelector('#box');
+    console.log(div)
+
+//
+    document.querySelectorAll('.box');
+
+
+
+</script>
+
+</body>
+</html>

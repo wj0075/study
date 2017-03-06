@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            width: 500px;
+            list-style: none;
+            margin: 40px auto;
+        }
+        li{
+            width: 400px;
+            height: 40px;
+            line-height: 40px;
+            background-color: darkgray;
+        }
+
+    </style>
+</head>
+<body>
+<ul id="box"></ul>
+<script src="utils.js"></script>
+<script>
+    var oUl=document.getElementById('box');
+    var data = null;
+    getData();
+    function getData(){
+        //1.创建一个xml对象
+        var xml= new XMLHttpRequest;
+        //2.打开地址；
+        xml.open('get','data.txt',false);
+        //3.请求响应
+        xml.onreadystatechange = function(){
+            //xml.readyState=4 准备成功  xml.status  响应成功 2xx
+            if(xml.readyState ==4 && /^2\d{2}$/.test(xml.status)){
+               data = utils.jsonParse(xml.responseText);
+            }
+        };
+        ///4.请求成功
+        xml.send();
+    }
+    var str='';
+    for(var i=0;i<data.length;i++){
+        str+='<li>'+data[i].name+'</li>';
+    }
+    oUl.innerHTML+=str;
+
+
+
+
+</script>
+</body>
+</html>

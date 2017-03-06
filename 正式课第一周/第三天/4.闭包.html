@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>0</div>
+<div>1</div><!--lala-->222222
+<div>2</div>
+<div>3</div>
+<script>
+    //闭包的作用
+    //1.避免全局变量名冲突的问题；
+    //2.如何在闭包中修改全局变量？可以在闭包中通过window.xxx修改全局变量；
+    //3.闭包的主要作用用来封装；
+    /*var name='zhufeng';
+    (function(name){
+        window.name='liuxiaoyang';
+        alert(window.name)
+    })();
+    alert(name);*/
+    //1.作用：获取当前元素的上一个哥哥元素；
+    //1)参数：当前元素  2）返回值：找到的上一个哥哥元素；
+    //3)浏览器兼容处理：如果浏览器支持，直接使用浏览器提供的方法，如果浏览器不支持，再自己写兼容方法；
+    var aDiv=document.getElementsByTagName('div');
+    (function(){
+        function prev(curEle){
+            if(curEle.previousElementSibling){//标准浏览器有支持上个哥哥元素的属性；
+                return curEle.previousElementSibling;
+            }else{//IE浏览器自己做处理；
+                var pre=curEle.previousSibling;
+                //往上找哥哥元素的前提条件：必须是个节点，并且不是元素节点；
+                while(pre && pre.nodeType !== 1){
+                    pre=pre.previousSibling;
+                }
+                return pre;
+            }
+        }
+        window.aa=prev;//想让外面拿到闭包中封装的方法，必须通过window.xxx把这个方法变成全局方法；
+    })();
+    alert(aa(aDiv[2]).innerHTML);
+    /*(function(){
+        function prev(){
+
+        }
+        function aa(){}
+        function cc(){}
+        function dd(n){
+            alert(n)
+        }
+        window.$={
+            prev:prev,
+            aa:aa,
+            cc:cc,
+            dd:dd
+        };
+    })();
+    $.dd(3);*/
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+

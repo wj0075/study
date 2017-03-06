@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //混合继承2：call+拷贝（extend）
+    function extend(obj1,obj2){//让obj1克隆一份跟obj2一样的；
+        for(var attr in obj2){
+            obj1[attr]=obj2[attr];
+        }
+        return obj1;
+    }
+    function F(){
+        //this:new F;
+        this.x=100;
+    }
+    F.prototype.aa=function(){};
+    function S(){
+        F.call(this);
+    }
+    extend(S.prototype, F.prototype);
+</script>
+</body>
+</html>

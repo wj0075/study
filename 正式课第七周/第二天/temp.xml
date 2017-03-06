@@ -1,0 +1,10 @@
+<root>
+    <student>
+        <name>杨尚中</name>
+        <age>52</age>
+    </student>
+    <student>
+        <name>王永凤</name>
+        <age>17</age>
+    </student>
+</root>

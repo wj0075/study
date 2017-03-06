@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .container>*{
+            height: 200px;
+            flex: 1 100%;
+        }
+
+        .header {
+            background: red;
+        }
+
+        .main {
+            background: khaki;
+        }
+
+        .aside-1 {
+            background: salmon;
+
+        }
+
+        .aside-2 {
+            background: darkgreen;
+        }
+
+        .footer {
+            background: skyblue;
+        }
+        @media screen and (min-width: 600px) {
+            .aside{
+                flex: 1 auto;
+            }
+        }
+        @media screen and (min-width: 800px) {
+            .main{
+                flex: 5 auto;/*剩余的内容=100%宽度-自身的内容*/
+            }
+            .aside-1{
+                flex: 3 auto;
+                order: -1;
+            }
+            .aside-2{
+                flex: 2 auto;
+            }
+            .header{
+                order: -2;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<section class="container">
+    <header class="header">header</header>
+    <div class="main">main</div>
+    <div class="aside-1 aside">aside-1士大夫大师傅士大夫士大夫</div>
+    <div class="aside-2 aside">aside-2</div>
+    <footer class="footer">footer</footer>
+</section>
+</body>
+</html>

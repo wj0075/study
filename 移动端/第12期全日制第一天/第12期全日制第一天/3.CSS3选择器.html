@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        ul {
+            width: 400px;
+            margin: 100px auto;
+        }
+        ul li{
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            display: inline-block;
+            margin: 10px;
+            font-size: 16px;
+            background: orange;
+        }
+       /* ul :nth-child(2){
+            background:green;
+        }*/
+        /*.a+li{/!*相邻的弟弟节点*!/
+
+        }
+        .a~li{/!*所有的弟弟节点*!/
+            background: pink;
+        }*/
+        /*ul :nth-child(even){偶数
+            background: green;
+        }
+        ul :nth-child(odd){奇数
+            background: pink;
+        }*/
+       /* ul :nth-child(2n){/!*偶数*!/
+            background: green;
+        }
+        ul :nth-child(2n+1){/!*奇数*!/
+            background: pink;
+        }*/
+
+       /* ul :nth-of-type(2){/!*在同种类型（标记名相同）的元素中找到第几个子元素*!/
+            background: green;
+        }*/
+        /*ul :nth-child(2){
+            background: green;
+        }*/
+
+       /* ul li:nth-child(2){/!*1.先找到第二个子元素 2.看这个资源的标记名是否为li*!/
+            background: green;
+        }*/
+        /*ul :nth-of-type(2){*/
+            /*background: green;*/
+        /*}*/
+
+       /* div :only-child{/!*查看当前元素的子元素是否唯一*!/
+            /!*background: green;*!/
+        }
+        div :only-of-type{/!*同种类型的子元素只有一个*!/
+            background: green;
+        }*/
+
+       /* div:empty{
+            height: 200px;
+            background: pink;
+        }*/
+        ul :not(:first-child){
+           color: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <p>11111</p>
+    <li>2</li>
+    <p>22222</p>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+
+<!--<div>
+    <p>11111</p>
+</div>
+<div>
+    <p>22222</p>
+    <span>222222</span>
+</div>-->
+<div></div>
+<div>
+
+</div>
+<div><!--11111--></div>
+<div><p>111</p></div>
+</body>
+</html>

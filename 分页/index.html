@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分页</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="box">
+    <h2>
+        <span>编号</span>
+        <span>姓名</span>
+        <span>性别</span>
+        <span>分数</span>
+    </h2>
+    <ul class="content" id="content">
+        <!-- <li>
+             <span>1</span>
+             <span>张三</span>
+             <span>男</span>
+             <span>99</span>
+         </li>
+         <li>
+             <span>2</span>
+             <span>李四</span>
+             <span>男</span>
+             <span>89</span>
+         </li>-->
+    </ul>
+    <div class="page" id="page">
+        <span>FIRST</span>
+        <span>PREV</span>
+        <ul class="pageNum" id="pageNum">
+            <!--   <li class="bg">1</li>
+               <li>2</li>
+               <li>3</li>
+               <li>4</li>
+               <li>5</li>-->
+        </ul>
+        <span>NEXT</span>
+        <span>LAST</span>
+        <input type="text" value="1" class="pageInt" id="pageInt">
+    </div>
+</div>
+<script src="js/ajax.js"></script>
+<script>
+    var pageModel = (function () {
+        var content = document.getElementById('content'),
+                page = document.getElementById('page'),
+                pageNum = document.getElementById('pageNum'),
+                pageInt = document.getElementById('pageInt');
+        var n = 1,
+                data = null,
+                total = null;
+
+        function bindHTML() {
+            var str = '';
+            for (var i = 0; i < data.length; i++) {
+                var curData = data[i];
+                str += '<li studentId="' + curData['id'] + '">';
+                str += '<span>' + curData['id'] + '</span>';
+                str += '<span>' + curData['name'] + '</span>';
+                str += '<span>'+(curData['sex'] == 1 ? '男' : '女') + '</span>';
+                str += '<span>' + curData['score'] + '</span>';
+                str += '</li>';
+            }
+            content.innerHTML=str;
+            str='';
+            for (i=1;i<=total;i++){
+                if(i==n){
+                    str+='<li class="bg">'+i+'</li>';
+                    continue;
+                }
+                str+='<li>'+i+'</li>';
+            }
+            pageNum.innerHTML=str;
+        }
+        function bindEvent() {
+            page.onclick=function (e) {
+                e=e||window.event;
+                var tar=e.target||e.srcElement,
+                        target=tar.tagName.toUpperCase(),
+                        tarInn=tar.innerHTML;
+                if(target=='SPAN'){
+                    if(tarInn=='FIRST'){
+                        if(n==1){
+                            return;
+                        }
+                        n=1;
+                    }
+                    if(tarInn=='PREV'){
+                        if(n<=1){
+                            n=1;
+                            return;
+                        }
+                        n--;
+                    }
+                    if(tarInn=='NEXT'){
+                        if(n>=total){
+                            n=total;
+                            return;
+                        }
+                        n++;
+                    }
+                    if(tarInn=='LAST'){
+                        if(n==total){
+                            return;
+                        }
+                        n=total;
+                    }
+                }
+                if(target=='LI'){
+                    if(n==parseFloat(tarInn)){
+                        return;
+                    }
+                    n=parseFloat(tarInn);
+                }
+                sendAJAX();
+            }
+            pageInt.onkeyup=function (e) {
+                e=e||window.event;
+                if(e.keyCode==13){
+                    var val = parseFloat(this.value.replace(/^ +| +$/g, ''));
+                    if(isNaN(val)){
+                        this.value=n;
+                        return;
+                    }
+                    if(val>total){
+                        this.value=total;
+                        n=total;
+                    }else if(val<1){
+                        this.value=1;
+                        n=1;
+                    }else {
+                       this.value=val;
+                        n=val;
+                    }
+                    sendAJAX();
+                }
+            }
+        }
+        function bindLink() {
+            var aLi=content.getElementsByTagName('li');
+            for (var i=0;i<aLi.length;i++){
+                aLi[i].onclick=function () {
+                    window.open('detail.html?id='+this.getAttribute('studentId'));
+                }
+            }
+        }
+        function sendAJAX() {
+            ajax({
+                url: 'getList?n=' + n,
+                success: function (result) {
+                    total = result['total'];
+                    data = result['data'];
+                    bindHTML();
+                    bindLink();
+                }
+            });
+
+        }
+
+        function init() {
+            sendAJAX();
+            bindEvent();
+        }
+
+        return {init: init};
+    })();
+    pageModel.init();
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            background: lightblue;
+            margin: 100px;
+        }
+        /*i:before{
+            content: '开始';
+            color: red;
+
+        }
+        i:after{
+            /!*i:before，i:after 与i是父子级关系*!/
+            content: 'i标签里最末尾的位置';
+
+        }*/
+
+        i{
+            position: relative;
+            width: 0;
+            height: 0;
+            display: block;
+            border: 20px solid;
+            border-color: black transparent transparent;
+            /*兼容ie9以上的浏览器*/
+            transition:transform .3s linear 0s ;
+            /*过渡效果
+            1）哪个css属性有过渡的效果
+                all  所有的css属性
+            2） 过渡持续的时间
+            3）速度    linear 匀速
+            4）等待的时间
+            */
+            transform-origin: 50% 25%;
+            /*旋转的中心点
+            百分比
+            1）盒子的宽度的百分比
+            2）盒子的高度的百分比
+            */
+        }
+        b{
+            width: 0;
+            height: 0;
+            border: 16px solid ;
+            border-color: lightblue transparent transparent;
+            position: absolute;
+            top: -20px;
+            left: -16px;
+        }
+        div:hover i{
+            /*
+            父级元素:hover 子级元素
+            */
+            /*旋转*/
+            transform:rotate(-180deg) ;
+            /*形变      旋转180度   顺时针*/
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <i>
+       <!--::before-->
+        <b></b>
+        <!--::after-->
+    </i>
+
+
+</div>
+
+
+
+</body>
+</html>

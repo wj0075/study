@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            height: 100px;
+            /*background-image: url("");*/
+            /*background-repeat: no-repeat;*/
+            /*background-position: -100px -100px;*/
+            /*background: red url("") no-repeat top center;*/
+           /* background: url("") no-repeat top center;
+            /!*background: red;*!/
+            background-color: red;
+            background-attachme*/nt: fixed;
+        }
+        input{
+            outline: none;
+            /*去掉外围线*/
+        }
+        input[type=text]{
+            width: 200px;
+            height: 60px;
+            border: 2px solid red;
+            padding: 0 10px;
+            /*文字与边框之间的距离*/
+        }
+        /*伪类选择器
+
+        :focus   获取光标时的样式
+        */
+        input[type=text]:focus{
+            background: palegreen;
+            border: 10px solid orangered;
+            outline: none;
+            /*去掉外围线*/
+            /*外围线：边框外部的*/
+        }
+        input[type=password]{
+            width: 200px;
+            height: 60px;
+            border: 2px solid blue;
+            background: lightblue;
+            /*边框圆角*/
+           /* -webkit-border-radius: 10px;
+            /!*-webkit-   谷歌浏览器的内核*!/
+            -moz-border-radius: 10px;
+            /!*-moz-   火狐浏览器的内核*!/
+            border-radius: 10px;*/
+
+        }
+        input[type=button]{
+            width: 200px;
+            height: 60px;
+            background: #ff6700;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+        }
+        input[type=radio]{
+            /*单选按钮：宽度和高度 值设置为相同的，如果值不同，大小由小的值决定*/
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+<!--表单-->
+<form action="index.jsp" method="get">
+    <!--action 表单中的数据 提交到那个页面中
+     method 数据的提交方式   get/post/option
+     -->
+    <!-- 文本框   高度默认加2px
+     placeholder  默认显示的文字
+     -->
+    <input type="text" placeholder="邮箱手机号"/><!--
+    密码框   高度默认加2px
+    --><input type="password"/>
+    <!-- 普通按钮   自带边框  宽度和高度包括边框   value:文字-->
+    <input type="button" value="登陆"/>
+
+    <!-- 提交按钮  默认的文字：提交-->
+    <input type="submit" value="注册"/>
+
+    <!-- 重置按钮-->
+    <input type="reset"/>
+
+    <!--单选按钮-->
+    <!-- label中for 和input中的id是对应的-》建立关联  -->
+    <!-- name相同的 实现单选的功能 -->
+    <label for="man">男</label>
+    <input type="radio" id="man" name="sex"/>
+    <label for="woman">女</label>
+    <input type="radio" id="woman" name="sex"/>
+
+    <!-- 复选按钮  checkbox-->
+    <label >爱好：</label>
+
+    <input type="checkbox" id="study"/>
+    <label for="study">学习</label>
+    <input type="checkbox"/>
+    <label for="">敲代码</label>
+    <input type="checkbox"/>
+    <label for="">看书</label>
+
+    <!-- 下拉菜单-->
+    <select>
+        <option value="">山西</option>
+        <option value="">河北</option>
+        <option value="">山东</option>
+        <option value="">天津</option>
+        <option value="">黑龙江</option>
+    </select>
+
+    <!-- 上传文件-->
+    <input type="file"/>
+
+    <label for="pass">密码</label>
+    <input type="password" id="pass"/>
+
+    <label for="user">用户名</label>
+    <input type="text" id="user"/>
+
+    <input type="checkbox" checked/>
+    <!--
+    默认选中
+    checked="checked"
+    checked
+    -->
+
+</form>
+
+
+</body>
+</html>

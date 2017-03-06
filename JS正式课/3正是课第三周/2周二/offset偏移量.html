@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1">
+    <div id="div2">
+        <div id="div3">
+
+        </div>
+    </div>
+</div>
+<script>
+    var oDiv3 = document.getElementById('div3');
+    //需求：用代码找到oDiv3的所有结构父级；以及，oDiv3的结构父级中最大的元素；
+    var ary = [];
+    var par = oDiv3.parentNode;
+    while (par){
+        ary.push(par);
+        par = par.parentNode;
+    }
+
+
+
+
+</script>
+</body>
+</html>

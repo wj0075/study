@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        #left{
+            width: 100px;
+            height: 30px;
+        }
+        #right{
+            width: 100px;
+            height: 30px;
+        }
+        #div{
+            position: absolute;
+            left: 0;
+            top: 30px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: lawngreen;
+        }
+        #target{
+            position: absolute;
+            left: 1000px;
+            top: 0;
+            width: 2px;
+            height: 500px;
+            background: black;
+        }
+
+
+    </style>
+</head>
+<body>
+<input type="button" id="left" value="左走">
+<input type="button" id="right" value="右走">
+<div id="div"></div>
+<div id="target"></div>
+<script src="../../utils.js"></script>
+<script>
+    var oDiv = document.getElementById('div');
+    var left = document.getElementById('left');
+    var right = document.getElementById('right');
+    right.onclick=function(){
+        move(800)
+    };
+    left.onclick=function(){
+        move(0)
+    };
+    function move(target){
+        _move();
+        function _move(){
+            var curPos = oDiv.offsetLeft;
+            if (curPos<target){
+                if (curPos+10>=target){
+                    utils.css(oDiv,'left',target);
+                    clearTimeout(oDiv.timer);
+                    return;
+                }
+                curPos+=10;
+                utils.css(oDiv,'left',curPos)
+            }else if(curPos>target) {
+                if (curPos-10<=target){
+                    utils.css(oDiv,'left',target);
+                    clearTimeout(oDiv.timer);
+                    return;
+                }
+                curPos-=10;
+                utils.css(oDiv,'left',curPos)
+            }else {
+                return;
+            }
+            clearTimeout(oDiv.timer);
+            oDiv.timer = window.setTimeout(_move,10)
+        }
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

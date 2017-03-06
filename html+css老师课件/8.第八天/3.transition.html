@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .nav{
+            height: 40px;
+            background: #333;
+        }
+        .navCon{
+            width: 1226px;
+            margin: 0 auto;
+            /*border: 1px solid red;*/
+            height: 40px;
+        }
+        .box{
+            width: 120px;
+            height: 40px;
+            background: #cccccc;
+            float: right;
+            position: relative;
+        }
+        .hide{
+            width: 284px;
+            /*height: 90px;*/
+            background: lightblue;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            height: 0;
+            transition: height .3s linear 0s;
+            text-align: center;
+            line-height: 90px;
+            overflow: hidden;
+
+        }
+        .box:hover .hide{
+            height: 90px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="nav">
+    <div class="navCon">
+        <div class="box">
+            <div class="hide">购物车中还没有商品，赶紧选购吧！</div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

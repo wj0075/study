@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>放大镜效果</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            position: relative;
+            width: 840px;
+            margin: 20px auto;
+        }
+        .box img{
+            float: left;
+            width: 200px;
+            margin: 5px;
+
+        }
+        #mark{
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 400px;
+            height: 400px;
+        }
+        #mark img{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <img src="img/apple_1.jpg" realImg="img/apple_1_bigger.jpg" alt="">
+    <img src="img/apple_2.jpg" realImg="img/apple_2_bigger.jpg" alt="">
+    <img src="img/apple_3.jpg" realImg="img/apple_3_bigger.jpg" alt="">
+    <img src="img/apple_4.jpg" realImg="img/apple_4_bigger.jpg" alt="">
+    <div id="mark"><img src="" alt=""></div>
+</div>
+<script src="../../jquery-1.11.3.js"></script>
+<script>
+    var $oBox = $('#box');
+    var $mark = $('#mark');
+    var $pos = $oBox.offset();
+    $oBox.mouseover(function(e){
+        $mark.show().find('img').attr('src', e.target.getAttribute('realImg'));
+    });
+    $oBox.mousemove(function(e){
+        $mark.css({
+            left: e.clientX-$pos.left+10,
+            top: e.clientY-$pos.top+10,
+        })
+    });
+    $oBox.mouseout(function(){
+        $mark.hide();
+    }
+
+    )
+
+
+
+</script>
+</body>
+</html>

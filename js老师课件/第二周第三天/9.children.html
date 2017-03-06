@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+<script>
+    //children  获取到某一个元素下的所有的子元素节点
+
+    /**
+     * 获取到某一个元素下的所有的子元素节点
+     * @param ele 选择的元素
+     * @return 数组，存储所有的子元素
+     */
+    function getChildren(ele){
+        var ary = [];//存储获取到元素节点
+//        ele下的所有子节点
+        var nodes = ele.childNodes;
+        for(var i=0;i<nodes.length;i++){
+            var cur = nodes[i];
+            if(cur.nodeType ==1){
+//                元素节点
+                ary.push(cur);
+            }
+        }
+        return ary;
+//        返回值：函数执行的结果
+//        如果函数没有返回值 返回undefined
+    }
+    var box = document.getElementsByTagName('ul')[0];
+
+    console.log(getChildren(box));
+
+
+
+
+</script>
+
+</body>
+</html>

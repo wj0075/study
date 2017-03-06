@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: -webkit-radial-gradient(circle,yellow,green);
+            background: radial-gradient(circle,yellow,green);
+            border-radius: 50%;
+            -webkit-animation:move 3s 1 reverse both ;
+            animation:move 3s 1 reverse both;
+        }
+        #div1:hover{
+            -webkit-animation-play-state:paused;
+            animation-play-state:paused;
+        }
+        @-webkit-keyframes move {
+            0%{
+                -webkit-transform: translate(100px,100px);
+                transform: translate(100px,100px);
+            }
+            50%{
+                -webkit-transform: translate(300px,300px);
+                transform: translate(300px,300px);
+            }
+            100%{
+                -webkit-transform: translate(500px,0px);
+                transform: translate(500px,0px);
+            }
+        }
+        @keyframes move {
+            0%{
+                -webkit-transform: translate(100px,100px);
+                transform: translate(100px,100px);
+            }
+            50%{
+                -webkit-transform: translate(300px,300px);
+                transform: translate(300px,300px);
+            }
+            100%{
+                -webkit-transform: translate(500px,0px);
+                transform: translate(500px,0px);
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //获取上一个哥哥元素
+    function prev(curEle){
+        if ('getComputedStyle'){
+            return curEle.previousElementSibling;
+        }else {
+            var pre = curEle.previousSibling;
+            while (pre&&pre.nodeType!==1){
+                pre = pre.previousSibling;
+            }
+            return pre;
+        }
+    }
+    //获取下一个弟弟元素
+    function next(curEle){
+        if ('getComputedStyle' in window){
+            return curEle.nextElementSibling;
+        }else {
+            var pre = curEle.nextSibling;
+            while (pre&&pre.nodeType!==1){
+                pre = pre.nextSibling;
+            }
+            return pre;
+        }
+    }
+    //获取相邻的元素
+    function sibling(curEle){
+        var ary = [];
+        var  pre = prev(curEle);
+        var  nex = next(curEle);
+        if(pre) ary.push(pre);
+        if(nex) ary.push(nex);
+        return ary;
+    }
+
+    //获取当前元素的所有哥哥元素
+    function prevAll(curEle){
+        var ary = [];
+        var pre = prev(curEle);
+        while (pre){
+            ary.push(pre);
+            pre = prev(pre);
+        }
+        return ary;
+    }
+    //获取当前元素的所有弟弟元素
+    function nextAll(curEle){
+        var ary = [];
+        var nex = next(curEle);
+        while (nex){
+            ary.push(nex);
+            nex = next(nex);
+        }
+        return ary;
+    }
+    //获取所有相邻元素
+    function sibings(curEle){
+        var pres = prevAll(curEle);
+        var nexs = nextAll(curEle);
+        return pres.concat(nexs);
+    }
+    //第一个子元素
+    function firstChild(parent){
+        var children = getChidren(parent);
+        return children[0];
+    }
+    //最后一个子元素
+    function lastChild(curEle){
+        var children = getChildren(curEle);
+        return children[children.length-1];
+    }
+    //获取当前元素的索引
+    function index(curEle){
+        return prevAll(curEle).length;
+    }
+    //appendChild 把新元素插入到父容器的末尾
+    function appendChild(curEle,parent){
+        parent.appendChild(curEle);
+    }
+    //prependChild:把新元素插入到父容器的开头
+    function prependChild(curEle,parent){
+        var first = firstChild(parent);
+        if (first) {
+            parent.insertBefore(curEle, first);
+        }else {
+            parent.appendChild(curEle);
+        }
+    }
+    //inserBefore:把新元素插入都老元素前面
+    function inserbefore(curEle,oldEle){
+        oldEle.parentNode.insertBefore(curEle,oldEle);
+    }
+    //insertAfter:把新元素插入到指定元素的后面
+    function insertAfter(curEle,oldEle){
+        var nex = next(oldEle);
+        if(nex){
+            oldEle.parentNode.insertBefore(curEle,nex);
+        }else {
+            oldEle.parentNode.appendChild(curEle);
+        }
+    }
+
+</script>
+</body>
+</html>

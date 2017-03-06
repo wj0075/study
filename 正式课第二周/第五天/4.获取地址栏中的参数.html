@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str='www.baidu.com?name=zhfueng&age=8&sex=undefined';
+    //{name:zhfueng,age:8};
+    /*var reg=/([^?=&]+)=([^?=&]+)/g;
+    var obj={};
+    str.replace(reg,function($0,$1,$2){
+        obj[$1]=$2;
+    });
+    console.log(obj);*/
+    //需求：str.queryURLParameter(); ->键值对的对象；{name:zhfueng,age:8}
+    String.prototype.queryURLParameter=function(){
+        //this->实例字符串
+        var reg=/([^?=&]+)=([^?=&]+)/g;
+        var obj={};
+        this.replace(reg,function($0,$1,$2){
+            obj[$1]=$2;
+        })
+        return obj;
+    }
+    console.log(str.queryURLParameter());
+</script>
+</body>
+</html>

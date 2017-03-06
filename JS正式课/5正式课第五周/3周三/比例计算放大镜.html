@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .left{
+            position: relative;
+            width: 430px;
+            height: 430px;
+            background: url("img/1.jpg");
+            float: left;
+        }
+        .mark{
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 260px;
+            height: 260px;
+            background: lightcoral;
+            opacity: .8;
+            filter: alpha(opacity=80);;
+        }
+        .right{
+            position: relative;
+            float: left;
+            display: none;
+            width: 430px;
+            height: 430px;
+            margin-left: 10px;
+            overflow: hidden;
+        }
+        .right img{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div class="left" id="left">
+    <div class="mark" id="mark"></div>
+</div>
+<div class="right" id="right">
+    <img src="img/2.jpg" alt="">
+</div>
+<script>
+    var oL = document.getElementById('left');
+    var oM = document.getElementById('mark');
+    var oR = document.getElementById('right');
+    var aImg = oR.getElementsByTagName('img')[0];
+    oL.onmouseover = function(){
+        oM.style.display='block';
+        oR.style.display = 'block';
+    };
+    oL.onmousemove=function(e){
+        e=e||window.event;
+        var l= e.clientX-this.offsetLeft-oM.offsetWidth/2;
+        var t = e.clientY-this.offsetTop - oM.offsetHeight/2;
+        var maxL = this.offsetWidth-oM.offsetWidth;
+        var maxT = this.offsetHeight-oM.offsetHeight;
+        if(l<=0){
+            l=0;
+        }else if (l>=maxL){
+            l=maxL
+        };
+        if (t<=0){
+            t=0;
+        }else if (t>=maxT){
+            t=maxT;
+        }
+        oM.style.left=l+'px';
+        oM.style.top = t+'px';
+        aImg.style.left = l/(oL.offsetWidth-oM.offsetWidth)*(oR.offsetWidth-aImg.offsetWidth)+'px';
+        aImg.style.top = t/(oL.offsetHeight-oM.offsetHeight)*(oR.offsetHeight-aImg.offsetHeight)+'px';
+    };
+    oL.onmouseout=function(){
+        oM.style.display='none';
+        oR.style.display = 'none';
+    }
+</script>
+</body>
+</html>

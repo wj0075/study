@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+        .box{
+            width: 800px;
+            height: 200px;
+            border: 5px dashed lightgreen;
+            margin:50px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .box ul{
+            position: absolute;
+            left:0;
+            top:0;
+        }
+        .box li{
+            width: 200px;
+            height: 200px;
+            float: left;
+        }
+        .box li img{
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="box" class="box">
+    <ul>
+        <li><img src="img/1.jpg" alt=""></li>
+        <li><img src="img/2.jpg" alt=""></li>
+        <li><img src="img/3.jpg" alt=""></li>
+        <li><img src="img/4.jpg" alt=""></li>
+    </ul>
+</div>
+<script src="js/utils.js"></script>
+<script>
+    //核心：通过定时器，改变ul元素的left值；
+    //1.ul中的内容复制一份，折行-》改变ul的宽度 2.定时器改变left，当left<-w/2,把ul迅速拉回到left:0;
+    var oUl=document.getElementsByTagName('ul')[0];
+    var aLi=oUl.getElementsByTagName('li');
+    var curLeft=oUl.offsetLeft;
+    //1.ul中的内容复制一份，折行-》改变ul的宽度
+    oUl.innerHTML+=oUl.innerHTML;
+    oUl.style.width=aLi[0].offsetWidth*aLi.length+'px';
+    var timer=setInterval(function(){
+        curLeft-=5;
+        if(curLeft<=-oUl.offsetWidth/2) curLeft=0;
+        oUl.style.left=curLeft+'px';
+    },10);
+
+
+</script>
+</body>
+</html>

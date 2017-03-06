@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function F(){
+        this.name='小明';
+        this.age=20;
+        this.wor='敲代码';
+        this.shwX=function(){
+            console.log('这个方法是为了测试用的');
+            return '你说返回就返回啊'
+        }
+    }
+    F.prototype={
+        person:"人类",
+        change:function(){
+            console.log('点我就改变')
+        }
+    };
+    var f1=new F;
+    console.dir(f1);
+
+
+
+</script>
+</body>
+</html>

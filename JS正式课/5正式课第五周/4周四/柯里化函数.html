@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>柯里化函数</title>
+</head>
+<body>
+<script>
+//->柯理化函数思想：一个JS预先处理的思想
+//利用函数执行可以形成一个不销毁的私有作用域的原理，把需要预先处理的内容都存在这个不销毁的作用域中，并且返回一个小函数，以后我们执行的都是小函数，在小函数中把之前预先存储的值进行相关的操作处理即可
+    function bind(callback,context){
+        var outerArg = Array.prototype.slice.call(arguments,2);//arguments(指的是bind的这个方法的参数)这个类数组转化为数组，并且执行slice这个方法，从索引为2开始截取后面的值
+        return function (){
+            var innerArg = Array.prototype.slice.call(arguments,0)//arguments（指的的是返回的这个方法中参数，这么做的目的是为了，在一个元素触发的行为上绑定方法，这个函数中有系统默认传递的参数（事件对象）。这样当我们自己用自己写的bind方法时就可以得到这个浏览器默认的参数）
+            callback.apply(context,outerArg.concat(innerArg));//（outerArg在得到时已经转换为数组，所以要用apply这个方法，因为apply后面可以跟一个数组为参数，并且把数组中的每一项依次传递到函数中去。而innerArg也是一个数组，就用到了数组的拼接。）
+        }
+    }
+
+</script>
+
+</body>
+</html>

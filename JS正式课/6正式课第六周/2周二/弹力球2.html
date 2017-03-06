@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹力球2</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            position: absolute;
+            left: 0;
+            top:0;
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script src="../../utils.js"></script>
+<script src="js/event.js"></script>
+<script src="js/drag.js"></script>
+<script>
+    ev.on(oDiv,'selfDown',clearEffect);
+    ev.on(oDiv,'selfMove',speed);
+    ev.on(oDiv,'selfUp',fly);
+    ev.on(oDiv,'selfUp',drop);
+    var tmp = 0;
+    function clearEffect(){
+        clearTimeout(this.flyTimer);
+        clearTimeout(this.dropTimer);
+        this.prev=null;
+    }
+    function speed(e){
+        if (!this.prev){
+            this.prev= this.offsetLeft;//e.clientX
+        }else {
+            this.speedX = this.offsetLeft-this.prev;
+            this.prev=this.offsetLeft;
+        }
+    }
+    function fly(){
+        clearTimeout(this.flyTimer);
+        var l = this.offsetLeft+this.speedX;
+        var minL= 0,maxL=utils.win('clientWidth')-this.offsetWidth;
+        if (l<minL){
+            l=0;
+            this.speedX*=-1;
+        }else if (l>=maxL){
+            l=maxL;
+            this.speedX*=-1;
+        }
+        this.speedX*=0.9;
+        if (Math.abs(this.speedX)>=0.5){
+            this.style.left = l +'px';
+            this.flyTimer = setTimeout(ev.processThis(fly,this),10);
+        }
+        console.log(this.speedX);
+    }
+    function drop(){
+        if (!this.speedY){
+            this.speedY = 9.8;
+        }else {
+            this.speedY+=9.8;
+        }
+        this.speedY*=0.94;
+        var t = this.offsetTop+this.speedY;
+        var maxT = utils.win('clientHeight')-this.offsetHeight;
+        if (t>=maxT){
+            t=maxT;
+            this.speedY*=-1;
+            tmp++;
+            console.log(tmp)
+        }else {
+            tmp=0;
+        }
+        if (tmp<2){
+            this.style.top = t +'px';
+            this.dropTimer = setTimeout(ev.processThis(drop,this),10)
+        }
+        //console.log(this.speedY);
+    }
+
+
+
+
+</script>
+</body>
+</html>

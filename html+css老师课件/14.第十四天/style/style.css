@@ -1,0 +1,529 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font:12px 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    background: #f5f5f5;
+}
+ul,ol{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+em,i{
+    font-style: normal;
+}
+b,strong{
+    font-weight: normal;
+}
+.clearfix:after{
+    content: '';
+    display: block;
+    height: 0;
+    overflow: hidden;
+    clear: both;
+}
+.clearfix{zoom: 1}
+img{
+    vertical-align: top;
+    border: none;
+}
+input{
+    outline: none;
+}
+.w1104{
+    width:1104px;
+    min-width: 1104px;
+    margin: 0 auto;
+}
+.header{
+    height: 60px;
+    background: -webkit-linear-gradient(top,#fa8723,#f57614);
+    /*背景颜色渐变           从上到下渐变  最上边的颜色 最下边的颜色
+   （right top,red,yellow）
+    */
+}
+.headCon h1{
+    float: left;
+}
+.headCon h1 a{
+    width: 200px;
+    height: 60px;
+    background: url("../images/logo.png") no-repeat 0 0;
+    display: block;
+    text-indent: -999em;
+    /*text-indent: 100%;*/
+    /*line-height: 2000px;*/
+    /*overflow: hidden;*/
+}
+.headCon h1 a:hover{
+    background-position: 0 -60px;
+}
+.headCon .box{
+    float: left;
+    padding-left: 7px;
+}
+.headCon .box li{
+    float: left;
+    width: 90px;
+    height: 60px;
+    text-align: center;
+}
+.headCon .box li a{
+    color: #fff;
+    font: 16px/60px 'Hiragino Sans GB','Microsoft Yahei';
+    text-shadow: 0 1px 2px rgba(0,0,0,.5);
+
+    /*
+    1)水平方向位移
+    2）竖直方向位移
+    3）阴影扩散范围
+    4）颜色
+
+    */
+
+}
+.headCon .box .find{
+    background: -webkit-linear-gradient(top,#db6600,#f57614);
+}
+.headCon ol{
+    width: 243px;
+    height: 28px;
+    border: 1px solid #db6b16;
+    border-radius: 1px;
+    margin: 15px 0 0 20px;
+    float: left;
+    background: #fa891c;
+}
+.headCon ol li{
+    float: left;
+    width: 60px;
+    border-right: 1px solid #db6b16;
+    text-align: center;
+    line-height: 28px;
+}
+.headCon ol .noBor{
+    border-right: none;
+}
+.headCon ol li a{
+    font-size: 14px;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+.headCon ol li:hover{
+    background: #d85e16;
+}
+.headCon .search{
+    float: left;
+    margin: 15px 0 0 20px;
+    position: relative;
+}
+.headCon .search input{
+    width: 198px;
+    height: 28px;
+    background: #ffffff;
+    border: 1px solid #db6816;
+    border-radius: 3px;
+    padding-left: 30px;
+}
+.headCon .search i{
+    width: 15px;
+    height: 15px;
+    background: url("../images/header_icon.png") no-repeat -5px -53px;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+}
+.headCon .register{
+    width: 56px;
+    height: 28px;
+    background: #ca671b;
+    border: 1px solid #b25415;
+    color: #fff;
+    text-align: center;
+    line-height: 28px;
+    float: left;
+    border-radius: 2px;
+    margin: 15px 0 0 15px;
+    text-shadow: 1px 2px 1px rgba(0,0,0,.5);
+
+}
+.headCon .register:hover{
+    background: #c15e12;
+}
+.headCon .headR{
+    width: 114px;
+    height: 28px;
+    background: #cb681c;
+    color: #edf7fa;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    float: left;
+    margin: 15px 0 0 7px;
+    line-height: 28px;
+    border: 1px solid #b25415;
+}
+.headCon .headR i{
+    width: 26px;
+    height: 28px;
+    float: left;
+    background: url("../images/web.png") no-repeat 0 0;
+
+}
+.headCon .headR li{
+    float: left;
+}
+.headCon .login{
+    width: 60px;
+    text-align: center;
+    border-right: 1px solid #b25415;
+}
+.headCon .login a{
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.5);
+}
+.headCon .web{
+    height: 28px;
+    width: 26px;
+    border-right: 1px solid #b25415 ;
+}
+.headCon .web a{
+    width: 18px;
+    height: 15px;
+    background: url("../images/web.png") no-repeat -28px -4px;
+    display: block;
+    margin: 7px 0 0 5px;
+
+}
+.headCon .qq{
+    width: 26px;
+    height: 28px;
+}
+.headCon .qq a{
+    width: 16px;
+    height: 15px;
+    background: url("../images/web.png") no-repeat -5px -4px;
+    display: block;
+    margin: 7px 0 0 6px;
+}
+.headCon .headR li:hover{
+    background: -webkit-linear-gradient(top,#c25f13,#b85509)
+}
+/*导航*/
+.nav{
+    height: 30px;
+    background: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+}
+.navCon ul{
+    float: left;
+    padding-left: 102px;
+}
+.navCon ul li{
+    float: left;
+    line-height: 30px;
+    padding-right: 33px;
+}
+.navCon ul li a{
+    color: #333;
+}
+.navCon ul li a:hover,.navCon ul .orange a{
+    color: #f60;
+}
+
+.navCon ol{
+    float: right;
+
+}
+.navCon ol li{
+    float: left;
+    margin-left:26px;
+}
+.navCon ol li a{
+    color: #333;
+    line-height: 30px;
+}
+.navCon ol li a i{
+    width: 14px;
+    height: 14px;
+    background: url(../images/header_icon.png) no-repeat -77px -53px;
+    display:inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.navCon ol .play a i{
+    width: 16px;
+    background-position: -28px -53px;
+}
+.navCon ol .down a i{
+    background-position: -52px -53px;
+}
+.navCon ol li:hover a{
+    color: #f60;
+}
+.navCon ol li:hover i{
+    background-position: -77px -77px;
+}
+.navCon ol .play:hover i{
+    background-position: -28px -77px;
+}
+.navCon ol .down:hover i{
+    background-position: -53px -77px;
+}
+.main{
+    padding-top: 19px;
+}
+.mainL{
+    float: left;
+    width: 740px;
+    border: 1px solid #ebebeb;
+    background: #fff;
+    border-radius: 3px;
+    padding: 15px;
+}
+.banner{
+    position: relative;
+    width: 740px;
+    height: 170px;
+    overflow: hidden;
+}
+.banner li img{
+    width: 740px;
+    height: 170px;
+}
+.banner ol{
+    width: 70px;
+    height: 18px;
+    background:#dbd8d7;
+    border-radius: 9px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.banner ol li{
+    float: left;
+    padding: 5px 0 0 5px;
+}
+.banner ol li a{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #fff;
+    display: block;
+}
+.banner ol li a:hover,.banner ol .orange a{
+    background: #f60;
+}
+.mainL h3.title{
+    font: 18px 'Hiragino Sans GB','Microsoft Yahei';
+    color: #333;
+    padding-top: 15px;
+
+}
+.mainL h3.title a{
+    font-size: 12px;
+    color: #ff6600;
+    vertical-align: 3px;
+}
+.guess{
+    padding-top: 15px;
+}
+.guess .today{
+    float: left;
+
+}
+.guess .todayTop{
+    position: relative;
+    width: 134px;
+    height: 161px;
+    background: #3a3935;
+    padding: 3px 3px 0;
+
+}
+.guess .todayTop ul{
+    width: 134px;
+}
+.guess .todayTop ul li{
+    float: left;
+}
+.guess .todayTop ul li img{
+    width: 67px;
+    height: 67px;
+}
+.todayTop .play{
+    width: 44px;
+    height: 44px;
+    background: url("../images/play_icon.png") no-repeat -2px -2px ;
+    position: absolute;
+    top: 48px;
+    left: 48px;
+}
+.todayTop .play:hover{
+    background-position: -50px -2px;
+}
+.todayTop p{
+    color: #999;
+    margin: 7px 0 0 2px;
+}
+.today>a{
+    font: 18px 'Hiragino Sans GB','Microsoft Yahei';
+    color: #333;
+    text-align: center;
+    display: block;
+    padding-top: 17px;
+}
+.guessR{
+    float: right;
+}
+.guessR>li{
+    float: left;
+    margin-left: 10px;
+}
+.guessR dl{
+    width: 140px;
+    height: 164px;
+}
+.guessR dl dt{
+    position: relative;
+}
+.guessR dl dt,.guessR dl dt img{
+    width: 140px;
+    height: 140px;
+}
+.guessR dl dt .hideImg{
+    display: none;
+    width: 140px;
+    height: 140px;
+    background: rgba(0,0,0,.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+
+}
+.guessR dl dt:hover .hideImg{
+    display: block;
+    cursor: pointer;
+}
+.heart{
+    width: 30px;
+    height: 14px;
+    border: 1px solid #333;
+    background: #fefefe;
+    border-radius: 3px;
+    margin: 5px 0 0 5px;
+    position: relative;
+
+}
+.heart>i{
+    width: 12px;
+    height: 10px;
+    background: url("../images/icon.png") no-repeat -6px -127px;
+    float: left;
+    margin: 2px 0 0 4px;
+
+}
+.heart>b{
+    width: 7px;
+    height: 5px;
+    background: url("../images/icon.png") no-repeat -153px -58px;
+    float: left;
+    margin: 4px 0 0 4px;
+
+}
+.heart ul{
+    display: none;
+    width: 85px;
+    padding: 5px 0;
+    background: #fff;
+    border: 1px solid #555;
+    border-radius: 3px;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+
+}
+.heart:hover ul{
+    display: block;
+}
+.heart ul li{
+    height: 25px;
+    /*background: #f60;*/
+    line-height: 25px;
+}
+.heart ul li s{
+    width: 12px;
+    height: 10px;
+    background: url("../images/icon.png") no-repeat -6px -127px;
+    display: inline-block;
+    margin:0 11px;
+    vertical-align: middle;
+}
+.heart ul li a{
+    color: #333;
+}
+.heart ul li:hover{
+    background: #f5914e;
+}
+.heart ul li:hover a{
+    color: #fff;
+}
+.heart ul li:hover s{
+    background-position: -6px -151px;
+}
+.hideImg>a{
+    width: 24px;
+    height: 24px;
+    background: url("../images/play_icon.png") no-repeat 0 -48px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+.hideImg>a:hover{
+    background-position: -24px -48px;
+}
+.guessR dl dd{
+    position: relative;
+    width: 135px;
+    height: 24px;
+    background: #f5f5f5;
+    padding-left: 5px;
+    line-height: 24px;
+}
+.guessR dl dd p{
+    color:#aaa;
+}
+.guessR dd .hideText{
+    display: none;
+    width: 140px;
+    height: 164px;
+    background: rgba(0,0,0,.3);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+}
+.guessR dd:hover .hideText{
+    display: block;
+}
+.guessR dd:hover>p{
+    display: none;
+}
+.guessR .hideText>p{
+    padding:31px 25px 16px 20px;
+    color: #fff;
+    line-height: 18px;
+}
+.hideText input[type=button]{
+    width: 68px;
+    height: 30px;
+    background: #888;
+    border-radius: 4px;
+    line-height: 30px;
+    color: #fff;
+    border: none;
+    display: block;
+    margin: 0 auto;
+}

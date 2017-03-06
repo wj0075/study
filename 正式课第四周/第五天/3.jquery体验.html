@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        p{
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+<div id="div" class="div">
+    <p>0</p>
+    <p>1</p>
+    <p index="002">2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+</div>
+<script src="js/jquery-2.0.3.js"></script>
+<script>
+    /*var $div=$('#div');//$()  html()  mouseover();
+    var oDiv=document.getElementById('div');*/
+    //console.log($('#div'))
+    //console.log($('div p'))
+    /*var $p=$('p:first');
+    var $p1=$('p:last');
+    var $p3=$('p:eq(3)')*/
+    //var $aP=$('p:lt(3)')
+    /*var $p=$('p').first();*/
+    //var $p2=$('p').eq(2);
+    //$p2.html('快吃饭了')
+    /*var res=$p2.css({
+        height:100,
+        background:'green'
+    }).attr('index');
+    console.log(typeof res)*/
+    var $aP=$('p');
+    var oP=document.getElementsByTagName('p')[0];
+    //oP.style.background='red';
+    $(oP).css('background','orange')
+    /*$aP.css({
+        background:'green'
+
+    /*for(var i=0; i<$aP.length; i++){
+       // $aP[i].style.background='red';
+        $aP.get(i).style.background='red';
+    }*/
+</script>
+</body>
+</html>

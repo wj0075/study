@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询手机号归属地</title>
+    <script src="jsonp.js"></script>
+</head>
+<body>
+<input id="tel" type="tel">
+<input id="telBtn" type="button" value="查询手机号">
+
+<p id="info"></p>
+</body>
+</html>
+<script>
+    function $(id) {
+        return document.getElementById(id);
+    }
+    var tel = $('tel');
+    var telBtn = $('telBtn');
+    var info = $('info');
+
+    telBtn.onclick = function () {
+        var telNum = tel.value;
+        if (!telNum) {
+            return
+        }
+        checkTelNumber(telNum);
+    };
+
+    var checkURI = 'http://tcc.taobao.com/cc/json/mobile_tel_segment.htm';
+    function checkTelNumber(tel) {
+        jsonp(checkURI, {tel: tel}, 'callback', function (data) {
+            var msg = '手机号码"' + tel + '"   ' + data.province + '   ' + data.catName;
+            info.innerHTML = msg;
+        });
+    }
+</script>

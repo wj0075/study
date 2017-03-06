@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function sum(){
+        var tatal = 0;
+        for(var i=0; i<arguments.length;i++){
+            var cur = Number(arguments[i]);
+            if(!isNaN(cur)){
+                tatal+=cur;
+            }
+        }
+        return tatal;
+    }
+    console.log(sum(2,3,4))
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    getChildren();
+    function getChildren(curEle){
+        var ary = [];
+        var nodes = curEle.childNodes;
+        for(var i=0;i<nodes.length;i++){
+            if(nodes[i]===1){
+                ary.push(nodes[i]);
+            }
+        }
+        return ary;
+    }
+
+
+</script>
+</body>
+</html>

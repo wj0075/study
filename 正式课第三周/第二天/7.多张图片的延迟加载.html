@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        p{
+            width: 400px;
+            height: 250px;
+            background: url("img2/default.gif") center no-repeat #cccccc;
+        }
+        p img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div style="height: 1000px;"></div>
+<p><img src="" realImg="img2/1.jpg" alt=""></p>
+<p><img src="" realImg="img2/2.jpg" alt=""></p>
+<p><img src="" realImg="img2/3.jpg" alt=""></p>
+<p><img src="" realImg="img2/4.jpg" alt=""></p>
+<p><img src="" realImg="img2/5.jpg" alt=""></p>
+<script src="js/utils.js"></script>
+<script>
+    var aP=document.getElementsByTagName('p');
+    var aImg=document.getElementsByTagName('img');
+    window.onscroll=function(){
+        //校验每张图片，是否满足加载的条件；
+        var scrollBottom=utils.win('scrollTop')+utils.win('clientHeight');
+        for(var i=0; i<aImg.length; i++){
+            var curPos=utils.offset(aImg[i]).top+utils.getCss(aImg[i],'height');
+            if(curPos<=scrollBottom){
+                lazyImg(aImg[i]);
+            }
+        }
+    };
+    function lazyImg(img){
+        if(img.loaded) return;
+        //1.创建临时图片标签
+        var tmpImg=new Image;
+        tmpImg.src=img.getAttribute('realImg');
+        tmpImg.onload=function(){
+            img.src=this.src;
+            tmpImg=null;//性能优化：释放临时img标签；
+            img.loaded=true;//避免重复加载；
+        };
+        tmpImg.onerror=function(){
+            img.loaded=true;//只加载一次；
+            img.parentNode.style.background='url("img2/error.gif") center no-repeat #cccccc';
+            tmpImg=null;
+        };
+
+    }
+</script>
+</body>
+</html>

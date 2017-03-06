@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 600px;
+            background: palegreen;
+            display: flex;
+        }
+
+        .item:nth-child(1){
+            flex: 3 1 0%;
+            width: 140px;/*设置了flex-basis除了auto以外的值，其他的width不起作用*/
+            background: fuchsia;
+        }
+        .item{
+            height: 200px;
+        }
+        .item:nth-child(2){
+            flex: 2 2 auto;
+            width: 100px;
+            background: lime;
+        }
+        .item:nth-child(3){
+            flex:1 3 200px ;
+            background: aquamarine;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+</div>
+<!--
+    剩余空间  3+2+1 = 6  当容器为600的时候， 多出300了
+    1、0%*600+3*50  =150 这样第一个盒子就有了宽度
+    2、100+2*50 = 200
+    3、200+50 = 50
+    溢出的空间  当容器为200时，溢出了100 flex-shrink
+    每个子元素算上收缩比例的基准值/所有子元素算上收缩比例的基准值-收缩的空间/溢出的内容
+
+    第一个子元素需要收缩的大小 0  800怎么来的，，是每一个子元素的具体的width值*收缩的比例值 第二个就是200，第三个就是600
+    第二个 需要收缩的大小   200/800=x/100  x->25  最终大小为100-25 = 75
+    第三个  200-75 = 125
+
+
+-->
+</body>
+</html>

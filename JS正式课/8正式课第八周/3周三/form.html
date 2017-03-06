@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" id="form1">
+    <!--<input type="datetime-local">-->
+    <input type="text" name="text" placeholder="请输入内容" autocomplete="on">
+    <input type="submit">
+</form>
+<input type="email" name="email" form="form1">
+
+<p id="op" data-name="wj" contenteditable="true"></p>
+<p id="op1" data-name-age="wj"></p>
+
+
+
+
+</body>
+</html>
+<script>
+    var op = document.querySelector('#op');
+    //获得自定义属性值 前面必须是 data
+    console.log(op.dataset.name)
+    //如果格式为 data-name-age  要遵循驼峰命名法
+    console.log(op.dataset.nameAge) //第二个-后面的每个单词首字符大写
+    //contenteditable="true" 可以让标签可以编辑
+    window.document.designMode = 'on';//让所有标签都可以编辑
+
+
+</script>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrap{
+            width: 310px;
+            height: 100px;
+            -webkit-perspective: 2000px;
+            perspective: 2000px;
+            margin: 100px auto;
+        }
+        .item{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            transition: 2s;
+        }
+        .item img{
+            position: absolute;
+            transform: translateZ(50px);
+        }
+        .item span{
+            position: absolute;
+            width: 290px;
+            height: 80px;
+            padding: 10px;
+            background: #ccc;
+            -webkit-transform: rotateX(-9deg) translateZ(50px);
+            transform: rotateX(-90deg) translateZ(50px);
+        }
+        .item:hover{
+            transform: rotateX(90deg);
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="item">
+        <img src="images/chimpified.jpeg" alt="">
+        <span>为什么你不说，我就是不那首撒谎的 上大号好的后</span>
+    </div>
+</div>
+</body>
+</html>

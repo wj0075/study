@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //call继承：把 父类私有的属性 继承给 子类私有的；
+    function F(){
+        //this:new F;
+        this.x=100;
+    }
+    F.prototype.aa=function(){};
+    function S(){
+        //this:new S;
+        F.call(this);
+    }
+
+</script>
+</body>
+</html>

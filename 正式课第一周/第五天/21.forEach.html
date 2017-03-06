@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ary=[10,20,30,40,50];
+    var obj={};
+    /*
+    * item:数组中的每一项；
+    * index：索引；
+    * input：原始数组；
+    * */
+    /*
+    * forEach():作用-》遍历数组中的每一项；
+    * forEach()有两个参数：参1：回调函数； 参2：用来改变this指向的；
+    * forEach()中的回调函数，有三个参数：
+    *   item->数组中的每一项内容
+    *   index->索引；
+    *   input：原始数组；
+    *forEach()中回调函数的执行次数，取决于数组的长度；
+    *forEach():没有返回值；
+    * */
+    //map的使用方式，跟forEach一样，但是，map有返回值；返回值是一个数组；数组中记录了每个回调函数的返回值；
+    /*var res=ary.forEach(function (item,index,input){
+        console.log(this)
+    },obj);*/
+    var res=ary.map(function(item,index,input){
+        console.log(this);
+        return item*100;//1000 2000
+    },obj);
+    console.log(res);
+
+
+</script>
+</body>
+</html>

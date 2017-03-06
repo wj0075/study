@@ -1,0 +1,96 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<style type="text/css">
+    div{
+        width: 420px;
+        height: 186px;
+        border: 2px solid #ccc;
+        overflow: hidden;
+        position: relative;
+        margin: 100px auto;
+    }
+    img{
+        width:280px;
+        height:186px;
+        border: none;
+        display: block;
+        position: absolute;
+        top: 0;
+    }
+    img:nth-of-type(1){
+        left: 0;
+    }
+    img:nth-of-type(2){
+        left: 84px;
+    }
+    img:nth-of-type(3){
+        left: 168px;
+    }
+    img:nth-of-type(4){
+        left: 252px;
+    }
+    img:nth-of-type(5){
+        left: 336px;
+    }
+
+</style>
+
+
+<div class="box">
+    <img src="http://tupian.enterdesk.com/2013/mxy/10/12/1/17.jpg">
+    <img src="http://tupian.enterdesk.com/2013/mxy/07/0715/1/7.jpg">
+    <img src="http://src.house.sina.com.cn/imp/imp/deal/5c/fa/e/afb00d1b581922fa567f9d65bfd_p1_mk1.jpg">
+    <img src="http://www.wallcoo.com/nature/wild_field_01/wallpapers/1440x900/3787717_Wild_field_v1224236762.jpg">
+    <img src="http://pic31.nipic.com/20130628/10700765_164502542117_2.jpg">
+</div>
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+
+    //精简之后的方法
+    var lefts;
+    var idx;
+    var imgL;
+    var imgR;
+
+    $("img").each(function(){
+        $(this).mouseenter(function(e) {
+            idx = $(this).index();
+            imgL = "img:lt(" + idx + ")"    //获取当前左侧的所有图片，如果直接用 $("img:lt(idx)")，idx会被当做字符串，获取不到对应的值
+            imgR = "img:gt(" + idx + ")"	//获取当前右侧的所有图片
+            lefts = idx * 35;
+
+            //当前图片的变化
+            $(this).stop(true).animate({"left" : idx * 35}, 1000);
+
+            //左侧图片的变化
+            $(imgL).each(function(){
+                $(this).stop(true).animate({"left" : ($(this).index()) * 35}, 1000)
+            })
+
+            //右侧图片的变化
+            $(imgR).each(function(){
+                $(this).stop(true).animate({"left" : ($(this).index()+7) * 35}, 1000)
+            })
+        });
+    })
+
+    $("img").each(function(){
+        $(this).mouseleave(function(){
+            $("img").each(function(){
+                $(this).stop(true).animate({"left" : ($(this).index())*84}, 1000);
+            })
+        });
+    })
+
+</script>
+
+</body>
+</html>

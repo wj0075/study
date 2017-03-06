@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    1、
+    var ary = [1,2,3,4];//属性值
+//    ary.length  length 不可枚举的属性
+//    for(var key in ary){
+//        console.log(ary[key]);
+//    }
+    ary[0]
+//    数组的末尾增加一项：
+//    ary.push(10000)
+//    ary[ary.length] = 10000
+//    ary.splice(ary.length,0,10000)
+
+//    1、增加删除替换：原数组改变
+//    1）push 在末尾的位置添加一项
+//    2）pop()  删除最后一项
+//    3）unshift 在最开始位置添加
+//    4）shift()  删除第一项
+//    5）splice(n,m)  从索引n开始删除m个
+//       splice(n)  从n删除到末尾
+//       splice(0)  克隆
+//       splice(n,m,x)  从索引n开始删除m个，用x替换删除的内容
+//       splice(n,0,x)  索引n前面增加一项
+
+//    2、截取：原数组不变
+//    1)slice(n,m)  [索引n,索引m)  从索引n开始截取到索引为m处，不包含m
+//      slice(n)  从索引n截取到末尾
+//      slice(0)，slice()  克隆
+//    2)concat 拼接
+//       ary1.concat(ary2);
+//       ary1.concat();  克隆
+
+//    3、转为字符串：原数组不变
+//       toString
+//       join
+    var ary = [1,2,3];
+    console.log(ary.join('+'))
+//       eval  计算
+//    4、排序：原数组改变
+//      sort(); 只计算9以内的
+//      reverse()  将数组翻转
+    var ary = [12,2,3,23,56,1000,10];
+    ary.sort(function(a,b){
+//        return a-b;//从小到大
+        return b-a; //从大到小
+    })
+    console.log(ary);
+    console.log(ary.reverse());
+
+//    5、不兼容
+//    1）indexOf()  数组中第一次出现的索引
+//    2）lastIndexOf()    在数组中最后一次出现的索引
+//      如果不存在 返回-1
+//    3）forEach()
+    var ary = [12,2,3,23,56,1000,10];
+    ary.forEach(function(item,index){
+//        item 值
+//        index 索引
+    })
+//    4）map
+    ary.map(function(item,index){
+    //        item 值
+    //        index 索引
+    })
+
+//    克隆：ary.concat()  slice(0) slice()  splice(0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

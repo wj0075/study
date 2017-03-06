@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //思路1；
+   /* var ary = [2,3,4,5,6];
+    var max = Math.max.apply(null,ary);
+    var min = Math.min.apply(null,ary);*/
+
+    //思路2
+    var ary = [2,3,4,5,6];
+    /*var str = ary.toString();
+    var max = eval('Math.max('+str+')');
+    var min = eval('Math.min('+str+')');
+    console.log(max,min);*/
+    //console.log(min);
+    //思路3
+   /* ary = ary.sort(function(a,b){
+        return a-b;
+    });
+    var max = ary.pop();
+    var min = ary.shift();*/
+
+    var max = ary[0];
+    var min = ary[0];
+    for(var i=0;i<ary.length;i++){
+        if (max<ary[i]){
+            max=ary[i];
+        }
+        if(min>ary[i]){
+            min=ary[i];
+        }
+    }
+
+    console.log(max,min);
+
+
+
+</script>
+</body>
+</html>

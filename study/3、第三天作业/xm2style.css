@@ -1,0 +1,56 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif
+;
+}
+ul{
+    list-style: none;
+    /*去掉前面的点*/
+}
+i{
+    font-style: normal;
+    /*将斜体扶正*/
+}
+b{
+    font-weight: normal;
+    /*去掉加粗的样式*/
+}
+img{
+    border: none;
+    /*去掉边框*/
+    /*自带3px的边距*/
+    vertical-align: top;
+    /*display: block;*/
+}
+.two{
+    background: #f5f5f5;
+    margin: 10px auto;
+
+    padding-top: 12px;
+}
+ul{
+    width: 1295px;
+    margin: 0px auto;
+}
+ul li{
+    width: 295px;
+    height: 286px;
+    background: #fff;
+    text-align: center;
+    /*内容水平居中  盒子必须有宽度
+      行内元素不可以设置
+    */
+    display: inline-block;
+    margin-left: 14px;
+}
+.bk{
+    font-size: 14px;
+    color: #2c2c2c;
+    margin-top: 30px;
+}
+.ck{
+    font-size: 12px;
+    margin: 10px 0px 28px;
+    color: #bbbbbb;
+}

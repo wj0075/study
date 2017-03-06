@@ -1,0 +1,54 @@
+webStrom安装：
+Windows：http://pan.baidu.com/s/1dEQZ8Db
+ WebStorm-10\WebStorm汉化破解方法\注册文件\keygen.exe  双击  有弹出一个小的页面 选择User Name中的webStorm  生成注册码
+
+Mac：http://pan.baidu.com/s/1eQK4rXg
+破解码：http://idea.lanyus.com
+
+
+
+webstrom不需要保存 ctrl+s
+1.创建文件：
+项目名称 右键-->new-->HTML File  新建html文件
+                      css        css文件
+                      js         js文件
+2.修改字体大小
+    file-->settings-->Editor-->Colors & fonts--> Scheme  Save As另存一份Scheme font-->size 调整字号
+3.重命名（shift+F6）
+文件右键 Refactor-->Rename -->Refactor
+4.删除文件
+Delete键
+5.撤销
+ctrl+z
+6.软换行
+file-->settings-->搜索Use Soft-->Gereral-->勾选Use Soft in  editor
+7.修改文件默认编码
+settings-->搜索Encoding  Utf-8
+8.修改注册码
+Help-->Register
+
+
+常用的快捷键
+ctrl+c  复制
+ctrl+v  粘贴
+ctrl+x  剪切
+ctrl+z  撤销
+Delete  删除
+ctrl+d  复制一行
+ctrl+f  搜索
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

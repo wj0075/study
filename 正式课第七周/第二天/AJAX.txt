@@ -1,0 +1,119 @@
+1、客户端和服务器之间交互的时候，客户端不仅可以发送请求给服务器，还可以把一些内容传递给服务器；服务器接收到请求后，也会把一些内容返回给客户端；
+   客户端 <----> 服务器
+
+   [HTTP报文]
+   客户端和服务器之间传输的内容统称为HTTP报文
+
+   起始行:请求起始行、响应起始行
+
+   首部(头)：通用首部、请求头、响应头、自定义头
+
+   主体：请求主体、响应主体
+
+2、AJAX
+  ->什么是AJAX
+    async(Asynchronous) javascript and xml
+    此异步非我们平时讲的和想象的异步(我们理解的异步:当前这件事没干完,下面的事情可以继续做,不用等)
+
+    局部刷新
+
+  ->它有什么作用
+    实现客户端和服务器端"数据"交互的(资源文件请求一般浏览器就可以处理了)
+
+扫盲:
+html:超文本标记语言
+xhtml:严谨版的html
+xml:可扩展的标记语言
+
+
+3、AJAX的四步
+  //->创建AJAX对象
+  var xhr=new XMLHttpRequest;
+
+  //->打开请求的URL地址(配置一些基础参数)
+  xhr.open([http method],[Request url and parameters],[sync/async],[user name],[user pass]);
+
+  //->绑定事件,用来监听AJAX状态的改变,在不同状态做不同的事情
+  xhr.onreadystatechange=function(){
+     if(xhr.readyState===4 && /^2\d{2}$/.test(xhr.status)){
+        xhr.responseText;//->获取响应主体内容
+     }
+  }
+
+  //->发送AJAX请求
+  xhr.send([post data]);
+
+
+
+细节：
+1、创建AJAX对象使用XMLHttpRequest在IE6浏览器中不兼容，我么需要使用ActiveXObject来做处理
+   自己学习“课时137：AJAX兼容处理及惰性思想”,重点放在惰性思想上
+
+2、http method ->HTTP请求方式
+  不管使用哪一种方式，客户端都可以把数据传递给服务器，服务器也会把数据返回给客户端
+  GET:获取,给服务器的少,从服务器拿的多
+  DELETE:删除,从服务器上删除一些文件
+  HEAD:只获取服务器响应头信息中的内容
+
+  POST:推送,给服务器的多,从服务器拿回来的少
+  PUT:放,在服务器上放一些文件内容
+
+  GET系列请求和POST系列请求的区别:
+  本质:get系列的一般应用于给服务器的少，从服务器拿的多这种需求，而post系列的一般应用于，给服务器的多，从服务器拿的少。在真实项目中，GET系列的话，我们传递给服务器内容一般都通过问号传参的方式，而POST系列一般都把数据放在请求主体中传递给服务器(约定俗成的规范)。
+
+  1、GET请求没有POST请求传递给服务器的内容多
+    GET:  xhr.open('get','/getAll?name=zf&age=7');
+
+    POST: xhr.open('post'.'/register');
+          xhr.send('{"name":"珠峰","age":8...}');//->在SEND中传递的内容就是通过请求主体的方式把数据传递给服务器,我们一般都用JSON格式的字符串给服务器传递对应的内容
+
+    每一个浏览器对于URL的长度都是由大小限制的(谷歌8KB、火狐7KB、IE2KB)，所以使用GET请求我们不会给服务器传递太多的内容，因为超过限制的部分浏览器就会自己把它截了；而POST理论上不会受到限制的。
+
+  2、GET请求会出现缓存(这里的缓存我们无法控制),POST不会
+     不想要缓存的话,我们在每一次请求的时候在URL的末尾追加一个随机数即可
+     xhr.open('get','/getAll?name=zf&age=7&_='+Math.random());
+
+  3、GET请求没有POST请求安全
+
+
+3、Request url 请求的URL地址，我们通过这个地址就可以找到对应的服务器以及对应的服务，再以及对应的目录地址(我们想要的). 真实项目中，这个地址后台开发提供给前端的(API文档).
+
+4、async/sync 同步或者异步，不写默认是true->异步，写成false是同步
+  同步：AJAX请求没有完成，其它事情做不了
+  异步：AJAX请求没有完成，继续可以做其它的事情
+
+  AJAX这件事的开始和结束:
+      从执行SEND后才发送的请求,AJAX这件事才开始;到xhr.readyState===4的时候，服务器才把所有的内容返回给客户端，此时AJAX这件事才结束。
+
+5、userName/userPass:一般不用
+
+6、xhr.onreadystatechange:AJAX的一个事件,当AJAX状态发生改变的时候就会触发这个事件,如果给这个事件绑定了方法,那么方法也会被执行
+
+  xhr.readyState:
+  0 UNSENT 未发送，执行完成new XMLHttpRequest的时候状态就为0了
+  1 OPENED 已打开，执行完成xhr.open状态变为1了
+  2 HEADERS_RECEIVED 响应头信息已经接收
+  3 LOADING 响应主体内容正在加载
+  4 DONE 响应主体内容加载完成
+
+xhr.timeout=3000 ->设置超时时间  xhr.ontimeout=function(){}
+xhr.abort() ->终止AJAX执行
+getAllResponseHeaders() ->获取响应头中的所有信息
+getResponseHeader([key]) ->获取响应头中的指定信息  xhr.getResponseHeader('Date') ->获取响应头中存储的服务器时间
+setRequestHeader([key],[value]) ->设置请求头信息
+
+7、xhr.status：服务器响应的状态码
+  200：成功 以2开头的都代表成功
+
+  301：Moved Permanently 永久转移(永久重定向307)
+  302：Move temporarily 临时重定向  服务器的负载均衡
+  304：Not Modified 读取的是缓存数据  =>以3开头的也是成功，只不过经历了特殊的处理
+
+  400：Bad Request 请求的参数出现错误
+  401：Unauthorized 无权限访问
+  404：Not Found 请求的地址是错误的   =>以4开头都是错误的,都是前端错误
+
+  500：Internal Server Error 未知的服务器错误 =>以5开头都是错误的,都是服务器错误
+  503：Service Unavailable 超过服务器的最大承受(超负荷)
+
+

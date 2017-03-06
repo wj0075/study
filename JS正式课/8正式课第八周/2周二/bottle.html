@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>漂流瓶</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            border: 1px solid #ccc;
+        }
+        #box-content{
+            background: #ccc;
+        }
+    </style>
+   <!-- <script src="js/lib.js"></script>-->
+</head>
+<body>
+<div>
+    <textarea  id="letter"></textarea>
+</div>
+<button id="throwBottle">扔瓶子</button>
+<button id="getBottle">捡瓶子</button>
+<div id="box">
+    <p>恭喜您捞到一个瓶子，内容为：</p>
+    <p id="box-content"></p>
+</div>
+<script>
+    function $(id){
+        return document.getElementById(id);
+    }
+    var letter = $('letter');
+    var throwBottle = $('throwBottle');
+    var getBottle = $('getBottle');
+    var box = $('box');
+    var boxContent = $('box-content');
+/*
+    throwBottle.onclick=function(){
+        var content = letter.value;
+        if (!content){
+            alert('请填写内容');
+        }else {
+            ajax({
+                url:'/throwBottle',
+                method:'post',
+                data:content,
+                success:function(){
+                    alert('你的瓶子已经飘向远方')
+                    letter.value='';
+                }
+            })
+        }
+    };
+    getBottle.onclick=function(){
+        ajax({
+            url:'/getBottle',
+            method:'get',
+            success:function(data){
+                boxContent.innerHTML = data;
+            },
+            error:function(){
+                alert('海里没有瓶子了')
+            }
+        })
+    }
+*/
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload=function(){//window.onload等页面所有内容（img,video,DOM....）都加载完成的时候，才开始执行JS代码；
+            /*var oDiv=document.getElementById('div');
+             console.log(oDiv)*/
+            alert('JS')
+        };
+        /*//等DOM结构加载完成的时候，开始执行JS代码；
+        $(document).ready(function(){
+            alert('jquery')
+        })*/
+        domReady(function(){
+            alert(123)
+        });
+        // $(fn)  $(document).ready(fn);
+        function domReady(fn){
+            if(document.addEventListener){
+                document.addEventListener('DOMContentLoaded',fn);
+            }else{
+                //监听页面的变化
+                document.onreadystatechange=function(){
+                    //当页面加载完成的时候，开始执行函数；
+                    if(document.readyState==='complete'){
+                        fn();
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="div"></div>
+
+</body>
+</html>

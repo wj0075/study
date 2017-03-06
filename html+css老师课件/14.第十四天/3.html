@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+
+        }
+        ul{
+            list-style: none;
+            position: fixed;
+            right: 0;
+            top: 0;
+        }
+        li{
+            position: relative;
+        }
+        li i{
+            width: 50px;
+            height: 50px;
+            background: #000;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+        li:hover i{
+            background: #f60;
+        }
+        li b{
+            width: 100px;
+            height: 50px;
+            background: red;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: left .5s;
+        }
+        li:hover b{
+            left: -100px;
+
+        }
+
+    </style>
+</head>
+<body>
+<ul>
+    <li>
+        <i></i>
+        <b></b>
+    </li>
+</ul>
+
+</body>
+</html>

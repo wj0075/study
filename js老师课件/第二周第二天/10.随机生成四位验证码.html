@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid red;
+            text-align: center;
+            letter-spacing: 5px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var str = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890';
+//    四位不重复的字符
+//    1）找到四个不重复的索引
+//    2）charAt(索引)  找到对应索引位置的字符
+//     索引0~61
+    var ary = [];//四个数
+    var str1 = '';//四位验证码
+    for(var i=0;i<4;i++){
+        var rand = Math.round(Math.random()*61);//0~61之间的随机数
+        if(ary.indexOf(rand)==-1){
+            ary.push(rand);
+//            rand 索引
+            str1+=str.charAt(rand);
+        }else{
+            i--;
+        }
+    }
+    console.log(str1);
+
+    box.innerHTML = str1;
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

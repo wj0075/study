@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="js/AJAX.js"></script>
+<script>
+    /* var xhr = new XMLHttpRequest();
+     xhr.open('get','abc.html?_='+Math.random());
+     xhr.onreadystatechange = function(){
+     if (xhr.status===200){
+     if (xhr.readyState===2){
+     var time = xhr.getResponseHeader('date')
+     console.log(new Date(time));
+     }
+     }
+     };
+     xhr.send(null);*/
+    AJAX({
+        url: 'temp.xml',
+        type: 'get',
+        success: function (result) {
+            console.log(result)
+        },
+        error: function (a) {
+            console.log(a);
+        }
+    })
+
+
+</script>
+</body>
+</html>

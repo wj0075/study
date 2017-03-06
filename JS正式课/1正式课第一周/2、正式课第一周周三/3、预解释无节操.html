@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //1、只会对等号左边带var进行声明，但不定义
+    //2、条件判断语句中，无论条件是否成立，都会进行预解释（警示：不要在条件判断语句中，写函数的定义阶段）
+    //3、自执行函数不会进行预解释，只有等执行到它的时候，然后声明+定义+调用同步完成。
+    //4、已经声明过的变量，不会进行重复声明/
+    //5、return 后面的语句不会进行预解释，但是下面的虽然不执行但是会进行预解释。
+
+    //
+    alert(a);//undefined
+    if(!'a' in window){//判断a是否属于window的属性,判断是false
+        var a=12;
+
+    }
+    alert(a);//undefined
+
+
+
+    /*(function (){
+        function f(){return 1;}
+        alert(f());
+        function f(){return 2;}
+    })();*/
+
+    //记住，不带var的是不会进行预解释的
+    //运算符优先级：算数运算符》比较》逻辑》赋值
+    f=function(){return true;};
+    g=function(){return false;};
+    (function(){
+        if(g()&&[]==![]){
+            f = function f(){return false;};
+            function g(){return true;}
+        }
+
+
+    })();
+
+
+    alert(f());
+    alert(g());
+    var name='珠峰';
+    var age=500;
+    name = (function(name,age){
+        arguments[0]='珠峰培训';
+        age = age ||this.age;
+        console.log(name,age)
+    })(name);
+    console(name,age);
+</script>
+</body>
+</html>

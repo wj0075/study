@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function F(){
+        this.x=100;
+        this.y=200;
+        this.showX=function(){};
+        this.z='我是谁';
+    }
+    F.prototype.db=function(){};
+    var f1=new F();
+    function S(){
+        for(var sttr in f1){
+            this[sttr]=f1[sttr];
+        }
+
+    };
+    var s=new S;
+    console.dir(s);
+
+
+</script>
+</body>
+</html>

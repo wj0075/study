@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //混合继承3：call+Object.create()思想；
+    /*function F(){
+        //this:new F;
+        this.x=100;
+    }
+    F.prototype.aa=function(){};
+
+    function S(){
+        F.call(this);
+    }
+    function Tmp(){};
+    Tmp.prototype= F.prototype;
+    S.prototype=new Tmp;*/
+    var obj1={name:'zhufeng',age:8};
+    var obj2=Object.create(obj1);//把obj1作为原型，把obj2作为实例；这样obj2就可以使用obj1上的属性和方法；
+    function myCreate(obj){
+        function Tmp(){};
+        Tmp.prototype=obj;
+        return new Tmp;
+    }
+</script>
+</body>
+</html>

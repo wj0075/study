@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Fn(){//构造函数：存的都是私有属性
+        this.x=100;
+    }
+    Fn.prototype.showX=function(){};//原型：原型上挂的都是共有方法
+    var f=new Fn;//实例：实例可以通过原型链使用私有属性和公有方法；
+</script>
+</body>
+</html>

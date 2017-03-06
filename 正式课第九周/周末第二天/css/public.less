@@ -1,0 +1,11 @@
+@color-blue: #1C90F2;
+@color-red: #F82D2D;
+@color-white: #FFF;
+@color-text: #555;
+@color-text-lighten: #999;
+
+/*--设置CSS3过渡动画的方法--*/
+.transitionFn(@property: all,@duration: 1s,@time-function: linear,@delay: 0s) {
+  -webkit-transition: @arguments;
+  transition: @arguments;
+}

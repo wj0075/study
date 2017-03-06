@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //    获取[0,61]之间 四个不重复随机整数
+//    var ary = [];
+//    for(var i=0;i<4;i++){
+//        var rand = Math.round(Math.random()*61);
+////        indexOf()  不存返回-1
+//        if(ary.indexOf(rand)==-1){
+//            ary.push(rand);
+//        }else{
+//            i--;
+//        }
+//    }
+//    console.log(ary);
+
+//    [n,m]
+//    Math.round(Math.random()*(m-n)+n)
+
+//    0-61
+    var ary = [];
+    for(var i=0;i<4;i++){
+        var rand = Math.round(Math.random()*61);
+        if(ary.indexOf(rand)==-1){
+            ary.push(rand);
+        }else{
+            i--;
+        }
+    }
+    console.log(ary);
+
+
+</script>
+
+</body>
+</html>

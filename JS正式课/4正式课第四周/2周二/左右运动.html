@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" http-equiv="x-ua-compatible" content="IE-Edge">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            top: 10px;
+            left: 0px;
+            margin-top: 5px;
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        .xian{
+            position: absolute;
+            top: 0;
+            left: 800px;
+            width: 2px;
+            height: 400px;
+            background: black;
+        }
+
+    </style>
+</head>
+<body>
+<input type="button" value="左走" id="left">
+<input type="button" value="右走" id="right">
+<div id="box">
+</div>
+<div class="xian"></div>
+
+
+
+<script src="../../utils.js"></script>
+<script>
+    var left = document.getElementById('left');
+    var right = document.getElementById('right');
+    var oDiv = document.getElementById('box');
+
+
+//    function move(target){
+//        _move();
+//        function _move(){
+//            var curPos = oDiv.offsetLeft;
+//            console.log(curPos);
+//            if (curPos<target){
+//                if(curPos+10>=target){
+//                    utils.css(oDiv,'left',target);
+//                    return;
+//                }
+//                curPos+=10;
+//                utils.css(oDiv,'left',curPos)
+//            }else if (curPos>=target){
+//                console.log('ok');
+//                if(curPos-10<=target){
+//                    utils.css(oDiv,'left',target);
+//                    return;
+//                }
+//                curPos-=10;
+//                utils.css(oDiv,'left',curPos)
+//            }else {
+//                return;
+//            }
+//            clearTimeout(oDiv.timer);
+//            oDiv.timer = window.setTimeout(_move,10)
+//        }
+//
+//    }
+
+  /*  function move(target){
+        clearInterval(oDiv.timer);
+        function _move(){
+            var curPos = oDiv.offsetLeft;
+            console.log(curPos);
+            if (curPos<target){
+                if(curPos+10>=target){
+                    utils.css(oDiv,'left',target);
+                    clearInterval(oDiv.timer);
+                    return;
+                }
+                curPos+=10;
+                utils.css(oDiv,'left',curPos)
+            }else if (curPos>=target){
+                console.log('ok');
+                if(curPos-10<=target){
+                    utils.css(oDiv,'left',target);
+                    clearInterval(oDiv.timer);
+                    return;
+                }
+                curPos-=10;
+                utils.css(oDiv,'left',curPos)
+            }else {
+                return;
+            }
+        }
+        oDiv.timer=window.setInterval(_move,10)
+       }*/
+
+
+    left.onclick = function(){
+        move(0);
+    };
+    right.onclick = function(){
+        move(800)
+    };
+    function move(target){
+            _move();
+           function _move(){
+               var curPos = oDiv.offsetLeft;
+               if (curPos<target){
+                   if(curPos+10>target){
+                       utils.css(oDiv,'left',target);
+                       return;
+                   }
+                   curPos+=10;
+                   utils.css(oDiv,'left',curPos)
+               }else if (curPos>=target){
+                   console.log('ok');
+                   if(curPos-10<=target){
+                       utils.css(oDiv,'left',target);
+                       return;
+                   }
+                   curPos-=10;
+                   utils.css(oDiv,'left',curPos)
+               }else {
+                   return;
+               }
+           }
+        clearTimeout(oDiv.timer);
+        oDiv.timer = window.setTimeout(_move,10)
+        }
+</script>
+</body>
+</html>

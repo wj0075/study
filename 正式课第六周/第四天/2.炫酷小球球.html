@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="800" height="500">sorry，您的浏览器不支持canvas</canvas>
+<script>
+    var canvas=document.getElementById('canvas');
+    var ctx=canvas.getContext('2d');//上下文
+    var ary=[];
+    //创建一个小球类 arc(x,y,r,start,end,boolean)
+    function Ball(x,y,r,color){
+        this.x=x;
+        this.y=y;
+        this.r=r||30;
+        this.color='rgb('+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+')';
+        //改变运动方向：
+        this.dx=Math.random()*10-5;//-5~5；
+        this.dy=Math.random()*10-5;//-5~5；
+        ary.push(this);//把每个实例都放进数组中了；
+        //改变运动大小；
+        this.dr=Math.random()+0.3;
+    }
+    Ball.prototype={
+        update:function(){//更新状态；
+            //x,y控制了物体运动的方向；
+            this.x+=this.dx;
+            this.y+=this.dy;
+            this.r-=this.dr;
+            //判断半径
+            if(this.r<0){
+                for(var i=0; i<ary.length; i++){
+                    if(ary[i]===this) ary.splice(i,1);
+                }
+            }
+            return this;
+        },
+        render:function(){//渲染小球图形；
+            if(this.r>=0){
+                ctx.beginPath();//设置起始路径
+                ctx.arc(this.x,this.y,this.r,0,Math.PI*2,true);
+                ctx.fillStyle=this.color;
+                ctx.fill();
+            }
+            return this;
+        }
+    };
+    /*new Ball(200,200);
+    new Ball(400,300);
+    new Ball(400,300);
+    new Ball(400,300);
+    new Ball(400,300);
+    new Ball(400,300);
+    new Ball(400,300);
+    new Ball(400,300);
+    new Ball(400,300);
+    new Ball(400,300);*/
+    setInterval(function(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        for(var i=0; i<ary.length; i++){
+            /*ary[i].update();//当ary[i]为假的时候，说明ary[i]实例已经被删除了；
+            if(ary[i]){
+                ary[i].render();
+            }*/
+            ary[i].update().render();
+        }
+    },20);//一秒钟走了50帧；
+    canvas.addEventListener('mousemove',function(e){
+        new Ball(e.clientX, e.clientY);
+    })
+</script>
+</body>
+</html>

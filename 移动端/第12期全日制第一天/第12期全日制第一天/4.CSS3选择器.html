@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        ul {
+            width: 400px;
+            height: 1000px;
+            margin: 100px auto;
+        }
+        ul li{
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            display: inline-block;
+            margin: 10px;
+            font-size: 16px;
+            background: orange;
+        }
+        ul li[class$="zf"]{
+            background: palegreen;
+        }
+        #div1{
+            height: 800px;
+            background: yellow;
+        }
+        #div2{
+            height: 600px;
+            background: orange;
+        }
+        :target{/*当前活动的目标元素*/
+            font-size: 60px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li class="zf pxzf">2</li>
+    <li class="zf-px zfpx">3</li>
+    <li class="aa zf">4</li>
+    <li class="zf">5</li>
+    <li class="zfpxzf">6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+</ul>
+<div id="div1">div1元素</div>
+<div id="div2">div2元素</div>
+
+<a href="#div1">定位到div1元素</a>
+<a href="#div2">定位到div2元素</a>
+</body>
+</html>

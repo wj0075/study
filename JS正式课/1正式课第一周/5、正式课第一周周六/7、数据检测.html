@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //instanceof:检测实例是否属于当前类
+
+    //in:判断某个属性是否在对象上，用in:私有属性+共有属性；
+    //hasOwnProperty:判断是否为私有属性
+
+    var obj1={
+        name:"hhh"
+    };
+    //判断某个属性是否是对象上的公用属性的封装
+    function hasPubProperty(key,obj){
+        return key in obj && !obj.hasOwnProperty(key);
+    }
+
+
+
+</script>
+</body>
+</html>

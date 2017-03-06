@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //回调函数：把一个函数的定义阶段，作为参数，传给另一个函数；
+    //1.callback被调用几次，取决去我们自己的条件
+    //2.callback被调用的时候，可以进行传参
+    //3.callback被调用的时候，可以改变this指向
+    //4.callback是否要返回值，取决于条件
+    var obj = {};
+    function fn(a){
+        var ary = [];
+        for(var i = 0;i < 4;i++) {
+            var res = a.call(obj, 2, 3);
+            ary.push(res);
+        }
+    }
+    function f1(num1,num2){
+        console.log(this+(num1+num2))
+    }
+    fn(f1)
+
+</script>
+</body>
+</html>

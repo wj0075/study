@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        p{
+            width: 100px;
+            height: 30px;
+            border: 1px solid red;
+            line-height: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<p id="box"></p>
+<script>
+    var str = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890';
+//    4个不重复字符
+//    charAt(索引)   获取到对应的字符
+//    字符串的索引是从0开始的  str对应索引0~61
+//    1）找到四个不重复的索引
+//    获取[n,m]之间的随机数
+//    Math.round(Math.random()*(m-n)+n);
+    console.log(str.charAt(0));
+//    获取[0,61]之间的随机数
+    /* var ary = [];//存储四个不重复的数字
+    var str1 = '';//存放字符
+
+    for(var i=0;i<4;i++){
+        var rand = Math.round(Math.random()*61);
+//        indexOf(内容)  找到内容第一次出现的索引
+        if(ary.indexOf(rand)==-1){
+            ary.push(rand);
+            str1 += str.charAt(rand)
+        }else{
+            i--;
+        }
+    }
+    console.log(str1);
+    box.innerHTML = str1*/
+
+
+//    indexOf(值) 通过值找到第一次的索引
+//    charAt(索引)  通过索引找到对应位置的字符
+    var str = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890';
+    str.indexOf('a')
+    var str2 = '';
+    for(var i=0;i<4;i++){
+//        rand 索引
+        var rand = Math.round(Math.random()*61);
+//        索引对应的字符
+        var a = str.charAt(rand);
+
+        if(str2.indexOf(a)==-1){
+            str2+=a;
+        }else{
+            i--;
+        }
+    }
+    box.innerHTML = str2;
+
+//    var ary = [1,2,3,4,5,6,7,8];
+//    获取数组中第n项到第m项之间的数,原数组不变
+               n-1   m-1
+//    slice(n-1,m)
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str='123';
+    var reg=/\d+/g;//字面量创建
+    //var reg=new RegExp('\\d+','g');//实例创建
+    alert(reg.test(str));
+    //var str='alsfja1223lkjslf455llksdjfls8900sldfks78999';
+    //需求：[1223,455,8900,78999];
+    /*var tmpStr='';
+    var ary=[];
+    for(var i=0; i<str.length; i++){
+        var cur=str[i];
+        if(!isNaN(cur)){//有效数字的时候进行拼接
+            tmpStr+=cur;
+        }else{//当遇到非有效的数字的时候，把以前拼接好的有效数字串放进数组中，同时清空以前的字符串；
+            if(tmpStr.length){
+                ary.push(tmpStr);
+                tmpStr='';
+            }
+        }
+    }
+    //等整个循环结束的时候，再看看是否还有拼接好的字符串，如果有，直接放入数组；
+    if(tmpStr.length){
+        ary.push(tmpStr);
+        tmpStr='';
+    }
+    alert(ary);*/
+    //alert(str.match(/\d+/g))
+</script>
+</body>
+</html>

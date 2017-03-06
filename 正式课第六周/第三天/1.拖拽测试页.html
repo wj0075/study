@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            padding-top:30px;
+            overflow: hidden;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+        }
+        .div2{
+            left:200px;
+            background: yellow;
+        }
+        .div3{
+            left:400px;
+            background: blue;
+        }
+        .div4{
+            left:600px;
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+<div id="div" class="div1"></div>
+<div id="div2" class="div2"></div>
+<div id="div3" class="div3">111111111123234444</div>
+<div id="div4" class="div4"></div>
+<script src="js/utils.js"></script>
+<script src="js/event.js"></script>
+<script src="js/Drag.js"></script>
+<script src="js/effect.js"></script>
+<script>
+    var aDiv=document.getElementsByTagName('div');
+    var zIndex=0;
+    for(var i=0; i<aDiv.length; i++){
+        var cur=aDiv[i];
+        //客户端订阅模式：
+        /*new Drag(cur).on('selfDown',creaseIndex).on('selfDown',clearEffect).on('selfMove',getSpeedX).on('selfUp',fly).on('selfUp',drop);//客户端产品升级*/
+        //客户端直接调用
+        new Drag(cur).jump();
+    }
+
+</script>
+</body>
+</html>

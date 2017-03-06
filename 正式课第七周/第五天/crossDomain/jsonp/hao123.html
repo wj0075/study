@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jsonp.js"></script>
+    <script>
+        for (var i = 0; i < 10; i++) {
+            jsonp('http://127.0.0.1:8080/crossOrigin',
+                    {a: 1, b: 2},
+                    'key', function (data) {
+                        console.log(data + abc);
+                    });
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

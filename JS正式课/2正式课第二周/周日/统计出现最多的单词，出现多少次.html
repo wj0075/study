@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    var str = 'aaaaaabbbbbbbccccccc';
+//    //通过arguments，可以打印出a系列，b系列
+//    var reg = /(\w)\1+/g;
+//    str.replace(reg,function(){
+//        console.log(arguments);
+//    })
+
+
+//    var str = 'aaaaaccccccCCCCCCAAAAAAAAAAcccccDDDDD';
+//    //利用对象不重名的特性
+//    var ary = Array.prototype.slice.call(str);
+//    //console.log(ary);
+//    var obj = {};
+//    for(var i=0;i<ary.length;i++){
+//        var cur = ary[i];
+//        if (obj[cur]){
+//            obj[cur]++;
+//        }else{
+//            obj[cur]=1
+//        }
+//    }
+////假设法求出出现最多的次数
+//    var max = obj.a;
+//    for(var key in obj){
+//        max<obj[key]?max=obj[key]:null;
+//    }
+//    console.log(max);
+////根据次数求出出现次数最多的单词，出现次数最多的单词可能有多个
+//    var ary2 = [];
+//    for(var key in obj){
+//        if(obj[key]==max){
+//            ary2.push(key);
+//        }
+//    }
+//    console.log(ary2);
+
+
+    var str = 'aaaaaccccccCCCCCCAAAAAAAAAAcccccDDDDD';
+    var reg = /(\w)\1+/gi;
+
+    //思路2：重复子项
+    str= str.split('').sort(function(a,b){return a.localeCompare(b)}).join('');
+    str.replace(reg,function(){
+        console.log(arguments);
+    });
+    var max = 0;
+    var maxStr='';
+    str.replace(reg,function($0,$1){
+        if($0.length>max){
+            max = $0.length;
+            maxStr = $1;
+        }else if($0.length==max){
+            maxStr+=','+$1;
+        }
+    });
+    console.log(max);
+    console.log(maxStr);
+
+
+    var str = 'aaaaaaavvvvvvvddddddSSSSaaaAAAAAA';
+    var reg = /(\w)\1+/gi;
+    str = str.split('').sort(function(a,b){return a.localeCompare(b)}).join('');
+    var max = 0;
+    var maxStr = '';
+    str.replace(reg,function($0,$1){
+        if($0.length>max){
+            max = $0.length;
+            maxStr = $1;
+        }else if ($.length==max){
+            maxStr+=','+$1;
+        }
+    });
+
+
+    //手机号
+    var reg=/^1\d{10}$/;
+    var reg = /^[+-]?(\d|[1-9]\d+)(\.\d+)?$/;
+    var reg = /^([18|19])|([2-5]\d)|(6[0-5])$/;
+    var reg = /^$/
+
+
+
+</script>
+</body>
+</html>

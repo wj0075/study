@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function isType(data,type){
+        return Object.prototype.toString.call(data)==='[object '+type+']'
+    };
+    function param(data){
+        //如果传进来的是字符串
+        if (isType(data,'String')){
+            return data;
+        }
+        //如果传进来的时候null和undefined
+        if(data===null||data===undefined){
+            return '';
+        }
+        //如果传进来的是对象
+        if (isType(data,'Object')){
+            var ary = [];
+            for (var key in data){
+                if (!data.hasOwnProperty(key)) continue;
+                ary.push(key+'='+data[key])
+            }
+            return ary.join('&')
+        }
+    }
+    var obj = {a:1,b:2};
+    console.log(param(obj))
+
+
+
+
+</script>
+</body>
+</html>

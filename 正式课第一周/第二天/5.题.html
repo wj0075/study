@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*var a=12;
+    function show(){
+        alert(a);//undefined
+        var a=15;
+    }
+    show();
+    alert(a);//12*/
+    function change() {
+        //var fn=xxff00;//函数声明优先于变量声明
+        alert(typeof fn)
+        function fn() {
+            alert('hello')
+        }
+        var fn;
+    }
+    change();
+</script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 200px;
+            background: red;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+<script src="../../utils.js"></script>
+<script src="js/event.js"></script>
+<script>
+    var oDiv = document.getElementsByTagName('div')[0];
+    var oDiv1 = document.getElementsByTagName('div')[1];
+    var oDiv2 = document.getElementsByTagName('div')[2];
+    var oDiv3 = document.getElementsByTagName('div')[3];
+
+    var tmp = 0;
+    function processThis (fn,context){
+        return function (e){
+            e = e||window.event;
+            fn.call(context,e)
+        }
+    }
+    on(oDiv, 'mousedown', down);
+    on(oDiv1, 'mousedown', down);
+    on(oDiv2, 'mousedown', down);
+    on(oDiv3, 'mousedown', down);
+    function down(e) {
+        e = e || window.event;
+        this.left = this.offsetLeft;
+        this.top = this.offsetTop;
+        this.x = e.clientX;
+        this.y = e.clientY;
+        if (this.setCapture) {
+            this.setCapture();
+            on(oDiv, 'mousemove', move);
+            on(oDiv, 'mouseup', up)
+        } else {
+            /*var _this = this;
+            this.MOVE = function (e) {
+                move.call(oDiv, e)
+            };
+            this.UP = function (e) {
+                up.call(oDiv, e)
+            };*/
+            this.MOVE=processThis(move,this);
+            this.UP = processThis(up,this);
+            on(document, 'mousemove', this.MOVE);
+            on(document, 'mouseup', this.UP)
+            e.preventDefault();
+        }
+        clearTimeout(this.flyTimer);
+        clearTimeout(this.dropTimer);
+    }
+    function move(e) {
+        var curL = e.clientX - this.x + this.left;
+        var curT = e.clientY - this.y + this.top;
+        var minL = 0, maxL = (document.documentElement.clientWidth || document.body.clientWidth) - this.offsetWidth;
+        var minT = 0, maxT = (document.documentElement.clientHeight || document.body.clientHeight) - this.offsetHeight;
+        curL = curL < minL ? minL : (curL > maxL ? maxL : curL);
+        curT = curT < minT ? minT : (curT > maxT ? maxT : curT);
+        this.style.left = curL + 'px';
+        this.style.top = curT + 'px';
+        if (!this.prev){
+            this.prev = e.clientX;
+        }else {
+            this.speedX = e.clientX-this.prev;
+            this.prev = this.speedX;
+        }
+
+    }
+    function up(e) {
+        if (this.releaseCapture) {
+            this.releaseCapture();
+            off(oDiv, 'mousemove', move);
+            off(oDiv, 'mouseup', up)
+        } else {
+            console.log('ok');
+            off(document, 'mousemove', this.MOVE);
+            off(document, 'museup', this.UP);
+        }
+        fly.call(this);
+        drop.call(this);
+    }
+    function fly(){
+        clearTimeout(this.flyTimer);
+        this.speedX*=0.93;
+        var l = this.offsetLeft+this.speedX;
+        var maxL = utils.win('clientWidth')-this.offsetWidth;
+        if (l>=maxL){
+            l=maxL;
+            this.speedX*=-1;
+        }else if (l<=0){
+            l=0;
+            this.speedX*=-1;
+        }
+        if (Math.abs(this.speedX)>=0.5){
+            this.style.left = l+'px';
+            this.flyTimer = setTimeout(processThis(fly,this),10);
+        }
+
+    };
+    function drop(){
+        //求速度
+        clearTimeout(this.dropTimer);
+        if (!this.speedY){
+            this.speedY = 9.8;
+        }else {
+            this.speedY+=9.8
+        }
+        this.speedY*=0.93;
+        var t = this.offsetTop+this.speedY;
+        var maxT = utils.win('clientHeight')-this.offsetHeight;
+        if (t>=maxT){
+            t=maxT;
+            this.speedY*=-1;
+            tmp++;
+        }else {
+            tmp = 0;
+        }
+        if (tmp<2){
+            this.style.top = t+'px';
+            this.dropTimer = setTimeout(processThis(drop,this))
+        }
+    }
+
+
+</script>
+</body>
+</html>

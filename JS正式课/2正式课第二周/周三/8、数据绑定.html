@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="box">
+    <!--<li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>-->
+</ul>
+</body>
+<script src="utils.js"></script>
+<script src="json1.js"></script>
+<script>
+    var ul = document.getElementById('box');
+    bind();
+    function bind(){
+        var str = '';
+        for(var i = 0; i<ary.length; i++){
+            str+='<li>'+ary[i].title+ary[i].desc+'</li>'
+        };
+        ul.innerHTML+=str;
+    }
+
+
+
+</script>
+</html>

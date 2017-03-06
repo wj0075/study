@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str='2016/11/6 12:47:33';
+    var tmp='{0}年{1}月{2}日';
+    //'{0}年{1}月{2}日 {3}时{4}分{5}秒';
+    String.prototype.formatDate=function(tmp){
+        var tmpStr=tmp||'{0}年{1}月{2}日 {3}时{4}分{5}秒';
+        //1.把实例中的数据，都放到数组中去；
+        var ary=this.split(/\D+/g);
+        //2.把数组中的内容，去替换模板的内容；
+        tmpStr=tmpStr.replace(/{(\d)}/g,function($0,$1){
+            var n=ary[$1];
+            n=n>=0 && n<10?'0'+Number(n):n;
+            return n;//现在return的n是为了替换模板中的{};
+        });
+        return tmpStr;//把处理好的模板内容放出去，同时，也为了链式操作；
+    }
+    str.formatDate();
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        div{
+            height: 40px;
+            background: red;
+            opacity: 0.1;
+            filter:alpha(opacity:10);
+        }
+        p{
+            margin-left: 500px;
+        }
+    </style>
+</head>
+<body>
+<div class="        box1 box2     box3      box4      "></div>
+<div class="box1 box2 box3"></div>
+<div class="box1 box2"></div>
+<div class="box1"></div>
+<p></p>
+<script src="js/utils.js"></script>
+<script>
+
+    //var aDiv=utils.getByClass('box1 box2    box3      ');
+    //console.log(utils.hasClass(aDiv[0],'box5'))
+    //console.log(utils.removeClass(aDiv[0],'box3  box2'))
+    /*alert(utils.getCss(aDiv[0],'height'))
+    alert(utils.getCss(aDiv[0],'opacity'))*/
+    //var obj={};
+    /*console.log({}.toString.call(obj));
+    utils.setGroupCss(aDiv[0],{
+        background:'blue',
+        opacity:1,
+        height:100,
+    });*/
+    var oP=document.getElementsByTagName('p')[0];
+    alert(utils.offset(oP).left);
+</script>
+</body>
+</html>

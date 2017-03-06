@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>click</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box"></div>
+<script src="fastclick.min.js"></script>
+<script>
+    var oBox = document.getElementById('box');
+    /*
+    * 为了防止误操作，我们人为10px以内的偏移量都是点击，10px以外的才算是做滑动（10px-30px都可以作为误差范围）
+    * */
+    oBox.addEventListener('touchstart',function (e) {
+        /*console.dir(e);*/
+        /*
+        touches:当前手指在屏幕上的位置信息都存储在这里（一个集合，有几个手指操作存储几个手指的信息，我们一般只用索引为零也就是第一个手指信息即可）前提是手指需要在屏幕上才会有这个值，离开的屏幕的时候就没有这个值了
+        *changedTouches:最近一次手指操作的位置。平时和touches一样，但是在touchend手指离家屏幕的时候，touches已经没有信息了，但是changedTouches还存留了离开屏幕一刹那手指的坐标信息
+        * */
+        var point = e.touches[0];
+        this.strX = point.pageX;
+        this.strY=point.pageY;//记录手指按下时候的起始X/Y轴坐标
+
+    },false);
+    oBox.addEventListener('touchmove',function (e) {
+        var point = e.changedTouches[0];
+        var changeX=point.pageX-this.strX;
+        var changeY = point.pageY-this.strY;
+        this.changeX = changeX;
+        this.changeY = changeY;
+        Math.abs(changeY)>10 ||Math.abs(changeX)>10?this.isMove=true:null;
+    },false);
+    oBox.addEventListener('touchend',function (e) {
+        if (!this.isMove){
+            //点击
+            console.log('这是点击');
+            return;
+        }
+
+        //滑动
+        var dir =Math.abs(this.changeX)>Math.abs(this.changeY)?(this.changeY>0?'right':'left'):(this.changeY>0?'down':'up');
+        console.log('只是滑动');
+    },false)
+
+
+</script>
+</body>
+</html>

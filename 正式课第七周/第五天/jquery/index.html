@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+    <script>
+        // 使用原生方法实现ready事件
+        var ready = (function () {
+
+            if (window.addEventListener) {
+                return function (callback) {
+                    if (document.readyState !== 'loading') {
+                        callback();
+                    } else {
+                        window.addEventListener('DOMContentLoaded', function () {
+                            callback();
+                        }, false);
+                    }
+
+                }
+            }
+            return function (callback) {
+                if (document.readyState !== 'loading') {
+                    callback();
+                    return;
+                }
+                // document.readyState
+                /**
+                 * loading 正在加载html
+                 * interactive html加载完毕，正加载其他资源
+                 * complete 所有资源加载完毕
+                 *
+                 * 在ie下 html资源特别少的情况下，interactive有一定几率不会出现，直接从loading变为complete。
+                 */
+                document.onreadystatechange = function () {
+                    // 为了防止逻辑执行两遍
+                    if (document.readyState == 'interactive'
+                            || document.readyState == 'complete') {
+                        document.onreadystatechange = null;
+                        callback();
+                    }
+                }
+            }
+        }());
+    </script>
+    <script>
+        ready(function () {
+            console.log('my ready');
+        });
+        // ready事件是当DOM加载时执行
+        $(document).ready(function () {
+            console.log('ready');
+        });
+        // load事件是html中所有资源全部完毕时执行
+        $(window).load(function () {
+            console.log('onload');
+        });
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

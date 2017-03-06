@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <link rel="stylesheet" href="css/swiper.min.css"/>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding:0;
+        }
+        .swiper-container{
+            width: 100%;
+            height: 3rem;
+        }
+        .swiper-slide img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<script>
+    /*移动适配*/
+    var desW = 640;//设计稿宽度
+    var winW = document.documentElement.clientWidth;//设备宽度
+    document.documentElement.style.fontSize = winW/desW*100+"px";//各个设备根元素字体大小
+</script>
+
+<body>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img data-src="img/banner/banner1.jpg" alt="" class="swiper-lazy"/>
+            <div class="swiper-lazy-preloader"></div>
+        </div>
+        <div class="swiper-slide">
+            <img data-src="img/banner/banner2.jpg" alt="" class="swiper-lazy"/>
+            <div class="swiper-lazy-preloader"></div>
+        </div>
+        <div class="swiper-slide">
+            <img data-src="img/banner/banner3.jpg" alt="" class="swiper-lazy"/>
+            <div class="swiper-lazy-preloader"></div>
+        </div>
+        <div class="swiper-slide">
+            <img data-src="img/banner/banner4.jpg" alt="" class="swiper-lazy"/>
+            <div class="swiper-lazy-preloader"></div>
+        </div>
+        <div class="swiper-slide">
+            <img data-src="img/banner/banner5.jpg" alt="" class="swiper-lazy"/>
+            <div class="swiper-lazy-preloader"></div>
+        </div>
+    </div>
+    <!--分页器-->
+    <div class="swiper-pagination"></div>
+    <!--左右切换的箭头-->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
+</body>
+</html>
+<script src="js/swiper.min.js"></script>
+<script>
+    var mySwiper = new Swiper(".swiper-container",{
+        direction:"horizontal",  //horizontal 横向的 vertical 纵向的
+        pagination: '.swiper-pagination',
+        paginationType:"progress",/*进度条*/
+        prevButton:".swiper-button-prev",
+        nextButton:".swiper-button-next",
+       /* autoplay:1000,*/ /*自动轮播间隔时间*/
+        autoplayDisableOnInteraction:false,/*启动autoplay*/
+        loop:true,  /*循环模式*/
+        effect:"coverflow",/*cube 3D翻转 coverflow 3D切换 flip 左右翻转 默认值是slide*/
+        lazyLoading :true, /*设置延迟加载*/
+        lazyLoadingInPrevNext:true, /*对相邻的滑块提前做延迟加载*/
+        onInit:function(swiper){/*swiper初始化之后*/
+           console.log(swiper instanceof  Swiper);//true
+        },
+        onSlideChangeStart : function(swiper){/*滑块刚开始滑动时*/
+
+        },
+        onSlideChangeEnd : function(swiper){/*滑块滑动结束时，会丢失滑动*/
+
+        },
+        onTransitionEnd : function(swiper){/*滑动滑动结束时，但是不会丢失滑动*/
+
+        }
+
+    })
+</script>

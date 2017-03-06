@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title>珠峰培训</title>
+    <!--import needed css-->
+    <link rel="stylesheet" href="css/reset.min.css"/>
+    <link rel="stylesheet/less" href="css/index.less"/>
+    <script src="js/less-2.5.3.min.js"></script>
+
+    <!--REM-->
+    <script>
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 640 * 100 + 'px';
+    </script>
+</head>
+<body>
+<section class="cube">
+    <ul class="cubeBox" id="cubeBox">
+        <li><img src="img/cube/zf_cube1.png" alt=""/></li>
+        <li><img src="img/cube/zf_cube2.png" alt=""></li>
+        <li><img src="img/cube/zf_cube3.png" alt=""></li>
+        <li><img src="img/cube/zf_cube4.png" alt=""></li>
+        <li><img src="img/cube/zf_cube5.png" alt=""></li>
+        <li><img src="img/cube/zf_cube6.png" alt=""></li>
+    </ul>
+</section>
+<!--JS-->
+<script>
+    //->移动端处理滑动我们需要先把文档滑动的默认行为阻止掉:UC或者QQ浏览器,在用户滑动的时候有自己的默认行为,页卡切换的行为
+    document.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+    }, false);
+
+    var cubeBox = document.getElementById('cubeBox');
+    cubeBox['strX'] = null;
+    cubeBox['strY'] = null;
+    cubeBox['changeX'] = null;
+    cubeBox['changeY'] = null;
+    cubeBox['isMove'] = false;
+    cubeBox['rotateX'] = -35;
+    cubeBox['rotateY'] = 45;
+
+    cubeBox.addEventListener('touchstart', function (e) {
+        var point = e.touches[0];
+        this['strX'] = point.pageX;
+        this['strY'] = point.pageY;
+    }, false);
+    
+    cubeBox.addEventListener('touchmove', function (e) {
+        var point = e.touches[0];
+        this['changeX'] = point.pageX - this['strX'];
+        this['changeY'] = point.pageY - this['strY'];
+        Math.abs(this['changeX']) > 10 || Math.abs(this['changeY']) > 10 ? this['isMove'] = true : null;
+    }, false);
+
+    cubeBox.addEventListener('touchend', function (e) {
+        if (!this['isMove']) return;
+        var rotateY = this['rotateY'] + this['changeX'] / 3;
+        var rotateX = this['rotateX'] - this['changeY'] / 3;
+        this.style.webkitTransform = 'scale(0.6) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
+
+        //->记录最新的X和Y轴旋转的角度,保证下一次是基于这一次最新的在开始旋转
+        this['rotateY'] = rotateY;
+        this['rotateX'] = rotateX;
+    }, false);
+</script>
+</body>
+</html>

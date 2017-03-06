@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            border: 1px solid blue;
+            padding-top: 50px;
+        }
+        img{
+            /*vertical-align: baseline;*/
+            /*对齐方式：基线对齐*/
+            vertical-align: middle;
+            /* top  与父级元素的内容部分顶部对齐 */
+            /* text-bottom  与文字的最底端对齐*/
+            /* text-top: 文字最顶端对齐*/
+            /* middle  居中对齐*/
+            /*
+            可以设置一个具体的值   vertical-align:-3px
+            */
+        }
+    </style>
+</head>
+<body>
+<div>
+    <span>文字文字文字</span>text  baseline文字
+    <img src="img.png" alt=""/>
+</div>
+
+<!--行内元素、行内块级元素 默认的对齐方式：基线对齐  baseline
+块级元素不可以设置vertical-align
+-->
+
+</body>
+</html>

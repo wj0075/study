@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery的回调函数</title>
+</head>
+<body>
+<script src="../../jquery-1.11.3.js"></script>
+<script>
+
+    function fn1(val){
+        console.log('fn1：'+val)
+    }
+    function fn2(val){
+        console.log('fn2：'+val)
+    }
+    var $call = $.Callbacks();//创建一个回调函数的列表集合
+
+    $call.add(fn1);//向集合中增加一个fn1的函数
+    $call.fire(100);//触发fire方法时候，把回调函数集合中的方法执行，并且把对应的参数值传递给对应的方法；
+    $call.add(fn2);
+    $call.fire(200);
+
+</script>
+</body>
+</html>

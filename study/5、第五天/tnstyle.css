@@ -1,0 +1,167 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+ul{
+    list-style: none;
+}
+i{
+    font-style: normal;
+}
+b{
+    font-weight: normal;
+}
+img{
+    border: none;
+    vertical-align: top;
+}
+a{
+
+    text-decoration: none;
+}
+.dh{
+    width: 1000px;
+    height: 29px;
+    border-bottom: 3px solid #f1f0f5;
+    margin: 0 auto;
+}
+b{
+    padding-left: 10px;
+    font-size: 18px;
+    float: left;
+    font-weight: bold;
+}
+.one{
+    list-style: none;
+    width: 500px;
+    margin-left: 267px;
+
+}
+.one li{
+    height: 24px;
+    float: left;
+    padding: 3px 5px 1px;
+    margin-right: 18px;
+}
+.one li a:hover{
+    color: red;
+}
+.one li:hover{
+    border-bottom: 3px solid red;
+}
+
+.dh span{
+    float: right;
+}
+.main{
+    width: 1000px;
+
+    margin: 15px auto 0;
+
+}
+.left{
+    width: 225px;
+    padding-left: 10px;
+    float: left;
+
+
+}
+.top{
+    height: 110px;
+    border-bottom: 1px dashed #f1f0f5;
+}
+.top dd{
+    float: left;
+    width: 100px;
+    padding-top: 8px;
+    color: #919598;
+
+}
+.bottom img{
+    width: 225px;
+    height: 205px;
+}
+.right{
+    width: 765px;
+    float: right;
+}
+.right ul{
+    width: 765px;
+    float: right;
+}
+.right li{
+    width: 225px;
+    height: 170px;
+    float: left;
+    margin-left: 30px;
+    position: relative;
+    margin-bottom: 10px;
+}
+.right img{
+    width: 225px;
+    height: 127px;
+}
+.right .boc{
+    margin: 8px 5px 0 5px;
+}
+.right i{
+    color: #c96042;
+    font-size: 12px;
+}
+.right span{
+    color: #f67301;
+    font-size: 16px;
+}
+.right .bd{
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+}
+.right b{
+    font-size: 12px;
+    color: #999592;
+    margin-top: 4px;
+    float: right;
+}
+.right s {
+    color: #9d9d9d;
+    font-size: 12px;
+}
+.right .dw{
+    width: 64px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.right .sdw{
+    width: 64px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    font-weight: bold;
+    background: #f5b746;
+    color: #fff;
+    position: absolute;
+    top: 20px;
+    right: 0;
+}
+li p{
+    font-size: 12px;
+    width: 216px;
+    height: 37px;
+    color: #fff;
+    line-height: 18px;
+    background: rgba(0,0,0,.3);
+    padding: 3px 4px 0 5px;
+    position: absolute;
+    left: 0;
+    top: 87px;
+    overflow: hidden;
+}
+.right .bx{
+    color: #ffffad;
+}
+.right li:hover{
+    box-shadow: 0 1px 3px rgba(238,136,0,.3);
+}

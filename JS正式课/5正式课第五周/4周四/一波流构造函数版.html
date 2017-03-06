@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>一波流构造函数版</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 1200px;
+            margin: 0 auto;
+            background-color: lightskyblue;
+        }
+        .box ul{
+            float: left;
+            list-style: none;
+            width: 200px;
+            margin: 5px;
+            /*background: red;
+            height: 200px;*/
+        }
+        .box ul li{
+            box-shadow: 0 0 5px #ccc;
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+            background: url("images/default.gif") no-repeat center #ccc;
+        }
+        .box ul li img{
+            width: 100%;
+        }
+        .box a{
+            display: none;
+            text-decoration: none;
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: lightcoral;
+            line-height: 50px;
+            text-align: center;
+            color: #333333;
+            font-size: 24px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <ul>
+        <li><img src="" realImg="images/0.jpg" alt=""></li>
+    </ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <a href="javascript:;" id="go ">上去</a>
+</div>
+<script src="../../utils.js"></script>
+<script src="js/yibo.js"></script>
+<script>
+var tab = new yiBo('box','json/data.txt')
+
+
+
+</script>
+</body>
+</html>

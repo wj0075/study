@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .one{
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background: #ff6000;
+            border-radius: 50%;
+            border: 20px solid #2097f3;
+        }
+        .two{
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #ff6000;
+            border: 20px solid ;
+            border-color: #fff #2097f3 #2097f3 #2097f3;
+        }
+        @keyframes fist{
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+
+        }
+        div:hover .two{
+            animation: fist .1s infinite linear;
+        }
+    </style>
+</head>
+<body style="background: #000">
+   <div class="one">
+       <div class="two"></div>
+   </div>
+</body>
+</html>

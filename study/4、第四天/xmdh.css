@@ -1,0 +1,147 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif
+;
+}
+img{
+    border: none;
+    /*ȥ���߿�*/
+    /*�Դ�3px�ı߾�*/
+    vertical-align: top;
+    /*display: block;*/
+}
+.bottom:hover{
+    color: red;
+}
+.dh a:hover{
+    color: #fff;
+}
+
+.dh1 .top:hover{
+    color: #fff;
+}
+/*.dh1 .ts:hover{
+    background: white;
+}*/
+.qb {
+    height: 40px;
+    background: #333;
+}
+.dq{
+    width: 1225px;
+    height: 40px;
+    margin: 0px auto;
+    /*background: salmon;*/
+}
+.dh{
+    float: left;
+}
+.dh ul{
+    margin-top: -10px;
+}
+.dh a{
+    font-size: 12px;
+    color: #b0b0b0;
+    text-decoration: none;
+}
+/*.dq .ts{*/
+    /*width: 100px;*/
+    /*height: 40px;*/
+    /*display:inline-block;*/
+    /*line-height: 20px;*/
+    /*margin-top: -24px;*/
+    /*float: right;*/
+    /*clear: both;*/
+}
+.dh1{
+    float: right;
+}
+.dh1 a{
+    font-size: 12px;
+    color: #b0b0b0;
+    text-decoration: none;
+}
+.dh1 ul{
+    margin-top: -10px;
+}
+.shu{
+}
+.main{
+    width: 1225px;
+    height: 100px;
+    margin: 10px auto;
+    padding-top: 20px;
+}
+.logo{
+    width: 55px;
+    height: 55px;
+    float: left;
+}
+.lianjie{
+    width: 188px;
+    height: 55px;
+    float: left;
+}
+.lianjie img{
+    height: 55px;
+}
+ul{
+    list-style: none;
+    float: left;
+}
+ul li{
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 7px;
+}
+.dh1 ul{
+    height: 40px;
+    float: right;
+}
+.dh1 ul li{
+    margin-top: 16px;
+}
+.dh1 li .ts{
+    width: 50px;
+    height: 40px;
+}
+.dh1 li i{
+    margin: 4px 4px 0 0;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background: url("icon1.png") no-repeat;
+    vertical-align: -6px;
+}
+
+/*.dq span i{*/
+    /*width: 20px;*/
+    /*height: 20px;*/
+    /*display: inline-block;*/
+    /*background: url("icon1.png") no-repeat;*/
+
+}
+/*.dq span a{*/
+    /*text-decoration: none;*/
+    /*color: #b0b0b0;*/
+    /*font-size: 14px;*/
+}
+ul a{
+    text-decoration: none;
+    font-size: 14px;
+    color: #333333;
+}
+input{
+    float: right;
+}
+input[type=button]{
+    width: 62px;
+    height: 50px;
+    background-image: url("ss.jpg");
+}
+input[type=text]{
+    width: 280px;
+    height: 45px;
+
+}

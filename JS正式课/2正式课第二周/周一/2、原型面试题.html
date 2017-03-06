@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Fn(num){
+        this.x=this.y=num;
+    }
+    Fn.prototype = {
+        x:200,
+        sum:function(){
+            console.log(this.x+this.y);
+        }
+    };
+    var f=new Fn(10);
+    console.log(f.sum===Fn.prototype.sum);
+    f.sum();
+    Fn.prototype.sum();//NaN
+    console.log(f.constructor);
+</script>
+</body>
+</html>

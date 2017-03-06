@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+1、js的命名规范
+1）严格区分大小写
+2）驼峰命名法：首字母小写，从第二个单词开始首字母大写
+由数字、字母、_、$组成  不能以数字作为开头
+3）不能用关键字和保留字
+    var
+
+2、js的引入方式
+<script>
+
+</script>
+<!--<script src="js文件路径">-->
+    <!--//这里的代码不执行-->
+<!--</script>-->
+3、变量
+作用：存储值和代表值
+var
+var 变量名 = 变量值
+= 赋值
+var a =
+4、输出方式
+alert()
+console.log(1111,2,3)
+document.write(1)
+document.write(2)
+innerHTML、innerText
+
+5、数据类型
+1）基本数据类型：
+数字 （number） 字符串（string） boolean null undefined
+2）引用数据类型
+对象（object）：{}、[]、//
+函数（function）
+
+6、number：正数 负数 0 小数 NaN
+            返回值
+isNaN()     true  false
+Number()
+parseInt()
+parseFloat()
+
+7、boolean：true false
+! 先转为布尔类型 然后再取反
+0、NaN、''、null、undefined ----false
+
+!!
+Boolean()
+
+8、=  ==
+9、
+    要转换的内容.toString()
+    Number(要转换的内容)
+    1）对象==对象  false
+    2）对象==字符串  对象转为字符串
+    3）对象==布尔    对象转为字符串然后再转为数字 布尔直接转为数字
+    4）对象==数字   对象转为字符串然后再转为数字
+    5）布尔==字符串  转为数字
+    6）布尔==数字    布尔转数字
+    7）字符串==数字   字符串转数字
+    8）null==undefined true
+    9）null或者undefined和其他任何类型比较 false
+10、===  严格比较  数据类型必须一致
+1=='1'
+1==='1'
+
+11、检测数据类型
+typeof
+constructor
+instanceof
+
+返回值：字符串类型的
+typeof null  "object"
+
+typeof typeof 123  "string"
+
+12 判断
+1、if else
+2、三元运算符
+3、switch case
+
+<script>
+    /*if(条件1){
+        条件1 成立  true  执行
+    }else if(条件2){
+        条件2 成立  true  执行
+    }
+    。。。
+    else{
+        以上都不成立执行的代码
+    }*/
+
+   /* &&
+    ||
+    > <  >= <=  ==  ===   !  !!  + - / *
+    只有一个值:直接判断真假 */
+    if(2*3){
+        alert(123)
+    }
+
+
+</script>
+
+条件?条件成立执行的代码:条件不成立执行的代码
+条件?条件成立执行的代码:void 0;
+
+<script>
+   0?alert(1):''
+   0?alert(1):void 0;
+
+    if(0){
+        alert(1)
+    }
+   if(0) alert(1)
+
+</script>
+
+switch (值){
+    case 值1:：
+        值===值1
+        break;
+    case 值2:
+        值===值2
+        break;
+    default:
+        以上条件都不成立执行
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

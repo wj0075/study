@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div{
+            width: 200px;
+            height:200px;
+            background: red;
+            position: absolute;
+        }
+        #div img{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="div"><img src="img/1.jpg" alt=""></div>
+<script src="js/event.js"></script>
+<script>
+    var oDiv=document.getElementById('div');
+    //oDiv.onmousedown=down;
+    on(oDiv,'mousedown',down);
+    function processThis(fn,context){
+        return function (e){
+            e=e||window.event;
+            fn.call(context,e)
+        }
+    }
+    function down(e){//保存位置和坐标
+        e=e||window.event;
+        this.l=this.offsetLeft;
+        this.t=this.offsetTop;
+        this.x= e.clientX;
+        this.y= e.clientY;
+        if(this.setCapture){
+            this.setCapture();
+            on(this,'mousemove',move);
+            on(this,'mouseup',up);
+            /*this.onmousemove=move;
+            this.onmouseup=up;*/
+        }else{
+           //document.onmousemove=processThis(move,this);
+            this.Move=processThis(move,this);
+            this.UP=processThis(up,this);
+            on(document,'mousemove',this.Move);
+            on(document,'mouseup',this.UP);
+            //document.onmouseup=processThis(up,this);
+            e.preventDefault();
+        }
+    }
+    function move(e){//计算位置： 以前的位置+鼠标移动的位置
+        e=e||window.event;
+        this.style.left=this.l+ e.clientX-this.x+'px';
+        this.style.top=this.t+ e.clientY-this.y+'px';
+    }
+    function up(){
+        if(this.releaseCapture){//IE浏览器
+            this.releaseCapture();
+            /*this.onmousemove=null;
+            this.onmouseup=null;*/
+            off(this,'mousemove',move);
+            off(this,'mouseup',up);
+        }else{
+            off(document,'mousemove',this.Move);
+            off(document,'mouseup',this.UP);
+        }
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

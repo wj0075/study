@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*var strCode = '2017-12-17 0:33:34';
+    var tmp = '{0}年{1}月{2}日{3}时{4}分{5}秒';
+    String.prototype.formatDate=function (tmp) {
+        var tmpStr = tmp||'{0}年{1}月{2}日{3}时{4}分{5}秒';
+        var ary=this.match(/(\d+)/g);
+        tmpStr = tmpStr.replace(/{(\d)}/g,function ($0,$1) {
+            var n = ary[$1];
+            n = n<10&&n>=0?'0'+Number(n):n;
+            return n
+        });
+return tmpStr
+    };*/
+    var str = 'aaaaaaaaaaabbbbbbbcccccccAAAAAAAfffffeeeCCCCCCCCCC';
+    //1、利用对象不重名的特性，求出出现最多的单词，并计算出现多少次。
+    var obj = {};
+    /*for (var i=0;i<str.length;i++){
+        //全都转换成小写
+        var cur = str[i].toLowerCase();
+        //这一步的目的，利用obj不重名的特性，只要没出现过就给它赋值为1，这样对象中就会出现一个键值对，键名为字母，键值为数字。然后只要在循环的时候，出现同名的属性名，就让它++，这样就可以得出每个字符具体出现了多少次。
+        if (obj[cur]){
+           obj[cur]++;
+        }else {
+            obj[cur]=1
+        }
+    }
+    //然后利用假设法，求出出现次数最多的。
+    var max=obj['a'];
+    for (var key in obj){
+        if (obj[key]>max){
+            max=obj[key]
+        }
+    }
+    //根据出现的最多次数来得出具体的字母
+    var ary1 = [];
+    for (var attr in obj){
+        if (obj[attr]==max){
+            ary1.push(attr)
+        }
+    }*/
+
+ /*   for (var i=0;i<str.length;i++){
+        var cur = str[i];
+        if (obj[cur]){
+            obj[cur]++;
+        }else {
+            obj[cur]=1
+        }
+    };
+    var maxStr = obj['a'];
+    for (var key in obj){
+        if (obj[key]>=maxStr){
+            maxStr=obj[key];
+        }
+    }
+    var ary=[];
+    for(var attr in obj){
+        if (obj[attr]==maxStr){
+            ary.push(attr);
+        }
+    }*/
+    //第二种思路，利用重复子项
+    str=str.split('').sort(function (a, b) {
+        return a.localeCompare(b)
+    }).join('');
+    var max = 0;
+    var maxStr = '';
+    str.replace(/(\w)\1+/gi,function ($0,$1) {
+        if ($0.length>max){
+            max=$0.length;
+            maxStr=$1;
+        }else if ($0.length==max){
+            maxStr+=$1;
+        }
+    });
+    console.log(max,maxStr);
+
+
+
+
+
+
+</script>
+</body>
+</html>

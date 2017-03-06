@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width:200px;
+            height:200px;
+            background:red;
+        }
+    </style>
+</head>
+<body style="height: 3000px;">
+<div id="div"></div>
+<script src="js/wheel.js"></script>
+<script>
+    var oDiv=document.getElementById('div');
+    //分析：addWheel(ele,cb);//回调函数中会接收一个参数：滚轮滚动方向；
+    //功能：给一个元素添加鼠标滚轮事件：火狐：DOMMouseScroll； IE和chrome：onmousewheel
+    wheel(oDiv,function(bOk){
+        if(bOk){//下
+            this.style.height=this.offsetHeight+10+'px';
+        }else{//上
+            this.style.height=this.offsetHeight-10+'px';
+        }
+    });
+</script>
+</body>
+</html>

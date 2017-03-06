@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //if 、else if、else
+    //    三元运算符
+    //    switch case
+
+    var a = 1;
+    if (a < 0) {
+        console.log('负数')
+    } else {
+        console.log('正数或0')
+    }
+
+    /*if(判断的条件1){
+     条件1成立执行的代码
+     }else if(条件2){
+     条件2成立执行的代码
+     }else if(条件3){
+     条件3成立执行的代码
+     }
+     ...
+     else{
+     以上都不成立执行的代码
+     }*/
+
+    var b = 10;
+    if (b < 0) {
+        console.log('a')
+    } else if (b >= 0 || b < 10) {
+        console.log('b')
+    } else {
+        console.log('c')
+    }
+    //    if条件中：
+    //    && 并且 两个小条件必须都成立，整体才为真
+    //    || 或者 只有一个条件为真整体即为真
+
+    //    > < >= <=
+    //    ==   ===
+    //    只有一个值 直接判断真假
+    //      0、NaN、''、null、undefined--》false
+
+    if (1 == 1 || 2 == 3 || 3 == 6) {
+        alert('下课啦');
+    }
+
+
+    //    三元运算符，三目运算符：主要应用于简单的if else判断或者只有if的情况
+
+    var a = 12;
+    if (a < 0) {
+        console.log(1);
+    } else {
+        console.log(2);
+    }
+
+    //    条件?条件成立执行的代码:条件不成立执行的代码
+    a < 0 ? console.log(1) : console.log(2);
+
+    if (3) {
+        alert('哈哈~~')
+    }
+
+    3 ? alert('哈哈~~') : void 0;//void 0 用来补位
+
+    if (3) alert('哈哈~~');
+
+
+    //    switch case 不同值的操作
+    var a = 2;
+    if (a == 1) {
+        console.log('今天周一')
+    } else if (a == 2) {
+        console.log('今天周二')
+    } else if (a == 3) {
+        console.log('今天周三')
+    } else {
+        console.log('放假')
+    }
+
+    //    switch 值 {
+    //         case 值1:
+    //              值和值1比较相等 执行的代码;
+    //              break;
+    //           case 值2:
+    //              值和值2比较相等 执行的代码;
+    //              break;
+    //           default:
+//                  以上条件都不成立执行的代码
+    //    }
+    var a = '2';
+    switch (a) {
+        case 1:
+            console.log('今天周一');
+            break;//阻断代码  只要遇到break后面代码不再执行
+        case 2:
+            console.log('今天周二');
+//            break;
+        case 3:
+            console.log('今天周三');
+            break;
+        default :
+            console.log('放假');
+    }
+//    如果不加break 不管后面的代码是否成立都会执行
+//    每个case后面都要加break
+//    每个case都是===比较
+
+
+
+</script>
+
+</body>
+</html>

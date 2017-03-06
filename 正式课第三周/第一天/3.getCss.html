@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<script>
+    var oDiv=document.getElementById('div1');
+    //需求：封装getCss()；功能：获取 当前元素的某个样式值；
+    /*
+    * 1.参数：元素 样式
+    * 2.返回值：return 当前元素的某个样式值
+    * */
+    //拿到浏览器的详细信息；
+    var reg=/MSIE (6|7|8)/g;
+    //通过判断浏览器是否为IE678;
+    //alert(reg.test(window.navigator.userAgent))//为真：是IE678
+   // alert(window.navigator.userAgent.search(reg)!==-1)//为真：是IE678
+    //alert(window.navigator.userAgent.match(reg))//为真：是IE678
+    //alert(window.getComputedStyle)
+    //alert(typeof window.getComputedStyle=='function');
+    function  getCss(obj,attr){
+        /*if('getComputedStyle' in window){
+            return getComputedStyle(obj,false)[attr];
+        }else{
+            return obj.currentStyle[attr];
+        }*/
+        /*if(window.getComputedStyle){
+            return getComputedStyle(obj,false)[attr];
+        }else{
+            return obj.currentStyle[attr];
+        }*/
+        /*if(typeof window.getComputedStyle=='function'){
+            return getComputedStyle(obj,false)[attr];
+        }else{
+            return obj.currentStyle[attr];
+        }*/
+        /*try{
+            return getComputedStyle(obj,false)[attr];
+        }catch (e){
+            return obj.currentStyle[attr];
+        }*/
+
+
+    }
+    //alert(getCss(oDiv,'height'))
+    //alert(getComputedStyle(oDiv,false)['height']);//IE6-8不支持getComputedStyle;
+    //alert(oDiv.currentStyle['height'])
+</script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //练习call继承：父类把自己的私有的属性和方法继承个子类的私有
+   /*function F(){
+        this.name='小明';
+        this.age=20;
+        this.work='敲代码';
+        this.shwX=function(){
+            console.log('这个方法是为了测试用的');
+            return '你说返回就返回啊'
+        }
+    }
+    F.prototype={
+        constructor:F,
+        person:"人类",
+        changge:function(){
+            console.log('点我就改变')
+        }
+    };
+    var f1=new F;
+    console.dir(f1);
+    function S(){
+        this.title='我只是为了描述';
+        F.call(this);
+    }
+    var s=new S;
+    //console.dir(s);
+    console.log(s.shwX());
+*/
+
+
+    //原型链继承：父类把自己私有和公有的属性和方法继承给子类的公有。
+   /* function F(){
+        this.name='小明';
+        this.age=20;
+        this.work='敲代码';
+        this.shwX=function(){
+            console.log('这个方法是为了测试用的');
+            return '你说返回就返回啊';
+        }
+    }
+    F.prototype={
+        person:"人类",
+        changge:function(){
+            console.log('点我就改变')
+        }
+    };
+    var f1=new F;
+
+    function S(){
+        this.title='我只是为了描述';
+    }
+    S.prototype=new F;
+    S.prototype.constructor=S;
+    var s=new S;
+    console.dir(s);*/
+
+    //冒充继承：父类把自己的私有和共有的属性和方法，继承给子类的私有；
+    /*function F(){
+        this.name='小明';
+        this.age=20;
+        this.work='敲代码';
+        this.shwX=function(){
+            console.log('这个方法是为了测试用的');
+            return '你说返回就返回啊';
+        }
+    }
+    F.prototype={
+        person:"人类",
+        changge:function(){
+            console.log('点我就改变')
+        }
+    };
+    var f1=new F;
+
+    function S(){
+        this.title='我只是为了描述';
+        for(var attr in f1){
+            this[attr]=f1[attr];
+            //console.log(this[attr]);
+        }
+    }
+    var s=new S;
+    console.dir(s);*/
+
+    //混合继承：call+原型链继承；我理解的混合的继承都是为了让子类能够同时拥有父类的私有和共有的属性和方法，而且改变子类不会影响到父类，父类改变能够改变到子类；因为子类是继承在父类的，所以前面的继承方式都不够完整，才会有混合继承的方法来实现。
+    /*function F(){
+        this.name='小明';
+        this.age=20;
+    }*/
+    /*F.prototype={
+        constructor:F,
+        person:"人类",
+        changge:function(){
+            console.log('点我就改变')
+        }
+    };*/
+    /*F.prototype.aaaaa=function (){};
+    var f1=new F;
+    console.dir(f1);
+    function S(){
+        F.call(this);
+    }
+    S.prototype=new F();
+    S.prototype.constructor=S;
+    var s=new S;
+    console.dir(s);
+    S.prototype.aaa=function(){
+        console.log('改变吗？')
+    }*/
+
+    //混合继承：call+拷贝
+   /* function extend(obj2,obj1){
+        for(var attr in obj1){
+            obj2[attr]=obj1[attr];
+        }
+        return obj2;
+    }
+    function F(){
+        this.name='小明';
+        this.age=20;
+    }
+    F.prototype.aaaaa=function (){};
+    function S(){
+        F.call(this)
+    }
+    extend(S.prototype, F.prototype)
+    var s=new S;
+    console.dir(s);
+*/
+
+
+    //混合继承：call+Object.create()思想
+    function F(){
+        this.name='小明';
+        this.age=20;
+    }
+    F.prototype.aaaaa=function (){};
+    function S(){
+        F.call(this)
+    }
+    function Temp(){};
+    Temp.prototype= F.prototype;
+    S.prototype=new Temp();
+    S.prototype.constructor=S;
+    var s=new S;
+    console.dir(s);
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box1{
+            width: 400px;
+            height: 400px;
+            background:#ccc;
+            margin:10px auto;
+            position: relative;
+        }
+        #mark{
+            width: 100px;
+            height: 100px;
+            background: green;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="box1"></div>
+<script>
+    var oBox=document.getElementById('box1');
+    var oM=null;
+    /*oBox.onmouseover=function(){
+        oM=document.createElement('div');
+        oM.id='mark';
+        //当鼠标移入oM的时候，触发oM的onmouseover;也就触发了oBox的onmouseover
+        oM.onmouseover=function(e){
+            e=e||window.event;
+            e.stopPropagation? e.stopPropagation(): e.cancelBubble=true;
+        }
+        this.appendChild(oM);
+    };
+    oBox.onmousemove=function(e){
+        e=e||window.event;
+        oM.style.left= e.clientX-this.offsetLeft+'px';
+        oM.style.top= e.clientY-this.offsetTop+'px';
+    };
+    oBox.onmouseout=function(){
+        //当移出mark的时候，触发mark的mouseout事件，mark属于box的子集，box的mouseout事件就被触发了，还触发box的mouseover；
+        oM.onmouseout=function(e){
+            e=e||window.event;
+            e.stopPropagation? e.stopPropagation(): e.cancelBubble=true;
+        };
+        this.removeChild(oM);
+    }*/
+    oBox.onmouseover=function(e){
+        e=e||window.event;
+        var oTo= e.fromElement|| e.relatedTarget;//关联元素
+        if(!this.contains(oTo)){
+            oM=document.createElement('div');
+            oM.id='mark';
+            this.appendChild(oM);
+        }
+
+    };
+    oBox.onmousemove=function(e){
+        e=e||window.event;
+        oM.style.left= e.clientX-this.offsetLeft+'px';
+        oM.style.top= e.clientY-this.offsetTop+'px';
+    };
+    oBox.onmouseout=function(e){
+        e=e||window.event;
+        var oTo= e.toElement|| e.relatedTarget;
+        if(!oBox.contains(oTo)){
+            this.removeChild(oM);
+        }
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

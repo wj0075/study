@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>详细页</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<ul class="box2" id="box2">
+    <li>
+        <span>编号</span>
+        <span id="num">1</span>
+    </li>
+    <li>
+        <span>姓名</span>
+        <span id="name">李四</span>
+    </li>
+    <li>
+        <span>性别</span>
+        <span id="sex">1</span>
+    </li>
+    <li>
+        <span>分数</span>
+        <span id="score">99</span>
+    </li>
+</ul>
+<script src="js/ajax.js"></script>
+<script>
+    (function (pro) {
+        function parm() {
+            var reg = /([^#@&?]+)=([^#@&?]+)/gi;
+            var obj = {};
+            this.replace(reg, function () {
+                obj[arguments[1]] = arguments[2];
+            });
+            return obj;
+        }
+
+        return pro.parm = parm;
+    })(String.prototype);
+    var num = document.getElementById('num'),
+            name1 = document.getElementById('name'),
+            sex = document.getElementById('sex'),
+            score = document.getElementById('score'),
+            studentId = location.search.parm()['id'];
+    ajax({
+        url: '/getInfo?id=' + studentId,
+        success: function (result) {
+            num.innerHTML = result.data['id'];
+            name1.innerHTML =result.data['name'];
+            sex.innerHTML = result.data['sex'] == 1 ? '男' : '女';
+            score.innerHTML =result.data['score'];
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .a1{
+            width: 700px;
+            height: 400px;
+            background: goldenrod;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .a2{
+            width: 500px;
+            height: 600px;
+            background: greenyellow;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .a3{
+             width: 300px;
+             height: 500px;
+             background: blue;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 3;
+         }
+        .a4{
+            width: 200px;
+            height: 700px;
+            background: hotpink;
+            position: absolute;
+            top: 0;
+            left: 0;
+    </style>
+</head>
+<body>
+<!--z-index   设置层级关系
+没有设置z-index  默认是0
+只有设置position的属性，才可以设置z-index
+父级元素永远的子级元素的最下面
+-->
+
+<div class="a1"></div>
+<div class="a2"></div>
+<div class="a3"></div>
+<div class="a4"></div>
+</body>
+</html>

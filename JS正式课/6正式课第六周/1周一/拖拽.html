@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor: move;
+        }
+        div img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div><img src="img/1.jpg" alt=""></div>
+<script>
+    var oDiv = document.getElementsByTagName('div')[0];
+    console.log(oDiv);
+    oDiv.onmousedown = down;
+    function down(e){
+        //物体本身距离：left,top;鼠标落脚点：clientX,clientY;
+        e = e||window.event;
+        this.left = this.offsetLeft;
+        this.top = this.offsetTop;
+        this.x= e.clientX;
+        this.y = e.clientY;
+        if(this.setCapture){
+            this.setCapture();//--把当前的鼠标和this绑定在一起
+            this.onmousemove=move;
+            this.onmouseup=up;
+        }else {
+            //document.onmousemove = move;
+            //document.onmouseup = up;
+            var _this = this;
+            document.onmousemove = function(e){
+                //move(e);//move方法中的this是window
+                move.call(_this,e)
+            };
+            document.onmouseup = function(e){
+                //move(e);//move方法中的this是window
+                up.call(_this,e)
+            };
+            //这样绑定的话，move和up中的this就变成document
+            e.preventDefault();
+        }
+    }
+    function move(e){
+        e=e||window.event;
+        var curL=e.clientX-this.x+this.left;
+        var curT=e.clientY-this.y+this.top;
+        //边界判断
+        var minL= 0,minT= 0,maxL = (document.documentElement.clientWidth||document.body.clientWidth)
+-this.offsetWidth,maxT = (document.documentElement.clientHeight||document.body.clientHeight)-this.offsetHeight;
+        curL = curL<minL?minL:(curL>maxL?maxL:curL);
+        curT = curT<minT?minT:(curT>maxT?maxT:curT);
+        this.style.left = curL+'px';
+        this.style.top = curT+'px';
+    };
+    function up(e){
+        if (this.releaseCapture){
+            this.releaseCapture();//把当前的鼠标与this，解除绑定
+            this.onmousemove=null;
+            this.onmouseup = null;
+        }else {
+            document.onmousemove=null;
+            document.onmouseup = null;
+        }
+    }
+    //当鼠标移动过快的时候，我们的鼠标会脱离盒子，导致盒子的mouseup和mousemove事件都移除不了--“鼠标焦点消失”
+    //在IE和火狐中，我们用一个方法把盒子绑定在一起setCapture
+    //在谷歌中不兼容。。。。鼠标在快也跑不出去文档：我们把mousemove和mouseup绑定给document。
+
+</script>
+</body>
+</html>

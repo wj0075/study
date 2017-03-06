@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="tab">
+
+</div>
+
+
+<script>
+
+    var tab = document.getElementById('tab');
+    new Tab({
+        ele:tab,
+        data:[
+            {title:'腾讯新闻'},
+            {title:'腾讯'},
+            {title:'腾讯新闻'}
+        ],
+        cName:'choose'
+    });
+
+
+    //Object.assign();用来合并对象
+    function Tab(){
+        var options = {
+            width:200,
+            height:300,
+        };
+        this.option
+        this.init();
+        this.render();
+        this.bindHandler();
+    }
+    Tab.prototype={
+        constructor:Tab,
+        init: function(){
+
+        }
+    }
+
+
+</script>
+</body>
+</html>

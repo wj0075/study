@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小米购物车</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+        }
+        span{
+            position: relative;
+            display: block;
+            width: 100px;
+            height: 30px;
+            margin: 0px auto;
+            font-size: 18px;
+            line-height: 30px;
+            text-align: center;
+            background: lightgray;
+            cursor: pointer;
+        }
+        div{
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 30px;
+            width: 300px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            background: lightcoral;
+        }
+    </style>
+</head>
+<body>
+<span>
+    购物车
+    <div>购物车中还没有商品，赶紧选购吧！</div>
+</span>
+<script>
+    var oSp = document.getElementsByTagName('span')[0];
+    var oDiv = document.getElementsByTagName('div')[0];
+    //点击oSp时div显示，在点击span标签div消失。点击div本标签不消失，点击其他任何地方div标签消失
+    /*document.body.onclick=function(e){
+        e = e||window.event;
+        var target = e.target|| e.srcElement;
+        if (target===oSp){
+            if (oDiv.style.display=='block'){
+                oDiv.style.display='none';
+            }else {
+                oDiv.style.display='block'
+            }
+        }else if (target!==oSp&&target!==oDiv){
+            oDiv.style.display='none';
+        }
+    }*/
+
+    document.body.onmouseover=function(e){
+        e=e||window.event;
+        var target = e.target|| e.srcElement;
+        if (target===oSp){
+            oDiv.style.display='block'
+        }else if (target!==oSp&&target!==oDiv){
+            oDiv.style.display='none'
+        }
+    }
+
+</script>
+</body>
+</html>

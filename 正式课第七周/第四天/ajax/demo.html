@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax简单示例</title>
+    <script>
+        var xhr = new XMLHttpRequest();
+
+
+
+        xhr.open('get', './readme.txt', true, 'zhangyatao', '12345');
+
+        // 自定义请求首部
+        // 该方法只能放到open方法之后
+        xhr.setRequestHeader('abc', '123');
+        xhr.setRequestHeader('abc', '456');
+
+
+        console.log('before send');
+
+        //        setTimeout(function () {
+        //            xhr.send();
+        //        }, 0);
+
+        xhr.send();
+        console.log('after send');
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log('get response');
+//                console.log(xhr.responseText);
+
+                // 获取响应首部
+                var date = xhr.getResponseHeader('date');
+                console.log(new Date(date));
+
+                // 获取所有的响应首部
+                var allHeaders = xhr.getAllResponseHeaders();
+                console.warn(allHeaders);
+            }
+        };
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+        ul{
+            width: 480px;
+            height:640px;
+            margin:30px auto;
+            background: #ccc;
+            padding:5px;
+            position: relative;
+        }
+        ul li{
+            width: 150px;
+            height: 150px;
+            float: left;
+            margin:5px;
+            background: lightblue;
+        }
+        ul li img{
+            width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <!--<li><img src="img/1.png" alt=""></li>
+    <li><img src="img/2.png" alt=""></li>
+    <li><img src="img/3.png" alt=""></li>
+    <li><img src="img/4.png" alt=""></li>
+    <li><img src="img/5.png" alt=""></li>
+    <li><img src="img/6.png" alt=""></li>
+    <li><img src="img/7.png" alt=""></li>
+    <li><img src="img/8.png" alt=""></li>
+    <li><img src="img/9.png" alt=""></li>
+    <li><img src="img/10.png" alt=""></li>
+    <li><img src="img/11.png" alt=""></li>
+    <li><img src="img/12.png" alt=""></li>-->
+</ul>
+<script src="js/utils.js"></script>
+<script src="js/event.js"></script>
+<script src="js/move.js"></script>
+<script src="js/Drag.js"></script>
+<script>
+    var oUl=document.getElementsByTagName('ul')[0];
+    var aLi=document.getElementsByTagName('li');
+    //1.创建li
+    function li12(n){
+        var frg=document.createDocumentFragment();
+        for(var i=0; i<n; i++){
+            var oLi=document.createElement('li');
+            oLi.innerHTML='<img src="img/'+(i+1)+'.png" alt="">';
+            frg.appendChild(oLi);
+        }
+        oUl.appendChild(frg);
+        frg=null;
+    }
+    li12(12);
+    //2.把浮动布局转定位布局；
+    for(var i=aLi.length-1; i>=0; i--){
+        var oLi=aLi[i];
+        oLi.oldColor=utils.css(oLi,'backgroundColor');
+        oLi.style.left=(oLi.l=oLi.offsetLeft)+'px';
+        oLi.style.top=(oLi.t=oLi.offsetTop)+'px';
+        oLi.style.position='absolute';
+        oLi.style.margin=0;
+        var drag=new Drag(oLi);
+        drag.photo(aLi);
+    }
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

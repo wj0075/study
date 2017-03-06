@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="">
+    <div>
+        <lable for="username">用户名</lable><input type="text" id="username">
+    </div>
+    <button id="submit">登陆</button>
+</form>
+<script>
+    //const ES6中声明变量的一个操作符
+    var username = document.getElementById('username').value;
+    var submit = document.getElementById('submit');
+    var reg = /^\w{6,12}$/g;
+    console.log(username);
+    const config = {
+        usernameError:'您的用户名不符合规则'
+    };
+    submit.onclick = function(){
+        if (!reg.test(username)){
+            alert(config.usernameError);
+        }
+        //button 按钮点击的时候一定要阻止默认事件
+        return false
+    }
+
+
+
+</script>
+</body>
+</html>

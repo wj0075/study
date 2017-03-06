@@ -1,0 +1,33 @@
+1)常用事件
+    1.鼠标事件：
+    onclick onmouseover onmouseout onmouseenter onmouseleave ondbclick...
+    2.系统事件
+    onload onscroll onresize...
+    3.表单事件
+    onfocus onblur
+    4.键盘事件
+    onkeydown onkeyup onkeypress...
+2）事件包含两种：DOM0级事件 DOM2级事件
+DOM0级事件：1）属于元素的私有属性
+DOM2级事件：1)在元素所属的eventTarget这个类的原型上-公有方法
+    标准浏览器：addEventListener
+3)事件对象:对当前行为的详细描述
+事件对象的兼容处理：e=e||window.event;
+    1.type:当前所触发的行为-兼容
+    2.clientX/Y:当前鼠标落脚点，距离可视区左上角的坐标位置-兼容
+    3.pageX/pageY:当前鼠标落脚点，距离第一屏左上角的坐标位置-不兼容
+    (document.documentElement.scrollTop||document.body.scrollTop)+e.clientY;
+    4.e.keyCode:键码
+    5.阻止默认事件：e.preventDefault? e.preventDefault(): e.returnValue=false;
+   //需求：文本框中，只能输入数字，编辑数字；其他都不能操作；
+
+
+
+
+
+
+
+
+
+
+

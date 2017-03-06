@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>0</div>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<script>
+    var aDiv=document.getElementsByTagName('div');
+   // var ary=Array.prototype.slice.call(aDiv);
+    //类数组转数组的兼容处理；
+    /*function aa(){
+        //arguments类数组，通过Array.prototype.slice.call转数组，完全兼容；
+        var ary=Array.prototype.slice.call(arguments);
+        console.log(ary instanceof Array);
+    }
+    aa(1,2,3,4)*/
+    //makeArray:功能-》类数组 转 数组
+    console.log(makeArray(aDiv))
+    function makeArray(arg){
+        var ary=[];
+        try{
+            ary=Array.prototype.slice.call(arg);
+        }catch (e){
+            for(var i=0; i<arg.length; i++){
+                ary.push(arg[i]);
+            }
+        }
+        return ary;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大小图片</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            position: relative;
+            list-style: none;
+            width: 840px;
+            margin: 20px auto;
+        }
+        .box li{
+            float: left;
+            width: 200px;
+            height: 200px;
+            margin-left: 10px;
+        }
+        .box li img{
+            width: 100%;
+            height: 100%;
+        }
+        .hide{
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+           /* background: firebrick;*/
+            width: 400px;
+            height: 400px;
+        }
+        .hide img{
+            display: block;
+            width: 100%;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+<ul class="box" id="box">
+    <li><img src="img/apple_1.jpg" realImg="img/apple_1_bigger.jpg" alt=""></li>
+    <li><img src="img/apple_2.jpg" realImg="img/apple_2_bigger.jpg" alt=""></li>
+    <li><img src="img/apple_3.jpg" realImg="img/apple_3_bigger.jpg" alt=""></li>
+    <li><img src="img/apple_4.jpg" realImg="img/apple_4_bigger.jpg" alt=""></li>
+    <div class="hide"><img src="" alt=""></div>
+</ul>
+<script src="../../utils.js"></script>
+<script>
+    var oBox = document.getElementById('box');
+    var oHide = oBox.getElementsByTagName('div')[0];
+    var oImg = oHide.getElementsByTagName('img')[0];
+    var oPos = utils.offset(oBox);
+    oBox.onmouseover=function(e){
+        e = e||window.event;
+        var target = e.target|| e.srcElement;
+        oHide.style.display = 'block';
+        utils.css(oImg,'src',target.getAttribute('realImg'));
+        console.log(oImg);
+
+    };
+    oBox.onmousemove=function(e){
+        e=e||window.event;
+        oHide.style.left = e.clientX-oPos.left+'px';
+        oHide.style.top = e.clientY- oPos.top+'px';
+
+    };
+    oBox.onmouseout=function(){
+        oHide.style.display = 'none'
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>不同标签去请求跨域接口</title>
+</head>
+<body>
+<!--<img src="http://127.0.0.1:8080/crossOrigin">-->
+<!--<iframe src="http://127.0.0.1:8080/crossOrigin"></iframe>-->
+<script>
+//    (function () {
+//        function showData(data) {
+//            console.log(data);
+//        }
+//    }());
+    function showData(data) {
+        console.log(data);
+    }
+    var xxx = 1;
+</script>
+<!--<input type="button" onclick="">-->
+<!--<script onload="javascript:console.log(abc);" src="http://127.0.0.1:8080/crossOrigin?key=abc"></script>-->
+<script src="http://127.0.0.1:8080/crossOrigin?key=showData"></script>
+</body>
+</html>

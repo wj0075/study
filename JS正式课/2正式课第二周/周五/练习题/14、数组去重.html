@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ary = [1,2,1,2,3,2,3,2]
+    function remsame(ary){
+        var obj = {};
+        for(var i=0;i<ary.length;i++){
+            var cur = ary[i];
+            if(obj[cur]==cur){
+                ary[i]=ary[ary.length-1];
+                ary.length--;
+                i--;
+            }
+            obj[cur]=cur;
+        }
+        return ary;
+    }
+    console.log(remsame(ary));
+
+</script>
+</body>
+</html>

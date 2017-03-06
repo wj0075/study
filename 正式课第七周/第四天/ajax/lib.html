@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax类库</title>
+    <script src="lib.js"></script>
+    <script>
+        //        var options={
+        //            // 请求地址
+        //            url:'',
+        //            // http方法
+        //            method:'',
+        //            // 是否异步
+        //            async:true,
+        //            // 用户名
+        //            username:'',
+        //            // 密码
+        //            password:'',
+        //            // 自定义请求头
+        //            headers:{},
+        //            // 往服务器发送的参数
+        //            data:{a:1,b:2}, // a=1&b=2
+        //            // 成功时执行的函数
+        //            success:function(){
+        //
+        //            },
+        //            // 失败时执行的函数
+        //            error:function(){
+        //
+        //            },
+        //            // 格式化服务器返回的数据
+        //            dataType:'json'
+        //        }
+        ajax({
+            // 请求地址
+            url: './readme.txt',
+            // http方法
+            method: 'get',
+            cache: false,
+            // 是否异步
+            async: true,
+            // 用户名
+            username: 'zhangyatao',
+            // 密码
+            password: '123456',
+            // 自定义请求头
+            headers: {a: 1, b: 2},
+            // 往服务器发送的参数
+            data: {a: 1, b: 2}, // a=1&b=2
+            // 成功时执行的函数
+            success: function (data) {
+                console.log(data)
+            },
+            // 失败时执行的函数
+            error: function (err) {
+                console.info(err.stack)
+            },
+            // 格式化服务器返回的数据
+            dataType: 'json'
+        })
+    </script>
+</head>
+<body>
+
+</body>
+</html>

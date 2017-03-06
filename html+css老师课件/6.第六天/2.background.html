@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 600px;
+            height: 400px;
+            padding: 100px;
+            border:10px dotted blue;
+           /* background-color: yellow;
+            background-image: url("back.jpg");
+            background-repeat: no-repeat;*/
+            /*repeat-x
+            repeat-y
+            no-repeat
+            repeat
+            */
+            /*背景图片设置为不重复：从边框内部开始填充的*/
+            /*background-position: -100px -200px ;*/
+            /*  background-position: 0 0 从border内部开始*/
+            /*第一个值：水平方向  +右移   -左移
+              第二个值：竖直方向  +下移   -上移
+            */
+            /*center  居中*/
+            /*top、bottom、right、left、center（居中）*/
+
+
+            background: url("images/back.jpg")  0 0;
+            background-color: red;
+            background-repeat: no-repeat;
+
+            /*background-size: 50% 50%;*/
+            /*背景图片的大小  盒子的百分比*/
+
+            background-attachment: fixed;
+            /*背景图片固定  参照物可视窗口*/
+            background-size: contain;
+            /*cover 填充整个盒子*/
+            /*contain  */
+
+        }
+    </style>
+</head>
+<body style="height: 3000px">
+<p style="height: 300px;border: 1px solid greenyellow"></p>
+<div></div>
+
+</body>
+</html>

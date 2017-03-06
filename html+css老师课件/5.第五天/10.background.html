@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 700px;
+            height: 500px;
+            border: 10px dashed blue;
+
+            background-color: orange;
+            /*背景颜色  从border部分开始填充*/
+            background-image: url("back.jpg");
+            /*背景图片  默认重复   从border部分开始填充
+            */
+            background-repeat: no-repeat;
+            /*
+            背景图片重复：
+            repeat 重复
+            no-repeat  不重复   背景图片从border内部开始加载
+            repeat-x   水平方向重复
+            repeat-y   竖直方向重复
+            */
+            /*background-position: center;*/
+            /*
+            背景图片的位置  top、bottom、left、right、center（居中）
+            两个值：水平方向 竖直方向
+            一个值: 另一个方向默认居中
+
+            具体的值： 1）水平方向
+                     + 向右移动  -向左移动
+                     2）竖直方向
+                     + 向下移动   - 向上移动
+
+            */
+            /*background-size:150% 150%*/
+            /*
+            1）宽度
+            2）高度
+                背景图片的大小   百分比：相对元素的大小
+            */
+
+            /**/
+
+            background: url("back.jpg")  no-repeat center top ;
+/*      background: 颜色  图片的路径  是否重复  背景图片的位置*/
+            background-color: red;
+            background-image: url("");
+
+        }
+    </style>
+</head>
+<body>
+<div></div>
+
+</body>
+</html>

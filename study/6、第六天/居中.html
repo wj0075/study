@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--1、text-algin:center
+让文字、行内元素、input、img水平居中。
+盒子额宽度>内容的宽度
+-->
+
+<style>
+    p{
+        border: 1px solid red;
+        text-align: center;
+    }
+</style>
+<p>文字文字</p>
+
+
+<!--2、Margin:0 auto
+盒子（必须是块级元素，去其他元素都不可以）一定要设置宽度
+盒子在父级元素中水平居中
+-->
+<!--3、单行文字、行内元素、input垂直居中  Line-height与height值设置为相同值-->
+<!--4、绝对居中,水平和垂直都居中-->
+<style>
+    .maddle{
+        width: 400px;
+        height: 300px;
+        background: red;
+        /*position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -200px;
+        margin-top: -150px;*/
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+    }
+</style>
+<div class="maddle"></div>
+</body>
+</html>

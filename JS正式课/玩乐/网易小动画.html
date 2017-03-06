@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+            position: absolute;
+            display: block;
+            color: #c6c6c6;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background: rgba(0,0,0,.5);
+        }
+        #box{
+            position: relative;
+            margin: 100px auto;
+            width: 320px;
+            height: 320px;
+            background-image: url("00af424d-a04a-402b-b2e9-e549a470f0de.jpg");
+            background-position: 40% 50%;
+            overflow: hidden;
+            transition: all 1s;
+
+        }
+        .bottom{
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            width: 320px;
+            height: 0px;
+            background: #cf1132;
+            opacity: .9;
+            transition: all 1s;
+        }
+        .top{
+            position: absolute;
+            left: 0;
+            top: -60px;
+            width: 100%;
+            height: 60px;
+            background: url("bg_font_top_ec5611f%20(1).png");
+            transition: all 1s;
+
+        }
+        .text1{
+            position: relative;
+            top: 0px;
+            font-size: 20px;line-height: 35px;
+            font-weight: 700;
+            text-align: center;
+            padding-top: 60px;
+            padding-bottom: 30px;
+            display: block;
+            color: #fff;
+            transition: all 1s;
+        }
+        .text2{
+            position: absolute;
+            font-size: 14px;
+            line-height: 28px;
+            text-align: center;
+            width: 230px;
+            left: 50%;
+            bottom: 110px;
+            display: block;
+            margin-left: -115px;
+            color: #c6c6c6;
+            transition: all 1s;
+        }
+
+        #box:hover {
+            background-position: 50%;
+        }
+        #box:hover a{
+            background: rgba(0,0,0,0);
+        }
+        #box:hover .bottom{
+            height: 120px;
+        }
+        #box:hover .text1{
+            top: -40px;
+        }
+        #box:hover .text2{
+            bottom: 40px;
+            color: white;
+        }
+        #box:hover .top{
+            top: 0px;
+        }
+    </style>
+    <link rel="stylesheet" href="animate.min.css">
+</head>
+<body>
+
+<div id="box" class="animated zoomIn 1">
+    <a href="#">
+        <em class="bottom"></em>
+        <em class="top"></em>
+        <span class="text1">张一山助阵 镇魔曲今日公测</span>
+        <span class="text2">阎煞登场！ 镇——魔1000元，消费100%返现</span>
+    </a>
+
+
+
+</div>
+</body>
+</html>

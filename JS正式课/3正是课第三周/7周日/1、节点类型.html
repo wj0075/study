@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="box">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <p></p>
+    <div></div>
+    <div></div>
+</div>
+<script>
+    var oDiv = document.getElementById('box');
+    //getChildren:
+    /*function getChidren(curEle,tagName){
+        var nodeList = curEle.childNodes;
+        var ary = [];
+        for(var i=0;i<nodeList.length;i++){
+            if(nodeList[i].nodeType==1){
+                ary.push(nodeList[i]);
+            }
+        }
+        console.log(ary);
+        if(tagName){
+            for(var j =0;j<ary.length;j++){
+                //console.log(ary[j]);
+                if (ary[j].tagName.toLowerCase()!==tagName.toLowerCase()){
+                    console.log(ary[j]);
+                    ary.splice(j,1);
+                    //console.log(ary);
+                }
+            }
+        }
+    return ary;
+    }
+    console.log(getChidren(oDiv,'div'));*/
+   function getChidren(curEle,tagName){
+        var childs = curEle.children;
+        var ary = [];
+        for(var i = 0;i<childs.length;i++){
+            var cur = childs[i];
+            if(cur.nodeType===1){
+                if(tagName){
+                    if (cur.tagName.toLowerCase()===tagName.toLowerCase()){
+                        console.log(cur);
+                        ary.push(cur)
+                    }
+                }else {
+                    ary.push(cur);
+                }
+            }
+        }
+        return ary
+    }
+    console.log(getChidren(oDiv,'div'));
+    function getChildren(curEle,tagName){
+        var childs = curEle.children;
+        var ary = [];
+        for(var i=0;i<childs.length;i++){
+            var cur = childs[i];
+            if (cur.nodeType===1){
+                if (tagName){
+                    if (cur.tagName.toLowerCase()===tagName.toLowerCase()){
+                        ary.push(cur);
+                    }
+                }else {
+                    ary.push(cur);
+                }
+            }
+        }
+        return ary;
+    }
+    function getChildren(curEle,tagName){
+        var childs = curEle.childNodes;
+        var ary=[];
+        for(var i=0;i<childs.length;i++){
+            var cur = childs[i];
+            if (cur.nodeType===1){
+                if(tagName){
+                    if (cur.tagName.toLowerCase()===tagName.toLowerCase()){
+                        ary.push(cur);
+                    }
+                }else {
+                    ary.push(cur);
+                }
+            }
+        }
+        return ary;
+    }
+
+</script>
+</body>
+</html>

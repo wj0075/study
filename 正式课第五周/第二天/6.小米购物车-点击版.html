@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body{
+            height: 100%;
+            overflow: hidden;
+        }
+        span{
+            width: 200px;
+            height: 40px;
+            position: relative;
+            display: block;
+            background: darkgrey;
+            margin:100px auto;
+            text-align: center;
+            line-height: 40px;
+        }
+        span div{
+            width: 400px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            background: #e1e1e1;
+            position: absolute;
+            left:0;
+            top:40px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<span>购物车
+    <div>购物车中还没有商品，赶紧选购吧！</div>
+</span>
+<script>
+    var oS=document.getElementsByTagName('span')[0];
+    var oD=document.getElementsByTagName('div')[0];
+    //点击oS,oD显示，再点击oS,oD消失； 点击页面任何地方，oD都消失； 但是点击oD,自己不消失；--考察点：事件委托
+    document.body.onclick=function(e){
+        e=e||window.event;
+        var target= e.target|| e.srcElement;
+        if(target===oS){
+            //console.log(oD.style.display) 行内拿到的是空；
+            if(oD.style.display==='block'){
+                oD.style.display='none';
+            }else{
+                oD.style.display='block';
+            }
+        }
+        if(target !== oD && target !== oS){
+            console.log(12334)
+            oD.style.display='none';
+        }
+        /*if(target.tagName.toLowerCase()==='span'){
+            //console.log(oD.style.display) 行内拿到的是空；
+            if(oD.style.display==='block'){
+                oD.style.display='none';
+            }else{
+                oD.style.display='block';
+            }
+        }
+        if(target.tagName.toLowerCase() !== 'div' && target.tagName.toLowerCase() !== 'span'){
+            console.log(12334)
+            oD.style.display='none';
+        }*/
+    }
+
+</script>
+</body>
+</html>

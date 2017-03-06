@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            overflow: hidden;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left:0;
+            top:0;
+            font-size: 30px;
+        }
+        .div1{
+            left:0px;
+        }
+        .div2{
+            background: yellow;
+            left:150px;
+        }
+        .div3{
+            background: green;
+            left:300px;
+        }
+        .div4{
+            background: purple;
+            left:450px;
+        }
+    </style>
+</head>
+<body>
+<div id="div1" class="div1">1</div>
+<div id="div2" class="div2">2</div>
+<div id="div3" class="div3">3</div>
+<div id="div4" class="div4">4</div>
+<script src="js/utils.js"></script>
+<script src="js/event.js"></script>
+<script src="js/simpleInheritance.js"></script>
+<script src="js/Drag.js"></script>
+<script>
+    var oDiv1=document.getElementById('div1');
+    var aDiv=document.getElementsByTagName('div');
+    for(var i=0; i<aDiv.length; i++){
+        new Drag(aDiv[i]).creaseIndex();
+        if(i==1){
+            new Drag(aDiv[i]).range({
+                left:100,
+                top:0,
+                right:500,
+                bottom:500
+            })
+        }
+        if(i===3){
+            new Drag(aDiv[i]).jump();
+        }
+    }
+</script>
+</body>
+</html>

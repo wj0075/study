@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+内容
+内边距：内容与盒子边框之间的距离  padding
+外边距：盒子与盒子之间的距离     margin
+边框：border
+
+css属性
+width 内容的宽度
+height 内容的高度
+
+一个盒子的总宽度：
+(border-left)+(padding-left)+(width)+(padding-right)+（border-right）
+一个盒子的总高度：
+(border-top)+(padding-top)+(height)+(padding-bottom)+(border-bottom)
+
+margin兼容问题：
+1、上下结构两个盒子，上边的盒子设置margin-bottom,下边的盒子设置
+margin-top,这时它们之间的距离谁大取谁的值,如果这两个值相同，那就相同。
+左右都是相加。
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    div{
+        width: 200px;
+        height: 200px;
+        background: red;
+        border: 1px;
+    }
+    .box1{
+        margin-bottom: 100px;
+    }
+    .box2{
+        margin-top: 300px;
+    }
+</style>
+<div class="box1">box1</div>
+<div class="box2">box2</div>
+
+2、父级元素没有设置上padding或者上border，父子级元素之间，父级元素的第一个子级元素设置了margin-top，这时会将
+margin-top的值传递个父级元素
+给父级元素设置overflow:hidden
+<div style="width: 400px;height: 500px;background: green;padding-top: 100px;">
+    <div style="width: 300px;height: 200px;background: yellow;margin-top: 100px;overflow: hidden">
+        <p style="width: 100px;height: 100px;background: red;margin-top: 50px;">
+        </p>
+        <p></p>
+    </div>
+</div>>
+
+</body>
+</html>

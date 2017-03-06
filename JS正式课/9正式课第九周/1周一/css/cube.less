@@ -1,0 +1,82 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.threeD(@k,@v){
+  -webkit-@{k}:@v;
+  @{k}:@v;
+}
+.css3(@k,@v){
+  -webkit-@{k}:@v;
+  -moz-@{k}:@v;
+  -ms-@{k}:@v;
+  -o-@{k}:@v;
+  @{k}:@v
+}
+
+@color:rgba(202,143,147,.5);
+@pixel:196px;
+@pixel2:-200px;
+.box{
+  width: 200px;
+  height: 200px;
+  margin: 200px auto;
+  .threeD(perspective,2000px)
+}
+.item{
+  list-style: none;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  .threeD(transform-style,preserve-3d);
+  animation: move 2s linear infinite both;
+  transform-origin: 100px 100px -100px;
+}
+.item li{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: @pixel;
+  height: @pixel;
+  border: 2px solid black;
+  background: @color;
+  font-size: 50px;
+  text-align: center;
+  line-height: @pixel;
+}
+.item li:nth-child(1){
+  top: @pixel2;
+  .css3(transform,rotateX(90deg));
+  .css3(transform-origin,bottom);
+}
+.item li:nth-child(2){
+  top: -@pixel2;
+  .css3(transform,rotateX(-90deg));
+  .css3(transform-origin,top);
+}
+.item li:nth-child(3){
+  left: @pixel2;
+  .css3(transform,rotateY(-90deg));
+  .css3(transform-origin,right)
+}
+.item li:nth-child(4){
+  left: -@pixel2;
+  .css3(transform,rotateY(90deg));
+  .css3(transform-origin,left)
+}
+.item li:nth-child(5){
+  .css3(transform,translateZ(@pixel2))
+}
+.item li:nth-child(6){
+  .css3(transform,translateZ(0px))
+}
+@keyframes move {
+  from{
+    .css3(transform,rotateX(0deg) rotateY(0deg) rotateZ(0deg))
+  }
+  to{
+    .css3(transform,rotateX(360deg) rotateY(360deg) rotateZ(360deg))
+  }
+}
+
+

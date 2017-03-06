@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            border: 1px solid #000;
+        }
+
+
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="800" height="500">sorry！你的浏览器不支持</canvas>
+<script>
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    var ary =[];
+    //创建一个小球类
+    function Ball(x,y,r,color){
+        this.x=x;
+        this.y=y;
+        this.r=r||30;
+        this.color = 'rgba('+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+','+Math.random().toFixed(1)+')';
+        ary.push(this);
+
+        this.dx = Math.random()*10-5;
+        this.dy = Math.random()*10-5;
+        this.dr = Math.random()+0.3;
+    }
+    Ball.prototype={
+        update:function(){//更新状态
+            this.x+=this.dx;
+            this.y+=this.dy;
+            this.r-=this.dr;
+
+
+            /*this.x+=Math.random()*10-5;
+            this.y+=Math.random()*10-5;
+            this.r-=Math.random()+0.3;*/
+            /*if(this.r<0){
+                for (var i=0;i<ary.length;i++){
+                    if (ary[i]==this){
+                        ary.splice(i,1)
+                    }
+                }
+            }*/
+            for(var i=0;i<ary.length;i++){
+                if (ary[i]==this){
+                    if (ary[i].r<0){
+                        ary.splice(i,1)
+                    }
+                }
+            }
+            return this;
+        },
+        render:function(){
+            //在画布上画圆，记得步骤一定要全
+            if (this.r>0){
+                console.log(this.r);
+            ctx.beginPath();
+            ctx.arc(this.x,this.y,this.r,0,Math.PI*2,false);
+            ctx.fillStyle=this.color;
+            ctx.fill()
+            }
+        }
+    };
+    canvas.onmousemove = function(e){
+        new Ball(e.clientX, e.clientY)
+    };
+    setInterval(function(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        for (var i=0;i<ary.length;i++){
+            ary[i].update().render();
+
+        }
+    },20)
+
+
+
+
+</script>
+</body>
+</html>

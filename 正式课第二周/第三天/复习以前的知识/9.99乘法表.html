@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            font-size: 50px;
+        }
+        li{
+            height: 50px;
+            line-height: 50px;
+            list-style: none;
+        }
+        li span{
+            width: 200px;
+            display: inline-block;
+            text-align: left;
+            line-height: 50px;
+
+        }
+    </style>
+</head>
+<body>
+<ul></ul>
+<script>
+    var oUl=document.getElementsByTagName('ul')[0];
+    var str='';
+    for(var i=1; i<=9; i++){//i代表行数
+        str+='<li>'
+        for(var j=1; j<=i; j++){//j代表列数
+            str+="<span>"+(j+'*'+i+'='+j*i)+"</span>";
+        }
+        str+='</li>';
+    }
+    oUl.innerHTML=str;
+
+</script>
+</body>
+</html>

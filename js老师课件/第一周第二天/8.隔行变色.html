@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+            width: 600px;
+            border: 1px solid red;
+            margin: 0 auto;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        li{
+            height: 30px;
+            line-height: 30px;
+            padding-left: 20px;
+        }
+        .bg1{
+            background: lightblue;
+        }
+        .bg2{
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+<!--ul>li{item $}*12-->
+<ul id="box">
+    <li>item 1</li>
+    <li>item 2</li>
+    <li>item 3</li>
+    <li>item 4</li>
+    <li>item 5</li>
+    <li>item 6</li>
+    <li>item 7</li>
+    <li>item 8</li>
+    <li>item 9</li>
+    <li>item 10</li>
+    <li>item 11</li>
+    <li>item 12</li>
+</ul>
+
+<script>
+    //思路：奇数行 设置类名：bg1  偶数行 设置类名：bg2
+//    1、获取要操作的元素
+    var oUl = document.getElementById('box');
+    var lis = oUl.getElementsByTagName('li');
+//    在oUl中，通过元素的标签名 获取一组元素
+
+    console.log(lis);
+    console.log(typeof lis);//object
+
+//    索引：表示元素的位置的，从0开始
+//    通过索引 获取对应的li
+    console.log(lis[0]);//第一个li
+
+//    length 长度 有多少个li
+    console.log(lis.length);
+
+    for(var i=0;i<lis.length;i++){
+//        i:  0~11  索引
+//        lis[i]  每一个li
+
+//        奇数行  class bg1    索引：偶数
+//        偶数行  class bg2    索引：奇数
+
+//        除以2余数0--》偶数 余数1--》奇数
+
+//        9%2 //模  取余数的运算  9除以2的余数
+
+        if(i%2==0){
+//            索引为偶数
+            lis[i].className = 'bg1'
+//            li设置class 类名   class="bg1"
+        }else{
+            lis[i].className = 'bg2';
+        }
+    }
+
+</script>
+
+
+</body>
+</html>

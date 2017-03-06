@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function hasClass(curEle,cName){
+       /* var nodeList = parent.getElementsByTagName('*');
+         for (var i=0;i<nodeList.length;i++){
+         var cur = nodeList[i];
+         }*/
+        //判断类名是否在元素上
+        var reg = new RegExp('(^| +)'+cName+'( +|$)','g');
+        return reg.test(curEle.className);
+    }
+    //可以给元素身上以字符串的形式批量添加class名（当元素身上每有这个class名的时候，可以给元素添加这个class名）
+    function addClass(curEle,strClass){
+        var aryClass = strClass.replace(/(^ +)|( +$)/g,'').split(/\s+/g);
+        for(var i=0;i<aryClass.length;i++){
+            if(!this.hasClass(curEle,aryClass[i])){
+                curEle.className+=''+aryClass[i];
+            }
+        }
+    }
+    function hasClass1(curEle,cName){
+        var reg = new RegExp('(^| +)'+cName+'( +|$)','g');
+        return reg.test(curEle.className)
+    }
+    function addClass(curEle,strName){
+        var aryClass = strName.replace(/(^ +)|( +$)/g,'').split(/\s+/g);
+        for (var i=0;i<aryClass.length;i++){
+            if (!this.hasClass(curEle,aryClass[i])){
+                curEle.className+=''+aryClass[i];
+            }
+        }
+    }
+
+    //removeClass:移除元素身上的某个或某些类名；
+
+    function removeClass(curEle,strName){
+        var aryName = strName.replace(/(^ +)|( +$)/g,'').split(/\s+/g);
+        for(var i=0;i<aryName.length;i++){
+            var reg = new RegExp('(^| +)'+aryName[i]+'( +|$)','g');
+            if (reg.test(curEle.className)){
+                curEle.className = curEle.className.replace(reg,' ').replace(/(^ +)|( +$)/g,'').replace(/\s+/g,' ');
+            }
+        }
+    }
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+    // "2016年10月19日 星期三 16时03分10秒"
+    var time = new Date();
+    console.log(time);
+//    Wed Oct 19 2016 17:06:05 GMT+0800 (中国标准时间)
+    var year = time.getFullYear();
+    var month = time.getMonth()+1;//0-11
+    var day = time.getDate();
+    var weeks = time.getDay();//3
+//    0-6
+    var a = '日一二三四五六';
+    var week = a.charAt(weeks);
+    var hour = time.getHours();
+    var min = time.getMinutes();
+    var second = time.getSeconds();
+    var ms = time.getMilliseconds();//毫秒
+
+    var str = year+'年'+(month+1)+'月'+day+'日 星期'+week+hour+'时'+min+'分'+zero(second)+'秒'
+    console.log(str);
+
+    function zero(num){
+        return num<10?'0'+num:num;
+    }
+    console.log(zero(10));
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

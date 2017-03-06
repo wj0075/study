@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+        ul{
+            width: 480px;
+            height:640px;
+            margin:0 auto;
+            background: #ccc;
+            padding:5px;
+            position:relative;
+        }
+        ul li{
+            float:left;
+            margin:5px;
+            width: 150px;
+            height: 150px;
+            background:lightblue;
+        }
+        ul li img{
+            width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><img src="img/1.png" alt=""></li>
+    <li><img src="img/2.png" alt=""></li>
+    <li><img src="img/3.png" alt=""></li>
+    <li><img src="img/4.png" alt=""></li>
+    <li><img src="img/5.png" alt=""></li>
+    <li><img src="img/6.png" alt=""></li>
+    <li><img src="img/7.png" alt=""></li>
+    <li><img src="img/8.png" alt=""></li>
+    <li><img src="img/9.png" alt=""></li>
+    <li><img src="img/10.png" alt=""></li>
+    <li><img src="img/11.png" alt=""></li>
+    <li><img src="img/12.png" alt=""></li>
+</ul>
+<script src="js/simpleInheritance.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/event.js"></script>
+<script src="js/move.js"></script>
+<script src="js/Drag.js"></script>
+<script>
+    var aLi=document.getElementsByTagName('li');
+    for(var i=aLi.length-1; i>=0; i--){
+        aLi[i].style.left=(aLi[i].l=aLi[i].offsetLeft)+'px';
+        aLi[i].style.top=(aLi[i].t=aLi[i].offsetTop)+'px';
+        aLi[i].style.position='absolute';
+        aLi[i].style.margin=0;
+        new Drag(aLi[i]).photo(aLi);
+    }
+</script>
+</body>
+</html>

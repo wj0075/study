@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数的扩张</title>
+</head>
+<body>
+<script>
+    //箭头函数
+    //1.可以给参数设置默认值
+    //2 rest参数  参数组合成的是一个数组 函数定义的时候用 ...name
+    //3 扩张运算符  将一个数组转化为用逗号分隔的参数序列 函数调用的时候用 ...[1,2,3,4,5]
+    //4.箭头函数 var func=()=>{}; this指向问题  不能用作构造函数    不能使用arguments
+    //箭头函数里面的this在定义的时候
+    function setEle(ele){
+        var ele = ele||document
+    }
+    function setEle1(ele=document){}
+    function add(a=2,b=3){
+        console.log(a+b);
+    }
+    add();
+    add(4,5)
+
+
+    function equal(...name){
+        console.log(name)
+    }
+    equal(1,2,3,4,5,6,{name:'nihao'});
+
+    Math.max(...[1,2,3,4,5,6]);
+    Math.max.apply(null,[1,2,3,4,5,5])
+
+    var add=(a=2,b=3)=>{
+        console.log('写法好简单')
+        return
+    }
+
+
+
+
+</script>
+</body>
+</html>

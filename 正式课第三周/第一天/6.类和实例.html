@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //给类添加私有属性，跟实例没有任何关系；
+    //实例：可以使用自己的私有属性和方法，也可以使用原型上的公有方法，但实例无法使用类的私有属性和方法；
+    function Fn(){
+        this.aa=123;//给实例添加私有属性；
+    }
+    Fn.aa=456;//给类添加私有属性；
+    var f=new Fn();
+    alert(f.aa);
+    alert(Fn.aa)
+</script>
+</body>
+</html>

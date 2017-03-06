@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 20px;
+            height: 40px;
+            margin: 30px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+<div id="box">
+
+</div>
+<script>
+    var oDiv = document.getElementById('box');
+    function setGroupCss(curEle,obj){
+        if (Object.prototype.toString.call(obj)==='[object Object]')
+        for(var key in obj){
+            var cur = obj[key];
+            this.setCss(curEle,key,cur);
+        }
+    }
+//    setGroupCss(oDiv,{
+//        background:'blue',
+//        width:100,
+//    });
+    function setCss(curEle,attr,val){
+        //3.对浮动的处理
+        if(attr==='float'){
+            curEle.cssFloat = val;
+            curEle.stylefloat = val;
+        }
+        //2.对透明度的处理
+        if(attr==='opacity'){
+            curEle.style.opacity = val;
+            curEle.style.filter = 'alpha(opacity='+val*100+')';
+            return;
+        }
+        //1.对单位的处理
+        var reg = /^([+-])?(\d+(\.\d+)?)(px|pt|rem|em|%)?$/;
+        if(reg.test(val)){
+            //当用户没有传单位的时候，默认按照pc端的样式设置
+            if(Number(val)||Number(val)==0){
+                val = val+'px';
+            }
+        }
+        curEle.style[attr]=val;
+    }
+//    setCss(oDiv,'background','red');
+
+    function getCss(curEle,attr){
+        var val = null;
+        var reg = null;
+        if ('getComputedStyle' in window){
+            val = getComputedStyle(curEle,null)[attr];
+        }else {
+            if (attr === 'opacity') {
+                val = curEle.currentStyle['filter'];
+                reg = /^alpha\(opacity[=:](\d+(\.\d+)?)\)$/gi;
+                return reg.test(val) ? RegExp.$1 / 100 : 1;
+            }
+            val = curEle.currentStyle[attr];
+        }
+        reg = /^(left|right|top|bottom|width|height|((margin|padding)(left|right|top|bottom)?))$/gi;
+        return reg.test(attr)?parseFloat(val):val;
+    };
+//    console.log(getCss(oDiv,'height'));
+
+    /*function css(curEle,opt,val){
+        // console.log('ok');
+        if(Object.prototype.toString.call(opt)==='[object Object]'){
+            //console.log('ok')
+            val = null;
+            setGroupCss(curEle,opt);
+            return;
+        }
+        if(typeof opt==='string'){
+            console.log('ok');
+            if (val === undefined){
+                return getCss(curEle,opt);
+            }else {
+                setCss(curEle,opt,val);
+            }
+        }
+    }*/
+    function css(curEle,opt,value) {
+       // console.log('ok');
+        if (typeof opt === 'object' && value === undefined) {
+            console.log('ok');
+            setGroupCss(curEle, opt);
+        } else if (typeof  opt === 'string' && value !== undefined) {
+
+            setCss(curEle, opt, value);
+        } else if (typeof opt === 'string' && value === undefined) {
+            console.log('ok');
+           return getCss(curEle, opt);
+        }
+    }
+
+   css(oDiv,{
+       background:'blue',
+       width:100,
+   },'height');
+    console.log(typeof 'height')
+</script>
+</body>
+</html>

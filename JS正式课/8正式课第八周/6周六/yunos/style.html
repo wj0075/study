@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet/less" href="css/style.less">
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>
+<script>
+    var less ={
+        env:"development",//在开发环境下
+        poll:1000,//在监视模式下，查看代码的间隔的时间
+    }
+</script>
+<script src="js/less-2.5.3.min.js"></script>
+<script>
+    less.watch();//启动监视模式
+
+</script>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+        .box{
+            width: 600px;
+            height: 300px;
+            font-size: 30px;
+            float: left;
+            margin:10px;
+        }
+        .box input{
+            display: block;
+            float: left;
+            width: 200px;
+            height: 40px;
+        }
+        .box input.on{
+            background: lightgreen;
+        }
+        .box div{
+            width: 100%;
+            height: 100%;
+            display: none;
+            background: lightgreen;
+        }
+        .box div.show{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<ul>
+    <li class="box" style="width: 400px">
+        <input type="button" value="按钮1" class="on">
+        <input type="button" value="按钮2">
+        <div class="show">内容1</div>
+        <div>内容2</div>
+    </li>
+    <li class="box">
+        <input type="button" value="按钮1" class="on">
+        <input type="button" value="按钮2">
+        <input type="button" value="按钮3">
+        <div class="show">内容1</div>
+        <div>内容2</div>
+        <div>内容3</div>
+    </li>
+    <li class="box" style="width: 800px;">
+        <input type="button" value="按钮1" class="on">
+        <input type="button" value="按钮2">
+        <input type="button" value="按钮3">
+        <input type="button" value="按钮4">
+        <div class="show">内容1</div>
+        <div>内容2</div>
+        <div>内容3</div>
+        <div>内容4</div>
+    </li>
+    <li class="box" style="width: 800px;">
+        <input type="button" value="按钮1" class="on">
+        <input type="button" value="按钮2">
+        <input type="button" value="按钮3">
+        <input type="button" value="按钮4">
+        <div class="show">内容1</div>
+        <div>内容2</div>
+        <div>内容3</div>
+        <div>内容4</div>
+    </li>
+</ul>
+<script>
+    var aLi=document.getElementsByTagName('li');
+    for(var i=0; i<aLi.length; i++){
+        tab(aLi[i]);
+    }
+
+    function tab(oBox){
+        var aBtn=oBox.getElementsByTagName('input');
+        var aDiv=oBox.getElementsByTagName('div');
+        for(var i=0; i<aBtn.length; i++){
+            aBtn[i].index=i;
+            aBtn[i].onclick=function(){
+                for(var i=0; i<aBtn.length; i++){
+                    aBtn[i].className='';
+                    aDiv[i].className='';
+                }
+                aBtn[this.index].className='on';
+                aDiv[this.index].className='show';
+            }
+        }
+    }
+</script>
+</body>
+</html>

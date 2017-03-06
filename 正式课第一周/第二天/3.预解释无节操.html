@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1.只会对等号左边带var进行声明，但不定义
+    //2.条件判断语句中,无论条件是否成立，都会进行预解释
+    //3.自执行函数不会进行预解释，只有等执行到他的时候，声明+定义+调用同步完成
+    //4.已经声明过的变量，不会进行重复声明；
+    //5.return后面的语句不会进行预解释，return下面的语句虽然不执行但会进行预解释；
+    /*alert(a);//undefined
+    if(!'a' in window){//判断a是否属于window的属性
+        var a=12;//window.a
+    }
+    alert(a)//undefined;*/
+    /*(function (){
+        function f(){ return 1; }
+        alert (f());
+        function f(){ return 2; }
+    })();*/
+    /*function fn(){
+        //var fn1=xxff00->"alert(456);"
+        alert(fn1);//函数
+        alert(fn1());//456
+        alert(fn2());
+        return function fn2(){alert(123)}
+        function fn1(){
+            alert(456);
+            return 123
+        }
+    }
+    fn();*/
+    //只能在IE浏览器下做；--告诉我们：在条件判断语句中，不要写函数的定义阶段；因为各大浏览器，对函数定义阶段的预解释不同；
+    var  n=18;
+    alert(fn1)//奇数 undefined 奇数
+    if(n%2==0){
+        function fn1(){
+            alert('偶数')
+        }
+        fn1()
+    }else{
+        function fn1(){
+             alert('奇数')
+
+        }
+        fn1()
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<textarea name="" id="one" cols="60" rows="20">
+    “蓝瘦，香菇”是“难受，想哭”的意思。广西壮语里面的发音没有翘舌音，没有送气音。[1]  2016年10月，广西南宁一小哥韦勇[2]  失恋后录视频：“蓝瘦，香菇”，本来今颠高高兴兴，泥为什莫要说这种话？蓝瘦，香菇在这里。第一翅为一个女孩屎这么香菇，蓝瘦。泥为什莫要说射种话，丢我一个人在这里。
+</textarea>
+<textarea name="" id="two" cols="60" rows="20"></textarea>
+<input type="button" value="过滤" id="btn">
+<script>
+    var one = document.getElementById('one'),
+        two = document.getElementById('two'),
+        oBtn = document.getElementById('btn');
+
+    oBtn.onclick=function () {
+        two.value = one.value.replace(/(蓝瘦)|(高高兴兴)/g,function ($0) {
+            //根据捕获到的长度，来确定替换几个*号
+            var str = '';
+            for (var i=0;i<$0.length;i++){
+                str+='*'
+        }
+        return str;
+        })
+    }
+
+</script>
+
+</body>
+</html>

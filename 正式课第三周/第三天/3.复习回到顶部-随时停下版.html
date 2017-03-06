@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body{
+            height: 300%;
+            background: -webkit-linear-gradient(top,lightgreen,lightpink,lightcyan,lightgoldenrodyellow,lime);
+        }
+        *{
+            margin:0;
+            padding:0;
+        }
+        a{
+            position: fixed;
+            right:10px;
+            bottom:10px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            line-height: 100px;
+            font-size: 30px;
+            background: darkgreen;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<a href="javascript:;">toTop</a>
+<script src="js/utils.js"></script>
+<script>
+    var oBtn=document.getElementsByTagName('a')[0];
+    var timer=null;
+    var bOk=false;
+    //2.首屏不显示按钮，滚动距离大于一屏才显示按钮；
+    window.onscroll=function(){//定时器+手动影响；
+        if(bOk) clearInterval(timer);
+        bOk=true;
+        console.log(bOk)
+        if(utils.win('scrollTop')>utils.win('clientHeight')){
+            oBtn.style.display='block';
+        }else{
+            oBtn.style.display='none';
+        }
+    };
+    //1.当按钮发生点击事件的时候，根据已知条件，求出固定步长； target duration interval=>step
+    oBtn.onclick=function(){
+        var target=utils.win('scrollTop');
+        var duration=1000;
+        var interval=30;
+        var step=target/duration*interval;
+        timer=setInterval(function(){//定时器影响滚轮事件
+            //每次拿到最新位置，并在最新位置上-=step；还需要再重新赋值新位置；
+            var curTop=utils.win('scrollTop');
+            if(curTop<=0){
+                clearInterval(timer);
+                return;
+            }
+            curTop-=step;
+            utils.win('scrollTop',curTop);
+            bOk=false;
+            console.log(bOk)
+        },interval)
+    }
+</script>
+</body>
+</html>

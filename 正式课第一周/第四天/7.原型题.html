@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Fn(){//构造函数：这里存的都是私有属性
+        this.x=100;
+        this.y=200;
+    }
+    Fn.prototype={//原型:存的都是公有属性；
+        constructor:Fn,
+        add:function(){
+            this.x=300;//等号的作用是重新赋值的；
+            alert(this.x+this.y);
+        }
+    };
+    var f1=new Fn();
+    alert(f1.constructor);
+    f1.add();
+    f1.__proto__.add();
+</script>
+</body>
+</html>

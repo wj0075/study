@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="js/simpleInheritance.js"></script>
+<script>
+    var Person=Class.extend({
+        init:function(name,age){//类似于：父类构造函数
+            this.name=name;
+            this.age=age;
+        },
+        //公有方法；以下都是父类公有的属性和方法；
+        getName:function(){
+            alert('我的名字是： '+this.name);
+        }
+    })
+    var Gril=Person.extend({
+        init:function(name,age,job){
+            this._super(name,age);//继承父类；
+            this.job=job;
+        }
+        //以下都是子类公有的属性和方法；
+    });
+    var f=new Person('xijinping','88');
+   // console.dir(f);
+    var g=new Gril('zhanglei','8','coder');
+    //console.dir(g);
+    alert(g.job);
+    alert(f.job)
+    g.getName();
+
+</script>
+</body>
+</html>
+
+
+
+
+

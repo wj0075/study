@@ -1,0 +1,91 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif
+;
+}
+ul{
+    list-style: none;
+    /*去掉前面的点*/
+}
+i{
+    font-style: normal;
+    /*将斜体扶正*/
+}
+b{
+    font-weight: normal;
+    /*去掉加粗的样式*/
+}
+img{
+    border: none;
+    /*去掉边框*/
+    /*自带3px的边距*/
+    vertical-align: top;
+    /*display: block;*/
+}
+.fist{
+    background: #f5f5f5;
+    margin: 10px auto;
+    width: 1500px;
+}
+ul{
+    width: 1300px;
+    height: 300px;
+    margin: 0px auto;
+
+}
+ul li{
+    width: 234px;
+    height: 300px;
+    background: #fff;
+    text-align: center;
+    display: inline-block;
+    border-top-width: 1px;
+    border-top-style: solid;
+    margin-left: 14px;
+}
+.a1{
+     border-top-color: #ffad12;
+ }
+.a2{
+    border-top-color: #83c64e;
+}
+.a3{
+    border-top-color: #2097f3;
+}
+.a4{
+    border-top-color: #e53834;
+}
+.a5{
+    border-top-color: #00c1a5;
+}
+/*ul .a1{*/
+    /*border-top: 1px solid #ffad12;}*/
+/*ul .a2{*/
+    /*border-top: 1px solid #83c64e;}*/
+/*ul .a3{*/
+    /*border-top: 1px solid #2097f3;}*/
+/*ul .a4{*/
+    /*border-top: 1px solid #e53834;}*/
+/*ul .a5{*/
+    /*border-top: 1px solid #00c1a5;*/
+/*}*/
+li img{
+    width: 234px;
+    height: 186px;
+}
+li .one{
+    font-size: 14px;
+    color: #333;
+}
+li .two{
+    font-size: 14px;
+    color: #ff6700;
+    margin: 14px 0 17px 0;
+
+}
+li .three{
+    font-size: 14px;
+    color: #bc9875;
+    margin-bottom: 25px;
+}

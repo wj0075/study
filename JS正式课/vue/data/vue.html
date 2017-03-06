@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="app">
+    {{name}}{{age}}
+</div>
+<script src="vue1.js"></script>
+<script>
+    var vm=new Vue({
+        el:".app",//选择器
+        data:{
+            name:"zfpx",
+            age:8
+        }
+    })
+</script>
+</body>
+</html>

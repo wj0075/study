@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 30px;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+        }
+        .div1{
+            background: red;
+            display: none;
+            /*不占位置的隐藏*/
+        }
+        .div2{
+            background: orange;
+            visibility: hidden;
+            /*占位置的隐藏*/
+        }
+        .div3{
+            background: yellow;
+            opacity: 0.5;
+            /*盒子里所有的内容都有透明度*/
+            filter: Alpha(opacity=50);
+            /*兼容ie6~ie8*/
+        }
+        .div4{
+            background: rgba(0,0,0,0);
+        }
+        .div5{
+            background: blue;
+            height: 0;
+            overflow: hidden;
+        }
+        .div6{
+            background: black;
+            margin-left: -9999em;
+            /*em  相对父级元素
+              rem  相对body
+            */
+        }
+        .div7{
+            background: plum;
+            text-indent: -999em;
+        }
+    </style>
+</head>
+<body>
+<div class="div1">1</div>
+<div class="div2">2</div>
+<div class="div3">3div</div>
+<div class="div4">4</div>
+<div class="div5">5</div>
+<div class="div6">6</div>
+<div class="div7">文字文字文字</div>
+
+</body>
+</html>

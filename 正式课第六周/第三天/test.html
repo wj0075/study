@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: green;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="div"></div>
+<script src="js/event.js"></script>
+<script src="Drag.js"></script>
+<script>
+    let oDiv=document.getElementById('div');
+    let obj=new Drag(oDiv);
+    obj.on('selfDown',fn1);
+    obj.on('selfMove',fn2);
+    obj.on('selfMove',fn3);
+    function fn1(){
+        console.log(1)
+    }
+    function fn2(){
+        console.log(2)
+    }
+    function fn3(){
+        console.log(3)
+    }
+</script>
+</body>
+</html>

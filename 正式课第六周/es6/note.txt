@@ -1,0 +1,30 @@
+1. 命令行的命令：
+1）测试node是否安装成功：node -v;   npm -v;
+2）cd 拖拽目录名 ->进入某个目录
+3）ls -a或 ls --all ->可以查看该目录下所有文件（可见和不可见）
+4）mkdir 文件名->创建一个新的文件夹  touch note.txt ->创建一个新的文件
+5）cls ->清屏（清控制台）;
+6）返回上级目录：cd ..
+2.编译es6->es5
+1)把新文件夹变成git可以管理的仓库：git init；并初始化本项目 npm init -y;
+2)安装依赖的插件：npm install babel-cli babel-preset-es2015 --save-dev
+    babel-cli 是编译器
+    babel-preset 指定编译规则：es2015
+    --save：在package.json中可以看到你所依赖的插件
+    -dev:把插件装到当前项目中；
+3)创建.babelrc文件并配置
+{
+    "presets":["es2015"],
+}
+4)设置package.json:把src目录下的所有JS文件(es6)--开发阶段，都编译成另一个dist文件夹下所有的JS文件(es5)--各大浏览器的运行；
+"leilei":"babel src -d dist -w"
+5)运行：npm run leilei
+
+
+
+
+
+
+
+
+

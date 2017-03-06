@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <style type="text/css">
+
+        #div1{
+            width: 0.86rem;
+            height:0.86rem;
+            background: red;
+        }
+        /*假设设备宽度 = 设计稿宽度，这样我们就可以像PC端页面一样去写，但是只需要把单位px转化成rem即可 */
+
+      /*  640    100     86px   0.86rem
+          320    50      43px   0.86rem
+        640/320 = 100/50
+        各个设备宽度的缩放比例 = 各个设备的根元素字体大小的缩放比例*/
+    </style>
+    <script>
+        //根据上面的公式，我们转化成js代码
+//        640/320 = 100/x;x->fontSize的值
+        var desW = 640;
+        var winW = document.documentElement.clientWidth;
+        document.documentElement.style.fontSize = winW/desW*100+"px";
+
+    </script>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>

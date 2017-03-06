@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        table{
+            font-size: 16px;
+            border: 1px solid #00c1a5;
+            width: 99%;
+            margin: 0 auto;
+        }
+        a{
+            color: #f60;
+            text-decoration: none;
+        }
+        th,td{
+            border: 1px solid #00c1a5;
+            line-height: 2em;
+        }
+        td{
+            text-align: center;
+
+        }
+        .add{
+            text-align: left;
+            padding-left: 2em;
+        }
+        thead{
+            background: #ff6000;
+        }
+        @media all and (max-width: 480px){
+            thead{
+                display: none;
+            }
+            td{
+                display: block;
+                text-align: left;
+                padding-left: 5%;
+            }
+            .name{
+                background: #00c1a5;
+            }
+            .name:before{
+                content: '姓名';
+                font-weight: bold;
+                padding-right: 10%;
+            }
+            .add:before{
+                content: '地址';
+                font-weight: bold;
+                padding-right: 10%;
+            }
+            .add{
+                padding-left: 5%;
+            }
+            tr{
+                display: block;
+                position: relative;
+                box-shadow: 0 2px 5px rgba(0,0,0, .5);
+                margin-bottom: 1em;
+            }
+            .opp{
+                position: absolute;
+                top: 0;
+                right: 10%;
+            }
+            th,td,table{
+                border: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<table cellspacing="0">
+    <caption>学生管理系统</caption>
+    <thead>
+    <tr>
+        <th>姓名</th>
+        <th>地址</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="name">小王</td>
+        <td class="add">北京市昌平区</td>
+        <td class="opp">
+            <a href="#">修改</a>
+            <a href="#">删除</a>
+        </td>
+    </tr>
+    <tr>
+        <td class="name">小王</td>
+        <td class="add">北京市昌平区</td>
+        <td class="opp">
+            <a href="#">修改</a>
+            <a href="#">删除</a>
+        </td>
+    </tr>
+    <tr>
+        <td class="name">小王</td>
+        <td class="add">北京市昌平区</td>
+        <td class="opp">
+            <a href="#">修改</a>
+            <a href="#">删除</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

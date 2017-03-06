@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 200px;
+            height:200px;
+            padding:100px;
+        }
+    </style>
+</head>
+<body>
+<div style="background: blue"> box0
+    <div id="div" style="background: red">box1</div>
+</div>
+<script>
+    var oWrap=document.getElementsByTagName('div')[0];
+    var oDiv=document.getElementById('div');
+    function f1(){
+        alert(1)
+    }
+    function f2(){
+        alert(2)
+    }
+    oDiv.attachEvent('onclick',f1);
+    oDiv.attachEvent('onclick',f2);
+    /*oDiv.addEventListener('click',f1,true);//捕获阶段
+    //oWrap.addEventListener('click',f2,true);//捕获阶段
+    oDiv.addEventListener('click',f2,true);//捕获阶段*/
+    /*oDiv.onclick=function(){
+        alert(1)
+    }
+    oDiv.onclick=function(){
+        alert(2);
+    }*/
+</script>
+</body>
+</html>

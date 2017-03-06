@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>照片墙</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .box{
+            position: relative;
+            width: 480px;
+            height: 640px;
+            margin: 20px auto;
+            padding: 5px;
+            background: #ccc;
+        }
+        .box li{
+            float: left;
+            width: 150px;
+            height: 150px;
+            margin: 5px;
+            background: lightseagreen;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .box li img{
+            width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<ul class="box" id="box"></ul>
+<script src="../../utils.js"></script>
+<script src="../../event.js"></script>
+<script src="../../move.js"></script>
+<script src="js/Drag.js"></script>
+<script>
+    var oBox = document.getElementById('box');
+    var aLi = oBox.getElementsByTagName('li');
+    function createLi(n){
+        var frg = document.createDocumentFragment();
+        for (var i =0;i<n;i++){
+            var oLi = document.createElement('li');
+            oLi.innerHTML = '<img src="img2/'+(i+1)+'.png" alt="">';
+            frg.appendChild(oLi);
+        }
+        oBox.appendChild(frg);
+        frg=null;
+    }
+    createLi(12);
+
+    //将浮动元素改为定位元素
+    for (var i=aLi.length-1;i>=0;i--){
+        var oLi =  aLi[i];
+        oLi.oldColor = utils.css(oLi,'backgroundColor');
+        oLi.style.left =(oLi.l=oLi.offsetLeft)+'px';
+        oLi.style.top = (oLi.t=oLi.offsetTop)+'px';
+        oLi.style.position = 'absolute';
+        oLi.style.margin = 0;
+
+        var dra = new Drag(oLi);
+        //让图片可以交换位置
+        dra.photo(aLi);
+
+    }
+
+
+
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

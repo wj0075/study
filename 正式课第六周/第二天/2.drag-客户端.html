@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            padding-top:30px;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+        }
+        .div2{
+            left:200px;
+            background: yellow;
+        }
+        .div3{
+            left:400px;
+            background: blue;
+        }
+        .div4{
+            left:600px;
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+<div id="div" class="div1"></div>
+<div id="div2" class="div2"></div>
+<div id="div3" class="div3">111111111123234444</div>
+<div id="div4" class="div4"></div>
+<script src="js/utils.js"></script>
+<script src="js/event.js"></script>
+<script src="js/Drag.js"></script>
+<script>
+    var aDiv=document.getElementsByTagName('div');
+    for(var i=0; i<aDiv.length; i++){
+        var curDiv=new Drag(aDiv[i]);
+        //需求：让第二个div，增加拖拽时的边界限制功能：
+        if(i==1){
+            //curDiv.on('selfMove',addRange);//curDiv.range({left:xxx,})
+            curDiv.on('selfMove',function(e){
+                addRange.call(this,{
+                    left:0,
+                    top:0,
+                    right:500,
+                    bottom:400
+                },e)
+            })
+        }
+    }
+    function addRange(opt,e){//left:0 top:100,right:500,bottom:400
+        //var opt={left:0,top:100,right:500,bottom:400};
+        var l=this.l+e.clientX-this.x;
+        var t=this.t+e.clientY-this.y;
+        /*var opt=this.opt;*/
+        if(l<=opt.left){
+            l=opt.left;
+        }else if(l>=opt.right){
+            l=opt.right;
+        }
+        if(t<=opt.top){
+            t=opt.top;
+        }else if(t>=opt.bottom){
+            t=opt.bottom;
+        }
+        this.ele.style.left=l+'px';
+        this.ele.style.top=t+'px';
+    };
+
+</script>
+</body>
+</html>

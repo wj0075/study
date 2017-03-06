@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //电脑的时间
+    var time = new Date();
+    var year = time.getFullYear();
+    var month = time.getMonth()+1;//0-11
+    var day = time.getDate();
+    var weekIndex = time.getDay();//4
+    var hour = time.getHours();
+    var min = time.getMinutes();
+    var se = time.getSeconds();
+    var ms = time.getMilliseconds();
+//    1000ms=1s
+
+    var str = '日一二三四五六';
+//    索引对应的字符  charAt(索引)
+    var week = str.charAt(weekIndex);
+    console.log(week);
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

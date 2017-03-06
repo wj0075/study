@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ary=[10,30,20,40];
+    var ary1=[10,30,20,40];
+    var obj={};
+    /*
+    对forEach的分析
+    * 1）forEach这个方法，挂在原型上；
+    * 2）forEach方法，总共有2个参数：1）callback 2)用来改变this指向；
+    * 3）forEach没有返回值
+    * 以下是对回调函数的四个分析：
+    *1.forEach中传的回调函数，被调用的次数，取决于数组的长度；
+    *2.回调函数，接受了3个参数：1）数组中的内容 2）索引 3）原始数组
+    *3.回调函数this，默认指向window，可以通过forEach第二个参数，改变this指向；
+    *4.forEach没有返回值，也没有接收回调函数的返回值；
+    * */
+    Array.prototype.myForEach=function(callback,context){
+        //this ->实例；ary ary1
+        context=context||window;
+        if('forEach' in Array.prototype){//标准浏览器的处理；
+            this.forEach(callback,context);
+            return;
+        }
+        for(var i=0; i<this.length; i++){//1）callback被调用的次数；
+            callback.call(context,this[i],i,this);//2）callback传参；3）this指向；
+        }
+    };
+    var res=ary.myForEach(function () {
+        console.log(arguments)
+    });
+    console.log(res)
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

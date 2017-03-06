@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            display: block;
+            position: relative;
+            height: 50px;
+            width: 50px;
+            background: red;
+        }
+        i{
+            position: absolute;
+            top: 50%;
+            right: 6px;
+            margin-top: -10px;
+            width: 0;
+            height: 0;
+            font-size: 0;
+            border: 10px solid transparent;
+            border-left-color: #00c1a5;
+        }
+        i::after{
+          position: absolute;
+            top: -10px;
+            left: -12px;
+            content: '';
+            width: 0;
+            height: 0;
+            font-size: 0;
+            border: 10px solid transparent;
+            border-left-color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+<a >
+    <i></i>
+</a>
+</body>
+</html>

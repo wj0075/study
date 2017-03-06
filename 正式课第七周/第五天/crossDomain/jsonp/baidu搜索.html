@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>baidu一下</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            width: 164px;
+            background-color: #ccc;
+            border: 1px solid black;
+            position: absolute;
+            left: 80px;
+        }
+
+        #dropList {
+            cursor: pointer;
+            list-style: none;
+        }
+
+        #dropList li:nth-child(odd) {
+            background-color: aliceblue;
+        }
+    </style>
+    <script src="jsonp.js"></script>
+</head>
+<body>
+<label>
+    百度搜索：<input id="searchInput" type="search">
+</label>
+<input id="searchBtn" type="button" value="百度一下">
+
+<div id="container">
+    <ul id="dropList">
+    </ul>
+</div>
+</body>
+</html>
+<script>
+    function $(id) {
+        return document.getElementById(id);
+    }
+    var searchInput = $('searchInput');
+    var searchBtn = $('searchBtn');
+    var dropList = $('dropList');
+
+    var searchURI = 'http://suggestion.baidu.com/su';
+    var searchJsonpCallback = 'cb';
+    searchBtn.onclick = function () {
+        var searchValue = searchInput.value;
+        if (!searchValue) {
+            return;
+        }
+        // wd是word的缩写，标识要去百度搜索的关键字
+        jsonp(searchURI,
+                {wd: searchValue},
+                searchJsonpCallback,
+                function (data) {
+                    // cb1({q:"a",p:false,s:["爱奇艺","阿里巴巴批发网","airbnb","acfun","安居客","阿里巴巴","阿卡丽的神秘商店","阿里云","爱奇艺网","阿里旺旺"]});
+                    var list = data.s;
+                    var fragment = document.createDocumentFragment();
+                    for (var i = 0, len = list.length; i < len; i++) {
+                        var item = list[i];
+                        var li = document.createElement('li');
+                        li.innerHTML = item;
+                        fragment.appendChild(li);
+                    }
+                    dropList.innerHTML = '';
+                    dropList.appendChild(fragment);
+                });
+
+    };
+
+
+    dropList.onclick = function (e) {
+        e || (e = window.event);
+        var target = e.target || e.srcElement;
+        var key = target.innerHTML;
+        var URI = 'https://www.baidu.com/s?wd=' + encodeURIComponent(key);
+        //通过js打开一个新的浏览器tab页
+        window.open(URI, '_blank');
+
+    }
+</script>

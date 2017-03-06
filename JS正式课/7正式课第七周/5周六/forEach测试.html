@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ary = [
+        {name:'xiao',id:1},
+        {name:'da',id:2},
+        {name:'zhong',id:3}
+    ];
+    var data = {name:'huan',id:2};
+    ary.forEach(function(item,index,input){
+        if (item['id']==data['id']){
+            input[index] = data;
+        }
+    });
+    console.log(ary)
+</script>
+</body>
+</html>

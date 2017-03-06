@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            width: 600px;
+            margin: 50px auto;
+        }
+
+        li {
+            height: 40px;
+            line-height: 40px;
+            margin-top: 5px;
+            background-color: aqua;
+        }
+
+    </style>
+</head>
+<body>
+<ul id="box"></ul>
+<script src="js/utils.js"></script>
+<script>
+    var oUl = document.getElementById('box');
+    var data = null;
+    getData();
+    function getData() {
+        var xml = new XMLHttpRequest();
+        xml.open('get', 'data.txt', false);
+        xml.onreadystatechange = function () {
+            if (xml.readyState === 4 && /^2\d{2}$/.test(xml.status)) {
+                data = utils.jsonParse(xml.responseText);
+            }
+        };
+        xml.send();
+    }
+    console.log(data);
+    bind();
+    function bind() {
+        var frg = document.createDocumentFragment();
+        for (var i = 0; i < data.length; i++) {
+            var oLi = document.createElement('li');
+            var cur = data[i];
+            for (var key in cur) {
+                oLi.innerHTML += cur[key] + ' ';
+            }
+            frg.appendChild(oLi);
+        }
+        oUl.appendChild(frg);
+        frg = null;
+    }
+
+
+</script>
+
+
+</body>
+</html>

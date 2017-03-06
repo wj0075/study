@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            background: red;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script src="../../utils.js"></script>
+<script src="js/move.js"></script>
+<script>
+    var oB= document.getElementById('box');
+    animate({
+        id:oB,
+        target:{
+            left:800,
+            top:400,
+        }
+    })
+
+
+
+</script>
+</body>
+</html>

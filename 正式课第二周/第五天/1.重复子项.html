@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //wood food feel book cook  look
+    /*var reg=/^\w(\w)\1\w$/;
+    alert(reg.test('wood'));
+    var reg2=/^\w(\w)(\w)\1\2/;
+    alert(reg2.test('abcbcd'))*/
+    //重复子项： \1：代表跟第一个小分组一模一样； \2:代表跟第二个小分组一模一样
+    var str='aaaabbbbbbccccccccccdddd';
+    //通过arguments，可以打印出a系列，b系列；
+    var reg=/(\w)\1+/g;
+    str.replace(reg,function(){
+        console.log(arguments)
+    })
+
+</script>
+</body>
+</html>

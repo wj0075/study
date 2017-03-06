@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分页</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="main">
+    <h2>
+        <span>学号</span>
+        <span>姓名</span>
+        <span>性别</span>
+        <span>分数</span>
+    </h2>
+    <ul class="con" id="con">
+        <!--<li>
+            <span>1</span>
+            <span>张三</span>
+            <span>男</span>
+            <span>99</span>
+        </li>-->
+    </ul>
+    <script type="text/template" id="stuTemplate">
+        <%for(var i=0;i<stuData.length;i++){%>
+        <%var cur = stuData[i]%>
+        <li>
+            <span><%=cur.id%></span>
+            <span><%=cur.name%></span>
+            <span><%=cur.sex==0?'男':'女'%></span>
+            <span><%=cur.score%></span>
+        </li>
+        <%};%>
+    </script>
+    <div class="page" id="page">
+        <span>首页</span>
+        <span>上一页</span>
+        <ul class="pageNum" id="pageNum">
+        </ul>
+        <script type="text/template" id="pageTemplate">
+            <%var n;%>
+            <%for(var i=1;i<=pageData;i++){%>
+               <%if(i==1){%>
+                    <li class="on"><%=i%></li>
+                <%}else{%>
+            <li><%=i%></li>
+                <%};%>
+            <%};%>
+</script>
+        <span>下一页</span>
+        <span>尾页</span>
+        <input type="text" id="text">
+    </div>
+</div>
+<script src="js/ajax.js"></script>
+<script src="js/ejs.min.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

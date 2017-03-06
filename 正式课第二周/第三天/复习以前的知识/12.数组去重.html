@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ary=[1,2,3,1,2,2,3,1,2,3,4];
+    //1.双重循环
+    /*for(var i=0; i<ary.length; i++){
+        for(var j=i+1; j<ary.length; j++){
+            if(ary[i]===ary[j]){
+                ary.splice(i,1);
+                i--;
+            }
+        }
+    }*/
+    //2.sort思想
+    /*ary.sort(function(a,b){return a-b});
+    for(var i=0; i<ary.length; i++){
+        if(ary[i]===ary[i+1]){
+            ary.splice(i,1);
+            i--;
+        }
+    }*/
+    //3.新数组
+    /*var ary1=[];
+    for(var i=0; i<ary.length; i++){
+        /!*if(ary1.indexOf(ary[i])==-1){
+            ary1.push(ary[i]);
+        }else{
+            ary.splice(i,1);
+            i--;
+        }*!/
+        if(ary1.indexOf(ary[i])==-1){
+            ary1.push(ary[i]);
+        }
+    }*/
+    //4.可以记录次数的对象去重
+    var obj={};
+    for(var i=0; i<ary.length; i++){
+        var cur=ary[i];
+        if(obj[cur]){
+            obj[cur]++;
+        }else{
+           obj[cur]=1;
+        }
+    }
+    var ary=[];
+    for(var attr in obj){
+        ary.push(attr);
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

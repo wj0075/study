@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width:200px;
+            height:200px;
+            background: red;
+        }
+        input{
+            width: 200px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="t1">
+<div id="div"></div>
+<script>
+    var oDiv=document.getElementById('div');
+    var oT=document.getElementById('t1');
+    oDiv.oncontextmenu=function(e){
+        e=e||window.event;
+        //e.preventDefault();
+        e.preventDefault? e.preventDefault(): e.returnValue=false;
+    };
+    /*oT.onkeydown=function(e){//{key:value,key1:value}
+        e=e||window.event;
+        console.dir(e)
+        alert(e.keyCode)
+    }
+    oDiv.onclick=function(e){
+        //在标准浏览器下，通过形参来接收e; 在IE浏览器下，事件对象跟参数e无关，通过window.event来获取事件对象；
+        e=e||window.event;
+        /!*e.pageX=(document.documentElement.scrollLeft||document.body.scrollLeft)+ e.clientX;
+        e.pageY=(document.documentElement.scrollTop||document.body.scrollTop)+ e.clientY;
+        console.log(e.pageX,e.pageY)*!/
+        //console.dir(this);
+    }*/
+    //var fn1=xxff00;
+    /*function fn1(){//xxff00
+        alert(1)
+    }
+    oDiv.addEventListener('click',fn1,false)
+    oDiv.removeEventListener('click',fn1,false)*/
+</script>
+</body>
+</html>

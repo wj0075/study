@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul{
+            list-style: none;
+        }
+        li{
+            background: red;
+            width: 100px;
+            height: 100px;
+            font-size: 24px;
+            margin: 10px;
+            float: left;
+        }
+            /*浮动的元素可以识别父级元素的宽度，宽度达到最大值会自动折行*/
+            /*浮动的元素  不区分行内元素还是块级元素，都可以设置宽高，margin，padding*/
+            /*浮动的元素脱离正常的文档流，只要元素浮动了，就不在原来的平面内，来到一个稍高的一个平面内，但还是和原来平行*/
+            /*文档流：自然布局  */
+            /*用伪元素的方式*/
+            .clearfix:after{
+                /*:after  在元素里面最末尾的位置加样式*/
+                content:'';
+                /*内容*/
+                display: block;
+                /*将空的内容转为块级元素*/
+                clear: both;
+                height: 0;
+                /*高度为0，比较严谨*/
+                overflow: hidden;
+                /*溢出隐藏，不会产生影响其他元素的行为*/
+            }
+
+    </style>
+</head>
+<body>
+<!--清楚浮动：清楚浮动元素对其他元素的影响
+clear:left    清楚左浮动
+      right   清楚右浮动
+      both    清楚左右浮动的元素对其他元素的影响
+-->
+<!--页面中常用的三种布局:
+1、自然布局
+块级元素从上到下显示，行内元素从左到右显示，宽度到达最大范围自动折行。
+
+2、浮动布局、流动布局
+给元素这只浮动的属性 改变元素的位置，可以让元素在一行内显示
+
+3、层布局
+通过定位属性改变元素的位置，让元素之间有层级关系-->
+float：left  左浮动
+       right  右浮动
+       none   设置为不浮动
+       inherit 默认继承父级元素的浮动样式
+
+<ul class="clearfix" style="background: darkblue">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <!--<p style="clear: both"></p>-->
+</ul>
+<!--<div style="background: salmon">wenzi </div>-->
+<!--<div class="clearfix" style="background: hotpink">-->
+    <!--<span>文字</span>-->
+<!--</div>-->
+<!--<div>-->
+    <!--<span>1</span>-->
+    <!--<span>2</span>-->
+    <!--<span>3</span>-->
+    <!--<span>4</span>-->
+<!--</div>-->
+只要子级元素浮动了，就要给父级元素清楚浮动，直接给父级元素加clearfix这个类名
+清除浮动的方法：
+1、clear:both
+2、用伪元素清除浮动
+3、给父级元素设置 overflow：hidden
+
+</body>
+</html>

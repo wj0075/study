@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $.ajax({
+        url: 'temp.xml',
+        type: 'get',
+        dataType: 'xml',
+        data: null,
+        success: function (result) {
+            console.log(result);
+        }
+    });
+</script>
+</body>
+</html>

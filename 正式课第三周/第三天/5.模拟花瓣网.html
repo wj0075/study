@@ -1,0 +1,160 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+        div{
+            width:1860px;
+            margin:10px auto;
+        }
+        div ul{
+            width:300px;
+            float:left;
+            /*height:10px;这里的样式必须注释掉，否则会出现单列很长的问题；
+            background: red;*/
+            margin:5px;
+        }
+        div ul li{
+            width: 100%;
+            background: url("img2/default.gif") center no-repeat #ccc;
+            margin-bottom: 10px;
+        }
+        div ul li img{
+            width: 100%;/*为了防止图片变形，只设置图片的宽度，图片的高度会自适应*/
+        }
+        a{
+            position: fixed;
+            right:10px;
+            bottom:10px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            line-height: 100px;
+            font-size: 30px;
+            background: darkgreen;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <ul>
+        <!--<li>
+            <img src="" realImg="img2/1.jpg" alt="">
+        </li>-->
+    </ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+</div>
+<a href="javascript:;" id="btn">toTop</a>
+<script src="js/utils.js"></script>
+<script>
+    var aUl=document.getElementsByTagName('ul');
+    var aImg=document.getElementsByTagName('img');
+    var oBtn=document.getElementById('btn');
+    var timer=null;
+    var bOk=false;
+    //1.封装创建一个元素的方法
+    var ary=[
+        {imgSrc:'img2/1.jpg'},
+        {imgSrc:'img2/2.jpg'},
+        {imgSrc:'img2/3.jpg'},
+        {imgSrc:'img2/4.jpg'},
+        {imgSrc:'img2/5.jpg'},
+        {imgSrc:'img2/6.jpg'},
+        {imgSrc:'img2/7.jpg'},
+        {imgSrc:'img2/8.jpg'},
+        {imgSrc:'img2/9.jpg'},
+        {imgSrc:'img2/10.jpg'}
+    ];
+    function createLi(){
+        var oLi=document.createElement('li');
+        oLi.innerHTML='<img src="" realImg="'+ary[utils.rnd(0,9)].imgSrc+'" alt="">';
+        oLi.style.height=utils.rnd(100,240)+'px';
+        return oLi;
+    }
+    function li50(){
+        //创建50个li元素
+        for(var i=0; i<50; i++){
+            //每创建一个元素，都插入到最短的ul中；
+            var oLi=createLi();
+            var ary=utils.makeArray(aUl);
+            ary.sort(function(a,b){
+                return a.offsetHeight- b.offsetHeight;
+            });
+            ary[0].appendChild(oLi);
+        }
+
+    }
+    li50();
+    function showImg(){
+        var scrollBottom=utils.win('scrollTop')+utils.win('clientHeight');
+        for(var i=0; i<aImg.length; i++){
+            var imgPos=aImg[i].offsetTop+aImg[i].offsetHeight;
+            if(imgPos<scrollBottom){
+                lazyImg(aImg[i]);
+            };
+        }
+    }
+    function lazyImg(img){
+        if(img.loaded) return;
+        var tmpImg=new Image;
+        tmpImg.src=img.getAttribute('realImg');
+        tmpImg.onload=function(){
+            img.src=this.src;
+            tmpImg=null;
+            img.loaded=true;
+            img.parentNode.style.height='auto';
+        };
+    }
+
+    li50();
+    showImg();
+    /*window.onscroll=function(){
+        var scrollBottom=utils.win('scrollTop')+utils.win('clientHeight');
+        if(bOk) clearInterval(timer);
+        bOk=true;
+        //第一屏不显示按钮，大于一屏才显示按钮；
+        if(utils.win('scrollTop')>utils.win('clientHeight')){
+            oBtn.style.display='block';
+        }else{
+            oBtn.style.display='none';
+        }
+
+        showImg();//图片懒加载；
+        if(document.body.scrollHeight-10<scrollBottom){
+            li50();//瀑布流的无限制加载
+        }
+    };
+    oBtn.onclick=function(){
+        var target=utils.win('scrollTop');
+        var duration=1000;
+        var interval=30;
+        var step=target/duration*interval;
+        timer=setInterval(function(){
+            var curTop=utils.win('scrollTop');
+            if(curTop<=0){
+                clearInterval(timer);
+                return;
+            }
+            curTop-=step;
+            utils.win('scrollTop',curTop);
+            bOk=false;
+        },interval)
+    }*/
+
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>6</div>
+<script>
+    //浏览器异常捕获完整格式：try{...}catch(e){....}finally{.....}
+    //但是因为无论走Try,还是catch，dinally都会执行，所以，一般情况下，不用finally;
+//    var a = 123;
+//    try{
+//        if(a){
+//            alert(a);
+//        }
+//    }catch (e){
+//        console.log('我错了：'+e)
+//    }finally {
+//        alert('我来了')
+//    }
+    var aDiv = document.getElementsByTagName('div');
+//    var ss = function(aDiv){
+//        try{
+//            return Array.prototype.splice.call(aDiv);
+//        }catch(e){
+//            var ary = [];
+//            for(var i = 0;i<aDiv.length;i++){
+//                ary.push(aDiv[i]);
+//            }
+//        }
+//        return ary;
+//    };
+//    var aa=ss(aDiv);
+//    console.log(aa);
+
+
+    function makeArray(arg){
+        var ary = [];
+        try{
+            ary = Array.prototype.slice.call(arg);
+        }catch(e){
+            for (var i = 0; i < arg.length ; i++){
+                ary.push(arg[i])
+            }
+        }
+        return ary;
+    }
+    console.log(makeArray(aDiv))
+
+
+
+</script>
+</body>
+</html>

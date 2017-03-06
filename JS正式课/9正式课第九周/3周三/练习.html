@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+   /* var obj = {
+        name:"珠峰",
+        age:7
+    };
+    ~function (obj) {
+        obj.name="中国";
+        obj={};
+        obj.age=400;
+        console.log(obj)
+    }(obj);
+    console.log(obj)*/
+
+   function prev(ele) {
+       if (ele.previousElementSibling){
+           return ele.previousElementSibling;
+       }else {
+           var prev = ele.previousSibling;
+           while(prev && prev.nodeType!==1){
+               prev = pre.previousSibling
+           }
+           return prev;
+       }
+   }
+
+
+
+
+</script>
+</body>
+</html>

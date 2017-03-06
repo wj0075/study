@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body{
+            height: 100%;
+            background: lightblue;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            margin: 40px auto;
+            /*border-radius: 50%;*/
+            background: #2d9ec4 url("images/img1.png") no-repeat center;
+            border-radius: 50%;
+            border: 30px solid red;
+            /*box-shadow: 0 0 0 30px transparent;*/
+            -webkit-transition: box-shadow 1s;
+            -moz-transition: box-shadow 1s;
+            -ms-transition: box-shadow 1s;
+            -o-transition: box-shadow 1s;
+            transition: border 1s;
+        }
+        #box:hover{
+            /*box-shadow: 0 0 0 0 rgba(255,255,255,.6);*/
+            border: 0 solid rgba(255,255,255,.6);
+        }
+        
+        
+    </style>
+</head>
+<body>
+
+<div id="box">
+    <!--<img src="images/img1.png" alt="">-->
+</div>
+
+
+<!--
+    过渡属性
+    box-shadow      扩展半径   颜色
+    起始值（划出）     30px     transparent
+    目标值（划入）        0
+
+
+-->
+</body>
+</html>

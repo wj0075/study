@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box"></div>
+<script src="../../utils.js"></script>
+<script src="js/move1.js"></script>
+<script>
+    var oBox = document.getElementsByClassName('box')[0];
+    console.log(oBox);
+    animate({
+        id: oBox,
+        target: {
+            left: 1000,
+            top: 400
+        },
+    })
+</script>
+</body>
+</html>

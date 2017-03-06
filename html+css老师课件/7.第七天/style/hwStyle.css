@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+    font:16px 'Tahoma',\5FAE\8F6F\96C5\9ED1;
+}
+ul{
+    list-style: none;
+}
+ul{
+    width: 1200px;
+    height: 89px;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    margin: 0 auto;
+    /*块级元素（设置宽度）在父级元素中水平居中*/
+}
+li{
+    float: left;
+    line-height: 89px;
+    color: #333;
+    padding-right: 100px;
+}
+li i{
+    width: 44px;
+    height: 44px;
+    display: inline-block;
+    /*文字和小图标在一行显示的时候 设置 display: inline-block;  其他情况都用浮动*/
+
+    background: url("../img/hwicon.png") no-repeat -44px -44px;
+    vertical-align: middle;
+    /*垂直居中*/
+
+    /*文字、行内元素、行内块级元素 在没有调整位置时，在页面中默认基线对齐baseline（inline-block元素最下方 和x的最下方）*/
+    margin-right: 13px;
+
+    /*盒子没有border或者background时  margin和padding的效果是一样的*/
+    /*background-position: 1px 2px;
+    1)水平 +
+    2）竖直
+    */
+}
+.list2 i{
+    background-position: 0 0;
+}
+.list3 i{
+    background-position: 0 -44px;
+}
+.list4 i{
+    background-position: -44px 0;
+}
+

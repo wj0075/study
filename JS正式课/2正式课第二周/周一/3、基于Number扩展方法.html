@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    Number.prototype.plus = function (num) {
+        var total=0;
+        total = this + num;
+        return total;
+    };
+    Number.prototype.minus = function (num) {
+        var cur = 0 ;
+        cur = this - num;
+        return cur;
+    };
+
+    var a=5;
+    console.log(a.plus(3).minus(2));
+
+
+
+</script>
+</body>
+</html>

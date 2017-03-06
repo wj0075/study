@@ -1,0 +1,34 @@
+Drag产品的开发文档和使用说明书：
+-产品基本用法：
+    您需要做以下两步：
+    1）通过ID获取元素：oDiv=document.getElementById('div');
+    2)创建实例：var drag1=new Drag(oDiv);
+-产品基本构成：
+    基本版的Drag产品由三部分构成：
+    Drag.prototype.down   当鼠标按下的时候，开始拖拽
+    Drag.prototype.move   当鼠标移动的时候，拖拽进行中
+    Drag.prototype.up     当鼠标抬起的时候，结束拖拽；
+
+    Drag产品的私有属性4个：
+    this.l,this.t,this.x,this.y
+    必备属性有1个：this.ele
+-产品新功能的扩展：
+客户端可以通过drag1.on('slefDown',fn1); //订阅
+-产品自身升级（开发人员）
+    drag 1.0版本：只是一个基本的拖拽
+    drag 1.1版本：增加了限制范围的拖拽
+    使用规则：obj1.rang({left:xx,right:xx,top:xxx,bottom:xxxx})
+    drag 1.2版本：增加鼠标按下，出现虚线框；拖拽元素时，拖动是虚线框，鼠标抬起时，元素发生了位移，虚线框消失；
+    使用规则：obj1.border();
+
+
+
+
+
+
+
+
+
+
+
+

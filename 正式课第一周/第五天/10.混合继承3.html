@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function F(){//构造函数：里面放的都是私有的属性和方法；
+        this.x=100;
+        this.y=200;
+        this.showX=function(){};
+    }
+    F.prototype.aa=function(){};//原型：原型中放的都是公有的属性和方法；
+    var f=new F;
+
+    function S(){
+        F.call(this);
+    }
+    /*S.prototype= new F;//问题：父类私有+公有的，都给了子类公有的；可是，子类公有只想要父类公有；*/
+    function Tmp(){};//过滤的作用，只过滤出父类公有的；
+    Tmp.prototype= F.prototype;
+    S.prototype=new Tmp;
+    S.prototype.constructor=S;
+    var s=new S;
+    console.dir(s);
+    /*
+    * x:100,
+    * y:200,
+    * showX:function
+    * __proto__:
+    *
+    * __proto__:
+    * constructor:F,
+    * aa:function
+    * */
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery中ajax的用法</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+    <script>
+        // 用来执行异步http请求
+        // 传入一个配置参数
+        $.ajax({
+            // 是否为异步请求。默认为true
+            async:true,
+            // 执行ajax第四步send方法之前，执行此函数
+            // 作用：显示loading效果
+            beforeSend:function(){
+
+            },
+            // 是否缓存，默认为true
+            // 注意事项：当请求的是script和jsonp（跨域请求）时，cache默认为false
+            // 当dataType为script和jsonp时，cache默认为false
+            cache:true,
+            // 不管成功还是失败都会执行此函数
+            // 作用：隐藏loading效果
+            // 相当于try catch finally中的finally
+            complete:function(){
+                console.log(this.name); //=>local
+            },
+            // 请求首部中的content-type
+            // 默认为表单提交
+            // jquery默认所有的ajax都是表单提交
+            // 当该属性为true时，会根据往服务器发送的参数自动选择contentType
+            contentType:'application/x-www-form-urlencoded; charset=utf-8',
+            // beforeSend、complete、success、error这四个函数中this关键字指向
+            context:{name:'local'},
+            // 往服务器发送的参数
+            // 可以使用string、Object、Array、FormData（h5，用来构造表单数据的）
+            data:'',
+            // 按照指定格式，格式化服务器返回的数据
+            /**
+             * text 将响应主体格式为字符串并返回
+             * json 把主体格式化为json对象并返回
+             * script 把主体当成script脚本加载并执行，相当于把主体加载过来之后，eval一下
+             * html 把主体当成html并返回
+             * xml 把主体格式化为xml文档并返回
+             * jsonp 跨域
+             */
+            dataType:'text',
+            // ajax失败时处理该函数
+            // 触发时机：ajax请求失败、按照dataType格式化主体失败、请求超时
+            error:function(){
+
+            },
+            // 自定义请求头
+            headers:{},
+            // http方法。默认为get
+            // 注意事项：jquery1.9之前使用type代替此属性，1.9之后使用method
+            method:'get',
+            // 当data为一个对象时，是否需要将data格式化为请求参数
+            // 默认为true
+            processData:true,
+            // ajax成功时处理的函数
+            success:function(data){
+                // data为经过dataType格式化之后的响应主体
+            },
+            // 超时毫秒数
+            // 作用：过了单位时间，服务器还没有响应，则终止当前ajax请求，并执行error函数
+            // 单位为毫秒。默认为0 ，不执行超时逻辑，一直等待服务器响应
+            // 一般都会将此属性设置为3000(3秒)
+            timeout:0,
+            // ajax请求地址
+            url:''
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

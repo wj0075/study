@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function offset(curEle) {
+        var par = curEle.offsetParent;
+        var l = curEle.offsetLeft;
+        var t = curEle.offsetTop;
+        while (par) {
+            if (window.navigator.userAgent.indexOf('MSIE 8') === -1) {
+                l += par.clientLeft;
+                t += par.clientTop;
+            }
+            l += par.offsetLeft;
+            t += par.offsetTop;
+            par = par.offsetParent;
+        }
+        return {left: l, top: t}
+    }
+
+    function  offset(curEle){
+        var par = curEle.offsetParent;
+        var l=curEle.offsetLeft;
+        var t=curEle.offsetTop;
+        while (par){
+            if (window.navigator.userAgent.indexOf('MSIE 8')===-1){
+                l+=par.clientLeft;
+                t+=par.clientTop;
+            }
+            l+=par.offsetLeft;
+            t+=par.offsetTop;
+            par=par.offsetParent;
+        }
+        return {left:l,top:t};
+    }
+
+
+
+</script>
+</body>
+</html>

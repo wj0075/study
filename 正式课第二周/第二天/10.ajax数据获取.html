@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li{
+            height: 40px;
+            line-height: 40px;
+            background: lightblue;
+            margin:5px;
+        }
+    </style>
+</head>
+<body>
+<ul id="ul1">
+    <!--<li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>-->
+</ul>
+<script src="utils.js"></script>
+<script>
+    var oUl=document.getElementById('ul1');
+    var data=null;
+    //ajax:异步刷新请求数据；
+    getData();
+    function getData(){
+        //1.创建一个xml对象：
+        var xml=new XMLHttpRequest;
+        //2.打开地址
+        xml.open('get','data.txt',false);
+        //3.请求响应；
+        xml.onreadystatechange=function(){
+            //xml.readyState=4 准备成功   xml.status:响应成功 2xx;
+            if(xml.readyState==4 && /^2\d{2}$/.test(xml.status)){
+                data=utils.jsonParse(xml.responseText);
+
+            }
+        };
+        //4.发送请求；
+        xml.send(null);
+    }
+    bind();
+    function bind(){
+        //根据有多少数据，创建多少个li；
+        var str='';
+        for(var i=0; i<data.length; i++){
+            str+='<li>'+data[i].name+'</li>'
+        }
+        oUl.innerHTML+=str;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drag</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .div0{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%;
+        }
+        .div1{
+            background-color: blue;
+        }
+        .div2{
+            background-color: yellow;
+        }
+        .div3{
+            background-color: green;
+        }
+
+    </style>
+</head>
+<body>
+<div class="div0"></div>
+<div class="div0 div1"></div>
+<div class="div0 div2">dgdgdgdfg</div>
+<div class="div0 div3"></div>
+
+<script src="../../utils.js"></script>
+<script src="js/event.js"></script>
+<script src="js/Drag1.js"></script>
+<script>
+    var aDiv = document.getElementsByClassName('div0');
+    for (var i=0;i<aDiv.length;i++){
+        var drag = new Drag(aDiv[i]);
+        drag.on('selfdown',clearEffect);
+        //drag.on('selfdown',border);
+        drag.on("selfmove",speed);
+        //drag.on('selfup',remove);
+        drag.on('selfup',fly);
+        drag.on('selfup',drop);
+        if (i==1){
+            drag.range({
+                left:0,
+                right:600,
+                top:0,
+                bottom:400
+            });
+        }
+        drag.border();
+        if (i==2){
+
+        }
+    }
+
+    //var drag1 = new Drag(oDiv1);
+
+    function clearEffect(){
+        clearTimeout(this.flyTimer);
+        clearTimeout(this.dropTimer);
+        this.prev = null;
+    }
+    /*function border(){
+        this.ele.style.border = '2px solid blue';
+    }*/
+    /*function remove(){
+        this.ele.style.border = '';
+    }*/
+    function speed(e){
+        if (!this.prev){
+            this.prev = e.clientX;
+        }else {
+            this.speedX = e.clientX-this.prev;
+            this.prev = e.clientX;
+        }
+    }
+    function fly(){
+        clearTimeout(this.flyTimer);
+        this.speedX*=0.95;
+        var l = this.ele.offsetLeft+this.speedX;
+        var minl= 0,maxL = utils.win('clientWidth')-this.ele.offsetWidth;
+        if (l<minl){
+            l=minl;
+            this.speedX*=-1;
+        }else if (l>=maxL){
+            l=maxL;
+            this.speedX*=-1;
+        }
+        if (Math.abs(this.speedX)>=0.5){
+            this.ele.style.left = l+'px';
+            this.flyTimer = setTimeout(ev.processThis(fly,this),10)
+        }
+    }
+    function drop(){
+        clearTimeout(this.ele.dropTimer);
+        if (!this.speedY){
+            this.speedY = 9.8;
+        }else {
+            this.speedY+=9.8;
+        }
+        this.speedY*=0.95;
+        var t = this.ele.offsetTop+this.speedY;
+        var maxT = utils.win('clientHeight')-this.ele.offsetHeight;
+        if (t>=maxT){
+            t = maxT;
+            this.speedY*=-1;
+            this.tmp++;
+        }else{
+            this.tmp=0;
+        }
+        if (this.tmp<2){
+            this.ele.style.top = t+'px';
+            this.dropTimer = setTimeout(ev.processThis(drop,this),10)
+        }
+    }
+</script>
+</body>
+</html>

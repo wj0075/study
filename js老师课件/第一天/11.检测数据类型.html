@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    typeof
+//    constructor
+//    instanceof
+//    Object.prototype.toString.call()
+
+//返回值都是字符串类型的
+
+    typeof 123;//"number"
+    typeof '123'  //"string"
+    typeof false;//"boolean"
+    typeof null; //"object"
+    typeof undefined; //"undefined"
+
+    typeof []//"object"
+    typeof {}//"object"
+
+    typeof function(){}  //"function"
+
+//    局限性：不能检测对象数据类型下的具体的细分
+
+    typeof (typeof 123);//"string"
+    typeof  (typeof  (typeof []));//"string"
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

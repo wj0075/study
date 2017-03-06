@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            position: absolute;
+            left:300px;
+            top:40px;
+            background: red;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div id="div"></div>
+<script src="js/utils.js"></script>
+<script src="js/move3.js"></script>
+<script>
+    var oDiv=document.getElementById('div');
+    animate({
+        id:oDiv,
+        target:{
+            left:1200,
+            top:400
+        },
+        effect:0,//如果没有设置运动形式，默认是匀速
+        callback:function(){//传了就调用，不传不管
+            this.style.background='blue';
+        },
+        duration:2000 //如果没有设置运动总时间，默认是700;
+    });
+</script>
+</body>
+</html>

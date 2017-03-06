@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>我是p元素</p><div><span>我是div元素</span></div>
+<input type="text" value="12343556">
+<script src="js/jquery-2.0.3.js"></script>
+<script>
+    $.ajax({
+        type:'get',
+        url:'json/data.txt',
+        async:false,
+        dataType:'json',
+        success:function(val){
+            console.log(val);
+        }
+    })
+   // console.log($('input').val())//val:用来获取表单元素的value值；
+    //$('p').prependTo($('div')).css('background','red');
+    //$('div').prepend($('p')).css('background','red')
+</script>
+</body>
+</html>

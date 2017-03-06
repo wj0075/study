@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- 内嵌式-->
+    <style>
+        div{
+            color: orange;
+        }
+
+    </style>
+    <!-- 外链式-->
+    <link rel="stylesheet" href="style.css"/>
+    <!-- 按crtl键 检查引入的文件是否正确-->
+</head>
+<body>
+<!--同一个css属性作用在同一个标签的优先级-->
+<div style="color: red">划分结构</div>
+<!--优先级比较
+行内式>内嵌式
+行内式>外链式
+行内式>导入式
+
+说明：行内式优先级最高
+
+内嵌式、外链式、导入式  谁写在后面，用谁的样式，后面的样式会覆盖掉前面的
+-->
+
+</body>
+</html>

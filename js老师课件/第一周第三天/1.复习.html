@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+1、
+基本数据类型操作的是：值
+引用数据类型：空间地址
+
+引用数据类型：1）浏览器是会开辟一个新的空间地址
+            2）将对象的属性名和属性值存储在这个空间中
+            3）把空间地址赋值给对象
+
+var obj = {name:'zfpx'}
+
+2、
+for 循环
+1）初始值 2）条件 3）{循环体}   4）累加
+
+break：结束整个循环
+continue：本轮`循环体`后面的代码不再执行，继续执行累加，继续下一轮循环
+i++  在i原有基础上加1  i+=1  i=i+1
+<script>
+    for(var i=1;i<10;i+=2){
+        if(i<5){
+            i++;
+            continue;
+            console.log(i)
+        }
+        i+=2;
+        break;
+        console.log(i);
+    }
+    console.log(i);
+
+</script>
+
+3、for in循环
+循环对象的属性名和属性值
+<script>
+    var obj = {
+        name:'zfpx',
+        age:8
+    }
+//    key 属性名
+    for(var key in obj){
+//        console.log(key);
+        console.log(obj[key]);//只能用obj[]的形式
+    }
+</script>
+
+4、对象
+    1）创建一个对象
+        字面量：var obj = {name:'zfpx'}
+        实例创建方式：var obj = new Object();
+    2)增加一组属性名和属性值
+        obj.age = 8
+        obj['age'] = 8
+    3)修改属性名对应的属性值
+        obj.age = 9
+        obj['age'] = 9
+    4)删除属性
+        1、假删除
+         obj.age = null
+         obj['age'] = null
+        2、真删除
+         delete obj.age
+    5)获取属性名对应的属性值
+        var obj = {name:'zfpx'}
+        obj.name
+        obj['name']
+
+<script>
+    var obj1 = {name:'zfpx'}
+    console.log(obj1.name)
+    console.log(obj['name'])
+//
+</script>
+
+5、while循环
+
+<script>
+    for(var i=0;i<5;i++){
+        alert(i);
+    }
+
+    var i=0;
+    while(i<5){
+        alert(i);
+        i++;
+    }
+</script>
+
+6、在js中获取元素的方法
+document.getElementById('')
+获取元素的范围  document在整个文档中
+document.getElementsByTagName('')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

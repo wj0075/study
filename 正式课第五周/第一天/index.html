@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="todos">
+
+</ul>
+<input type="text" id="todo">
+<button id="addBtn">增加</button>
+<script>
+    var addBtn = document.querySelector('#addBtn');
+    var ul = document.querySelector('#todos');
+    ul.onclick = function(e){
+        alert(e.target.innerHTML);
+    }
+    addBtn.onclick = function(){
+        var todo = document.querySelector('#todo').value;
+        var li = document.createElement('li');
+        li.innerHTML = todo;
+       /* li.onclick = function(){
+            alert(li.innerHTML);
+        }*/
+        ul.appendChild(li);
+    }
+</script>
+</body>
+</html>

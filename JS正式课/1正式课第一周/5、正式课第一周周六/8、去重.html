@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    //sort思想。
+    var ary=[1,2,1,2,1,2,1,2];
+    Array.prototype.rmsame=function(){
+        var ary=this.sort(function(a,b){return a-b;});
+        for(var i=0; i<ary.length;i++){
+            if (ary[i]===ary[i+1]){
+                this.splice(i,1);
+                i--;
+            }
+        }
+        return ary;
+    };
+    console.log(ary.rmsame());
+//两个for循环，实现
+    Array.prototype.rmsame2=function(){
+        for(var i=0;i<this.length;i++){
+            var cur=ary[i];
+            for(var j=i+1;j<this.length;j++){
+                if(cur===ary[j]){
+                    this.splice(j,1);
+                    j--;
+                }
+            }
+        }
+        return this;
+    };
+    console.log(ary.rmsame2());
+
+
+
+</script>
+</body>
+</html>

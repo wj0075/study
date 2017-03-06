@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>3d产品展示</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+        }
+        body{
+            background: rgb(123,234,123);
+        }
+        .wrap{
+            width: 310px;
+            height: 100px;
+            margin: 100px auto;
+            -webkit-perspective: 2000px;
+            perspective: 2000px;
+        }
+        .item{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            transition: 1s;
+        }
+        .item img{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            transform: translateZ(50px);
+        }
+        .item span{
+            overflow: hidden;
+            width: 290px;
+            height: 80px;
+            position: absolute;
+            padding: 10px;
+            background: #ccc;
+            font-size: 24px;
+            border-radius: 5px;
+            -webkit-transform: rotateX(-90deg) translateZ(50px);
+            -moz-transform: rotateX(-90deg) translateZ(50px);
+            -ms-transform: rotateX(-90deg) translateZ(50px);
+            -o-transform: rotateX(-90deg) translateZ(50px);
+            transform: rotateX(-90deg) translateZ(50px);
+        }
+        .item:hover{
+            transform: rotateX(90deg);
+
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="item">
+        <img src="images/chimpified.jpeg" alt="">
+        <span>dsfjksdhkf</br>jsd;fjldsjflkjdsflkjdsflksjdf;lksajdf'jsddfjds;jf;lsdjf;</span>
+    </div>
+</div>
+</body>
+</html>

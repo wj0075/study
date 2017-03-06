@@ -1,0 +1,8 @@
+/*导入式：在一个css文件中引入另一个css文件*/
+/*@import  css文件的第一行*/
+@import "style1.css";
+h1{
+    color: peru;
+    /*字体颜色*/
+
+}

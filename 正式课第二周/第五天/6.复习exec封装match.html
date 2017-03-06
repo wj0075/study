@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str='zhufeng2016zhanwang2017huigu2015';
+    var reg=/\d+/g;
+    String.prototype.myMatch=function(reg){
+        //this-实例str
+        var res=reg.exec(this);
+        var ary=[];
+        while(res){
+            ary.push(res[0]);
+            res=reg.exec(this);
+        }
+        return ary;
+    };
+    alert(str.myMatch(reg));//[2016,2017,2015]
+</script>
+</body>
+</html>

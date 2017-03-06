@@ -1,0 +1,113 @@
+一、ISCROLL
+   实现局部滚动的,V5.xxx版本专门为移动端准备的(动画默认都是采用的CSS3动画和变形效果来做的),不兼容IE低版本浏览器,如果需要兼容PC,我们可以使用其V1.xx/V2.xx版本
+
+   它还有一个专门为开发者准备的版本,里面的功能和接口很多,我们基于这个版本可以实现很多高级的功能,例如:移动端的上拉刷新和下拉加载
+
+  1)实现局部滚动的区域需要有固定的高度才可以(只有这样,才会出现内容比它高的时候,有内容的溢出,才会出现所谓的局部滚动)
+
+  2)ISCROLL的原理是让滚动容器中的第一个子元素在容器中来回的运动,所以我们需要把所有的内容都放在容器第一个子元素中
+    <div class='container'>
+       <ul>
+         li*100000
+       </ul>
+       <ul>
+         li*100000  第二个UL是不在滚动到控制当中的,它只对第一个子元素起作用
+       </ul>
+    </div>
+
+  3)当我们设置了scrollbars:true的时候,ISCROLL会默认的向当前滚动区域的末尾加一个DIV,这个div就是滚动条所在的区域,里面的小div就是滚动条
+    <div class='iScrollVerticalScrollbar iScrollLoneScrollbar' style='position:absolute;'>
+       <div class='iScrollIndicator'></div>
+    </div>
+    [我们可以自己通过样式类名获取到元素, 然后设置自己想要的样式]
+
+    如果想让滚动条在滚动的区域中,我们需要给滚动区域设置position:relative,让滚动条相对于当前区域定位
+
+  4)默认是按照transform变形实现运动的,如果我们设置useTransform:false,将会按照控制子元素的TOP值来运动,但是此时我们需要给第一个子元素(内容区域)设置position:absolute...
+
+  5)滚动条的高度都是动态计算出来的,当容器的高度或者内容的高度发生改变的时候,我们其实需要重新的计算滚动条的高度
+    ISCROLL给当前滚动的容器绑定了resize事件,只要容器的高度变化了,ISCROLL自己会重新的计算滚动条的高度,不需要我们在二次的处理
+    但是当内容的高度发生改变的时候,ISCROLL没有做处理,需要我们自己调取方法做处理:menuExample.refresh()
+
+
+ 滚动到具体的位置
+   menuExample.scrollTo(x,y,speed)
+   menuExample.scrollToElement(ele,speed)
+
+ 以后研究框架或者插件建议大家按照：先看API和使用 -> 通过查看HTML结构的变化等研究插件的原理 -> 自己去看插件的实现代码 -> 尝试写出一款自己的插件
+
+=====================================
+二、ISCROLL在移动端的一个小应用
+  解决position:fixed不兼容的问题
+
+=====================================
+lessc xxx.less xxx.min.css -x  编译LESS,编译成为正常的CSS,并且压缩
+
+=====================================
+从服务器端请求数据(进行数据交互):
+  [协议、域名、端口：当前页面的URL地址 PK 请求数据的服务器接口地址]
+  ->同源策略
+    三个维度完成一致属于同源 =>AJAX
+
+  ->非同源策略(跨域策略)
+    只要有一个维度不一样就是跨域 =>JSONP
+
+  当前页面的URL地址:
+   http://localhost:63342/index.html#nba
+
+  从腾讯服务器获取数据的地址:
+   http://matchweb.sports.qq.com/kbs/calendar?columnId=100000
+
+
+  跨域下使用AJAX技术获取数据报错:
+    XMLHttpRequest cannot load http://matchweb.sports.qq.com/kbs/calendar?columnId=100000. No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://localhost:63342' is therefore not allowed access.
+
+=======================================
+目前项目中做数据绑定的方式:
+  ->非完全前后端分离,数据获取和绑定与JS没啥关系,都是由后台语言来做的
+    PHP、JAVA(JSP)、.NET(ASP.NET)、Ruby、Python...
+
+    优势：绑定的数据是可以在源代码中看到的(数据绑定都是在服务器端完成的,不需要所谓的数据AJAX获取等操作,在服务器端处理完成后,推送给客户端渲染即可)
+    弊端：服务器的压力会非常的大，而且前后端代码是混在一起的
+
+
+  ->完全前后端分离:后台使用什么语言开发的和前端没有半毛钱的关系,我们前端开发工程师只需要按照API文档,使用AJAX/JSONP等技术从服务器端把数据获取到,然后在JS中使用“字符串拼接”、“模板引擎”、“MVC/MVVM”...把数据展示绑定出来
+
+    弊端:使用JS做数据绑定，在页面的源代码中都看不到数据，这样的话百度搜索引擎不能把内容收录，不利于SEO推广
+
+    字符串拼接:
+      我们会花大量的时间用来把HTML一点点的粘贴到JS中,开发效率低
+      JS代码和HTML代码混在一起，结构混乱，而后不方便后期的维护
+      ...
+
+    模板引擎:
+      kTemplate、do、“ejs”、jade...
+
+    1、制作模板
+    2、为模板提供不同的数据
+    3、把模板字符串和数据统一交给模板引擎的框架进行处理，最后生成我们需要的HTML和数据结构
+    4、把生成的结果放在指定的页面容器中
+
+
+思考题：除了JSONP可以实现跨域数据请求,还有哪些方式可以实现跨域请求
+
+
+
+<script type="text/template" id="calTemplate">
+    <%for(var i=0;i<calendarData.length;i++){%>
+        <%var cur=calendarData[i];%>
+        <li><a href="javascript:;">
+            <span class="week"><%=cur.weekday%></span>
+            <span class="date"><%=cur.date%></span>
+        </a></li>
+    <%}%>
+</script>
+
+
+
+
+
+
+
+
+

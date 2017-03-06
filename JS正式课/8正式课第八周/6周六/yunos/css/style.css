@@ -1,0 +1,82 @@
+/*
+@color:red;
+.box{
+  width: 200px;
+  height: 200px;
+  background: @color;
+  &:hover{//$代表父标签
+    width: 400px;
+    height: 400px;
+    opacity: .5;
+    .transitions(all,1s,ease,0s)
+  }
+}
+.transitions(@property,@duration,@timing-function,@delay){
+  !*transition: @arguments;*!
+  !*transition: @property @duration @timing-function @delay;*!
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  -ms-transition: @arguments;
+  -o-transition: @arguments;
+  transition: @arguments;
+}*/
+.box {
+  font-size: 16px;
+  red: red;
+  background-red: green;
+  background-image: url("../images/a.png");
+}
+.box {
+  font-weight: bold;
+}
+/*.public(){!*这个选择器的样式编译之后不会在css中显示出来*!
+  width: 100px;
+  height: 100px;
+}
+.nav ul{
+  .public;
+  font-size: 14px;
+}*/
+.public,
+.nav ul {
+  width: 100px;
+  height: 100px;
+}
+/*.nav ul{
+  &:extend(.public);
+}*/
+.nav ul {
+  font-size: 15px;
+}
+.box {
+  width: 100px;
+  height: 100px;
+}
+.box img {
+  width: 100%;
+  height: 100%;
+}
+.box .gray {
+  color: #eee;
+}
+.box2 {
+  color: #eee;
+}
+.box4 {
+  padding: 15px;
+}
+.box3 {
+  /*.transition(all,1s,ease,1s)*/
+  -webkit-transition: all 2s ease 0s;
+  -moz-transition: all 2s ease 0s;
+  -ms-transition: all 2s ease 0s;
+  -o-transition: all 2s ease 0s;
+  transition: all 2s ease 0s;
+}
+.box5 {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}

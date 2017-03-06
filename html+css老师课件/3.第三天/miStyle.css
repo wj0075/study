@@ -1,0 +1,88 @@
+/*重置默认样式*/
+*{
+    margin: 0;
+    padding: 0;
+    font-family:"Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+}
+ul{
+    list-style: none;
+    /*去掉每个li前面的点*/
+}
+i{
+    font-style: normal;
+    /*将斜体扶正*/
+}
+b{
+    font-weight: normal;
+    /*去掉加粗的样式*/
+}
+img{
+    border: none;
+    /*去掉图片自带的边框*/
+    /*去掉img自带3px的边距*/
+    vertical-align: top;
+    /*display: block;*/
+}
+.main{
+    background: #f5f5f5;
+    /*颜色的表示
+    1、red
+    2、#f5f5f5   十六进制
+    3、rgb(245,245,245)   三原色
+    4、rgba(0,0,0,.5)   有透明度的颜色  rgb三原色 a对应的是透明度（0~1之间的数）   在css中点前面的零尽量去掉
+    完全透明的颜色   transparent
+
+    */
+}
+ul li{
+    width: 296px;
+    height: 415px;
+    display: inline-block;
+    /*行内块级元素 会读取代码之间的空格*/
+    margin-left: 14px;
+}
+li img{
+    width: 296px;
+    height: 220px;
+    /*img一定要设置宽高*/
+}
+li div{
+    height: 163px;
+    background: #ffffff;
+    padding:32px 30px 0 28px;
+    /*      上    右   下  左*/
+    /*在ps中量整个盒子的宽度和高度，如果设置了padding；相应的width和height要减去对应的padding值*/
+}
+li div .article{
+    font-size: 14px;
+    color: #333;
+    /*
+    #333333   -->#333
+    #aabbcc   -->#abc
+    */
+    line-height: 24px;
+}
+li div .from{
+    font-size: 12px;
+    color: #b0b0b0;
+    margin: 23px 0 12px 0;
+}
+li div span{
+    font-size: 14px;
+    color: #333;
+}
+li div i{
+    color: #e0e0e0;
+}
+li div b{
+    font-size: 14px;
+    color: #ff6700;
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //原型链继承：把父类私有+公有的属性和方法，都给了子类公有的；
+    //思考：可以把子类公有的 作为 父类的实例；
+    function F(){//构造函数：里面放的都是私有的属性和方法；
+        this.x=100;
+        this.y=200;
+        this.showX=function(){};
+    }
+    F.prototype.aa=function(){};//原型：原型中放的都是公有的属性和方法；
+    var f=new F;
+    console.dir(f);
+    function S(){};
+    S.prototype=new F;
+    S.prototype.constructor=S;
+    var s=new S;
+    console.dir(s);
+    /*
+    * x:100,
+    * y:200,
+    * showX:function
+    *   __proto__:xxx
+    *   constructor:F;
+    *   aa:function;
+    *   __proto__:Object
+    * */
+
+    /*
+    * __proto__:
+    * x:100,
+    * y:200,
+    * showX:function
+    * __proto__:
+    * constrctor:F;
+    * aa:function
+    *__proto__:Object
+    * */
+
+</script>
+</body>
+</html>

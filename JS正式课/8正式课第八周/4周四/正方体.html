@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            width: 200px;
+            height: 200px;
+            position: relative;
+            margin: 200px auto;
+            -webkit-perspective: 2000px;
+            perspective: 2000px;
+        }
+        .item{
+            width: 100%;
+            height: 100%;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+        }
+        .item li{
+            position: absolute;
+            width: 196px;
+            height: 196px;
+            border:2px solid #000;
+            left:0;
+            top: 0;
+            background: rgba(152,251,51,0.6);
+            font-size: 40px;
+            line-height: 196px;
+            text-align: center;
+            list-style: none;
+        }
+        .item li:nth-of-type(1){
+            top: -200px;
+            -webkit-transform: rotateX(90deg);
+            -webkit-transform-origin: bottom;
+            transform-origin: bottom;
+            transform: rotateX(90deg);
+        }
+        .item li:nth-of-type(2){
+            top: 200px;
+            -webkit-transform: rotateX(-90deg);
+            -webkit-transform-origin: top;
+            transform-origin: top;
+            transform: rotateX(-90deg);
+        }
+        .item li:nth-of-type(3){
+            left: -200px;
+            -webkit-transform: rotateY(-90deg);
+            -webkit-transform-origin: right;
+            transform: rotateY(-90deg);
+            transform-origin: right;
+        }
+        .item li:nth-of-type(4){
+            left: 200px;
+            -webkit-transform: rotateY(90deg);
+            -webkit-transform-origin: left;
+            transform: rotateY(90deg);
+            transform-origin: left;
+        }
+        .item li:nth-of-type(5){
+            -webkit-transform: translateZ(-200px);
+            transform: translateZ(-200px);
+        }
+        .item li:nth-of-type(6){
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+        }
+        @keyframes move {
+            0%{
+                -webkit-transform: rotateX(0deg) rotateY(0deg);
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            100%{
+                -webkit-transform: rotateX(720deg) rotateY(720deg);
+                transform: rotateX(720deg) rotateY(720deg);
+            }
+        }
+        .item:hover{
+            animation:move 5s infinite both;
+            transform-origin: 100px 100px -100px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <ul class="item">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+</div>
+</body>
+</html>

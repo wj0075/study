@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        table{
+            margin: 50px auto;
+            width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 0 4px #333;
+            overflow: hidden;
+            font-size: 24px;
+        }
+        table thead tr{
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: white;
+            background-color: darkseagreen;
+        }
+        table thead td{
+            width: 200px;
+            line-height: 50px;
+            text-align: center;
+        }
+        table tbody tr{
+            height: 50px;
+            line-height: 50px;
+        }
+        table tbody td{
+            width: 200px;
+            text-align: center;
+        }
+        table tbody tr.bg0{
+            background-color: aliceblue;
+        }
+        table tbody tr.bg1{
+            background-color: lightgray;
+        }
+        table tbody tr.bg2{
+            background-color: darkgrey;
+        }
+        .cursor{
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<table id="box" cellpadding="0" cellspacing="0">
+    <thead>
+    <tr>
+        <th class="cursor">姓名</th>
+        <th class="cursor">年龄</th>
+        <th class="cursor">分数</th>
+        <th>性别</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<script src="../../utils.js"></script>
+<script src="js/tab1.js"></script>
+</body>
+</html>

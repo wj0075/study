@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 26px;
+        }
+        .box{
+            width: 500px;
+            height: 300px;
+            background: orange;
+            margin: 100px;
+            position: relative;
+        }
+        .box1{
+            width: 300px;
+            height: 200px;
+            background: red;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            /*padding: 100px;*/
+            /*margin-top: 100px;*/
+        }
+        div span{
+            background: greenyellow;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top:0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+<!--<div class="box">
+    <div class="box1">子级元素
+        <span>123</span>
+    </div>
+</div>-->
+
+<!--
+绝对定位：
+1、参照物：body   参照的起点：浏览器的左上角
+2、不区分行内元素还是块级元素，都可以设置width、height、padding、margin；在没有设置宽度和高度的情况下，宽高是内容的宽高
+3、脱离文档流
+4、可以设置参照物，参照物一般设置为父级元素，直接给父级元素设置position：relative；如果父级元素有position：absolute或者position：fixed，那这个父级元素就是它的参照物
+
+5、在页面中的层级关系：html书写的顺序决定的，谁写在后面谁在最上面显示
+
+-->
+<!--  只要设置绝对定位 就要设置top(bottom)、left(right)-->
+
+
+<style>
+    .div1{
+        width: 500px;
+        height: 500px;
+        background: black;
+    }
+    .div2{
+        width: 300px;
+        height: 300px;
+        background: blue;
+    }
+    .div3{
+        width: 200px;
+        height: 200px;
+        background: palegreen;
+    }
+    div{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+</style>
+<div class="div1">1</div>
+<div class="div2">2</div>
+<div class="div3">3</div>
+
+
+
+
+
+</body>
+</html>

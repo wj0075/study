@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //ajax:异步获取数据 --今天先用同步；
+    // 在不重新加载整个页面的情况下,不断的更新数据；
+    //1.创建一个xml对象；
+    var xml=new XMLHttpRequest();
+    //2.打开地址；
+    //method:请求方式   URL：请求地址 同步还是异步：同步false 异步true；
+    xml.open('get','data.txt',false);
+    //3.响应请求：响应状态码 xml.status
+    xml.onreadystatechange=function(){
+        //2xx:代表成功
+        if(xml.readyState==4 && /^2\d{2}/.test(xml.status)){
+            console.log(typeof xml.responseText)
+        }
+    };
+    //4.发送请求
+    xml.send();
+
+</script>
+</body>
+</html>
+
+
+
+

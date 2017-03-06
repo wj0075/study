@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <!-- 外链式 引入css文件-->
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<!--css的引入方式
+1、行内式：直接写在开始标签内部 通过style属性
+2、内嵌式：写在style标签块中
+3、外链式：通过link标签引入css 文件  最常用的
+4、导入式：在一个css文件中引入另一个css文件
+-->
+<div style="width: 100px;height: 100px;background: red" onclick="alert('欢迎来到珠峰培训！')">盒子</div>
+
+<!--js的引入方式
+1、行内式  ：安全性低  一般不用
+2、内嵌式：写在script标签块中
+3、外链式：引入js文件  通过script标签块 src
+document.write('<script src="js文件的路径"></script>')
+
+-->
+
+<!--内嵌式-->
+<script>
+    alert('大家好！')
+</script>
+<!--外链式  src：js文件的路径-->
+<script src="js/1.js">
+    alert(12345678);//肯定不执行 不会报错
+</script>
+
+
+</body>
+</html>

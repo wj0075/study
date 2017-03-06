@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="box">
+    <input type="button" value="按钮一"/>
+    <input type="button" value="按钮二"/>
+    <input type="button" value="按钮三"/>
+</div>
+<script>
+    //    1）获取要操作的元素
+    //    2）给每一个input绑定点击的事件
+    //    3）点击时弹出对应的索引
+    var oDiv = document.getElementById('box');
+    var inputs = oDiv.getElementsByTagName('input');
+
+    for(var i=0;i<inputs.length;i++){
+
+//        console.log(typeof inputs[i]);//object
+        inputs[i].zf = i; //zf:i
+//        inputs[0].zf = 0
+//        inputs[1].zf = 1
+//        inputs[2].zf = 2
+
+        inputs[i].onclick = function(){
+           alert(this.zf)
+        }
+    }
+
+
+
+</script>
+
+</body>
+</html>

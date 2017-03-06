@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //构造函数：一定要首字母大写；
+    function Fn(){//1.构造函数中的this，都是new出来的实例--很重要；2.构造函数中存放的都是私有的属性和方法；
+        this.x=100;
+        this.y=200;
+        this.showX=function(){
+            alert(this.x);
+        }
+    }
+    var f1=new Fn();
+    var f2=new Fn();
+    f1.showX();
+    //alert(f1.showX===f2.showX);
+
+    var ary1=new Array('1');
+    var ary2=new Array('1');
+    alert(ary1.pop===ary2.pop)
+
+
+</script>
+</body>
+</html>

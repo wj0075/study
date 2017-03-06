@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 1350px;
+            margin: 0 auto;
+        }
+
+        ul {
+            list-style: none;
+            float: left;
+            width: 200px;
+            margin: 5px;
+            /*background-color: red;*/
+            /*height: 300px;*/
+        }
+
+        ul li {
+            box-shadow: 0 0 5px #ccc;
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+            background: url("images/default.gif") no-repeat center #ccc;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        a {
+            display: none;
+            text-decoration: none;
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            line-height: 80px;
+            text-align: center;
+            color: white;
+            background: red;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <!--<li><img src="images/2.jpg" alt=""></li>-->
+    </ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+</div>
+<a href="javascript:;" id="go">上去</a>
+<script src="../../utils.js"></script>
+<script>
+    var oDiv = document.getElementById('box');
+    var oUl = document.getElementsByTagName('ul');
+    var aLi = oDiv.getElementsByTagName('li');
+    var aImg = document.getElementsByTagName('img');
+    var toTop = document.getElementById('go');
+    var timer = null;
+    var bOk = false;
+    //创建li
+    var data = [
+        {imgSrc: 'images/0.jpg'},
+        {imgSrc: 'images/1.jpg'},
+        {imgSrc: 'images/2.jpg'},
+        {imgSrc: 'images/3.jpg'},
+        {imgSrc: 'images/4.jpg'},
+        {imgSrc: 'images/5.jpg'},
+        {imgSrc: 'images/6.jpg'},
+        {imgSrc: 'images/7.jpg'},
+        {imgSrc: 'images/8.jpg'},
+        {imgSrc: 'images/9.jpg'},
+        {imgSrc: 'images/10.jpg'},
+        {imgSrc: 'images/11.jpg'},
+        {imgSrc: 'images/12.jpg'},
+        {imgSrc: 'images/13.jpg'},
+        {imgSrc: 'images/14.jpg'},
+        {imgSrc: 'images/15.jpg'},
+        {imgSrc: 'images/16.jpg'},
+        {imgSrc: 'images/17.jpg'},
+        {imgSrc: 'images/18.jpg'},
+        {imgSrc: 'images/19.jpg'},
+        {imgSrc: 'images/20.jpg'},
+        {imgSrc: 'images/21.jpg'},
+        {imgSrc: 'images/22.jpg'},
+        {imgSrc: 'images/23.jpg'}
+    ];
+    function createLi() {
+        var oLi = document.createElement('li');
+        oLi.innerHTML = '<img src="" realImg="' + data[utils.rnd(0, 23)].imgSrc + '"alt="">';
+        oLi.style.height = utils.rnd(140, 240) + 'px';
+        return oLi;
+    }
+    //创建50个
+    function li50() {
+        for (var i = 0; i < 50; i++) {
+            var oLi = createLi();
+            var ary = utils.makeArray(oUl);
+            ary.sort(function (a, b) {
+                return a.offsetHeight - b.offsetHeight;
+            });
+            ary[0].appendChild(oLi);
+        }
+    }
+    //图片延时加载
+    function showImg() {
+        var scrollBottom = utils.win('scrollTop') + utils.win('clientHeight');
+        for (var i = 0; i < aImg.length; i++) {
+            var imgPos = aImg[i].offsetTop + aImg[i].offsetHeight;
+            if (imgPos <= scrollBottom) {
+                lazyImg(aImg[i]);
+            }
+        }
+    }
+    function lazyImg(img) {
+        if (img.loaded) return;
+        var tmpImg = new Image;
+        tmpImg.src = img.getAttribute('realImg');
+        tmpImg.onload = function () {
+            img.src = this.src;
+            tmpImg = null;
+            img.loaded = true;
+            img.parentNode.style.height = img.offsetHeight + 'px';
+        };
+        tmpImg.onerror = function () {
+            img.parentNode.style.background = 'url("images/error.gif") no-repeat center #ccc';
+            img.loaded = true;
+        }
+    }
+    li50();
+    showImg();
+    //瀑布流
+    window.onscroll = function () {
+        if (bOk) clearInterval(timer);
+        bOk = true;
+        var scrollBottom = utils.win('scrollTop') + utils.win('clientHeight');
+        if (utils.win('scrollTop') >= utils.win('clientHeight')) {
+            toTop.style.display = 'block';
+        } else {
+            toTop.style.display = 'none';
+        }
+        showImg();
+        if (document.body.scrollHeight - 30 < scrollBottom) {
+            li50();
+        }
+    };
+    //回到顶部
+    toTop.onclick = function () {
+        var target = utils.win('scrollTop');
+        var duration = 300;
+        var interval = 5;
+        var step = target / duration * interval;
+        timer = window.setInterval(function () {
+            var curTop = utils.win('scrollTop');
+            if (curTop <= 0) {
+                clearInterval(timer);
+            }
+            curTop -= 14;
+            utils.win('scrollTop', curTop);
+            bOk = false
+        }, interval)
+    }
+</script>
+</body>
+</html>

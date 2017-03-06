@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<script>
+    var oDiv = document.getElementById('div1');
+    function getCss(ele,attr){
+        var val = null;
+        var reg = null;
+        if ('getComputedStyle' in window){
+            val =  getComputedStyle(ele,null)[attr];
+        }else {//升级2：对透明度的处理
+            if (attr === 'opacity') {
+                val = ele.currentStyle['filter'];//'alpha(opacity=10)'
+                reg = /^alpha\(opacity[=:](\d+(\.\d+)?)\)$/;
+                //如果正则中加了全局g,test和exec都会影响lastIndex
+                return reg.test(val) ? reg.exec(val)[1] / 100 : 1;
+            } else {
+                val = ele.currentStyle[attr];
+            }
+        }
+        //升级1：对单位的处理：left top right bottom height width margin padding marginLeft marginTop..
+        reg = /^(left|top|right|bottom|width|height|((margin|padding)(left|top|right|bottom)?))$/gi;
+        return reg.test(attr)?parseFloat(val):val;
+
+    }
+
+    console.log(getCss(oDiv,'height'));
+</script>
+
+
+</body>
+</html>

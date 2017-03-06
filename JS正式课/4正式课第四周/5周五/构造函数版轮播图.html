@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            vertical-align: top;
+            border: none;
+        }
+        .box{
+            position: relative;
+            width: 1000px;
+            height: 300px;
+            margin: 30px auto;
+            background: url("images/default.gif") no-repeat center #ccc;
+            overflow: hidden;
+        }
+        .box .boxInner{
+            position: absolute;
+            width: 4000px;
+            height: 300px;
+            left: 0;
+            top: 0;
+        }
+        .box .boxInner div{
+            float: left;
+            width: 1000px;
+            height: 300px;
+        }
+        .box .boxInner div img{
+            width: 100%;
+            height: 100%;
+        }
+        .box ul{
+            list-style: none;
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+        .box ul li{
+            float: left;
+            width: 20px;
+            height: 20px;
+            margin-left: 5px;
+            border-radius: 50%;
+            background: #c6c6c6;
+            cursor: pointer;
+
+        }
+        .box ul li.on{
+            background: red;
+        }
+        .box a{
+            position: absolute;
+            top: 127px;
+            width: 30px;
+            height: 45px;
+            background-image: url("images/pre.png");
+            background-repeat: no-repeat;
+        }
+        .box .left{
+            display: none;
+            left: 10px;
+            background-position: 0 0;
+        }
+        .box .right{
+            display: none;
+            right: 10px;
+            background-position: -50px 0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <div class="boxInner">
+        <!--<div><img src="" realImg="images/banner1.jpg" alt=""></div>
+        <div><img src="" realImg="images/banner1.jpg" alt=""></div>
+        <div><img src="" realImg="images/banner1.jpg" alt=""></div>
+        <div><img src="" realImg="images/banner1.jpg" alt=""></div>-->
+    </div>
+    <ul>
+        <!--<li class="on"></li>
+        <li></li>
+        <li></li>
+        <li></li>-->
+    </ul>
+    <a href="javascit:;" class="left"></a>
+    <a href="javascit:;" class="right"></a>
+
+</div>
+<script src="../../utils1.js"></script>
+<script src="js/move.js"></script>
+<script src="js/tab1.js"></script>
+<script>
+    var tab2 = new MyTab('box','data.txt',2000)
+
+
+</script>
+</body>
+</html>

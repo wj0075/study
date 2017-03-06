@@ -1,0 +1,248 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul,ol{
+    list-style: none;
+}
+body{
+    font: 12px "microsoft yahei";
+}
+img{
+    border: none;
+    vertical-align: top;
+}
+/*input{*/
+    /*outline: none;*/
+/*}*/
+a{
+   text-decoration: none;
+}
+i{
+    font-style: normal;
+}
+b{
+    font-weight: normal;
+}
+.clearfix:after{
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+}
+.clearfix{
+    zoom: 1;
+}
+.box{
+    position: relative;
+    width: 338px;
+    height: 422px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: #fffbeb;
+    box-shadow:0 0 2px rgba(0,0,0,.2) ;
+    /*
+    盒子的阴影
+    1)水平方向的位移  +右移  -左移
+    2）竖直方向的位移  +下  -上
+    3）阴影扩散的范围
+    4）阴影的颜色
+
+    */
+    margin: 0 auto;
+    padding: 28px 24px 0;
+}
+.box .qrCode{
+    width: 55px;
+    height: 55px;
+    background: url("../images/spritesheet.png") no-repeat  0 -24px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+h3{
+    font-size: 18px;
+    color: #323232;
+    font-weight: normal;
+}
+ul{
+    padding-top: 38px;
+}
+ul li{
+    position: relative;
+}
+ul li input{
+    width: 299px;
+    height: 40px;
+    border: 1px solid #ddd;
+    padding-left: 37px;
+}
+ul li b{
+    width: 19px;
+    height: 20px;
+    background: url("../images/spritesheet.png") no-repeat -110px -24px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    /*从参照border内部开始*/
+}
+ul .pass{
+    padding-top: 20px;
+}
+ul .pass b{
+    background-position:-111px -44px;
+    top:30px;
+}
+/*ctrl+g  跳转行
+  ctrl+f   搜索代码
+  ctrl+shift+f 全局搜索
+*/
+ul .code input{
+    width: 133px;
+}
+ul .code b{
+    background-position:  -162px -1px;
+    width: 17px;
+    top: 33px;
+}
+ul .code input{
+    float: left;
+}
+ul .code div{
+    float: left;
+    width: 90px;
+    height: 40px;
+    border: 1px solid #ddd;
+    margin-left: 10px;
+}
+ul .code div img{
+    width: 70px;
+    height: 30px;
+    margin: 5px 0 0 10px;
+}
+ul .code  a{
+    color: #2272c8;
+    line-height: 42px;
+    padding-left: 18px;
+}
+ul .code  a:hover{
+    text-decoration: underline;
+}
+.login{
+    padding-top: 13px;
+}
+.login input{
+    width: 12px;
+    height: 12px;
+    vertical-align: -2px;
+}
+.login label{
+    color: #666;
+    line-height: 24px;
+}
+.login div{
+    float: left;
+}
+.login p{
+    float: right;
+    width: 238px;
+    height: 22px;
+    line-height: 22px;
+    border: 1px solid #fc6;
+}
+.login p i{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background: url("../images/icon.jpg") no-repeat ;
+    vertical-align: -3px;
+    margin: 0 8px 0 10px;
+}
+input[type=button]{
+    /*按钮 默认宋体*/
+    width: 338px;
+    height: 40px;
+    background: #ff9c00;
+    border: none;
+    margin-top: 15px;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "微软雅黑";
+}
+.text{
+    padding-top: 8px;
+}
+.text .register{
+    color: #f90;
+}
+.text .forget{
+    float: right;
+    color: #333;
+}
+.text .forget:hover{
+    color: #f60;
+}
+.text a:hover{
+    text-decoration: underline;
+}
+ol{
+    position: relative;
+    border-top: 1px solid #ddd;
+    margin-top: 24px;
+}
+ol p{
+    width: 116px;
+    text-align: center;
+    color: #999;
+    position: absolute;
+    top: -8px;
+    left: 107px;
+    background: #fffbeb;
+}
+ol li{
+    position: relative;
+    float: left;
+    padding: 20px 41px 0 0;
+}
+ol .noPad{
+    padding-right: 0;
+}
+ol li:before{
+    /*:before  在元素里最开始的位置加样式*/
+    content: '';
+    display: block;
+    width: 1px;
+    height: 15px;
+    background: #ddd;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+}
+ol .noPad:before{
+    display: none;
+    /*隐藏*/
+}
+ol li a{
+    color: #333;
+}
+ol li a:hover{
+    color: #f60;
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

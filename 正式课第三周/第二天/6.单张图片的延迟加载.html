@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,html{
+            height: 2000px;
+        }
+        p{
+            position: absolute;
+            top:1000px;
+            width: 400px;
+            height: 300px;
+            background: url("img2/default.gif") no-repeat center #cccccc;
+        }
+        p img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<p id="p1"><img src="" realImg="img2/1.1.jpg" alt=""></p>
+<script src="js/utils.js"></script>
+<script>
+    //一开始的时候，展示默认的背景占位图，图片真正的地址，存在realImg这个自定义属性上；同时，把图片放到可视区的外面；
+    var oP=document.getElementById('p1');
+    var oImg=oP.getElementsByTagName('img')[0];
+    window.onscroll=function(){
+        var scrollBottom=utils.win('scrollTop')+utils.win('clientHeight');
+        var imgPos=utils.offset(oImg).top+utils.getCss(oImg,'height');
+        //显示图片的条件：
+        if(imgPos<=scrollBottom){
+            lazyImg();
+        }
+    };
+    function lazyImg(){
+        if(oImg.loaded) return;//已经加载过图片后，避免重复加载；
+        var tmpImg=new Image;//<img>
+        tmpImg.src=oImg.getAttribute('realImg');
+        //tmpImg:这是一个临时创建的img标签，他的作用用来检测图片地址是否正确；
+        tmpImg.onload=function(){
+            oImg.src=this.src;
+            tmpImg=null;
+            oImg.loaded=true;
+
+        };
+        tmpImg.onerror=function(){
+            oImg.loaded=true;
+            oP.style.background='url("img2/error.gif") no-repeat center #cccccc';
+            tmpImg=null;
+        };
+    }
+</script>
+</body>
+</html>

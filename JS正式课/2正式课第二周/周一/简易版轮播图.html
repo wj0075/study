@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 790px;
+            height: 340px;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        ul{
+            list-style:none;
+        }
+        .circle{
+            position: absolute;
+            left: 50%;
+            margin-left: -50px;
+            bottom: 10px;
+        }
+        .circle span{
+            float: left;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: pink;
+            text-align: center;
+            line-height: 18px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .current{
+            background-color: darkblue;
+        }
+    </style>
+
+</head>
+<body>
+<div class="box" id="scroll">
+    <div class="slider">
+        <ul id="ul">
+            <li><img src="l1.jpg" alt=""></li>
+            <li><img src="l2.jpg" alt=""></li>
+            <li><img src="l3.jpg" alt=""></li>
+            <li><img src="l4.jpg" alt=""></li>
+            <li><img src="l5.jpg" alt=""></li>
+        </ul>
+    </div>
+</div>
+<script>
+    window.onload = function(){
+        var scroll = document.getElementById('scroll');
+        var  circle = document.createElement('div');
+        //circle.className='circle';
+        circle.setAttribute('class','circle');
+        scroll.appendChild(circle);
+        var ul=document.getElementById('ul');
+        var lis = ul.children;//ul的所有孩子；
+
+
+        for(var i=0; i < lis.length; i++){
+            var newspan = document.createElement('span');//创建5次
+            newspan.innerHTML=i+1;
+            circle.appendChild(newspan);
+        }
+        var child = circle.children;
+        child[0].setAttribute('class','current');
+
+
+
+
+
+    }
+
+
+
+
+</script>
+</body>
+</html>

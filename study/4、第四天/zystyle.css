@@ -1,0 +1,66 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif
+;
+}
+ul{
+    list-style: none;
+    /*去掉前面的点*/
+}
+i{
+    font-style: normal;
+    /*将斜体扶正*/
+}
+b{
+    font-weight: normal;
+    /*去掉加粗的样式*/
+}
+img{
+    border: none;
+    /*去掉边框*/
+    /*自带3px的边距*/
+    vertical-align: top;
+    /*display: block;*/
+}
+.box {
+    width: 800px;
+    height: 400px;
+    margin: 10px auto 0px;
+}
+img{
+    width: 225px;
+    height: 127px;
+}
+ul{
+    width: 750px;
+    margin: auto;
+}
+ul li{
+    width: 225px;
+
+    margin-top: 10px;
+    padding-left: 17px;
+    float: left;
+}
+.boc{
+    margin-top: 8px;
+}
+span{
+    font-size: 16px;
+    color: #ff5500;
+}
+i{
+    font-size: 12px;
+    color: #e69665;
+}
+s{
+    font-size: 9px;
+    color: #989898;
+}
+b{
+    font-size: 12px;
+    color: #8f8f8f;
+    margin: 4px 5px 0 0;
+    float: right;
+}

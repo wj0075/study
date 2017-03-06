@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取ajax对象</title>
+    <script>
+        /**
+         * ie7+ chrome firefox safari opera
+         * @type {XMLHttpRequest}
+         */
+        //        var xhr = new XMLHttpRequest();
+
+        /**
+         * ie6-ie9
+         * @type {ActiveXObject}
+         */
+        //        var xhrInIE = new ActiveXObject('Microsoft.XMLHTTP');
+
+        // 第二版
+        //        var xhrInIE2 = new ActiveXObject('Msxml2.XMLHTTP');
+
+        // 第三版
+        //        var xhrInIE3 = new ActiveXObject('Msxml3.XMLHTTP');
+
+
+        function isIf() {
+            console.log('trigger if');
+            return true;
+        }
+        /**
+         * 根据用户浏览器获取不同的ajax对象
+         * @return {*}
+         */
+        function getXHR() {
+            if (west && isIf()) {
+                return new XMLHttpReindow.XMLHttpReququest();
+            }
+            return new ActiveXObject('Microsoft.XMLHTTP');
+        }
+
+        /**
+         * 利用惰性函数实现获取ajax对象
+         * 惰性函数就是讲第一次计算返回的结果缓存起来，以供接下来的调用。
+         * @returns {*}
+         */
+        function getXHR2() {
+            var fn;
+            if (window.XMLHttpRequest && isIf()) {
+                fn = function () {
+                    return new XMLHttpRequest;
+                }
+            } else {
+                fn = function () {
+                    return new ActiveXObject('Microsoft.XMLHTTP');
+                }
+            }
+//            getXHR2 = fn;
+//            var xhr = fn();
+//            return xhr;
+            return (getXHR2 = fn)();
+        }
+
+
+        /**
+         * 利用自执行函数实现惰性函数
+         */
+        var getXHR3 = (function () {
+            if (window.XMLHttpRequest) {
+                return function () {
+                    return new XMLHttpRequest();
+                }
+            }
+            return function () {
+                return new ActiveXObject('Microsoft.XMLHTTP');
+            }
+        }());
+
+
+        var getXHR4 = (function () {
+            var list = [
+                function () {
+                    return new XMLHttpRequest();
+                },
+                function () {
+                    return new ActiveXObject('Microsoft.XMLHTTP')
+                },
+                function () {
+                    return new ActiveXObject('Msxml2.XMLHTTP')
+                },
+                function () {
+                    return new ActiveXObject('Msxml3.XMLHTTP')
+                }];
+
+            while (list.length) {
+                var xhr = list.shift();
+                console.log(xhr);
+                try {
+                    xhr();
+                    return xhr;
+                } catch (ex) {
+
+                }
+            }
+            throw new ReferenceError('当前浏览器不支持ajax功能');
+        })();
+
+        //        var myXHR = getXHR();
+        //        console.log(myXHR);
+
+        for (var i = 0; i < 10; i++) {
+            var myXHR = getXHR2();
+            console.log(myXHR);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

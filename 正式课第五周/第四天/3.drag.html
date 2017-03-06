@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            width:200px;
+            height:200px;
+            background: red;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+        div img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+aflaksjdflkjas;dflkjdf;lakjsdf;lkasjdflkjasldfkjalskfjlasjdf;askdfj
+aflaksjdflkjas;dflkjdf;lakjsdf;lkasjdflkjasldfkjalskfjlasjdf;askdfj
+aflaksjdflkjas;dflkjdf;lakjsdf;lkasjdflkjasldfkjalskfjlasjdf;askdfj
+aflaksjdflkjas;dflkjdf;lakjsdf;lkasjdflkjasldfkjalskfjlasjdf;askdfj
+aflaksjdflkjas;dflkjdf;lakjsdf;lkasjdflkjasldfkjalskfjlasjdf;askdfj
+aflaksjdflkjas;dflkjdf;lakjsdf;lkasjdflkjasldfkjalskfjlasjdf;askdfj
+<div id="div"><img src="img/1.jpg" alt=""></div>
+<script>
+    var oDiv=document.getElementById('div');
+    oDiv.onmousedown=down;
+    //改变fn中的this指向，并且传事件对象event;
+    function processThis(fn,context){
+        return function (e){
+            e=e||window.event;
+            fn.call(context,e);
+        }
+    }
+    function down(e){
+        //物体本身距离：left，top; 鼠标落脚点：clientX,clientY;
+        e=e||window.event;
+        this.left=this.offsetLeft;
+        this.top=this.offsetTop;
+        this.x= e.clientX;
+        this.y= e.clientY;
+        if(this.setCapture){//IE设置焦点：在按下的时候，就给当前元素设置了焦点；
+            this.setCapture();
+            this.onmousemove=move;
+            this.onmouseup=up;
+        }else{//document; 标准浏览器
+            document.onmousemove=processThis(move,this);
+            document.onmouseup=processThis(up,this);
+            e.preventDefault();
+        }
+    }
+    function move(e){
+        e=e||window.event;
+        //left+e.clientX-clientX
+        this.style.left=this.left+ e.clientX-this.x+'px';
+        this.style.top=this.top+ e.clientY-this.y+'px';
+    }
+    function up(){
+        if(this.releaseCapture){//释放焦点：当拖拽结束的时候，释放焦点 IE浏览器
+            this.releaseCapture();
+            this.onmousemove=null;
+            this.onmouseup=null;
+        }else{//标准浏览器
+            document.onmousemove=null;
+            document.onmouseup=null;
+        }
+
+    }
+</script>
+</body>
+</html>

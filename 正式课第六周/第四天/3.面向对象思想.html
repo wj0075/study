@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="js/1.extend.js"></script>
+<script>
+    /*function Father(name,age){
+        this.name=name;
+        this.age=age;
+    }
+    function Gril(name,age,job){
+        Father.call(this,name,age)
+        this.job=job;
+    }
+    Gril.prototype=new Father;
+    Gril.prototype.constructor=Gril;
+    Gril.prototype.constructor=Gril;
+    Gril.prototype.constructor=Gril;
+    Gril.prototype.constructor=Gril;
+    Gril.prototype.constructor=Gril;
+    Gril.prototype.constructor=Gril;
+    Gril.prototype.constructor=Gril;
+    Gril.prototype.constructor=Gril;
+    Gril.prototype.constructor=Gril;
+    Gril.prototype.constructor=Gril;
+    */
+    var f=new Father('zhonghang','10');
+    var g=new Gril('zhanglei','8','coder');
+    g.getName();//子类可以使用父类公有的方法；
+    alert(g.name)//子类使用父类私有的属性；
+    alert(f.job)
+</script>
+</body>
+</html>

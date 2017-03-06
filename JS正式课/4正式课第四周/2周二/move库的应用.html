@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div{
+            position: absolute;
+            left: 300px;
+            top:0;
+            width: 200px;
+            height: 200px;
+            background: red;
+            border-radius: 50%;
+        }
+        #target{
+            position: absolute;
+            left: 1200px;
+            top:0;
+            width: 1px;
+            height: 300px;
+            background: black;
+        }
+
+    </style>
+</head>
+<body>
+<div id="div"></div>
+<div id="target"></div>
+<script src="../../utils.js"></script>
+<script src="move1.js"></script>
+<script>
+    var oDiv = document.getElementById('div');
+    oDiv.onclick=function(){
+        animate(oDiv,{
+            left:1000,
+            top:500
+        },function(){
+            this.style.background='black';
+            },["Expo","easeIn"],1000)
+
+    }
+
+
+
+
+</script>
+</body>
+</html>

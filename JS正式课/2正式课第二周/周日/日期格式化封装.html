@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    String.prototype.formatDate=function(tmp){
+        var tmpStr = tmp || '{0}年{1}月{2}日 {3}时{4}分{5}秒';
+        var ary = this.match(/\d+/g);
+        tmpStr = tmpStr.replace(/{(\d)}/g,function($0,$1){
+            var n = ary[$1];
+            n=n>=0&&n<10?'0'+Number(n):n;
+            return n;
+        });
+        return tmpStr;
+    };
+    var strCode='2016-6-23 6:41:30';
+    var tmp = '{0}年{1}月{2}日 {3}时{4}分{5}秒';
+    var aa= strCode.formatDate(tmp);
+    console.log(aa);
+
+
+</script>
+</body>
+</html>

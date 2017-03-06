@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 36px;
+        }
+        .box1{
+            width: 200px;
+            height: 200px;
+            background: blue;
+        }
+        .box2{
+            width: 300px;
+            height: 200px;
+            background: plum;
+            position: relative;
+            /*相对定位*/
+            /*top:100px;*/
+            /*距离上边100px*/
+            left: 100px;
+            /*距离左边100px*/
+            bottom:100px;
+            /*距离下边100px*/
+
+        }
+    </style>
+</head>
+<body>
+<div class="box1">1</div>
+<div class="box2">2</div>
+<div style="width: 350px;height: 350px;background: palegreen">3</div>
+
+<!--
+相对定位：
+1、参照物：自己原来的位置
+2、没有改变元素自身的属性
+3、层级提升
+
+-->
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul li{
+            width: 200px;
+            height: 200px;
+            background: url("banner1.jpg") no-repeat;
+            padding: 20px;
+            list-style: none;
+            border: 20px solid rgba(0,0,0,.3);
+            margin: 20px;
+            display: inline-block;
+        }
+        ul :nth-child(1){
+            background-origin: border-box;
+        }
+        ul :nth-child(2){
+            /*background-origin: content-box;*/
+            /*background-size: contain;*/
+            background-size: cover;
+        }
+        ul :nth-child(3){
+            background-origin: padding-box;
+        }
+        ul :nth-child(4){
+            background-clip: padding-box;
+        }
+        ul :nth-child(5){
+            background-clip: border-box;
+        }
+
+    </style>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+</body>
+</html>

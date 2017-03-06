@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //number:正数、负数、小数、0、NaN
+   /* 123
+    12.3
+    -1*/
+
+//    NaN：not a number 不是一个数，不是一个有效数字
+
+//    = 赋值
+//    ==比较
+    1==1
+
+//    相等 true   不相等 false
+//    NaN==NaN  false
+
+//    isNaN   is not a number 是不是一个数 判断
+//    作用：判断一个值是不是有效数字，如果不是一个有效数字，返回true；如果是一个有效数字，返回false
+
+//    isNaN(要判断的内容);
+//    isNaN(123);  false
+//    isNaN('zfpx');  true
+
+//    isNaN() 如果要判断的内容不是number类型，先转化为数字（执行Number()），然后再判断
+
+    isNaN('12345');
+    Number('12345');//12345  -->是数字-->false
+
+//    强制转换:只要有一个字符不是有效数字，直接返回NaN
+//    Number(要转换的内容);  将其他数据类型转为number类型
+//    如果是其他类型的，只要有一个字符不是有效数字，直接返回NaN
+    Number('123');//123
+    Number('zfpx');//NaN
+
+//   非强制转换 parseInt parseFloat
+//    parseInt()  从左到右依次查找，是数字继续查找，只要遇到一个不是数字的字符就停止查找,直接返回之前找到的数字
+    parseInt('123');  //123
+    parseInt('123px');  //123
+    parseInt('123px456');  //123
+
+//    parseFloat()   和parseInt一样，但可以多识别一个点.
+
+    parseFloat('12.3px'); //12.3
+
+
+   /* var a = parseInt('23.4abc');
+
+    if(a==23.4){
+        console.log(1)
+    }else{
+        console.log(10);
+    }*/
+
+    var a = Number('12.5px');
+    if(a==12){
+        console.log(12)
+    }else if(a==NaN){
+        console.log('NaN')
+    }else{
+        console.log('你猜')
+    }
+
+
+    //    number:正数、负数、0、小数、NaN
+    //    NaN==NaN  false
+//                                   返回值（结果）
+    //    isNaN()                    false  true
+    //    Number()                   number类型
+    //    parseInt()  parseFloat()   number类型
+
+
+
+</script>
+
+</body>
+</html>

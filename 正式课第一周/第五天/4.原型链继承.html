@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function F(){//构造函数
+        //this->F new出来的实例；
+        this.x=100;
+        this.y=200;
+        this.showX=function(){};
+    }
+    F.prototype.aa=function(){};//原型
+    var f1=new F;//实例
+    console.dir(f1)
+
+    function S(){};
+    S.prototype=new F;//把子类公有的作为父类的实例；
+    var s=new S;
+    console.dir(s);
+    /*
+    * __proto__:
+    * x:100,
+    * y:200,
+    * showX:function,
+    * __proto__:
+    * aa:function,
+    * constructor:F
+    * */
+    console.log(s.constructor);//F;
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        img{
+            vertical-align: top;
+            border: none;
+        }
+        .box{
+            margin: 30px auto;
+            position: relative;
+            width: 1000px;
+            height: 300px;
+            overflow: hidden;
+        }
+        .box .boxInner{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4000px;
+        }
+        .box .boxInner div{
+            float: left;
+            width: 1000px;
+            height: 300px;
+        }
+        .box .boxInner div img{
+            width: 100%;
+            display: block;
+        }
+        .box ul{
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+        .box ul li{
+            float: left;
+            margin-left: 10px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+        }
+        .box ul li.on{
+            background: red;
+        }
+        .box a{
+            position: absolute;
+            width: 30px;
+            height: 45px;
+            top: 127.5px;
+            background-image: url("images/pre.png");
+            background-repeat: no-repeat;
+        }
+        .box a.left{
+            display: none;
+            background-position: 0 0;
+            left: 30px;
+        }
+        .box a.right{
+            display: none;
+            background-position: -50px 0;
+            right: 30px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="boxInner">
+        <div><img src="images/banner1.jpg" alt=""></div>
+        <div><img src="images/banner2.jpg" alt=""></div>
+        <div><img src="images/banner3.jpg" alt=""></div>
+        <div><img src="images/banner4.jpg" alt=""></div>
+    </div>
+    <ul class="focus">
+        <li class="on"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <a href="javascript:;" class="left"></a>
+    <a href="javascript:;" class="right"></a>
+</div>
+<script src="../../utils.js"></script>
+<script src="bigmove12.js"></script>
+<script src="js/tab.js"></script>
+</body>
+</html>

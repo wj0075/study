@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>放大镜</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            float: left;
+            position: relative;
+            width: 430px;
+            height:430px;
+            background: url("img/1.jpg") no-repeat center;
+        }
+        .box .mark{
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 250px;
+            background: cornflowerblue;
+            opacity: .4;
+            filter: alpha(opacity=40);
+        }
+        .hide {
+            display: none;
+            position: relative;
+            float: left;
+            width: 430px;
+            height: 430px;
+            margin-left: 10px;
+            overflow: hidden;
+        }
+        .hide img{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <div class="mark" id="mark"></div>
+</div>
+<div class="hide" id="hide">
+    <img src="img/2.jpg" alt="">
+</div>
+<script>
+    var oBox = document.getElementById('box');
+    var oM = oBox.getElementsByTagName('div')[0];
+    var oH = document.getElementById('hide');
+    var aImg = oH.getElementsByTagName('img')[0];
+    oBox.onmouseenter = function(){
+        oM.style.display = 'block';
+        oH.style.display = 'block'
+    };
+    oBox.onmousemove = function(e){
+        e = e||window.event;
+        var l = e.clientX-this.offsetLeft-oM.offsetWidth/2;
+        var t = e.clientY-this.offsetTop - oM.offsetHeight/2;
+        var maxL = this.offsetWidth-oM.offsetWidth;
+        var maxT = this.offsetHeight - oM.offsetHeight;
+        if (l<=0){
+            l=0
+        }else if(l>=maxL){
+            l=maxL;
+        }
+        if (t<=0){
+            t=0;
+        }else if (t>=maxT){
+            t=maxT
+        }
+        oM.style.left = l+'px';
+        oM.style.top = t+'px';
+        aImg.style.left = l/(this.offsetWidth-oM.offsetWidth)*(oH.offsetWidth-aImg.offsetWidth)+'px';
+        aImg.style.top=t/(this.offsetHeight-oM.offsetHeight)*(oH.offsetHeight-aImg.offsetHeight)+'px'
+    };
+    oBox.onmouseleave = function(){
+        oM.style.display = 'none';
+        oH.style.display = 'none';
+    }
+</script>
+
+
+</body>
+</html>

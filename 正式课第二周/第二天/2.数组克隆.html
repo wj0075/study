@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ary=[1,2,3,4];
+    //Array.prototype.slice.call(arguments)
+    Array.prototype.slice=function(){
+        //this->实例ary
+        var ary=[];
+        for(var i=0; i<this.length; i++){
+            ary.push(this[i]);
+        }
+        return ary;
+        /*//1.类数组转数组
+        var ary=[];
+        for(var i=0; i<arguments.length; i++){
+            ary.push(arguments[i]);
+        }*/
+    }
+    var ary1=ary.slice()
+</script>
+</body>
+</html>

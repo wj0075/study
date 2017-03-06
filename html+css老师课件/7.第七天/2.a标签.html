@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        a:link{
+            /*默认的样式  没有点击*/
+            color: plum;
+        }
+        a:visited{
+            /*访问之后*/
+            color: yellow;
+        }
+        a:hover{
+            /*鼠标经过时的样式*/
+            color: red;
+        }
+        a:active{
+            /*激活时的样式*/
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<!--javascript:;  阻止点击a的默认事件
+target="_blank"   在新窗口中打开链接
+  _self  在当前窗口中打开  默认
+-->
+<a href="http://www.baidu.com" target="_blank">百度</a>
+
+
+
+</body>
+</html>

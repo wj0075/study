@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var strCode = '2016-6-23 00:41:30';
+    var tmp = '{0}年{1}月{2}日';
+    //转数组思路1.把字符串中的数字，成组的拎出来,放到数组中去；
+    /*var reg=/^(\d{4})[\-](\d{1,2})[\-](\d{1,2})\s+(\d{1,2})[\:](\d{1,2})[\:](\d{1,2})$/;
+     var ary=[];
+     strCode.replace(reg,function(){
+     ary=Array.prototype.slice.call(arguments,1,arguments.length-2);
+     });
+     */
+    //转数组思路2：
+    // var ary=strCode.match(/\d+/g);
+    //var ary=strCode.split(/\D+/g);
+    //需求：strCode.formatDate(tmp);->"2016年11月6日 11时5分30秒";
+    /*
+     * 1.formatDate方法，挂在哪里？
+     * 2.formatDate方法中的this是谁？
+     * 3.这个方法是否有参数，是否有返回值？
+     * */
+    String.prototype.formatDate = function (tmp) {
+        //this->实例；
+        //1.把实例字符串中的数组存到数组中；
+        var ary=this.match(/\d+/g);
+        //2.拿数组中的内容，替换模板
+        var tmpStr=tmp||'{0}年{1}月{2}日 {3}时{4}分{5}秒';
+        tmpStr=tmpStr.replace(/{(\d)}/g,function($0,$1){
+            var n=ary[$1];
+            n=n>=0 && n<10? '0'+Number(n):n;
+            return n;
+        });
+        return tmpStr;
+    }
+    console.log(strCode.formatDate(tmp));
+
+
+    /*var ary=[2016,11,6,11,5,30];
+     //2.要求把tmp模板，变成 2016年11月6日 11时5分30秒；
+     tmp=tmp.replace(/{(\d)}/g,function($0,$1){
+     return ary[$1];
+     });*/
+</script>
+</body>
+</html>

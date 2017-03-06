@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--左边的盒子宽度固定 200px，右边的盒子宽度自适应（占剩余部分的宽度）-->
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .left{
+        width: 200px;
+        height: 300px;
+        background: blue;
+        float: left;
+    }
+    .right{
+        height: 400px;
+        background: orange;
+        margin-left: 200px;
+    }
+</style>
+<div class="left"></div>
+<div class="right"></div>
+</body>
+</html>

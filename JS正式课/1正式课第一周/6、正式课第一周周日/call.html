@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function A(){
+        this.x=100;
+    }
+    A.prototype.getX=function(){
+        console.log(this.x);
+    }
+
+
+    function B(){
+        //this--->n
+        A.call(this)//A.call(n)  把A执行让A中的this变成了n
+    }
+    var n=new B();
+    console.log(n.x)
+</script>
+</body>
+</html>

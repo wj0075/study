@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Fn(){
+        this.x=100;
+    }
+    Fn.prototype.showX=function(){
+        alert(this.x);
+    };
+    var f1=new Fn;
+    //需求：判断某个属性是否是对象上的公有属性的封装？ hasPubProperty
+    //思路：该属性 是 对象 上的属性 &&  该属性不是私有属性；
+    function  hasPubProperty(attr,obj){
+        return attr in obj && !obj.hasOwnProperty(attr);
+    }
+    alert(hasPubProperty('showX',f1))
+    alert(hasPubProperty('x',f1))
+
+
+
+
+    //hasOwnProperty():判断是否为私有属性
+    //alert(f1.hasOwnProperty('showX'))
+    //in:判断某个属性是否在对象上，用in:私有属性+公有属性；
+    /*alert('x' in f1);
+    alert('showX' in f1)*/
+</script>
+</body>
+</html>

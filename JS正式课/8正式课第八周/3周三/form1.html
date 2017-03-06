@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="">
+    <input type="text" id="text" name="text" pattern="\d{3}">
+    <input type="submit" value="提交" id="">
+</form>
+</body>
+</html>
+<script>
+    var text = document.querySelector('#text');
+    text.onchange = function(){
+        if (this.validity.valid===false){
+            this.setCustomValidity('请输入3位数字')
+        }else {
+            this.setCustomValidity('')
+        }
+    };
+    /*text.addEventListener('invalid',function(){
+
+    },false)
+*/
+
+
+
+
+</script>

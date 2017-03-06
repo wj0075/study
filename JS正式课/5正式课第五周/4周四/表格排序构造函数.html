@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格函数构造函数</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 800px;
+            margin: 20px auto;
+            font-size: 24px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 0 4px #ccc;
+        }
+        .box thead tr{
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: lightgray;
+        }
+        .box thead tr th{
+            width: 200px;
+            height: 100%;
+            color: white;
+        }
+        .box tbody tr{
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+        .box tbody tr.bg0{
+            background: lemonchiffon;
+        }
+        .box tbody tr.bg1{
+            background: lavender;
+        }
+        .cursor{
+            cursor: pointer;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+<table class="box" id="box" cellpadding="0" cellspacing="0">
+    <thead>
+    <tr>
+        <th class="cursor">姓名</th>
+        <th class="cursor">年龄</th>
+        <th class="cursor">分数</th>
+        <th>性别</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<script src="../../utils.js"></script>
+<script src="js/tab.js"></script>
+<script>
+    var tab = new Tab('box','json/data1.txt')
+
+
+</script>
+</body>
+</html>

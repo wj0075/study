@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script src="js/ajax.js"></script>
+<script>
+    //    var xhr = new XMLHttpRequest;
+    //    xhr.open('head', 'temp.xml?_=' + Math.random());
+    //    xhr.onreadystatechange = function () {
+    //        if (xhr.status === 200) {
+    //            if (xhr.readyState === 2) {
+    //                var time = xhr.getResponseHeader('Date');//->获取到的时间默认是格林尼治时间(GMT),北京时间(GMT+0800)
+    //                console.log(new Date(time));//->把获取的时间转换为北京时间
+    //            }
+    //        }
+    //    };
+    //    xhr.send(null);
+
+    ajax({
+        url: 'temp.xml',
+        type: 'get',
+        dataType: 'text',
+        cache: false,
+        data: null,
+        success: function (result) {
+            console.log(result);
+        }
+    });
+</script>
+</body>
+</html>

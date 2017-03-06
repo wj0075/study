@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="1"/>
+<input type="button" value="2"/>
+<input type="button" value="3"/>
+<script>
+    var inputs = document.getElementsByTagName('input');
+    for(var i=0;i<inputs.length;i++){
+        inputs[i].zf = i;
+        inputs[i].onclick = function(){
+            alert('我是第'+(this.zf+1)+'个按钮');
+        }
+
+    }
+
+//    函数定义的时候：函数里面的代码相当于一堆字符串没有任何意义
+
+
+</script>
+
+</body>
+</html>

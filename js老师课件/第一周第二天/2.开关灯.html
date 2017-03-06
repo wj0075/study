@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body id="box" style="background-color: #fff">
+
+<script>
+    //点击body 实现背景颜色的变化
+//    1、要操作谁就先获取谁，body
+//    2、给body绑定点击的事件
+//    3、点击时，换背景颜色
+
+//    document.getElementById()
+//    （获取元素的范围. ） 在整个文档中 获取一个元素通过id值
+
+//    1、
+    var oBody = document.getElementById('box');
+
+//    2、
+//      元素.onclick = function(){
+//
+//      }
+//    onclick 点击  onmouseover 鼠标移入  onmouseout 鼠标移出
+      oBody.onclick = function(){
+//          alert(123)
+//            3、点击时，换背景颜色
+//          获取当前的背景颜色
+//          console.log(oBody.style.backgroundColor)
+//            行内样式的css属性
+//          background-color  backgroundColor
+//          margin-left        marginLeft
+          var bg = oBody.style.backgroundColor;
+          console.log(bg);//rgb(255, 255, 255)
+//          console.log(bg);//white
+          if(bg=='rgb(255, 255, 255)'){
+//              如果当前的背景颜色white  将背景颜色设置为黑色
+//
+// bg='black';
+//
+              oBody.style.backgroundColor = 'black';
+          }else{
+              oBody.style.backgroundColor = 'white';
+          }
+
+          /*var obj = {name:'zfpx'}
+          obj.name = 'zf'*/
+
+      }
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

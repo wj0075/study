@@ -1,0 +1,114 @@
+/*重置默认样式*/
+*{
+    margin: 0;
+    padding: 0;
+    font: 12px "microsoft yahei";
+}
+ul{
+    list-style: none;
+}
+img{
+    border: none;
+    vertical-align: top;
+    /*去掉img标签自带的间距*/
+}
+i{
+    font-style: normal;
+    /*将斜体扶正*/
+}
+b{
+    font-weight: normal;
+    /*去掉加粗的样式*/
+}
+ul{
+    width: 726px;
+    margin-left: -17px;
+}
+li{
+    float: left;
+    width: 225px;
+    height: 170px;
+    position: relative;
+    margin-left: 17px;
+}
+li .img{
+    height: 127px;
+    width: 225px;
+}
+li .icon{
+    width: 64px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+li .pay{
+    width: 64px;
+    height: 18px;
+    line-height: 18px;
+    /*高度=行高  单行文字垂直居中*/
+    color: #fffcf8;
+    background: #ffb536;
+    position: absolute;
+    right: 0;
+    top: 20px;
+    text-align: center;
+    /*文字、行内元素水平居中  必须要有宽度>内容的宽度
+    让内容在宽度内水平居中
+    */
+}
+li .pay b{
+    font-weight: bold;
+    /*文字加粗*/
+}
+li p{
+    width: 216px;
+    height:37px;
+    color: #fff;
+    line-height: 18px;
+    background: rgba(0,0,0,.3);
+    /*
+    rgba 有透明度的颜色
+    rgb(0,0,0)  黑色  #000
+    透明度  0~1     0完全透明  1完全不透明
+    点前面的0去掉
+    */
+    padding: 3px 4px 0 5px;
+    /*在ps中量整个盒子的大小
+    整个盒子的大小：内容+内边距
+    */
+    position: absolute;
+    left: 0;
+    top: 87px;
+    overflow: hidden;
+}
+li p b{
+    font-weight: bold;
+}
+li div{
+    padding: 0 5px;
+    margin-top: 5px;
+}
+li div i{
+    color: #ff743f;
+}
+li div b{
+    color: #f60;
+    /*
+    #aabbcc  #abc
+    */
+    font-size: 20px;
+    font-weight: bold;
+}
+li div s{
+    color: #999;
+    padding-left: 3px;
+}
+li div span{
+    color: #9f9f9f;
+    float: right;
+    padding-top: 8px;
+}
+
+
+

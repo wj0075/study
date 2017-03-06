@@ -1,0 +1,46 @@
+1.要在canvas画布上画东西，必须具备两个条件：
+1）获取canvas对象
+2）创建上下文：var ctx=canvas.getContext('2d');
+2.形状：1）线 2）矩形 3）弧形
+1）线：
+    ctx.beginPath();//起始路径
+    ctx.moveTo();//将鼠标移动到某个坐标位置
+    ctx.lineTo();//根据坐标画线
+    ctx.closePath();//闭合路径
+    ctx.stroke();//描边  ctx.strokeStyle='color'
+    ctx.fill();//填充 ctx.fillStyle='color';
+2)矩形：
+    复杂写法3步：
+    ctx.beginPath();
+    ctx.rect(200,200,200,200);
+    //ctx.stroke();
+    ctx.fill();
+    简单写法：
+    ctx.strokeRect(100,100,200,100);
+    ctx.fillRect(100,100,200,100);
+3）弧：
+ctx.arc(x,y,r,startAngle,endAngle,anticlockwise);
+x,y:圆心坐标  r:半径 startAngle:弧度制的起点坐标 endAngle:弧度制的终点坐标
+3.引入图片：
+    1）创建图片对象： var oImg=new Image();
+    2）加载地址：oImg.src='img/1.jpg';
+    3）等图片加载成功，开始在画布上展现图片
+    oImg.onload=function(){
+            //ctx.drawImage(oImg,100,100);
+            ctx.drawImage(oImg,162,56,116,149,200,200,116,149)
+    }
+
+引入图片：ctx.drawImage(img,sx,sy,sw,sh,dx,dy,dw,dh);
+         ctx.drawImage(img,100,100);//图片以自身大小，在画布的100,100的坐标上展示；
+
+4.最后总结考察点：
+    1）表格排序--考察点：获取数据
+    2）构造函数左右切换轮播图--工作中最常见；
+    3) 构造函数拖拽产品+边界限制+弹性运动+照片墙--考察组件封装
+    提前把utils.js/event.js/move.js放到一个文件夹下；
+
+
+
+
+
+

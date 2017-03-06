@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var array = [4,3,2,5,6,7,1]
+    function insertSort(ary){
+        var left = [];
+        left.push(ary[0]);
+        for(var i=1;i<ary.length;i++){
+            var cur = ary[i];
+            for(var j=left.length-1;j>=0;j--){
+                if(cur<left[j]){
+                    if(j==0){
+                        left.unshift(cur);
+                    }
+                    continue;
+                }else{
+//                    拿到的这张牌比left[j]大，把拿到的牌放到left[j]的后面，相当于放到left[j+1]的前面
+//                    splice(i,0,x) 把x放到索引i这一项的前面
+                    left.splice(j+1,0,cur);
+                    break;//循环结束，就不再比较
+                }
+            }
+        }
+        return left;
+    }
+    var a = insertSort(array);
+    console.log(a);
+        /*for(var i=0;i<array.length;i++){
+
+        }
+        for(var i=array.length-1;i>=0;i--){
+
+        }
+    */
+
+
+</script>
+
+</body>
+</html>

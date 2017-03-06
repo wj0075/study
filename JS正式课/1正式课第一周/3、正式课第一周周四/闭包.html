@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>1</div>
+<div>2</div>
+<div id="div1">3</div>
+<div>4</div>
+
+<script>
+    //闭包的作用，
+    //1、避免全局变量名冲突的问题；
+    //2、如何在闭包中修改全局变量？
+    //3、闭包的主要作用用来封装；
+   /* var name='珠峰';
+    var name='地方艰苦';
+    (function(name){
+        window.name='fdsfsd';
+        alert(window.name)
+
+    })();
+    alert(name);*/
+
+    //封装考虑什么？
+    //1、作用：获取当前元素的上一个哥哥元素
+    //1）、参数：当前元素 2）、返回值：找到的上一个哥哥元素
+    //3）、浏览器兼容性处理：如果浏览器支持，直接使用浏览器提供的方法，如果浏览器不支持，再自己写兼容方法：
+    var aDiv=document.getElementsByTagName('div');
+    //var odiv=document.getElementById('div1')
+
+    (function(){
+        function prev(curEle){
+            if(curEle.previousElementSibling){//标准浏览器有支持上个哥哥元素的属性；
+                return curEle.previousElementSibling;
+            }else{//IE浏览器自己做处理
+                var pre=curEle.previousSibling;
+                //往上找哥哥元素的前提条件，必须是节点，并且不是元素节点。
+                while(pre && pre.nodeType !==1){
+                    pre = pre.previousSibling;
+                }
+                return pre;
+            }
+        }
+        window.aa=prev;//全局作用域下可以使用
+    })();
+    console.log(aa(aDiv[2]));
+
+
+</script>
+</body>
+</html>

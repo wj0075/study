@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>腾讯体育KBS</title>
+    <meta name="keywords" content="关键字或者关键词"/>
+    <meta name="description" content="网站页面的描述">
+    <link type="image/x-icon" rel="icon" href="img/kbs-pc/kbs-logo.png">
+    <!--import needed css-->
+    <link rel="stylesheet" href="css/reset.min.css">
+    <!--<link rel="stylesheet" href="css/index.min.css">-->
+     <link rel="stylesheet/less" href="css/index.less">
+    <script src="js/less-2.5.3.min.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="js/html5.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!--header-->
+<header class="header">
+    <section class="content">
+        <h1 class="logo"><a href="#">腾讯体育</a></h1>
+        <nav class="nav">
+            <ul class="clear">
+                <li><a href="" class="bg">看比赛</a></li>
+                <li><a href="">竞猜</a></li>
+                <li><a href="" class="down">
+                    下载
+                    <div class="weChat">
+                        <img src="img/kbs-pc/weixin.jpg" alt="下载的微信二维码">
+                        <span>扫一扫下载</span>
+                        <span>腾讯体育APP</span>
+                    </div>
+                    <div class="weChatBg"></div>
+                </a></li>
+                <li><a href="">会员</a></li>
+                <li><a href="">社区</a></li>
+                <li><a href="" class="liveQQ"><img src="img/kbs-pc/live-qq-logo.jpg" alt="企鹅直播"></a></li>
+            </ul>
+        </nav>
+        <a href="javascript:;" class="login">登陆</a>
+    </section>
+</header>
+<!--main-->
+<main class="main">
+    <!--menu-->
+    <nav class="menu">
+        <ul>
+            <li><a href="#nba" data-cid="100000">NBA<i></i></a></li>
+            <li><a href="#cba" data-cid="100008">CBA<i></i></a></li>
+            <li><a href="#pl" data-cid="8">英超<i></i></a></li>
+            <li><a href="#laliga" data-cid="23">西甲<i></i></a></li>
+            <li><a href="#seriea" data-cid="21">意甲<i></i></a></li>
+            <li><a href="#ucl" data-cid="5">欧冠<i></i></a></li>
+            <li><a href="#bundesliga" data-cid="22">德甲<i></i></a></li>
+            <li><a href="#l1" data-cid="24">法甲<i></i></a></li>
+            <li><a href="#nhl" data-cid="100006">NHL<i></i></a></li>
+            <li><a href="#nfl" data-cid="100005">NFL<i></i></a></li>
+            <li><a href="#afc" data-cid="605">亚冠<i></i></a></li>
+            <li><a href="#csl" data-cid="208">中超<i></i></a></li>
+            <li><a href="#others" data-cid="100002">综合<i></i></a></li>
+            <li><a href="#esports" data-cid="100101">电竞<i></i></a></li>
+            <li><a href="#wcp-eu" data-cid="336">欧洲世预赛<i></i></a></li>
+            <li><a href="#wcp-as" data-cid="341">亚洲世预赛<i></i></a></li>
+            <li><a href="#wcp-sa" data-cid="342">南美世预赛<i></i></a></li>
+        </ul>
+    </nav>
+    <!--CALENDAR-->
+    <section class="mainRight">
+        <div class="calendar">
+            <a href="javascript:;" class="btn btnLeft"><i class="arrow"></i></a>
+            <a href="javascript:;" class="btn btnRight"><i class="arrow"></i></a>
+            <nav class="container">
+                <ul class="wrapper">
+                </ul>
+                <!--制作模板:
+                1）把需要动态绑定的HTML结构放在script标签中做成模板
+                2）我们先假设我们需要的数据格式
+                    [{weekday:'星期四',date:'1016-12-22'},...]->calendarData是假设的数据名字
+                3）在模板中把需要编写的JS代码放在<%%>中间，如果需要输出内容我们使用<%=[value]%>（EJS模板引擎框架的语法要求）
+                -->
+                <!--<script type="text/template/" id="calTemplate">
+                    <%for(var i=0;i<calendarData.length;i++){%>
+                    <%var cur=calendarData[i];%>
+                    <li><a href="javascript:;">
+                        <span class="week"><%=cur.weekday%></span>
+                        <span class="date"><%=cur.date%></span>
+                    </a></li>
+                    <%}%>
+                </script>-->
+
+                <script type="text/template/" id="calTemplate">
+                    <%$.each(calendarData,function(index,item){%>
+                    <li><a href="javascript:;" data-time="<%=item.date%>">
+                        <span class="week"><%=item.weekday%></span>
+                        <span class="date"><%=item.date.formatDate('{1}-{2}')%></span>
+                    </a></li>
+                    <%})%>
+                </script>
+
+            </nav>
+        </div>
+        <div class="match">
+            <ul class="matchWrapper">
+                <!--<li>
+                    <dl>
+                        <dt>12月20日</dt>
+                        <dd>
+                            <span class="item1">08:00</span>
+                            <span class="item2">
+                                <i></i>
+                                NBA常规赛
+                            </span>
+                            <span class="item3">
+                                <img src="img/kbs-pc/icon.png" alt="">
+                                奇才
+                            </span>
+                            <span class="item4">105-107</span>
+                            <span class="item5">
+                                 步行者
+                                <img src="img/kbs-pc/11.png" alt="">
+                            </span>
+                            <span class="item6">视频直播</span>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>12月20日</dt>
+                        <dd>
+                            <span class="item1">08:00</span>
+                            <span class="item2">
+                                <i></i>
+                                NBA常规赛
+                            </span>
+                            <span class="item3">
+                                <img src="img/kbs-pc/icon.png" alt="">
+                                奇才
+                            </span>
+                            <span class="item4">105-107</span>
+                            <span class="item5">
+                                 步行者
+                                <img src="img/kbs-pc/11.png" alt="">
+                            </span>
+                            <span class="item6">视频直播</span>
+                        </dd>
+                        <dd>
+                            <span class="item1">08:00</span>
+                            <span class="item2">
+                                <i></i>
+                                NBA常规赛
+                            </span>
+                            <span class="item3">
+                                <img src="img/kbs-pc/icon.png" alt="">
+                                奇才
+                            </span>
+                            <span class="item4">105-107</span>
+                            <span class="item5">
+                                 步行者
+                                <img src="img/kbs-pc/11.png" alt="">
+                            </span>
+                            <span class="item6">视频直播</span>
+                        </dd>
+                        <dd>
+                            <span class="item1">08:00</span>
+                            <span class="item2">
+                                <i></i>
+                                NBA常规赛
+                            </span>
+                            <span class="item3">
+                                <img src="img/kbs-pc/icon.png" alt="">
+                                奇才
+                            </span>
+                            <span class="item4">105-107</span>
+                            <span class="item5">
+                                 步行者
+                                <img src="img/kbs-pc/11.png" alt="">
+                            </span>
+                            <span class="item6">视频直播</span>
+                        </dd>
+                        <dd>
+                            <span class="item1">08:00</span>
+                            <span class="item2">
+                                <i></i>
+                                NBA常规赛
+                            </span>
+                            <span class="item3">
+                                <img src="img/kbs-pc/icon.png" alt="">
+                                奇才
+                            </span>
+                            <span class="item4">105-107</span>
+                            <span class="item5">
+                                 步行者
+                                <img src="img/kbs-pc/11.png" alt="">
+                            </span>
+                            <span class="item6">视频直播</span>
+                        </dd>
+                        <dd>
+                            <span class="item1">08:00</span>
+                            <span class="item2">
+                                <i></i>
+                                NBA常规赛
+                            </span>
+                            <span class="item3">
+                                <img src="img/kbs-pc/icon.png" alt="">
+                                奇才
+                            </span>
+                            <span class="item4">105-107</span>
+                            <span class="item5">
+                                 步行者
+                                <img src="img/kbs-pc/11.png" alt="">
+                            </span>
+                            <span class="item6">视频直播</span>
+                        </dd>
+                        <dd>
+                            <span class="item1">08:00</span>
+                            <span class="item2">
+                                <i></i>
+                                NBA常规赛
+                            </span>
+                            <span class="item3">
+                                <img src="img/kbs-pc/icon.png" alt="">
+                                奇才
+                            </span>
+                            <span class="item4">105-107</span>
+                            <span class="item5">
+                                 步行者
+                                <img src="img/kbs-pc/11.png" alt="">
+                            </span>
+                            <span class="item6">视频直播</span>
+                        </dd>
+                        <dd>
+                            <span class="item1">08:00</span>
+                            <span class="item2">
+                                <i></i>
+                                NBA常规赛
+                            </span>
+                            <span class="item3">
+                                <img src="img/kbs-pc/icon.png" alt="">
+                                奇才
+                            </span>
+                            <span class="item4">105-107</span>
+                            <span class="item5">
+                                 步行者
+                                <img src="img/kbs-pc/11.png" alt="">
+                            </span>
+                            <span class="item6">视频直播</span>
+                        </dd>
+                    </dl>
+                </li>-->
+            </ul>
+            <script type="text/template/" id="matTemplate">
+                <%for(var key in matchData){%>
+                    <%var cur = matchData[key]%>
+                    <li data-time="<%=key%>">
+                        <dl>
+                            <dt><%=key.formatDate('{1}月{2}日')%></dt>
+                            <%$.each(cur,function(index,item){%>
+                            <dd>
+                                <span class="item1"><%=item.startTime.formatDate('{3}:{4}')                                     %></span>
+                                <span class="item2">
+                                    <i></i>
+                                    <%=item.matchDesc%>
+                                </span>
+                                <span class="item3">
+                                    <img src="<%=item.leftBadge%>" alt="">
+                                    <%=item.leftName%>
+                                </span>
+                                <span class="item4"><%=item.leftGoal%>-<%=item.rightGoal%></span>
+                                <span class="item5">
+                                    <%=item.rightName%>
+                                    <img src="<%=item.rightBadge%>" alt="">
+                                </span>
+                                <span class="item6">视频直播</span>
+                            </dd>
+                            <%})%>
+                        </dl>
+                    </li>
+                <%}%>
+            </script>
+        </div>
+
+    </section>
+</main>
+<!--import needed js-->
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/iscroll-5.1.3.min.js"></script>
+<script src="js/ejs.min.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

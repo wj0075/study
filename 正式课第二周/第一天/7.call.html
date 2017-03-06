@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //能使用call,apply,bind的方法，都是函数数据类型；
+    var obj={};
+    /*Function.prototype.call=function(context){
+
+        1)把this这个实例中的this字符串改成了call的第一个参数；如果this这个实例中，没有this字符串，就不用改了；
+        2)this这个实例立即执行； this();
+    }*/
+    /*function fn(n,m){
+        console.log(this,(n+m));
+    }
+    fn.call(obj,2,3);*/
+    //1.把call前面的函数中的this改了，参数传了；
+    //call把fn这个实例中的this字符串，改成了call的第一个参数；
+    //2.把call前面的函数-实例fn 立即执行；
+    function fn1(){
+        alert(1);
+    }
+    function fn2(){
+        alert(2);
+    }
+    //fn1.call(fn2);
+    fn1.call.call.call.call.call.call.call.call(fn2);
+</script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+            color: #000;
+        }
+        li{
+            list-style: none;
+        }
+        #go{
+            display: none;
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            width: 50px;
+            height: 50px;
+            background: red;
+            border-radius: 50%;
+            font-size: 18px;
+            text-align: center;
+            line-height: 50px;
+            opacity: .4;
+            filter: alpha(opacity=40);
+        }
+        #go:hover{
+            opacity: 1;
+            filter: alpha(opacity=100);
+        }
+        div{
+            width: 1260px;
+            margin: 10px auto;
+        }
+        div ul{
+            float: left;
+            width: 200px;
+            margin: 5px;
+            /*height: 30px;*/
+            /*background: red;*/
+        }
+        div ul li{
+            width: 100%;
+            background: url("img2/default.gif") no-repeat center #ccc;
+            margin-top: 5px;
+        }
+        div ul li img{
+            width: 100% /*为了防止图片变形*/
+        }
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <!--<li><img src="" realImg="img2/1.jpg" alt=""></li>-->
+    </ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+</div>
+<a href="javascript:;" id="go">toTop</a>
+<script src="utils.js"></script>
+<script>
+
+    var oBox = document.getElementById('box');
+    var oUl = document.getElementsByTagName('ul');
+    var aImg = document.getElementsByTagName('img');
+    var go = document.getElementById('go');
+    var timer = null;
+    //1.封装一个方法创建li
+    var ary = [
+        {imgSrc:'img2/1.jpg'},
+        {imgSrc:'img2/2.jpg'},
+        {imgSrc:'img2/3.jpg'},
+        {imgSrc:'img2/4.jpg'},
+        {imgSrc:'img2/5.jpg'},
+        {imgSrc:'img2/6.jpg'},
+        {imgSrc:'img2/7.jpg'},
+        {imgSrc:'img2/8.jpg'},
+        {imgSrc:'img2/9.jpg'},
+        {imgSrc:'img2/10.jpg'}
+    ];
+    function createLi(){
+        var oLi = document.createElement('li');
+        oLi.innerHTML = '<img src="" realImg="'+ary[utils.rnd(0,9)].imgSrc+'" alt="">';
+        oLi.style.height = utils.rnd(100,200)+'px';
+        return oLi;
+    }
+    //创建50个li
+    function li50(){
+        for(var i =0; i<50;i++){
+            var LiEle = createLi();
+            //插入最短的ul中去
+            var ary = utils.makeArray(oUl);
+            ary.sort(function (a, b) {
+                a = a.offsetHeight;
+                b = b.offsetHeight;
+                return a - b;
+            });
+            ary[0].appendChild(LiEle);
+        }
+    }
+    //图片延时加载
+    function showImg(){
+        var scrollBottom = utils.win('scrollTop')+utils.win('clientHeight');
+        for(var i=0;i<aImg.length;i++){
+            var curPos = aImg[i].offsetHeight+utils.offset(aImg[i]).top;
+            if(curPos<=scrollBottom){
+                lazyImg(aImg[i])
+            }
+        }
+    }
+
+
+    function lazyImg(img){
+        if (img.loaded) return;
+        var tmpImg = new Image;
+        tmpImg.src  = img.getAttribute('realImg');
+        console.log(tmpImg.src);
+        tmpImg.onload=function(){
+            img.src = this.src;
+            tmpImg=null;
+            img.parentNode.style.height = 'auto';
+            img.loaded = true
+        };
+        tmpImg.onerror=function(){
+            img.parentNode.style.background = 'url("img2/error.gif") no-repeat center #ccc';
+            tmpImg = null;
+            img.loaded=true
+        }
+    }
+    li50();
+    showImg();
+    //滚动触发
+    window.onscroll = function(){
+        var scrollBottom = utils.win('scrollTop')+utils.win('clientHeight');
+        if (utils.win('scrollTop')>utils.win('clientHeight')){
+            go.style.display='block'
+        }else {
+            go.style.display='none'
+        }
+
+
+
+        showImg();
+        if (document.body.scrollHeight-20<scrollBottom){
+            li50();
+        }
+    };
+    //点击返回
+    go.onclick=function(){
+        var traget = utils.win('scrollTop');
+        var duration = 400;
+        var interval = 10;
+        var step = traget/duration*interval;
+        timer = window.setInterval(function(){
+            var curTop = utils.win('scrollTop');
+            curTop-=step;
+            if (curTop<=0){
+                clearInterval(timer)
+            }
+            utils.win('scrollTop',curTop)
+        },interval)
+
+    }
+
+</script>
+
+
+
+</body>
+</html>

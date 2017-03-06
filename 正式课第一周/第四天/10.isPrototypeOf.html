@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var obj={name:'zhufeng'};
+    function Fn(){};
+    Fn.prototype=obj;
+    Fn.prototype.constructor=Fn;
+    var f1=new Fn;
+    alert(obj.isPrototypeOf(f1))
+
+
+</script>
+</body>
+</html>

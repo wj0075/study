@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var obj={};
+    function fn1(n,m){
+        alert(this+(n+m));
+    }
+    var res=fn1.bind(obj,2,3);//bind的传参方式跟 call传参一样；
+    res();
+    /*
+    * bind:属于 预处理机制；
+    * 1）先把fn1中this关键字改了，同时，给fn1从左往右传好参数
+    * 2）返回一个已经修改好的函数；--bind有返回值；
+    * 3）只有等需要的时候，用户手动调用；
+    * */
+
+
+
+
+    //fn1.apply(obj,[2,3]);
+    //apply:两个参数:参1 改变this指向 ； 参2：数组，数组中包含一大堆要传的参数；
+    //虽然apply的第二个参数，是个数组，但是对fn1进行传参的时候，也是从左往右一个个的传参的；
+</script>
+</body>
+</html>

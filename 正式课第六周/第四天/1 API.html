@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            border:1px solid #000;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="800" height="500">sorry!浏览器不支持canvas</canvas>
+<script>
+    //ID获取元素
+    var canvas=document.getElementById('canvas');
+    //上下文：创建一个2D环境，以后所有的操作，都依赖ctx这个对象；
+    var ctx=canvas.getContext('2d');
+    /*ctx.beginPath();//开始路径
+    ctx.moveTo(100,100);//把鼠标移动到某个坐标；
+    ctx.lineTo(200,200);//从哪个坐标画到哪个坐标
+    ctx.lineTo(300,100);
+    ctx.lineTo(600,290);
+    ctx.closePath();
+    ctx.lineWidth=20;
+    ctx.strokeStyle='red';
+    ctx.stroke();//画的是线；
+    /!*ctx.fillStyle='red';
+    ctx.fill();*!/
+    ctx.clearRect(0,0,canvas.width,canvas.height)*/
+    //复杂写法：
+    /*ctx.beginPath();
+    ctx.rect(200,200,200,200);
+    //ctx.stroke();
+    ctx.fill();*/
+    //简单写法：
+    //ctx.strokeRect(100,100,200,100);
+    //ctx.fillRect(100,100,200,100);
+    //弧度：
+    //ctx.arc(200,200,100,0,Math.PI*2,true);
+    //ctx.fill();
+    /*ctx.arc(200,200,100,0,Math.PI,false);
+    ctx.fill();*/
+    //引入图片
+    //1.创建图片对象
+    var oImg=new Image();
+    //2.给对象加载地址
+    oImg.src='./img/1.jpg';//当元素身上赋值src属性的时候，图片请求已经发出；
+    console.log(oImg)
+    //3.drawImage:把图片展现在画布上；
+    oImg.onload=function(){
+        //ctx.drawImage(oImg,100,100);
+        ctx.drawImage(oImg,162,56,116,149,200,200,116,149)
+    }
+</script>
+</body>
+</html>
+

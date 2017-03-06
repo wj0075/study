@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*var ary1=new Array;
+    alert(ary1.constructor)*/
+   // ary1.pop();
+    //创建一个类
+    function Fn(){
+        var x=300;
+        this.x=100;
+        this.y=200;
+    }
+    Fn.prototype.y=300;
+    Fn.prototype.showX=function(){
+        alert(this.x);
+    };
+    var f1=new Fn;
+    //alert(f1.showX===Fn.prototype.showX);
+    //alert(f1.__proto__.showX===Fn.prototype.showX)
+    alert(f1.y);
+    alert(f1.__proto__.y);
+    //f1.showX 和 f1.__proto__.showX的区别：
+    //f1.showX:先找自己私有空间，自己没有才找公有
+    //f1.__proto__.showX:没有找私有，直接找的公有；
+</script>
+</body>
+</html>

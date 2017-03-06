@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            padding-top:30px;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+        }
+        .div2{
+            left:200px;
+            background: yellow;
+        }
+        .div3{
+            left:400px;
+            background: blue;
+        }
+        .div4{
+            left:600px;
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+<p>sdlfjsldfjsdfjlsdkjflksdjfldjksjdflksjdlfkjsdlfjskdfj</p>
+<p>sdlfjsldfjsdfjlsdkjflksdjfldjksjdflksjdlfkjsdlfjskdfj</p>
+<p>sdlfjsldfjsdfjlsdkjflksdjfldjksjdflksjdlfkjsdlfjskdfj</p>
+<p>sdlfjsldfjsdfjlsdkjflksdjfldjksjdflksjdlfkjsdlfjskdfj</p>
+<p>sdlfjsldfjsdfjlsdkjflksdjfldjksjdflksjdlfkjsdlfjskdfj</p>
+<p>sdlfjsldfjsdfjlsdkjflksdjfldjksjdflksjdlfkjsdlfjskdfj</p>
+<p>sdlfjsldfjsdfjlsdkjflksdjfldjksjdflksjdlfkjsdlfjskdfj</p>
+<p>sdlfjsldfjsdfjlsdkjflksdjfldjksjdflksjdlfkjsdlfjskdfj</p>
+<p>sdlfjsldfjsdfjlsdkjflksdjfldjksjdflksjdlfkjsdlfjskdfj</p>
+<p>sdlfjsldfjsdfjlsdkjflksdjfldjksjdflksjdlfkjsdlfjskdfj</p>
+<p>sdlfjsldfjsdfjlsdkjflksdjfldjksjdflksjdlfkjsdlfjskdfj</p>
+<p>sdlfjsldfjsdfjlsdkjflksdjfldjksjdflksjdlfkjsdlfjskdfj</p>
+<p>sdlfjsldfjsdfjlsdkjflksdjfldjksjdflksjdlfkjsdlfjskdfj</p>
+<p>sdlfjsldfjsdfjlsdkjflksdjfldjksjdflksjdlfkjsdlfjskdfj</p>
+<p>sdlfjsldfjsdfjlsdkjflksdjfldjksjdflksjdlfkjsdlfjskdfj</p>d
+<div id="div" class="div1"></div>
+<div id="div2" class="div2"></div>
+<div id="div3" class="div3">111111111123234444</div>
+<div id="div4" class="div4"></div>
+<script src="js/utils.js"></script>
+<script src="js/event.js"></script>
+<script src="js/Drag.js"></script>
+<script>
+    var aDiv=document.getElementsByTagName('div');
+    for(var i=0; i<aDiv.length; i++){
+        var curDiv=new Drag(aDiv[i]);
+        //需求：让第二个div，增加拖拽时的边界限制功能：
+        if(i==1){
+            curDiv.range({//客户端只需要调用即可，项目封装由开发人员负责；
+                left:0,
+                right:500,
+                top:40,
+                bottom:300
+            })
+        }
+        if(i==2){
+            curDiv.border();
+        }
+    }
+    /*var oDiv=document.getElementById('div');
+    var oDiv2=document.getElementById('div2');
+    var drag1=new Drag(oDiv);
+    var drag2=new Drag(oDiv2);*/
+
+    /*drag1.on('selfDown',fn1);
+    drag1.on('selfMove',fn2);
+    function fn1(){
+        console.log(1)
+    }
+    function fn2(){
+        console.log(2)
+    }*/
+</script>
+</body>
+</html>

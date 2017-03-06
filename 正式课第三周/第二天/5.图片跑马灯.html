@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+        .box{
+            width: 800px;
+            height: 200px;
+            border: 5px dashed lightgreen;
+            margin:50px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .box ul{
+            position: absolute;
+            left:0;
+            top:0;
+        }
+        .box li{
+            width: 200px;
+            height: 200px;
+            float: left;
+        }
+        .box li img{
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="box" class="box">
+    <ul>
+        <li><img src="img/1.jpg" alt=""></li>
+        <li><img src="img/2.jpg" alt=""></li>
+        <li><img src="img/3.jpg" alt=""></li>
+        <li><img src="img/4.jpg" alt=""></li>
+    </ul>
+</div>
+<script src="js/utils.js"></script>
+<script>
+    var oBox=document.getElementById('box');
+    var oUl=oBox.getElementsByTagName('ul')[0];
+    var aLi=oUl.getElementsByTagName('li');
+    var curLeft=utils.getCss(oUl,'left');
+    //1.把ul的内容重新copy一份；--问题：折行 因为ul的宽度
+    oUl.innerHTML+=oUl.innerHTML;
+    //oUl.style.width=aLi[0].offsetWidth*aLi.length+'px';
+    oUl.style.width=utils.getCss(aLi[0],'width')*aLi.length+'px';
+    var timer=setInterval(function(){
+        if(curLeft<=-utils.getCss(oUl,'width')/2){
+            curLeft=0;
+
+        }
+        curLeft-=6;
+        oUl.style.left=curLeft+'px';
+    },10);
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

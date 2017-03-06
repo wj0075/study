@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //boolean:true(真) false（假）
+//    var a = true;
+//    var a = 'true';
+
+    console.log(!1);  //false
+
+//    !取反，先转为布尔类型然后再取反
+//    0、NaN、''、null、undefined  只有这五个值转为布尔类型是false，其余都为true
+
+//    Boolean(要转换的内容)  将其他数据类型转为类型
+
+//    !! 先取反再取反 --》相当于直接转为布尔类型
+
+
+
+//    = 赋值操作   ==比较
+//    1==1
+//    'zfpx'=='zfpx'
+
+//    两个值的比较
+//    1）相同数据类型直接比较
+//      对象==对象  false
+
+//    2）不同数据类型:执行数据类型之间的转换
+//    1、对象==字符串 对象转为字符串(.toString()),然后字符串和字符串比较
+
+//    []=='';//true
+//    ([]).toString();  //""
+
+//    要转换的内容.toString()  将其他数据类型转为字符串
+
+//    2、对象==布尔  先将对象转为字符串再转为数字(Number())，布尔直接转为数字
+//    []==false   true
+
+    /*([]).toString() //''
+    Number('')   //0
+    Number(false)//0*/
+
+//    3、对象==数字  对象转为字符串再转为数字
+    [1]==1;
+
+//    4、布尔==字符串  布尔转为数字 字符串转为数字
+    true==''
+
+//    5、布尔==数字   布尔转为数字
+
+    false==0
+
+//    6、字符串==数字  字符串转为数字
+    ''==0
+
+//    ****对象先转为字符串 再转为数字****
+//    转为字符串   要转换的内容.toString()
+//    转为数字     Number(要转换的内容)
+
+//    7、null==undefined  true
+//    8、null或者undefined和其他任何类型比较 返回false
+    null==0
+
+
+//    ===严格比较  数据类型和值必须完全相同 返回true
+//    1=='1'   true
+//    1==='1'   false
+
+//    []==false   true
+//    ![]==false   true
+//    !![]==false   false
+
+
+    //    boolean:true false
+    //    !要转换的内容
+    //    !!要转换的内容
+    //    Boolean(要转换的内容)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

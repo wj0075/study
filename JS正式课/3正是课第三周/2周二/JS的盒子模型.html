@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            padding: 50px;
+        }
+        #div1{
+            width: 500px;
+            height: 500px;
+            border: 3px solid #000;
+            background: red;
+        }
+        #div2{
+            width: 300px;
+            height: 300px; margin-left: 50px;
+            margin-top: 50px;
+            border: 10px solid #000;
+            background: blue;
+        }
+        #div3{
+            width: 100px;
+            height: 100px;
+            margin-left: 50px;
+            margin-top: 50px;
+            border: 10px solid #000;
+            background: green;
+        }
+
+    </style>
+</head>
+<body>
+<div id="div1">
+    <div id="div2">
+        <div id="div3">
+
+        </div>
+    </div>
+</div>
+<script>
+    var oDiv1 = document.getElementById('div1');
+    console.dir(oDiv1);
+
+
+
+</script>
+</body>
+</html>

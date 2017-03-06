@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基础版拖拽</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div></div>
+<script src="../../utils.js"></script>
+<script src="../../event.js"></script>
+<script src="js/Drag.js"></script>
+<script>
+    var oDiv = document.getElementsByTagName('div')[0]
+    var drag = new Drag(oDiv);
+
+    /*drag.range({
+        left:0,
+        top:0,
+        right:400,
+        bottom:400
+    })*/
+    //drag.jump();
+
+
+
+</script>
+</body>
+</html>

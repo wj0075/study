@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function extend(obj2,obj1){
+        for(var attr in obj1){
+            obj2[attr]=obj1[attr];
+        }
+        return obj2;
+    };
+    function F(){
+        this.x=100;
+        this.y=200;
+        this.showX=function(){};
+        this.z='我是谁';
+    }
+    F.prototype.db=function(){};
+    var f1=new F();
+    function S(){
+        F.call(this);
+    }
+    extend(S.prototype, F.prototype);
+    var s=new S;
+    console.dir(s);
+
+
+</script>
+</body>
+</html>

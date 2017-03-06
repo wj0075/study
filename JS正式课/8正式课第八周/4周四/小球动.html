@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            margin: 50px auto;
+            background: -webkit-radial-gradient(circle,lime,lightcoral);
+            background: radial-gradient(circle,lime,lightcoral);
+            border-radius: 50%;
+            animation: move 4s ease 3  forwards;
+        }
+        @-webkit-keyframes move{
+            0%{
+                -webkit-transform: translate(50px,50px);
+                transform:  translate(50px,50px);
+            }
+            50%{
+                -webkit-transform: translate(200px,200px);
+                transform:  translate(200px,200px);
+            }
+            100%{
+                -webkit-transform: translate(300px,0px);
+                transform:  translate(300px,0px);
+            }
+        }
+        .box:hover{
+            animation-play-state: paused;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="box"></div>
+</body>
+</html>

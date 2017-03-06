@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var obj = {
+        name:'zfpx',
+//      属性名：属性值  （每组属性之间用逗号隔开）
+        age:8
+    }
+
+//    对象：由一组或多组属性名和属性值组成的   键值对 key:value
+    var student = {
+        name:'吕文启',
+        age:18,
+        add:'火星'
+    }
+
+//    1）创建一个对象
+    var a = {name:'zf'}//字面量创建方式
+    var a = new Object(); //实例创建方式
+
+//    2）增加一组属性名和属性值
+
+    a.name = '珠峰培训';
+    a['age'] = 8;
+    console.log(a);
+//    {name: "珠峰培训"}
+
+//    3）修改属性名对应的属性值
+//    对象中规定不能出现重复的属性名。如果之前有就是修改，如果之前没有就是增加
+    a.name = '珠峰';
+    a['name'] = 'zf'
+
+    console.log(a);
+//    {name: "zf", age: 8}
+
+//    4）删除
+//    1、假删除  直接赋值为null
+    a.name = null;
+    console.log(a);
+//    {name: null, age: 8}
+
+//    2、直接删除:直接删除一组属性
+//    delete a.name;
+    delete a['name']
+    console.log(a);
+
+    var b = {
+        name:'zf',
+        age:8,
+        1:2016
+    }
+
+//    10:110
+//    b.10 = 110;  错误的，不能用点的形式
+    b['10'] = 110;
+    b['10'] = 1101;
+
+//    如果属性名为数字 只能通过[]的形式
+
+
+    var ary = [1,2,3,4];
+    console.log(ary)
+
+//    索引：表示位置  索引是从0开始的，索引为0代表第一个值
+
+//    对象数据类型 object  实例
+    var a  = {name:'zfpx'};//{}对象
+    var b = [1,2,'zfpx','中文'];//[]数组
+    var r = /\d{11}/;//  正则
+
+
+//    对象、类、实例
+//    万物皆对象 类是对对象的具体的细分 实例是类中的具体的一个实例
+//    自然界中所有的东西都是对象， 类：植物类、动物类..  实例：一只小松鼠是动物类中的具体的实例
+
+    [1,2,3]
+    [1,2]
+    [1]
+    {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

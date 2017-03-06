@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--1、text-align：center
+让文字、行内元素、input、img水平居中
+    盒子的宽度>内容的宽度
+-->
+<style>
+    .outer{
+        height: 100px;
+        border: 1px solid red;
+        text-align: center;
+    }
+    .inner{
+        width: 100px;
+        height: 10px;
+        background: blue;
+    }
+</style>
+<div class="outer">
+    <div class="inner"></div>
+</div>
+
+<!--2、margin:0 auto
+    块级元素在父级元素中水平居中
+盒子一定要设置宽度
+-->
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .parent{
+        display: inline-block;
+        width: 100px;
+        height: 300px;
+        background: orange;
+        margin: 0 auto;
+    }
+</style>
+<span class="parent">123</span>
+
+<!--3、单行文字、行内元素、input垂直居中 line-height与height值设为相同值
+-->
+<style>
+    .text{
+        height: 100px;
+        line-height: 100px;
+        border: 1px solid red;
+    }
+</style>
+<div class="text">
+    <div style="width: 80px;height: 80px;background: blue"></div>
+</div>
+
+<!--4、绝对居中,垂直、水平方向居中-->
+<style>
+    .middle{
+        width: 400px;
+        height: 300px;
+        background: red;
+        /*position: absolute;
+        top:50%;
+        left:50%;
+        margin-left: -200px;
+        margin-top: -150px;*/
+        margin: auto;
+        position: absolute;
+        top:0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+    }
+</style>
+<div class="middle"></div>
+
+
+</body>
+</html>

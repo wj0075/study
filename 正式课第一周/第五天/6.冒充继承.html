@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //冒充继承：把父类私有+公有 都给了 子类私有的
+    function F(){//构造函数：里面放的都是私有的属性和方法；
+        this.x=100;
+        this.y=200;
+        this.showX=function(){};
+    }
+    F.prototype.aa=function(){};//原型：原型中放的都是公有的属性和方法；
+    var f=new F;
+    console.dir(f);
+
+    function S(){
+        //for in循环，只能遍历自定义的属性和方法；拿不到系统的属性和方法；
+        for(var attr in f){
+            this[attr]=f[attr];
+        }
+    }
+    var s=new S;
+    console.dir(s);
+</script>
+</body>
+</html>

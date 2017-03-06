@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var ary = [4,3,5,2,1];
+    var a = insertSort(ary);
+    console.log(a)
+    function insertSort(ary){
+//        左手中的牌
+        var left = [];
+        left.push(ary[0]);
+        for(var i=1;i<ary.length;i++){
+//            抓到的牌
+            var cur = ary[i];
+            for(var j=left.length-1;j>=0;j--){
+                if(cur<left[j]){
+//                  如果比左手中的第一张牌还要小
+                    if(j==0){
+                        left.unshift(cur);
+                    }
+                }else{
+//                    拿到的牌比left[j]大，把cur放到left[j]的后面，相当于放到left[j+1]的前面的位置
+//                    splice(n,0,x)  相当于在索引n前面增加一项
+                    left.splice(j+1,0,cur);
+//                    break;
+                    j=-1;
+                }
+            }
+        }
+        return left;
+
+
+    }
+
+
+
+
+
+</script>
+
+</body>
+</html>

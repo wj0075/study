@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            font-size: 40px;
+        }
+        textarea{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<textarea id="t1" cols="50" rows="30">
+DOM事件类型详解
+
+	一、表单事件：
+<div>input事件当&lt;input&gt;、&lt;textarea&gt;的值发生变化时触发。此外，打开contenteditable属性的元素，只要值发生变化，也会触发input事件。input事件的一个特点，就是会连续触发，比如用户每次按下一次按键，就会触发一次input事件。</div>
+    </div>
+    <div>
+<div>select事件当在&lt;input&gt;、&lt;textarea&gt;中选中文本时触发。</div>
+</div>
+<div>
+<div>Change事件当&lt;input&gt;、&lt;select&gt;、&lt;textarea&gt;的值发生变化时触发。它与input事件的最大不同，就是不会连续触发，只有当全部修改完成时才会触发，而且input事件必然会引发change事件。具体来说，分成以下几种情况。</div>
+</div>
+<blockquote>
+<div>
+<div>激活单选框（radio）或复选框（checkbox）时触发。</div>
+</div>
+</blockquote>
+<blockquote>
+<div>
+<div>用户提交时触发。比如，从下列列表（select）完成选择，在日期或文件输入框完成选择。</div>
+</div>
+</blockquote>
+<blockquote>
+<div>
+<div>当文本框或textarea元素的值发生改变，并且丧失焦点时触发。</div>
+</div>
+</blockquote>
+reset事件当表单重置（所有表单成员变回默认值）时由form元素触发。
+<div><span style="color: #262626;">submit事件当表单数据向服务器提交时</span>由form元素触发。</div>
+    </blockquote>
+    <div>
+<div>
+<div><span style="color: #ad5da1;">二、文档事件</span>：</div>
+</div>
+</div>
+<blockquote>
+<div>
+<div>
+<div><strong>以下事件与网页的加载与卸载相关</strong>：</div>
+</div>
+</div>
+<div><strong>beforeunload</strong>事件当窗口将要关闭，或者document和网页资源将要卸载时触发。它可以用来防止用户不当心关闭网页。该事件的默认动作就是关闭当前窗口或文档。如果在监听函数中，调用了event.preventDefault()，或者对事件对象的returnValue属性赋予一个非空的值，就会自动跳出一个确认框，让用户确认是否关闭网页。如果用户点击“取消”按钮，网页就不会关闭。监听函数所返回的字符串，会显示在确认对话框之中</div>
+</blockquote>
+<blockquote>
+<blockquote>
+<div>window.addEventListener('beforeunload', function( event ) {</div>
+</blockquote>
+<blockquote>
+<div>&nbsp; event.returnValue = '你确认要离开吗？';//或event.preventDefault();</div>
+</blockquote>
+<blockquote>
+<div>});</div>
+</blockquote>
+<strong>unload</strong>事件在窗口关闭或者document对象将要卸载时触发，发生在window、body、frameset等对象上面。它的触发顺序排在beforeunload、pagehide事件后面。unload事件只在页面没有被浏览器缓存时才会触发，换言之，如果通过按下“前进/后退”导致页面卸载，并不会触发unload事件。当unload事件发生时，document对象处于一个特殊状态。所有资源依然存在，但是对用户来说都不可见，UI互动（window.open、alert、confirm方法等）全部无效。这时即使抛出错误，也不能停止文档的卸载。</blockquote>
+<blockquote><strong>load</strong>事件在页面加载成功时触发，error事件在页面加载失败时触发。注意，页面从浏览器缓存加载，并不会触发load事件。这两个事件实际上属于进度事件，不仅发生在document对象，还发生在各种外部资源上面。浏览网页就是一个加载各种资源的过程，图像（image）、样式表（style sheet）、脚本（script）、视频（video）、音频（audio）、Ajax请求（XMLHttpRequest）等等。这些资源和document对象、window对象、XMLHttpRequestUpload对象，都会触发load事件和error事件。</blockquote>
+<blockquote>pageshow事件，pagehide事件：默认情况下，浏览器会在当前会话（session）缓存页面，当用户点击“前进/后退”按钮时，浏览器就会从缓存中加载页面。</blockquote>
+<blockquote><strong>pageshow</strong>事件在页面加载时触发，包括第一次加载和从缓存加载两种情况。如果要指定页面每次加载（不管是不是从浏览器缓存）时都运行的代码，可以放在这个事件的监听函数。第一次加载时，它的触发顺序排在load事件后面。从缓存加载时，load事件不会触发，因为网页在缓存中的样子通常是load事件的监听函数运行后的样子，所以不必重复执行。同理，如果是从缓存中加载页面，网页内初始化的JavaScript脚本（比如DOMContentLoaded事件的监听函数）也不会执行。pageshow事件有一个persisted属性，返回一个布尔值。页面第一次加载时，这个属性是false；当页面从缓存加载时，这个属性是true。if (event.persisted){...}</blockquote>
+<blockquote><strong>pagehide</strong>事件与pageshow事件类似，当用户通过“前进/后退”按钮，离开当前页面时触发。它与unload事件的区别在于，如果在window对象上定义unload事件的监听函数之后，页面不会保存在缓存中，而使用pagehide事件，页面会保存在缓存中。pagehide事件的event对象有一个persisted属性，将这个属性设为true，就表示页面要保存在缓存中；设为false，表示网页不保存在缓存中，这时如果设置了unload事件的监听函数，该函数将在pagehide事件后立即运行。如果页面包含frame或iframe元素，则frame页面的pageshow事件和pagehide事件，都会在主页面之前触发。</blockquote>
+<blockquote><strong>以下事件与文档状态相关:</strong></blockquote>
+<blockquote><strong>DOMContentLoaded</strong>事件当HTML文档下载并解析完成以后，就会在document对象上触发DOMContentLoaded事件。这时，仅仅完成了HTML文档的解析（整张页面的DOM生成），所有外部资源（样式表、脚本、iframe等等）可能还没有下载结束。也就是说，这个事件比load事件，发生时间早得多。注意，<span style="color: #e60013;">网页的JavaScript脚本是同步执行的，所以定义DOMContentLoaded事件的监听函数，应该放在所有脚本的最前面。否则脚本一旦发生堵塞，将推迟触发DOMContentLoaded事件。IE8不支持</span>DOMContentLoaded，可以使用readystatechange事件，在低版本的IE中代替DOMContentLoaded事件。</blockquote>
+<blockquote><span style="color: #262626;"><strong>readystatechange</strong>事件发生在Document对象和XMLHttpRequest对象，当它们的readyState属性发生变化时触发。</span></blockquote>
+<blockquote><span style="color: #262626;"><strong>以下事件与窗口行为有关：</strong></span></blockquote>
+<blockquote><span style="color: #262626;">scroll事件在文档或文档元素滚动时触发，主要出现在用户拖动滚动条。由于该事件会连续地大量触发，所以它的监听函数之中不应该有非常耗费计算的操作。推荐的做法是使用requestAnimationFrame或setTimeout或使用自定义的</span>throttle函数(节流函数)控制该事件的触发频率，然后可以结合customEvent抛出一个新事件（CustomEvent(type,eventInit) 创建一个自定义事件）</blockquote>
+<blockquote><span style="color: #262626;">resize事件在改变浏览器窗口大小时触发，发生在window、body、frameset对象上面。该事件也会连续地大量触发，所以最好像上面的scroll事件一样，通过throttle函数控制事件触发频率</span></blockquote>
+<blockquote><span style="color: #262626;"><strong>以下事件与文档的URL变化相关：</strong></span></blockquote>
+<blockquote><span style="color: #262626;">hashchange事件在URL的hash部分（即#号后面的部分，包括#号）发生变化时触发。如果老式浏览器不支持该属性，可以通过定期检查location.hash属性，模拟该事件，hashchange事件对象除了继承Event对象，还有oldURL属性和newURL属性，分别表示变化前后的URL</span></blockquote>
+<blockquote><span style="color: #262626;">popstate事件在浏览器的history对象的当前记录发生显式切换时触发。注意，调用history.pushState()或history.replaceState()，并不会触发popstate事件。该事件只在用户在history记录之间显式切换时触发，比如鼠标点击“后退/前进”按钮，或者在脚本中调用history.back()、history.forward()、history.go()时触发。</span>该事件对象有一个state属性，保存history.pushState方法和history.replaceState方法为当前记录添加的state对象。</blockquote>
+<blockquote><span style="color: #262626;"><strong>以下三个事件属于文本操作触发的事件</strong></span></blockquote>
+<blockquote><span style="color: #262626;">cut事件：在将选中的内容从文档中移除，加入剪贴板后触发。</span></blockquote>
+<blockquote>copy事件：在选中的内容加入剪贴板后触发。</blockquote>
+<blockquote>paste事件：在剪贴板内容被粘贴到文档后触发。</blockquote>
+<blockquote>这三个事件都有一个clipboardData只读属性。该属性存放剪贴的数据，是一个DataTransfer对象，具体的API接口和操作方法，请参见‘触摸事件’的DataTransfer对象</blockquote>
+<blockquote><span style="color: #262626;"><strong>焦点事件：</strong></span></blockquote>
+<blockquote><span style="color: #262626;">发生在Element节点和document对象上面，与获得或失去焦点相关。它主要包括以下四个事件。</span></blockquote>
+<blockquote><span style="color: #262626;">focus事件：Element节点获得焦点后触发，该事件不会冒泡。</span></blockquote>
+<blockquote><span style="color: #262626;">blur事件：Element节点失去焦点后触发，该事件不会冒泡。</span></blockquote>
+<blockquote><span style="color: #262626;">focusin事件：Element节点将要获得焦点时触发，发生在focus事件之前。该事件会冒泡。Firefox不支持该事件。</span></blockquote>
+<blockquote><span style="color: #262626;">focusout事件：Element节点将要失去焦点时触发，发生在blur事件之前。该事件会冒泡。Firefox不支持该事件。</span></blockquote>
+<blockquote><span style="color: #262626;">这四个事件的事件对象，带有target属性（返回事件的目标节点）和relatedTarget属性（返回一个Element节点）。对于focusin事件，relatedTarget属性表示失去焦点的节点；对于focusout事件，表示将要接受焦点的节点；对于focus和blur事件，该属性返回null。</span></blockquote>
+<blockquote><span style="color: #262626;">由于focus和blur事件不会冒泡，只能在捕获阶段触发，所以addEventListener方法的第三个参数需要设为true。</span></blockquote>
+<div>
+<div>
+<div><span style="color: #ad5da1;">三、鼠标事件MouseEvent对象</span>：</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; 构造函数new MouseEvent(typeArg, mouseEventInit);内置的鼠标事件mousedown mouseup click dblclick，mousemove mouseover mouseout，mouseenter mouseleave，contextmenu，wheel</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; altKey，ctrlKey，metaKey，shiftKey属性返回一个布尔值，表示鼠标事件发生时，是否按下某个键；</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; button返回事件的鼠标键信息（值为-1，0，1，2之一，可通过switch来选择执行分之）；</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; buttons属性返回一个3个比特位的值，表示同时按下了哪些键</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; clientX，clientY返回鼠标位置相对于浏览器窗口左上角的坐标，单位为像素</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; screenX，screenY返回鼠标位置相对于屏幕左上角的坐标，单位为像素</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; movementX，movementY返回一个位移，单位为像素，表示当前位置与上一个mousemove事件之间的距离，在数值上，等于currentEvent.movementX = currentEvent.screenX - previousEvent.screenX</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; relatedTarget属性返回事件的次要相关节点，即和target属性对应的节点，如：mouseout target指将要离开的节点，relatedTarget指将要进入的节点。对于那些没有次要相关节点的事件，该属性返回null</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #ad5da1;">&nbsp;wheel事件</span>是与鼠标滚轮相关的事件，浏览器提供一个WheelEvent构造函数new WheelEvent(typeArg, mouseEventInit)，deltaX：返回一个数值，表示滚轮的水平滚动量。deltaY：返回一个数值，表示滚轮的垂直滚动量。deltaZ：返回一个数值，表示滚轮的Z轴滚动量。deltaMode：返回一个数值，表示滚动的单位，适用于上面三个属性。0表示像素，1表示行，2表示页。</div>
+<div><span style="color: #ad5da1;">四、键盘事件KeyboardEvent对象</span>：</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; 构造函数new KeyboardEvent(typeArg, KeyboardEventInit)，内置事件keydown：按下键盘时触发该事件。keypress：只要按下的键并非Ctrl、Alt、Shift和Meta，就接着触发keypress事件。keyup：松开键盘时触发该事件；</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; altKey，ctrlKey，metaKey，shiftKey返回一个布尔值，表示是否按下对应的键</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; key属性返回一个字符串，表示按下的键名。如果同时按下一个控制键和一个符号键，则返回符号键的键名。比如，按下Ctrl+a，则返回a。如果无法识别键名，则返回字符串Unidentified</div>
+<div><span style="color: #ad5da1;">五、进度事件ProgressEvent对象</span>：</div>
+<div>
+<div><span style="color: #ad5da1;">&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span>构造函数<span style="color: #262626;">new ProgressEvent(type, {lengthComputable: aBooleanValue,&nbsp;loaded: aNumber,total: aNumber})默认值分别为false，0，0，</span>进度事件用来描述一个事件进展的过程，比如XMLHttpRequest对象发出的HTTP请求的过程、&lt;img&gt;、&lt;audio&gt;、&lt;video&gt;、&lt;style&gt;、&lt;link&gt;加载外部资源的过程。下载和上传都会发生进度事件。</div>
+</div>
+</div>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span style="color: #262626;">lengthComputable：返回一个布尔值，表示当前进度是否具有可计算的长度。如果为false，就表示当前进度无法测量。<br></span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; total：返回一个数值，表示当前进度的总长度。如果是通过HTTP下载某个资源，表示内容本身的长度，不含HTTP头部的长度。如果lengthComputable属性为false，则total属性就无法取得正确的值。<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; loaded：返回一个数值，表示当前进度已经完成的数量。该属性除以total属性，就可以得到目前进度的百分比。if (e.lengthComputable) {var percentComplete = e.loaded / e.total;&nbsp;}<br>&nbsp; &nbsp; &nbsp; &nbsp; 包含以下事件：
+<div>&nbsp;</div>
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; abort事件：当进度事件被中止时触发。如果发生错误，导致进程中止，不会触发该事件。
+<div>&nbsp;</div>
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; error事件：由于错误导致资源无法加载时触发，不会冒泡。error事件的监听函数最好放在如img元素的HTML属性中，这样才能保证发生加载错误时百分之百会执行。
+<div>&nbsp;</div>
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; load事件：进度成功结束时触发。
+<div>&nbsp;</div>
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; loadstart事件：进度开始时触发。
+<div>&nbsp;</div>
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; loadend事件：进度停止时触发，发生顺序排在error事件\abort事件\load事件后面。loadend事件的监听函数可以用来取代abort事件/load事件/error事件的监听函数，loadend事件本身不提供关于进度结束的原因，但可以用它来做所有进度结束场景都需要做的一些操作。
+<div>&nbsp;</div>
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; progress事件：当操作处于进度之中，由传输的数据块不断触发。
+<div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; timeout事件：进度超过限时触发</div>
+
+</div>
+<div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+<div><span style="color: #ad5da1;">六、拖拉事件DragEvent对象</span>：</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; 拖拉指的是，用户在某个对象上按下鼠标键不放，拖动它到另一个位置，然后释放鼠标键，将该对象放在那里。拖拉的对象有好几种，包括Element节点、图片、链接、选中的文字等等。在HTML网页中，除了Element节点默认不可以拖拉，其他（图片、链接、选中的文字）都是可以直接拖拉的。为了让Element节点可拖拉，可以将该节点的draggable属性设为true。draggable属性可用于任何Element节点，但是图片（img元素）和链接（a元素）不加这个属性，就可以拖拉。对于它们，用到这个属性的时候，往往是将其设为false，防止拖拉。注意，一旦某个Element节点的draggable属性设为true，就无法再用鼠标选中该节点内部的文字或子节点了。</div>
+
+</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>当Element节点或选中的文本被拖拉时，就会持续触发拖拉事件，包括以下一些事件</strong>：</div>
+<blockquote>
+<div>drag事件：拖拉过程中，在被拖拉的节点上持续触发。</div>
+<div>dragstart事件：拖拉开始时在被拖拉的节点上触发，该事件的target属性是被拖拉的节点。通常应该在这个事件的监听函数中，指定拖拉的数据。</div>
+<div>dragend事件：拖拉结束时（释放鼠标键或按下escape键）在被拖拉的节点上触发，该事件的target属性是被拖拉的节点。它与dragStart事件，在同一个节点上触发。不管拖拉是否跨窗口，或者中途被取消，dragend事件总是会触发的。</div>
+<div>dragenter事件：拖拉进入当前节点时，在当前节点上触发，该事件的target属性是当前节点。通常应该在这个事件的监听函数中，指定是否允许在当前节点放下（drop）拖拉的数据。如果当前节点没有该事件的监听函数，或者监听函数不执行任何操作，就意味着不允许在当前节点放下数据。在视觉上显示拖拉进入当前节点，也是在这个事件的监听函数中设置。</div>
+<div>dragover事件：拖拉到当前节点上方时，在当前节点上持续触发，该事件的target属性是当前节点。该事件与dragenter事件基本类似，默认会重置当前的拖拉事件的效果（DataTransfer对象的dropEffect属性）为none，即不允许放下被拖拉的节点，所以如果允许在当前节点drop数据，通常会使用preventDefault方法，取消重置拖拉效果为none。</div>
+<div>dragleave事件：拖拉离开当前节点范围时，在当前节点上触发，该事件的target属性是当前节点。在视觉上显示拖拉离开当前节点，就在这个事件的监听函数中设置。</div>
+<div>drop事件：被拖拉的节点或选中的文本，释放到目标节点时，在目标节点上触发。注意，如果当前节点不允许drop，即使在该节点上方松开鼠标键，也不会触发该事件。如果用户按下Escape键，取消这个操作，也不会触发该事件。该事件的监听函数负责取出拖拉数据，并进行相关处理。</div>
+
+</blockquote>
+
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>关于拖拉事件，有以下几点注意事项</strong>：
+<blockquote>
+<div>1.拖拉过程只触发以上这些拖拉事件，尽管鼠标在移动，但是鼠标事件不会触发。</div>
+<div>2.将文件从操作系统拖拉进浏览器，不会触发dragStart和dragend事件。</div>
+<div>3.dragenter和dragover事件的监听函数，用来指定可以放下（drop）拖拉的数据。由于网页的大部分区域不适合作为drop的目标节点，所以这两个事件的默认设置为当前节点不允许drop。如果想要在目标节点上drop拖拉的数据，首先必须阻止这两个事件的默认行为，或者取消这两个事件。&lt;div ondragover="return false"&gt;或&lt;div ondragover="event.preventDefault()"&gt;</div>
+
+</blockquote>
+
+&nbsp; &nbsp; &nbsp; &nbsp; 拖拉事件用一个DragEvent对象表示，该对象继承MouseEvent对象，DragEvent对象只有一个独有的属性DataTransfer，其他都是继承的属性。DataTransfer属性用来读写拖拉事件中传输的数据，所有的拖拉事件都有一个dataTransfer属性，用来保存需要传递的数据，这个属性的值是一个DataTransfer对象。拖拉的数据保存两方面的数据：数据的种类（又称格式）和数据的值。数据的种类是一个MIME字符串，比如 text/plain或者image/jpeg，数据的值是一个字符串;
+<div>&nbsp; &nbsp; &nbsp; &nbsp;<strong>&nbsp;DataTransfer对象的属性</strong>：</div>
+<blockquote>
+<blockquote>
+<div>dropEffect属性设置放下（drop）被拖拉节点时的效果，可能的值包括copy（复制被拖拉的节点）、move（移动被拖拉的节点）、link（创建指向被拖拉的节点的链接）、none（无法放下被拖拉的节点）。设置除此以外的值，都是无效的。</div>
+
+</blockquote>
+<blockquote>
+<div>effectAllowed属性设置本次拖拉中允许的效果，可能的值包括copy、move、link、copyLink、copyMove、linkMove、all、none、uninitialized（默认值，等同于all）。如果某种效果是不允许的，用户就无法在目标节点中达成这种效果。</div>
+
+</blockquote>
+<blockquote>
+<div>files属性是一个FileList对象，包含一组本地文件，可以用来在拖拉操作中传送。如果本次拖拉不涉及文件，则属性为空的FileList对象。通过files属性读取拖拉文件的信息。如果想要读取文件内容，就要使用<strong>FileReader</strong>对象。</div>
+
+</blockquote>
+<blockquote>
+<div>types属性是一个数组，保存每一次拖拉的数据格式，如‘text/uri-list’</div>
+
+</blockquote>
+
+</blockquote>
+<div>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>DataTransfer对象的方法：</strong></div>
+<blockquote>
+<blockquote>
+<div>setData方法用来设置事件所带有的指定类型的数据。它接受两个参数，第一个是数据类型，第二个是具体数据。如果指定的类型在现有数据中不存在，则该类型将写入types属性；如果已经存在，在该类型的现有数据将被替换。</div>
+
+</blockquote>
+<blockquote>
+<div>event.dataTransfer.setData("text/plain", "Text to drag");</div>
+
+</blockquote>
+<blockquote>
+<div>getData方法接受一个字符串（表示数据类型）作为参数，返回事件所带的指定类型的数据（通常是用setData方法添加的数据）。如果指定类型的数据不存在，则返回空字符串。</div>
+
+</blockquote>
+<blockquote>
+<div>event.dataTransfer.getData(types[0]);</div>
+
+</blockquote>
+<blockquote>
+<div>clearData方法接受一个字符串（表示数据类型）作为参数，删除事件所带的指定类型的数据。如果没有指定类型，则删除所有数据。如果指定类型不存在，则原数据不受影响。</div>
+
+</blockquote>
+<blockquote>
+<div>event.dataTransfer.clearData("text/uri-list");</div>
+
+</blockquote>
+<blockquote>
+<div>setDragImage可以用来自定义这张图片，它接受三个参数，第一个是img图片元素或者canvas元素，如果省略或为null则使用被拖动的节点的外观，第二个和第三个参数为鼠标相对于该图片左上角的横坐标和右坐标。</div>
+
+</blockquote>
+<blockquote>
+<div>event.dataTransfer.setDragImage(img, 0, 0);</div>
+
+</blockquote>
+
+</blockquote>
+<div><br>
+<div><span style="color: #ad5da1;"><strong>七、触摸事件</strong></span>：触摸API由三个对象组成。每 个 Touch 对象代表一个触点; 每个触点都由其位置，大小，形状，压力大小，和目标 element 描述。 TouchList 对象代表多个触点的一个列表。</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>Touch对象：</strong>代表一个触摸点。触摸点可能是一根手指，也可能是一根触摸笔。它有以下属性</div>
+
+</div>
+<blockquote>
+<blockquote>
+<div>
+<div>identifier属性表示Touch实例的独一无二的识别符。它在整个触摸过程中保持不变。var id = touchItem.identifier;</div>
+
+</div>
+
+</blockquote>
+<blockquote>
+<div>
+<div>screenX属性和screenY属性，分别表示触摸点相对于屏幕左上角的横坐标和纵坐标，与页面是否滚动无关；</div>
+
+</div>
+
+</blockquote>
+<blockquote>
+<div>
+<div>clientX属性和clientY属性，分别表示触摸点相对于浏览器视口左上角的横坐标和纵坐标，与页面是否滚动无关</div>
+
+</div>
+
+</blockquote>
+<blockquote>
+<div>
+<div>pageX属性和pageY属性，分别表示触摸点相对于当前页面左上角的横坐标和纵坐标，包含了页面滚动带来的位移</div>
+
+</div>
+<div>radiusX属性和radiusY属性，分别返回触摸点周围受到影响的椭圆范围的X轴和Y轴，单位为像素。</div>
+<div>rotationAngle属性表示触摸区域的椭圆的旋转角度，单位为度数，在0到90度之间。指尖接触屏幕，触摸范围会形成一个椭圆，这三个属性就用来描述这个椭圆区域。</div>
+<div>force属性返回一个0到1之间的数值，表示触摸压力。0代表没有压力，1代表硬件所能识别的最大压力。</div>
+<div>target属性返回一个Element节点，代表触摸发生的那个节点。当这个触点最开始被跟踪时(在 touchstart 事件中), 触点位于的HTML元素. 哪怕在触点移动过程中, 触点的位置已经离开了这个元素的有效交互区域, 或者这个元素已经被从文档中移除. 需要注意的是, 如果这个元素在触摸过程中被移除, 这个事件仍然会指向它, 但是不会再冒泡这个事件到 window 或 document 对象. 因此, 如果有元素在触摸过程中可能被移除, 最佳实践是将触摸事件的监听器绑定到这个元素本身, 防止元素被移除后, 无法再从它的上一级元素上侦测到从该元素冒泡的事件. 只读属性.</div>
+
+</blockquote>
+
+</blockquote>
+<div>
+<div><strong>&nbsp; &nbsp; &nbsp; &nbsp; TouchList对象：</strong>是一个类似数组的对象，成员是与某个触摸事件相关的所有触摸点。比如，用户用三根手指触摸，产生的TouchList对象就有三个成员，每根手指对应一个Touch对象。TouchList实例的length属性，返回TouchList对象的成员数量。TouchList实例的identifiedTouch方法和item方法，分别使用id属性和索引值（从0开始）作为参数，取出指定的Touch对象。</div>
+<div><strong>&nbsp; &nbsp; &nbsp; &nbsp; TouchEvent对象：</strong>表示触摸引发的事件。除了被继承的属性以外，它还有一些自己的属性。</div>
+
+</div>
+<blockquote>
+<blockquote>
+<div>
+<div>键盘相关属性altKey、ctrlKey、metaKey、shiftKey都为只读属性，返回一个布尔值，表示触摸的同时，是否按下某个键</div>
+
+</div>
+
+</blockquote>
+<blockquote>
+<div>
+<div><strong>changedTouches</strong>属性返回一个TouchList对象，包含了由当前触摸事件引发的所有Touch对象（即相关的触摸点）。它包含了代表所有从上一次触摸事件到此次事件过程中，状态发生了改变的触点的 Touch 对象。只读属性。</div>
+
+</div>
+
+</blockquote>
+<blockquote>
+<div>
+<div><strong>targetTouches</strong>属性返回一个TouchList对象，包含了触摸的目标Element节点内部，所有仍然处于活动状态的触摸点。</div>
+
+</div>
+
+</blockquote>
+<blockquote>
+<div>
+<div><strong>touches</strong>属性返回一个TouchList对象，包含了所有当前接触触摸平面的触点的 Touch 对象，无论它们的起始于哪个 element 上，也无论它们状态是否发生了变化。只读属性</div>
+
+</div>
+<div><strong>type</strong>属性指此次触摸事件的类型。</div>
+<div><strong>target属性</strong>此次触摸事件的目标 element 。这个目标元素对应 TouchEvent.changedTouches 中的触点的起始元素（在之后的事件类型中有说明），但是请注意：此次事件中其他的触点的起始元素可能有所不同。以防万一，应使用和每一个单独触点相关联的目标 。</div>
+
+</blockquote>
+
+</blockquote>
+<div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>通过TouchEvent.type属性可以查看触摸事件的种类</strong>：</div>
+
+</div>
+<blockquote>
+<blockquote>
+<div>
+<div>touchstart：用户接触触摸屏时触发，它的target属性返回发生触摸的Element节点。</div>
+
+</div>
+
+</blockquote>
+<blockquote>
+<div>
+<div>touchend：用户不再接触触摸屏时（或者移出屏幕边缘时）触发，它的target属性与touchstart事件的target属性是一致的，它的changedTouches属性返回一个TouchList对象，包含所有不再触摸的触摸点（Touch对象）。</div>
+
+</div>
+
+</blockquote>
+<blockquote>
+<div>
+<div>touchmove：用户移动触摸点时触发，它的target属性与touchstart事件的target属性一致。如果触摸的半径、角度、力度发生变化，也会触发该事件。</div>
+
+</div>
+<div>touchenter当触点进入某个 element 时触发。此事件没有冒泡过程。</div>
+<div>touchleave当触点离开某个 element 时触发。此事件没有冒泡过程。</div>
+
+</blockquote>
+<blockquote>
+<div>
+<div>touchcancel：当触点由于某些原因被中断时触发。有几种可能的原因如下（具体的原因根据不同的设备和浏览器有所不同）：1.由于某个事件取消了触摸：例如触摸过程被一个模态的弹出框打断。2.触点离开了文档窗口，而进入了浏览器的界面元素、插件或者其他外部内容区域。3.当用户产生的触点个数超过了设备支持的个数，从而导致 TouchList 中最早的 Touch 对象被取消。</div>
+
+</div>
+
+</blockquote>
+
+</blockquote>
+
+</div>
+<blockquote>
+<div>function handleMove(evt) {</div>
+<div>&nbsp; evt.preventDefault(); // 阻止浏览器继续处理触摸事件，也阻止发出鼠标事件</div>
+<div>&nbsp; var touches = evt.changedTouches;</div>
+<div>&nbsp; for (var i = 0; i &lt; touches.length; i++) {</div>
+<div>&nbsp; &nbsp; var id = touches[i].identifier;</div>
+<div>&nbsp; &nbsp; var touch = touches.identifiedTouch(id);</div>
+<div>&nbsp; &nbsp; console.log(touch.pageX, touch.pageY);</div>
+<div>&nbsp; }</div>
+<div>
+<div>
+<div>}</div>
+
+</div>
+
+</div>
+
+</blockquote>
+<div>
+<div>
+<div><span style="color: #ad5da1;"><strong>八、自定义事件和事件模拟</strong></span></div>
+
+</div>
+
+</div>
+<div><span style="color: #262626;">用户可以自定义事件，然后手动触发：</span></div>
+<blockquote>
+<div><span style="color: #262626;">var event = new Event('build');</span></div>
+<div><span style="color: #262626;">elem.addEventListener('build', function (e) { ... }, false);</span></div>
+<div><span style="color: #262626;">elem.dispatchEvent(event);</span></div>
+
+</blockquote>
+<div>Event构造函数只能指定事件名，不能在事件上绑定数据。如果需要在触发事件的同时，传入指定的数据，需要使用CustomEvent构造函数生成自定义的事件对象。</div>
+<blockquote>
+<div><span style="color: #262626;">var myEvent = new CustomEvent("myevent", {</span></div>
+<div><span style="color: #262626;">&nbsp; detail: {</span></div>
+<div><span style="color: #262626;">&nbsp; &nbsp; foo: "bar"</span></div>
+<div><span style="color: #262626;">&nbsp; },</span></div>
+<div><span style="color: #262626;">&nbsp; bubbles: true,</span></div>
+<div><span style="color: #262626;">&nbsp; cancelable: false</span></div>
+<div><span style="color: #262626;">});</span></div>
+<div><span style="color: #262626;">el.addEventListener('myevent', function(event) {</span></div>
+<div><span style="color: #262626;">&nbsp; console.log('Hello ' + event.detail.foo);</span></div>
+<div><span style="color: #262626;">});</span></div>
+<div><span style="color: #262626;">el.dispatchEvent(myEvent);</span></div>
+
+</blockquote>
+<div><span style="color: #262626;">IE不支持以上方法，可以用下面的垫片函数模拟：</span></div>
+<blockquote>
+<div><span style="color: #262626;">(function () {</span></div>
+<div><span style="color: #262626;">&nbsp; function CustomEvent ( event, params ) {</span></div>
+<div><span style="color: #262626;">&nbsp; &nbsp; params = params || { bubbles: false, cancelable: false, detail: undefined };</span></div>
+<div><span style="color: #262626;">&nbsp; &nbsp; var evt = document.createEvent( 'CustomEvent' );</span></div>
+<div><span style="color: #262626;">&nbsp; &nbsp; evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );</span></div>
+<div><span style="color: #262626;">&nbsp; &nbsp; return evt;</span></div>
+<div><span style="color: #262626;">&nbsp; &nbsp;}</span></div>
+<div><span style="color: #262626;">&nbsp; CustomEvent.prototype = window.Event.prototype;</span></div>
+<div><span style="color: #262626;">&nbsp; window.CustomEvent = CustomEvent;</span></div>
+<div><span style="color: #262626;">})();</span></div>
+
+</blockquote>
+<div><span style="color: #ad5da1;">事件的模拟：</span></div>
+<div><span style="color: #262626;">有时，需要在脚本中模拟触发某种类型的事件，这时就必须使用这种事件的构造函数。</span>下面是一个通过MouseEvent构造函数，模拟触发click鼠标事件的例子。</div>
+<blockquote>
+<div><span style="color: #262626;">function simulateClick() {</span></div>
+<div><span style="color: #262626;">&nbsp; var event = new MouseEvent('click', {</span></div>
+<div><span style="color: #262626;">&nbsp; &nbsp; 'bubbles': true,</span></div>
+<div><span style="color: #262626;">&nbsp; &nbsp; 'cancelable': true</span></div>
+<div><span style="color: #262626;">&nbsp; });</span></div>
+<div><span style="color: #262626;">&nbsp; var cb = document.getElementById('checkbox');</span></div>
+<div><span style="color: #262626;">&nbsp; cb.dispatchEvent(event);</span></div>
+<div><span style="color: #262626;">}</span></div>
+
+</blockquote>
+<div><span style="color: #262626;"><strong>自定义事件的老式写法</strong></span></div>
+<div><span style="color: #262626;">document.createEvent方法用来新建指定类型的事件。它所生成的Event实例，可以传入dispatchEvent方法。createEvent方法接受一个字符串作为参数，可能的值参见下表“数据类型”一栏。使用了某一种“事件类型”，就必须使用对应的事件初始化方法。如：initUIEvent、initMouseEvent、initMutationEvent、initEvent、initCustomEvent、initKeyEvent</span></div>
+<div><span style="color: #262626;">事件对象的initEvent方法，用来初始化事件对象，还能向事件对象添加属性。该方法的参数必须是一个使用Document.createEvent()生成的Event实例，而且必须在dispatchEvent方法之前调用。</span></div>
+<blockquote>
+<div><span style="color: #262626;">var event = document.createEvent('Event');</span></div>
+<div><span style="color: #262626;">event.initEvent('my-custom-event', true, true, {foo:'bar'});</span></div>
+<div><span style="color: #262626;">someElement.dispatchEvent(event);</span></div>
+
+</blockquote>
+<div><strong>事件模拟的老式写法</strong></div>
+<div><span style="color: #262626;">事件模拟的非标准做法是，对document.createEvent方法生成的事件对象，使用对应的事件初始化方法进行初始化。比如，click事件对象属于MouseEvent对象，也属于UIEvent对象，因此要用initMouseEvent方法或initUIEvent方法进行初始化，如模拟鼠标事件：</span></div>
+<div><span style="color: #262626;">initMouseEvent方法用来初始化Document.createEvent方法新建的鼠标事件。该方法必须在事件新建（document.createEvent方法）之后、触发（dispatchEvent方法）之前调用。</span>initMouseEvent方法有很长的参数。</div>
+<blockquote>
+<div><span style="color: #262626;">event.initMouseEvent(type, canBubble, cancelable, view,</span></div>
+<div><span style="color: #262626;">&nbsp; detail, screenX, screenY, clientX, clientY,</span></div>
+<div><span style="color: #262626;">&nbsp; ctrlKey, altKey, shiftKey, metaKey,</span></div>
+<div><span style="color: #262626;">&nbsp; button, relatedTarget</span></div>
+<div><span style="color: #262626;">);</span></div>
+
+</blockquote>
+<div><span style="color: #262626;">上面这些参数的含义，参见MouseEvent构造函数的部分。</span></div>
+<div><span style="color: #262626;">模仿并触发click事件的写法如下。</span></div>
+<blockquote>
+<div><span style="color: #262626;">var simulateDivClick = document.createEvent('MouseEvents');</span></div>
+<div><span style="color: #262626;">simulateDivClick.initMouseEvent('click',true,true,</span></div>
+<div><span style="color: #262626;">&nbsp; document.defaultView,0,0,0,0,0,false,</span></div>
+<div><span style="color: #262626;">&nbsp; false,false,0,null,null</span></div>
+<div><span style="color: #262626;">);</span></div>
+<div><span style="color: #262626;">divElement.dispatchEvent(simulateDivClick);</span></div>
+
+</blockquote></div><div id="MySignature" style="display: block;"><strong>读完觉得学到点什么，就（ 顶一个！）</strong></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/susufufu/category/859061.html" target="_blank">客户端JavaScript</a></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/susufufu/tag/DOM/">DOM</a>, <a href="http://www.cnblogs.com/susufufu/tag/%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B/">事件类型</a></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(5768441,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow('c96034d4-76a2-e511-9fc1-ac853d9f53cc');" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="//common.cnblogs.com/images/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="//common.cnblogs.com/images/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/susufufu/" target="_blank"><img src="//pic.cnblogs.com/face/857174/20161211221119.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/susufufu/">SuriFuture</a><br>
+            <a href="http://home.cnblogs.com/u/susufufu/followees">关注 - 33</a><br>
+            <a href="http://home.cnblogs.com/u/susufufu/followers">粉丝 - 42</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow('c96034d4-76a2-e511-9fc1-ac853d9f53cc');return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(5768441,'Digg')">
+        <span class="diggnum" id="digg_count">2</span>
+    </div>
+    <div class="buryit" onclick="votePost(5768441,'Bury')">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/susufufu/p/5768431.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/susufufu/p/5768431.html" title="发布于2016-08-13 17:29">DOM中的事件处理概览与原理的全面剖析</a><br><a href="http://www.cnblogs.com/susufufu/p/5772523.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/susufufu/p/5772523.html" title="发布于2016-08-15 12:48">JavaScript实战-菜单特效</a><br></div>
+</div>
+
+
+		<p class="postfoot">
+			posted on <span id="post-date">2016-08-13 17:33</span> <a href="http://www.cnblogs.com/susufufu/">SuriFuture</a> 阅读(<span id="post_view_count">495</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=5768441" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(5768441);return false;">收藏</a>
+		</p>
+    </div>
+    <script type="text/javascript">var allowComments=true,cb_blogId=259152,cb_entryId=5768441,cb_blogApp=currentBlogApp,cb_blogUserGuid='c96034d4-76a2-e511-9fc1-ac853d9f53cc',cb_entryCreatedDate='2016/8/13 17:33:00';loadViewCount(cb_entryId);</script>
+
+    </div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login('commentform');">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="http://rongcloud.cn/reports/journal2" target="_blank">【推荐】融云发布 App 社交化白皮书 IM 提升活跃超 8 倍</a><br><a href="http://bbs.h3bpm.com/index.php?m=app&amp;app=product_download&amp;a=reg&amp;utm_source=csdn&amp;utm_medium=pic&amp;utm_campaign=show&amp;utm_content=v10&amp;utm_term=%E5%85%8D%E8%B4%B9%E4%B8%8B%E8%BD%BD" target="_blank">【推荐】自开发 零实施的BPM</a><br></div>
+<div id="opt_under_post"></div>
+<div id="ad_c1" class="c_ad_block"><a href="http://click.aliyun.com/m/9742/" target="_blank"><img src="//images2015.cnblogs.com/news/24442/201701/24442-20170123215154878-323669841.gif" alt="" height="250" width="300"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/561960/" target="_blank">前途未卜 Jawbone推迟向员工发放薪水</a><br> ·  <a href="http://news.cnblogs.com/n/561959/" target="_blank">春节期间发朋友圈 这些个人信息要少晒</a><br> ·  <a href="http://news.cnblogs.com/n/561958/" target="_blank">拍照时别摆“剪刀手”了：谨防指纹信息被窃取</a><br> ·  <a href="http://news.cnblogs.com/n/561957/" target="_blank">SpaceX在西雅图将建造大型卫星实验室</a><br> ·  <a href="http://news.cnblogs.com/n/561956/" target="_blank">东芝董事会主席准备辞职：对西屋电气资产减记负责</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="ad_c2" class="c_ad_block"><a href="http://bbs.h3bpm.com/index.php?m=app&amp;app=product_download&amp;a=reg&amp;utm_source=csdn&amp;utm_medium=pic&amp;utm_campaign=show&amp;utm_content=v10&amp;utm_term=%E5%85%8D%E8%B4%B9%E4%B8%8B%E8%BD%BD" target="_blank"><img src="//images2015.cnblogs.com/news/24442/201701/24442-20170118152220281-363324784.jpg" alt="" height="60" width="468"></a></div>
+<div id="under_post_kb"><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/554260/" target="_blank">「代码家」的学习过程和学习经验分享</a><br> ·  <a href="http://kb.cnblogs.com/page/556770/" target="_blank">写给未来的程序媛</a><br> ·  <a href="http://kb.cnblogs.com/page/558087/" target="_blank">高质量的工程代码为什么难写</a><br> ·  <a href="http://kb.cnblogs.com/page/555750/" target="_blank">循序渐进地代码重构</a><br> ·  <a href="http://kb.cnblogs.com/page/554496/" target="_blank">技术的正宗与野路子</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+</script>
+</div>
+
+
+
+<p id="footer">
+	Powered by:
+	<br>
+
+	<a id="Footer1_Hyperlink3" name="Hyperlink1" href="http://www.cnblogs.com/" style="font-family:Verdana;font-size:12px;">博客园</a>
+	<br>
+	Copyright © SuriFuture
+</p>
+    </div>
+</textarea>
+<input type="button" id="btn" value="点击开始偷小说">
+<textarea id="t2" cols="50" rows="30"></textarea>
+<script>
+    var oT1=document.getElementById('t1');
+    var oT2=document.getElementById('t2');
+    var oBtn=document.getElementById('btn');
+    oBtn.onclick=function(){
+        var reg=/<[^<>]+>/g;
+        oT2.value=oT1.value.replace(reg,'');
+    }
+</script>
+</body>
+</html>

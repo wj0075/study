@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //prototype:放的都是公有的属性和方法
+    //原型上的this也是实例
+    //原型模式：主要是类 实例 和原型
+    //原型模式的基础知识：（非常非常重要）
+    //1）每个函数数据类型上（普通函数，类），都有一个属性，叫prototype，他是一个对象
+    //2）prototype这个对象上，天生自带一个属性，叫constructor:指向当前这个类
+    //3）每个对象数据类型上都有一个属性（普通对象，prototype 实例），叫做__proto__:指向当前实例所属类的原型；
+    //Object.prototype中的方法；
+    //hasOwnProterty 判断是否为私有属性
+    //isPrototype  Obj.isPrototype(f1)-->前一个是否在后一个的原型链上
+
+
+
+    //条件反射：
+    //1）构造函数：构造函数中的属性和方法都是私有的
+    //2）构造函数中的this都是实例；
+    //3）prototype上的属性和方法都是公有的
+    //4）构造函数模式：实例和类
+    //5）原型模式：类、实例、原型
+    //6）__proto__：原型链
+    //7）当我们给类.prototype={} 这样赋值的时候，constructor指向就会出问题
+
+</script>
+</body>
+</html>

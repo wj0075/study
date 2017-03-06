@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            font-size: 14px;
+            font-family: 微软雅黑;
+        }
+        html,body{
+            width: 100%;
+            height: 5000px;
+            background: forestgreen ;
+            background: -webkit-linear-gradient(top,forestgreen,firebrick,green,gold,sienna,darkblue,slateblue);
+
+        }
+        a{
+           text-decoration: none;
+            color: #000;
+        }
+        a:hover,a:active,a:target,a:visited{
+            text-decoration: none;
+            color: #000;
+        }
+        #goLink{
+            display: none;
+            position: fixed;
+            right: 30px;
+            bottom: 100px;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background: red;
+            border-radius: 50%;
+            opacity: 0.3;
+            filter: alpha(opacity=30);
+
+        }
+        #goLink:hover{
+            opacity: 1;
+            -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+            filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        }
+
+
+    </style>
+</head>
+<body>
+<a href="javascript:;" id="goLink">GO</a>
+<script src="utils.js"></script>
+<script>
+    var goLink = document.getElementById('goLink');
+    //开始GO按钮是不显示的，当浏览器卷曲的高度超过一屏幕的时候在显示
+    //只要浏览器的滚动条在滚动，我们就需要判断GO显示还是隐藏
+    window.onscroll = computedDisplay;
+
+    function computedDisplay(){//不管怎么操作，只要滚动条动了，就会触发这个行为
+            var curTop = utils.win('scrollTop');
+            var curHeight = utils.win('clientHeight');
+            goLink.style.display = curTop>curHeight?'block':'none';
+        };
+
+    //回到顶部
+    //总时间（duration）:500ms
+    //频率（interval）:多长时间走一步 10ms
+    //总距离（target）：当前的位置(scrollTop)-目标的位置(0)
+    //步长（step）:每一次走的距离  target/duration-->每一毫秒走的距离*interval->每一次走的距离
+
+    goLink.onclick=function(){
+        //当点击的时候让GO消失
+        this.style.display = 'none';
+        //光这样还不行：我们往回走的时候，又把window.onscroll行为触发了；
+        window.onscroll=null;
+
+        //当点击GO的时候，首先把每一步要走的步长计算出来
+        var duration = 500,interval = 10,target=utils.win('scrollTop');
+        var step = (target/duration)*interval;
+        //计算完成步长后，让当前的页面每隔interval这么长的时间走一步;在上一次的基础上scrollTop-步长
+        var timer = window.setInterval(function(){
+            var curTop = utils.win('scrollTop');
+            if (curTop==0){//已经到头了
+                window.clearInterval(timer);
+                window.onscroll=computedDisplay;//当动画结束，重新给它绑定
+                return;
+            }
+            curTop-=step;
+            utils.win('scrollTop',curTop)
+        },interval)
+
+
+    }
+
+
+</script>
+</body>
+</html>

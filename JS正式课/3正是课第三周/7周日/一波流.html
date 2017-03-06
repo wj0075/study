@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            ;padding: 0;
+        }
+        #box{
+            width: 1350px;
+            margin: 0 auto;
+        }
+        ul{
+            list-style: none;
+            float: left;
+            width: 200px;
+            margin: 5px;
+          /*  height: 200px;
+            background: red;*/
+        }
+        li{
+            width: 100%;
+            background: url("img2/default.gif") no-repeat center #ccc;
+            margin-bottom: 10px;
+        }
+        img{
+            width: 100%;
+            height: auto;
+        }
+        #goto{
+            display: none;
+            text-decoration: none;
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: white;
+            border-radius: 50%;
+            background: red;
+
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div id="box">
+    <ul>
+        <!--<li><img src="img2/1.jpg" realImg="img2/1.jpg" alt=""></li>-->
+    </ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+</div>
+<a href="javascript:;" id="goto">上去</a>
+<script src="../../utils.js"></script>
+<script>
+    var aUl = document.getElementsByTagName('ul');
+    var aImg = document.getElementsByTagName('img');
+    var toTop = document.getElementById('goto');
+    var timer = null;
+    var bOk = true;
+//动态创建一个li
+    var ary = [
+        {imgSrc:'img2/1.jpg'},
+        {imgSrc:'img2/2.jpg'},
+        {imgSrc:'img2/3.jpg'},
+        {imgSrc:'img2/4.jpg'},
+        {imgSrc:'img2/5.jpg'},
+        {imgSrc:'img2/6.jpg'},
+        {imgSrc:'img2/7.jpg'},
+        {imgSrc:'img2/8.jpg'},
+        {imgSrc:'img2/9.jpg'}
+    ];
+    function createLi(){
+        var oLi = document.createElement('li');
+        oLi.innerHTML ='<img src="" realImg="'+ary[utils.rnd(0,8)].imgSrc+'" alt="">' ;
+        oLi.style.height = utils.rnd(140,240)+'px';
+        return oLi;
+    }
+//创建40个
+    function li40(){
+        for (var i=0;i<40;i++) {
+            var oLi = createLi();
+            var ary = utils.makeArray(aUl);
+            ary.sort(function(a,b){
+                return a.offsetHeight- b.offsetHeight;
+            });
+            ary[0].appendChild(oLi);
+        }
+    }
+    //判断图片是否加载
+    function showImg(){
+        var scrollBottom = utils.win('scrollTop')+utils.win('clientHeight');
+        for(var i=0;i<aImg.length;i++){
+            var imgPos = aImg[i].offsetTop+aImg[i].offsetHeight;
+            console.log(imgPos);
+            if (imgPos<=scrollBottom){
+                lazyImg(aImg[i]);
+            }
+        }
+    }
+    //图片延时加载
+    function lazyImg(img){
+        if (img.loaded) return;
+        var tmpImg = new Image;
+        tmpImg.src = img.getAttribute('realImg');
+        tmpImg.onload=function(){
+            img.src = this.src;
+            tmpImg = null;
+            img.loaded = true;
+            img.parentNode.style.height = img.offsetHeight+'px';
+        };
+        tmpImg.onerror=function(){
+            img.parentNode.style.background = 'url("img2/default.gif") no-repeat center #ccc';
+            tmpImg = null;
+            img.loaded = true;
+        }
+    }
+    li40();
+    showImg();
+    window.onscroll = function(){
+        if (bOk) clearInterval(timer);
+        bOk=true;
+        var scrollBottom = utils.win('scrollTop')+utils.win('clientHeight');
+        if(utils.win('scrollTop')>utils.win('clientHeight')){
+            toTop.style.display = 'block';
+        }else {
+            toTop.style.display = 'none';
+        }
+
+        showImg();
+        if(document.body.scrollHeight-10<scrollBottom){
+            li40();
+        }
+    };
+    //回到顶部
+    toTop.onclick = function(){
+        var target = utils.win('scrollTop');
+        var duration = 100;
+        var interval = 10;
+        var step = target/duration*interval;
+        timer = window.setInterval(function(){
+            var curTop = utils.win('scrollTop');
+            if (curTop<=0){
+                clearInterval(timer);
+            }
+            curTop-=10;
+            utils.win('scrollTop',curTop)
+            bOk=false;
+        },interval)
+    }
+
+</script>
+</body>
+</html>

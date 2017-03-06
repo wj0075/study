@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //获取：
+    //document.documentElement.clientHeight||document.body.clientHeight;
+    //设置：
+    document.documentElement.scrollTop||document.body.scrollTop==1000;
+    //需求：封装一个win方法；win方法有两个功能：1）获取2）设置
+    /*
+    *
+    *参数：获取的时候，参1：属性名； 设置的时候：参1：属性名，参2：属性值
+    * 返回值：获取的时候，需要返回值；设置的时候不需要返回值；
+    */
+    function win(attr,val){
+        var res = null;
+        if (val){
+            document.documentElement.attr||document.body.attr==val;
+        }else {
+           res = document.documentElement[attr]||document.body[attr];
+        }
+        return res;
+    }
+    console.log(win('scrollTop'))
+
+
+</script>
+</body>
+</html>

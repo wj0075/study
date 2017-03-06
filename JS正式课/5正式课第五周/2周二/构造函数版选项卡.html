@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>构造函数版选项卡</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        .box {
+            width: 305px;
+            margin: 30px auto;
+        }
+        .box .box-head{
+            list-style: none;
+        }
+        .box ul li{
+            float: left;
+            width: 100px;
+            height: 30px;
+            margin-left: -1px;
+            font-size: 24px;
+            line-height: 30px;
+            text-align: center;
+            border:1px solid #ccc;
+            background: lightpink;
+            cursor: pointer;
+        }
+        .box div{
+            display: none;
+            clear: both;
+            width: 301px;
+            height: 200px;
+            margin-left: -1px;
+            margin-top: -1px;
+            border: 1px solid #ccc;
+        }
+        .box ul li.on{
+            background: lightblue;
+        }
+        .box div.show{
+            display: block;
+            background: lightblue;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <!--<ul>
+        <li class="on">新闻</li>
+        <li>体育</li>
+        <li>游戏</li>
+    </ul>-->
+    <!--<div class="show">腾讯新闻</div>
+    <div>腾讯体育</div>
+    <div>腾讯游戏</div>-->
+
+</div>
+<script src="js/change.js"></script>
+<script>
+    var ele = document.getElementById('box');
+    var index = 0;
+    var dataObj = {
+        ele,
+        data:[
+            {title:'腾讯新闻'},
+            {title:'腾讯体育'},
+            {title:'腾讯视屏'}
+        ],
+        index,
+    };
+    var tab = new Tab(dataObj);
+
+
+
+
+
+
+</script>
+</body>
+</html>

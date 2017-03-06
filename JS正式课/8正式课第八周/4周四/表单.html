@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--密码框-->
+<!--<input type="password">-->
+<!--分组-->
+<label for="man">男</label>
+<input type="radio" id="man" name="sex" value="man" checked>
+<label for="woman">女</label>
+<input type="radio" id="woman" name="sex" value="woman">
+<input type="submit" id="submit">
+<script>
+    var submit = document.getElementById('submit');
+    var man = document.getElementById('man');
+    var woman = document.getElementById('woman');
+    submit.onclick=function(){
+        var sex =0;
+        !man.checked?sex=1:null;
+    };
+
+    man.onchange = woman.onchange = function(){
+        console.log(this.value)
+    }
+
+
+
+
+</script>
+
+</body>
+</html>

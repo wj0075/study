@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            position: relative;
+        }
+        ul li{
+            list-style: none;
+            float: left;
+            width: 100px;
+            height: 40px;
+            border: 1px solid #ccc;
+            line-height: 40px;
+            text-align: center;
+        }
+        .box div:target{
+            display: block;
+        }
+        .box div{
+            display: none;
+            position: absolute;
+            top: 40px;
+            width: 304px;
+            height: 200px;
+            background: greenyellow;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li><a href="#div1">新闻</a></li>
+        <li><a href="#div2">体育</a></li>
+        <li><a href="#div3">娱乐</a></li>
+    </ul>
+    <div id="div1">新闻</div>
+    <div id="div2">体育</div>
+    <div id="div3">娱乐</div>
+</div>
+</body>
+</html>

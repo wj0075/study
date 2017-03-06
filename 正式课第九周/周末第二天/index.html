@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title>珠峰培训</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <link type="image/x-icon" rel="icon" href="img/icon-logo.png"/>
+
+    <!--import needed css-->
+    <link rel="stylesheet" href="css/reset.min.css"/>
+    <link rel="stylesheet/less" href="css/index.less"/>
+    <script src="js/less-2.5.3.min.js"></script>
+
+    <!--REM-->
+    <script>
+        ~function () {
+            var winW = document.documentElement.clientWidth;
+            //->控制在640以内在计算REM的换算比例,640以外都已设计稿的尺寸为最大值即可,这样在PAD上或者PC上看到的最大尺寸就是设计稿的
+            if (winW <= 640) {
+                document.documentElement.style.fontSize = winW / 640 * 100 + 'px';
+            }
+        }();
+    </script>
+</head>
+<body>
+<main class="main">
+    <!--HEADER-->
+    <header class="header">
+        <h1 class="logo">
+            <a href="#">腾讯体育</a>
+        </h1>
+        <a href="#" class="type">NBA</a>
+        <a href="javascript:;" class="menu"></a>
+        <a href="#" class="login">登录</a>
+    </header>
+
+    <!--NAV-->
+    <nav class="nav">
+        <ul class="clear">
+            <li><a href="#">NBA</a></li>
+            <li><a href="#">CBA</a></li>
+            <li><a href="#">英超</a></li>
+            <li><a href="#">欧冠</a></li>
+            <li><a href="#">亚冠</a></li>
+            <li><a href="#">西甲</a></li>
+            <li><a href="#">意甲</a></li>
+            <li><a href="#">法甲</a></li>
+            <li><a href="#">德甲</a></li>
+            <li><a href="#">中超</a></li>
+            <li><a href="#">NFL</a></li>
+            <li><a href="#">综合</a></li>
+            <li><a href="#">欧洲</a></li>
+            <li><a href="#">社区</a></li>
+            <li><a href="#">下载</a></li>
+        </ul>
+    </nav>
+
+    <!--VIDEO-->
+    <section class="video">
+        <!--
+          video支持的视频格式:mp4(建议)、webm、ogg
+            controls:使用浏览器自带的播放器和控制面板播放
+            loop:循环播放
+            preload:是否进行预加载(打开页面就开始加载),我们设置为NODE
+            autoplay:自动播放
+            poster:设置视频的封面图
+        -->
+        <video controls preload="none" poster="img/poster.jpg"
+               src="http://111.202.85.154/sports.tc.qq.com/c0022nncn2z.mp4?vkey=F829C165325CE1B39B2AC0A04896570142576B4905584B6B1850C6311E03ACCF94F2D7E28DC56629DC1C07AEBA2304C163946E1C44C397D2FDC85C9B7CB336A978263C560AEA0F5892EE7112AAB60BF647D000A37EF7539F&br=60&platform=2&fmt=auto&level=0&sdtfrom=v5010&guid=3cbccfa3afbabc96423508e76e6dd1b5&locid=315641e7-7981-4844-89b3-241c4fe4e03f&size=13549435&ocid=2574718380"></video>
+    </section>
+
+    <!--MATCH-->
+    <section class="match">
+        <script type="text/template" id="matchTemplate">
+            <div class="top">
+                <div class="team teamLeft">
+                    <img src="<%=matchInfo.leftBadge%>" alt="<%=matchInfo.leftName%>"/>
+                    <span><%=matchInfo.leftGoal%></span>
+                </div>
+                <div class="startTime"><%=matchInfo.startTime.formatDate('{1}月{2}日 {3}:{4}')%></div>
+                <div class="team teamRight">
+                    <span><%=matchInfo.rightGoal%></span>
+                    <img src="<%=matchInfo.rightBadge%>" alt="<%=matchInfo.rightName%>"/>
+                </div>
+            </div>
+            <div class="middle">
+                <div class="progress"></div>
+            </div>
+            <div class="bottom">
+                <div class="support supportLeft" data-type="1"><%=matchInfo.leftSupport%></div>
+                <div class="descript"><%=matchInfo.matchDesc%></div>
+                <div class="support supportRight" data-type="2"><%=matchInfo.rightSupport%></div>
+            </div>
+        </script>
+    </section>
+
+    <!--PLAYER-->
+    <section class="player">
+        <ul class="wrapper">
+            <li><a href="#">
+                <div>
+                    <img src="" alt=""/>
+                    <span>02:12</span>
+                </div>
+                <p>鹈鹕112-106雄鹿,帕克空砍33分,浓眉32分上演冲天暴扣</p>
+            </a></li>
+
+        </ul>
+    </section>
+</main>
+
+<!--import needed js-->
+<script src="js/zepto.min.js"></script>
+<script src="js/iscroll-5.1.3.min.js"></script>
+<script src="js/ejs.min.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

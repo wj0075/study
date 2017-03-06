@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            position: absolute;
+            width: 100px;
+            height: 200px;
+            left: 0;
+            top: 0;
+            background: lime;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="box">
+
+
+
+</div>
+<script src="../../utils.js"></script>
+<script src="move.js"></script>
+<script>
+    var oDiv = document.getElementById('box');
+    animate({
+        id:oDiv,
+        target:{
+            left:600,
+            top:500
+        },
+        duration:1000
+    })
+
+
+
+</script>
+</body>
+</html>

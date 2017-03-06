@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            padding: 30px;
+        }
+        #s{
+            width: 430px;
+            height: 430px;
+            background: url("img/1.jpg") no-repeat;
+            position: relative;
+            float: left;
+        }
+        #mark{
+            position: absolute;
+            width:240px;
+            height: 240px;
+            background: blue;
+            opacity:0.3;
+            filter:alpha(opacity:30);
+            left:0;
+            top:0;
+            display: none;
+        }
+        #b{
+            margin-left:10px;
+            float: left;
+            width:430px;
+            height:430px;
+            overflow: hidden;
+            position: relative;
+            display: none;
+        }
+        #b img{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="s">
+    <div id="mark"></div>
+</div>
+<div id="b">
+    <img src="img/2.jpg" alt="">
+</div>
+<script>
+    var oS=document.getElementById('s');
+    var oM=document.getElementById('mark');
+    var oB=document.getElementById('b');
+    var oImg=oB.getElementsByTagName('img')[0];
+    oS.onmouseover=function(){
+        oM.style.display='block';
+        oB.style.display='block';
+    };
+    oS.onmousemove=function(e){
+        e=e||window.event;
+        var l=e.clientX-this.offsetLeft-oM.offsetWidth/2;
+        var t=e.clientY-this.offsetTop-oM.offsetHeight/2;
+        var maxL=this.offsetWidth-oM.offsetWidth;
+        var maxT=this.offsetHeight-oM.offsetHeight;
+        if(l<=0){
+            l=0;
+        }else if(l>=maxL){
+            l=maxL;
+        }
+        if(t<=0){
+            t=0;
+        }else if(t>=maxT){
+            t=maxT;
+        }
+        oM.style.left= l+'px';
+        oM.style.top= t+'px';
+        //mark走的距离/mark能走的最大距离=图片走的距离/图片能走的最大距离
+        //l/oS.width-oM.width=?/oB.width-oImg.width;
+        oImg.style.left=l/(oS.offsetWidth-oM.offsetWidth)*(oB.offsetWidth-oImg.offsetWidth)+'px';
+        oImg.style.top=t/(oS.offsetHeight-oM.offsetHeight)*(oB.offsetHeight-oImg.offsetHeight)+'px';
+    };
+    oS.onmouseout=function(){
+        oM.style.display='none';
+        oB.style.display='none';
+    };
+
+</script>
+</body>
+</html>

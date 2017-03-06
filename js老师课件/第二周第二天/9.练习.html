@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //"2016年10月19日 16时03分10秒"
+    var str = '2016-10-19 16:03:10';
+//    字符串拆分数组 split()
+    var ary = str.split(' ');
+    console.log(ary);//["2016-10-19", "16:03:10"]
+    var str1 = ary[0];
+    var str2 = ary[1];
+    var ary1 = str1.split('-');//["2016", "10", "19"]
+    var ary2 = str2.split(':');//["16", "03", "10"]
+    var a = ary1[0]+'年'+ary1[1]+'月'+ary1[2]+'日 '+ary2[0]+'时'+ary2[1]+'分'+ary2[2]+'秒';
+    console.log(a)
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

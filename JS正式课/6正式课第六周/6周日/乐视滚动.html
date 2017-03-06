@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乐视滚动</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+            list-style: none;
+        }
+        html,body{
+            width: 100%;
+            height:100%;
+        }
+        .main{
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+
+        }
+        .main .boxBanner{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+        }
+        .main .boxBanner div{
+            width: 100%;
+            font-size: 100px;
+        }
+        .main .boxBanner .div1{
+            background: lightseagreen;
+        }
+        .main .boxBanner .div2{
+            background: darkgreen;
+        }
+        .main .boxBanner .div3{
+            background: rebeccapurple;
+        }
+        .main .boxBanner .div4{
+            background: darkorange;
+        }
+        .main .boxBanner .div5{
+            background: palegreen;
+        }
+        .main .boxBanner .div6{
+            background: #3385ff;
+        }
+        .main ul{
+            position: fixed;
+            right: 10px;
+            top: 50%;
+            margin-top: -180px;
+        }
+        .main ul li{
+            width: 50px;
+            height: 50px;
+            background: #ccc;
+            margin: 10px;
+        }
+        .main ul li.on{
+            background: lawngreen;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="main" id="main">
+    <div class="boxBanner">
+        <div class="div1">page1</div>
+        <div class="div2">page2</div>
+        <div class="div3">page3</div>
+        <div class="div4">page4</div>
+        <div class="div5">page5</div>
+        <div class="div6">page6</div>
+    </div>
+    <ul>
+        <li class="on"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script src="../../utils.js"></script>
+<script src="../../move.js"></script>
+<script src="js/wheel.js"></script>
+<script>
+    var oMain = document.getElementById('main');
+    oMain.style.height=utils.win('clientHeight')+'px';
+    var oBoxBanner = oMain.getElementsByTagName('div')[0];
+    var aDiv = oBoxBanner.getElementsByTagName('div');
+    for (var i=0;i<aDiv.length;i++){
+        aDiv[i].style.height = utils.win('clientHeight')+'px';
+    }
+    oBoxBanner.style.height = aDiv[0].offsetHeight*aDiv.length+'px';
+    var aLi = oMain.getElementsByTagName('li');
+    var n=0;
+    var isWheel = true;
+    //2.添加滚轮事件，拿到数字，把数字作为索引，展示对应的模块；
+    wheel(oMain,function(bOk){
+        if (bOk){
+            if (isWheel){
+                n++;
+                if (n>=aDiv.length){
+                    n=aDiv.length-1;return;
+                }
+                restore();//恢复isWheel初始值
+                /*utils.css(oBoxBanner,'top',-n*aDiv[0].offsetHeight)*/
+                changePag()
+            }
+        }else {
+            if(isWheel){
+                n--;
+                if (n<=-1){
+                    n=0;
+                    return;
+                }
+                restore();
+                /*utils.css(oBoxBanner,'top',-n*aDiv[0].offsetHeight)*/
+                changePag()
+            }
+
+        }
+
+    });
+    function restore(){
+        isWheel=false;
+        var timer = setTimeout(function(){
+            isWheel=true;
+        },1000)
+    }
+    function changePag(){
+        animate({
+            id:oBoxBanner,
+            target:{
+                top:-n*aDiv[0].offsetHeight,
+            }
+        });
+        for (i=0;i<aLi.length;i++){
+           if (i==n){
+               aLi[i].className = 'on';
+           }else {
+               aLi[i].className = null;
+           }
+        }
+    }
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

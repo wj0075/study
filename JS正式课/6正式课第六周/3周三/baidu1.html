@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>baidu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        img {
+            display: block;
+            width: 270px;
+            height: 129px;
+            margin: 80px auto 30px;
+        }
+
+        div {
+            width: 640px;
+            height: 40px;
+            line-height: 40px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        div input {
+            float: left;
+            width: 528px;
+            height: 28px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            font-size: 18px;
+        }
+
+        div span {
+            float: left;
+            width: 100px;
+            height: 100%;
+            background: #3385ff;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        div ul {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 39px;
+            width: 638px;
+            border: 1px solid #ccc;
+        }
+
+        div ul li {
+            height: 30px;
+            line-height: 30px;
+        }
+
+        div ul li a {
+            display: block;
+            height: 30px;
+            padding-left: 10px;
+            line-height: 30px;
+        }
+
+        div ul li a:hover {
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+<img src="bd.png" alt="">
+<div id="box">
+    <input type="text">
+    <span>百度一下</span>
+    <ul>
+        <li><a href="javascript:;">珠峰培训-javascript培训</a></li>
+        <li><a href="javascript:;">珠峰培训-node培训</a></li>
+        <li><a href="javascript:;">珠峰培训-reactnative培训</a></li>
+        <li><a href="javascript:;">珠峰培训-canvas培训</a></li>
+        <li><a href="javascript:;">珠峰培训-webpack培训</a></li>
+    </ul>
+</div>
+
+<script>
+
+    //->显示：
+    //1）文本框获取焦点，并且文本框中有内容的时候
+    //2）在文本框中操作内容（输入/删除），如果内容没有清空，我们就显示，否则就隐藏
+    //->隐藏
+    //1）点击页面中其余的位置（除了文本框和searchlist里面的每一行）都隐藏
+    //2）点击searchlist中的列表隐藏，但是还要把列表中的内容放到文本框中；
+
+    var oBox = document.getElementById('box');
+    var oTxt = oBox.getElementsByTagName('input')[0];
+    var obtn = oBox.getElementsByTagName('span')[0];
+    var oUl = oBox.getElementsByTagName('ul')[0];
+    var aA = oBox.getElementsByTagName('a');
+    var n=-1; //先++所以要先赋值为-1；；在聚焦点时为-1.当按下 下键时  变为0
+    var oldValue = null;
+    //不管是获取焦点ondocus,还是在里面编辑内容，都是有内容显示，没有内容隐藏
+    oTxt.onfocus=oTxt.onkeyup = function () {
+        var val = this.value.replace(/(^ +)|( +$)/g, '');//获取文本框中的内容，并把首尾空格为空
+        oUl.style.display = val.length > 0 ? "block" : "none";
+    };
+    //我们可以阻止一个容器中某些特殊性的元素，让其不再委托的范围内，我们只需要把这些不需要委托的阻止冒泡传播。
+    oTxt.onclick=function(e){
+        e=e||window.event;
+        e.stopPropagation?e.stopPropagation(): e.cancelBubble=true;
+    };
+    document.body.onclick=function(e){
+        e = e||window.event;
+        e.target = e.target|| e.srcElement;
+        //如果事件源时候ul下的a，我们让oUl消失，并且把当前点击这个a中的内容放到文本框
+        if (e.target.tagName.toLowerCase()=='a'){
+            oTxt.value = e.target.innerHTML;
+            search();
+        }
+        if (e.target==obtn){
+            search();
+        }
+        //点击其他地方，让oUl消失
+        if (e.target!==oTxt|| e.target!==obtn){
+            oUl.style.display='none';
+        }
+
+    };
+    oTxt.onkeydown=function(e){
+        e = e||window.event;
+       if (e.keyCode==38){
+           e.preventDefault();
+       }
+        //上38 下40 左37 右39
+        if (e.keyCode===40){
+            n++;
+            if (n>=aA.length){
+                n=-1;
+            }
+            list();
+        }else if (e.keyCode===38){
+            n--;
+            if (n<=-2){
+                n = aA.length-1;
+            }
+            list();
+        }else if (e.keyCode===13){
+           /* if (n==-1){
+             search();
+             }else {
+             oTxt.value = aA[n].innerHTML;
+             search();
+             }*/
+            search();
+        }
+    };
+    //保存值的方法
+    function list(){
+        if (!oldValue){
+            oldValue=oTxt.value;
+        }
+        for (var i = 0;i<aA.length;i++){
+            aA[i].style.background=null;
+        }
+        if (n==-1){//展示最初的内容
+            oTxt.value = oldValue;
+        }else {
+            aA[n].style.background='#ccc';
+            oTxt.value=aA[n].innerHTML;
+        }
+    }
+    function search(){
+        window.open('https://www.baidu.com/s?wd='+oTxt.value);
+        oTxt.value='';
+    }
+</script>
+</body>
+</html>

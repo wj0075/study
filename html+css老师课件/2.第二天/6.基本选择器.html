@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+css选择器
+作用：同时给一组标签加相同的样式
+
+1、标签选择器:  div{}   h3{}  p{}
+格式：标签名{
+        属性名:属性值;
+        属性名:属性值;
+     }
+
+<style>
+    h3{
+        background: orange;
+        /*背景色*/
+        text-align: center;
+        /*文字水平居中 */
+    }
+</style>
+<h3>我是一个标题</h3>
+
+2、类选择器 （最常用）
+格式：
+.className{}
+<style>
+   /* div{
+        background: red;
+    }*/
+    .box{
+        background: blue;
+    }
+</style>
+<div class="box">div1</div>
+<div class="box">div2</div>
+
+3、id选择器：一个id名在同一个文件只能出现一次，唯一性；一般用在js中
+格式：
+#idName{}
+<style>
+    #div3{
+        color: red;
+    }
+</style>
+<div id="div3">div3</div>
+<!--<div id="div3"></div>-->
+
+4、通配符选择器：选择全部的标签
+*{}
+<style>
+    *{
+        /*display: none;*/
+        /*隐藏*/
+        padding:0;
+        /*内边距*/
+        margin: 0;
+        /*外边距*/
+    }
+</style>
+
+标签选择器  姓
+类选择器    名字
+id选择器   身份证号
+
+class命名规范:
+1、不能以数字作为开头
+2、不要用中文
+3、可以用单词命名，尽量不要用缩写，除非一看就明白的单词
+student  stu
+4、student_info   student-info    studentInfo
+第一个单词首字母小写，从第二个单词开始首字母大写
+5、不要用a1  a2 a3
+6、最好用小写
+
+
+
+
+
+</body>
+</html>

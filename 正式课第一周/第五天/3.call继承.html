@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //call继承：核心-》把父类私有的属性和方法，继承给自己私有的；
+    function F(){//构造函数
+        //this->F new出来的实例；
+        this.x=100;
+        this.y=200;
+        this.showX=function(){};
+    }
+    F.prototype.aa=function(){};//原型
+    var f1=new F;//实例
+    console.dir(f1);
+    function S(){
+        //this->S new出来的实例；
+        F.call(this);//通过call继承改变this指向；
+    }
+    var s=new S;
+    console.dir(s);
+    /*
+    * x:100,
+    * y:200,
+    * showX:function
+    * __proto__:xxx
+    * constructor:F,
+    * aa:function
+    * */
+
+    /*
+     * x:100,
+     * y:200,
+     * showX:function
+    * */
+
+</script>
+</body>
+</html>

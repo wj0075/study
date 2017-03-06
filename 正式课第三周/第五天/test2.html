@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <div>0</div>
+    <div>1</div>
+    <div>2</div>
+    <p></p>
+    <p></p>
+    <span></span><span></span><span>last</span>
+</div>
+<script src="js/utils.js"></script>
+<script>
+    var oBox=document.getElementById('box');
+    var aDiv=oBox.getElementsByTagName('div');
+    var aP=oBox.getElementsByTagName('p');
+    var oEle=document.createElement('div');
+    oEle.innerHTML='我是新元素';
+    utils.prependChild(oEle,oBox);
+    //console.log(utils.lastChild(oBox));
+    //console.log(utils.index(aDiv[2]))
+    //console.log(utils.siblings(aP[1]));
+    //console.log(utils.getChildren
+
+</script>
+</body>
+</html>

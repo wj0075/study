@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: red;
+            font-size: 14px;
+            /*-webkit-transition: width 1s linear 0s,height 1s ease 0s;
+            -moz-transition: width 1s linear 0s,height 1s ease 0s;
+            -ms-transition: width 1s linear 0s,height 1s ease 0s;
+            -o-transition: width 1s linear 0s,height 1s ease 0s;
+            transition: width 1s linear 0s,height 1s ease 0s;*/
+            transition: 1s ease 0s;
+
+        }
+        div:hover{
+            width: 900px;
+           height: 400px;
+            font-size: 30px;
+            opacity: .4;
+            filter: alpha(opacity=40);
+        }
+
+    </style>
+</head>
+<body>
+<div id="box">的束缚舒服可是大家都是开始觉得分厘卡三季稻发射点立刻反击空间大师弗兰克决定是否可见的首付款喀什酱豆腐立刻觉得是；低俗</div>
+</body>
+</html>
+<script>
+    var oDiv = document.getElementById('box');
+    oDiv.addEventListener('transitionend',function(){
+        console.log('ok');
+    },false)
+
+
+
+</script>
+

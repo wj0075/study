@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    font: 12px "microsoft yahei";
+}
+ul{
+    list-style: none;
+    width: 84px;
+}
+li{
+    height: 50px;
+    background: #38414c;
+    border-bottom: 1px dotted #202020;
+    color: #fff;
+    text-align: center;
+    padding-top: 9px;
+}
+li i{
+    width: 20px;
+    height: 20px;
+    display: block;
+    background: url("icon1.png") no-repeat;
+    margin: 0 auto 3px;
+
+}
+.list2 i{
+    background-position:0 -144px ;
+    /*
+    第一个值：水平方向   +右移  -左移动
+    第二个值：竖直方向   +下移  -上移动
+    */
+}
+.list3 i{
+    background-position: 0 -96px;
+}
+.list4 i{
+    background-position: 0 -120px;
+}
+.list5 i{
+    background-position: 0 -24px;
+}
+.list6 i{
+    background-position: -24px 0;
+}
+.list6:hover i{
+    background-position: 0 -72px;
+    /*background-color: white;*/
+}
+.list6:hover{
+    background-color: white;
+    color: #2ea536;
+    cursor: pointer;
+    /*鼠标变为小手状态*/
+}
+
+/*
+元素：hover{
+
+}
+父级元素:hover 子级元素{
+
+}
+鼠标经过父级元素时 子级元素的样式
+鼠标经过谁 就给谁加:hover
+
+
+*/
+
+
+
+

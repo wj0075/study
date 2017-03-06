@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 500px;
+            height: 400px;
+            display: flex;
+            background: #ccc;
+            flex-flow: row wrap;
+            justify-content: center;
+            /*align-items: stretch;*/
+            align-content: center;
+        }
+        ul li{
+            list-style: none;
+            width: 100px;
+            height: 100px;
+            background: lime;
+            margin: 5px;
+        }
+        li:nth-child(1){
+            display: flex;
+            flex:100%;
+            flex-flow: row wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        li:nth-child(2){
+            flex-grow: 2;
+        }
+        .item span{
+            width: 100px;
+            height: 50px;
+            background: red;
+            margin: 3px;
+        }
+
+
+    </style>
+</head>
+<body>
+<ul class="container">
+    <li class="item">
+        <span>555</span>
+        <span>666</span>
+        <span>777</span>
+
+    </li>
+    <li>222</li>
+    <li>333</li>
+    <li>444</li>
+   <!-- <li>555</li>
+    <li>666</li>
+    <li>777</li>
+    <li>888</li>-->
+
+
+
+</ul>
+</body>
+</html>

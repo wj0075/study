@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            background: orange;
+            border: 2px solid red;
+        }
+        .box:after{
+            /*在元素里面最末尾的位置加样式*/
+            /*内容*/
+            content: '';
+            color: white;
+            background: blue;
+            display: block;
+            height: 20px;
+
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <span>文字</span><i>斜体</i><b>粗体</b><s>中划线</s>
+</div>
+
+</body>
+</html>

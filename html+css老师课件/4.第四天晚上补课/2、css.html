@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        h3{
+            color: blue;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css"/>
+    <style>
+        @import "css文件的路径";
+    </style>
+</head>
+<body>
+css:作用  美化页面、调整页面的结构
+
+css的引入方式
+1、行内式
+<div style="width: 100px;"></div>
+<!--style：html属性
+    <标签名 html属性="属性值" html属性="属性值"></标签名>
+-->
+2、内嵌式:写在style标签块中
+3、外链式：引入一个外部的css文件
+4、导入式：在一个css文件中去引入另一个css文件
+
+
+引入方式优先级：
+相同的css属性作用在同一个元素时:
+1、行内式优先级最高
+2、内嵌式、外链式、导入式谁写在后面用谁的样式
+3、在css文件中 导入式一定放在文件的第一行。
+<h3 style="color: red">标题</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

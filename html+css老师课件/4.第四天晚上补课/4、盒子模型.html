@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+盒子模型组成：内容、内边距、边框、外边距
+
+内容的宽度和高度
+width：
+height：
+
+内边距
+padding：内容与边框之间的距离
+
+外边距：
+margin：盒子与盒子之间的距离 （父子级元素之间、兄弟级元素之间）
+
+margin、padding四种值得情况
+
+
+1、上下结构的两个盒子，上边的盒子设置margin-bottom，下边的盒子设置margin-top，谁大取谁的值
+2、父子级元素之间，父级元素没有设置上padding或者上border（上补集），第一个子级元素设置margin-top，会发生值传递，margin-top会传递给父级元素
+
+
+行内元素只可以设置水平方向的margin、padding
+
+<div class="box1"></div>
+<div class="box2"></div>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .box1{
+        width: 100px;
+        height: 100px;
+        margin: 100px 200px 50px;
+        padding-bottom: 20px;
+    }/*box1上边缘距离box2下边缘的距离*/
+    .box2{
+        width: 100px;
+        height: 100px;
+        border:100px solid red;
+        margin: 100px;
+        padding-top: 100px;
+    }
+
+</style>
+
+
+
+</body>
+</html>

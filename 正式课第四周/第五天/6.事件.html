@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script src="js/jquery-2.0.3.js"></script>
+<script>
+    /*$('div').click(function(){
+        alert(1)
+    });*/
+    /*//on：绑定事件
+    $('div').on('click',function(){
+        alert(1)
+    });
+    //off:解除绑定
+    $('div').off('click');*/
+    $('div').one('click',function(){
+        alert(1)
+    });
+    /*oDiv.onclick=function(){
+
+    }
+    oDiv.onclick=null;*/
+</script>
+</body>
+</html>

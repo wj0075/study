@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 时间到了，只执行一次
+//    window.setTimeout(callback回调函数,时间ms)
+//    不停的执行
+//    window.setInterval(callback回调函数,时间ms)
+
+    var i=0;
+   /* window.setTimeout(function(){
+        i++;
+        console.log(i);
+    },1000);*/
+
+    var timer = window.setInterval(function(){
+        i++;//执行完之后+1
+        if(i>10){
+            clearInterval(timer)
+        }
+
+        console.log(i);
+    },1000);
+
+
+
+
+
+</script>
+
+</body>
+</html>

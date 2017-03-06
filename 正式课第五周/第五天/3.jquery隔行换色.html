@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*li{
+            height: 40px;
+            background: green;
+        }*/
+        div span{
+            width: 100px;
+            height: 100px;
+            float: left;
+            background: red;
+            margin: 5px;
+            border-radius: 50%;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<!--<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>-->
+<div>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<script src="js/jquery-2.0.3.js"></script>
+<script>
+    /*$('li:odd').css('background','red');*/
+    var n=0;
+    var timer=setInterval(function(){
+        if(n>=$('span').length){
+            clearInterval(timer);
+        }
+        $('span').eq(n).fadeIn(100);
+        n++;
+    },200)
+</script>
+</body>
+</html>

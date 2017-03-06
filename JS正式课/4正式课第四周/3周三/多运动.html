@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div{
+            position: absolute;
+            left: 100px;
+            top: 0;
+            width: 200px;
+            height: 200px;
+            background: red;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div id="div"></div>
+<script src="../../utils.js"></script>
+<script src="bigmove1.js"></script>
+<script>
+    var oDiv = document.getElementById('div');
+    animate({
+        id:oDiv,
+        target:{
+            left:1000
+        }
+    })
+</script>
+</body>
+</html>

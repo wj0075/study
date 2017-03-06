@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str='aaaccccbbbdddCCCCCAAAAABbbbAAAAcccDDdDD';
+    //思路1：键值对
+    //1.先遍历整个字符串，把每一个字母出现的次数记录下来
+    //2.假设法，找出最大的次数
+    //3.在遍历对象找出次数最大的属性名
+//    //1.
+//    var obj = {};
+//    for(var i=0;i<str.length;i++){
+//        var cur = str[i].toLowerCase();
+//        if(obj[cur]){
+//            obj[cur]++;
+//        }else {
+//            obj[cur]=1;
+//        }
+//    }
+//    //console.log(obj)
+//    //2.假设法找到最大的次数
+//    var max = obj.a;
+//    for(var key in obj){
+//        if(max<obj[key])max=obj[key]
+//    }
+//    //console.log(max);
+//    //3.找出最大次数对应的属性名
+//    var ary = [];
+//    for(var key in obj){
+//        if(obj[key]===max){
+//            ary.push(key);
+//        }
+//    }
+//    console.log(maxStr)
+
+
+    //思路2：利用重复子项的思想
+
+    str = str.split('').sort(function(a,b){return a.localeCompare(b)}).join('');
+    //console.log(str)
+    var max = 0;
+    var maxStr = '';
+    str.replace(/(\w)\1+/gi,function($0,$1){
+        if($0.length>max){
+            max=$0.length;
+            maxStr=$1;
+        }else if($0.length===max){
+            maxStr+=$1;
+        }
+    });
+    console.log(max,maxStr)
+
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基础拖拽</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            position: absolute;
+            width: 200px;
+            height: 200px;
+        }
+        .div1{
+            background: red;
+        }
+        .div2{
+            left: 300px;
+            background: blue;
+        }
+        .div3{
+            left: 600px;
+            background: green;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="div1"></div>
+<div class="div2"></div>
+<div class="div3"></div>
+<script src="../../utils.js"></script>
+<script src="../../event.js"></script>
+<script src="../../simpleInheritance.js"></script>
+<script src="js/Drag.js"></script>
+<script>
+    var aDiv = document.getElementsByTagName('div');
+
+    for (var i=0;i<aDiv.length;i++){
+        var oDiv = aDiv[i];
+        var drag = new Drag(oDiv);
+        if (i==1){
+           /* drag.range({
+                left:0,
+                top:0,
+                right:400,
+                bottom:500
+            });*/
+            drag.border();
+
+
+        }
+
+    }
+
+
+
+
+</script>
+</body>
+</html>

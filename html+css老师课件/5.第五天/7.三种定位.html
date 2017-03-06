@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body style="height: 3000px">
+<!--                    参照物
+相对定位  relative   自己原来的位置        没有脱离文档流    没有改变元素自身的属性
+绝对定位  absolute   body、可以设置参照物  脱离文档流       不区分行内还是块级
+固定定位  fixed      可视窗口             脱离文档流       不区分行内还是块级
+
+
+可以让元素脱离文档流：浮动、绝对定位、固定定位-->
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    .div1{
+        margin: 100px;
+        width:100px;
+        height:100px;
+        background:red;
+        position: relative;
+        right: 0;
+    }
+    .div1:hover{
+        right: -50px;
+    }
+</style>
+<div class="div1"></div>
+
+<!--相对定位：主要应用在相对自己位置发生变化-->
+
+<style>
+    .parent{
+        width: 200px;
+        height: 300px;
+        background: yellow;
+        position: relative;
+    }
+    .child{
+        width: 100px;
+        height: 30px;
+        background: orange;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+</style>
+<!--<div class="parent">-->
+    <!--<div class="child"></div>-->
+<!--</div>-->
+
+<style>
+    .fix{
+        width: 100px;
+        height: 200px;
+        background: black;
+        position: fixed;
+        top:0;
+        left: 0;
+    }
+</style>
+<div class="fix"></div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ary=[18,2,6,23,9];
+    //思路1：sort排序
+    /*ary.sort(function(a,b){return a-b});
+    var max=ary.pop();
+    var min=ary.shift();*/
+    //思路2：假设法
+    /*var max=ary[0];
+    var min=ary[0];
+    for(var i=0; i<ary.length; i++){
+        var cur=ary[i];
+        if(cur>max) max=cur;
+        if(cur<min) min=cur;
+    }
+    alert(max);
+    alert(min);*/
+    //思路3：Math.max 配合 eval;
+    /*var max=eval('Math.max('+ary.toString()+')');
+    var min=eval('Math.min('+ary.toString()+')');*/
+    //思路4：apply
+    var max=Math.max.apply(null,ary);
+    alert(max);
+
+</script>
+</body>
+</html>

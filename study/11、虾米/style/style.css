@@ -1,0 +1,1730 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    font: 12px 'Helvetica Neue',Helvetica,Arial,sans-serif,'Hiragino Sans GB','Microsoft Yahei';
+    background: #f5f5f5;
+}
+img{
+    border: none;
+    vertical-align: top;
+}
+ul,ol{
+    list-style: none;
+}
+b，strong{
+    font-weight: normal;
+}
+i,em{
+    font-style: normal;
+}
+a{
+    text-decoration: none;
+}
+input{
+    outline: none;
+}
+.clearfix:after{
+    content:'';
+    display: block;
+    clear: both;
+    height: 0px;
+    overflow: hidden;
+}
+.clearfix{
+    zoom: 1;
+}
+.w1104{
+    width: 1104px;
+    margin: 0 auto;
+}
+.header{
+    height: 60px;
+    background: -webkit-linear-gradient(top,#fa8723,#f57614);
+    /*颜色的渐变*/
+}
+.mainnav h1{
+    float: left;
+}
+.mainnav h1 a{
+    display: block;
+    width: 200px;
+    height: 60px;
+    background: url("../images/logo.png") no-repeat 0 0;
+    text-indent: -9999em;
+    line-height: 60px;
+}
+.mainnav h1 a:hover{
+    background-position: 0 -60px;
+}
+.mainnav .find{
+    float: left;
+    padding-left: 7px;
+}
+.mainnav .find li{
+    float: left;
+    width: 90px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+.mainnav .find li a{
+    font-family: 'Hiragino Sans GB','Microsoft Yahei';
+    font-size: 16px;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+.mainnav .find .find1{
+    background: linear-gradient(to bottom, #DB6600, #F57614);
+}
+.mainnav ol{
+    float: left;
+    width: 243px;
+    height: 28px;
+    border: 1px solid #db6b16;
+    border-radius: 1px;
+    margin: 15px 0 0 20px;
+    background: #fa891c;
+}
+.mainnav ol li{
+    float: left;
+    width: 60px;
+    height: 28px;
+    border-right: 1px solid #db6b16;
+    text-align: center;
+    line-height: 28px;
+}
+.mainnav ol .nobar{
+    border-right: none;
+}
+.mainnav ol li a{
+    font-size: 14px;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+.mainnav ol li:hover{
+    background: #d85e16;
+}
+.mainnav .search{
+    position: relative;
+    float: left;
+    margin: 15px 0 0 20px;
+}
+.search input{
+    width: 198px;
+    height: 28px;
+    background: #fff;
+    border: 1px solid #db6816;
+    border-radius: 3px;
+    padding-left: 30px;
+}
+.search i{
+    width: 15px;
+    height: 15px;
+    background: url("../images/header_icon.png") no-repeat -5px -53px;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+}
+.mainnav .register{
+    float: left;
+    width: 52px;
+    height: 28px;
+    background: #ca671b;
+    border: 1px solid #b25415;
+    color: #fff;
+    text-align: center;
+    line-height: 28px;
+    border-radius: 2px;
+    margin: 15px 0 0 15px;
+    text-shadow: 1px 2px 1px rgba(0,0,0,.5);
+}
+.mainnav .register:hover {
+    background: #c15e12;
+}
+.mainnav .land{
+    float: left;
+    width: 114px;
+    height: 28px;
+    margin: 15px 0 0 7px;
+    border: 1px solid #b25415;
+    border-radius: 2px;
+    background: #ca671b;
+}
+.mainnav .land li{
+    float: left;
+}
+.mainnav .land .land1{
+    width: 60px;
+    height: 28px;
+    text-align: center;
+    line-height: 28px;
+}
+.mainnav .land .land1 a{
+    color: #fff;
+    text-shadow: 1px 2px 1px rgba(0,0,0,.5);
+}
+.mainnav .land .land2{
+    text-align: center;
+    width: 26px;
+    height: 28px;
+    border-left: 1px solid #b25415;
+}
+.mainnav .land .land2 i{
+    width: 17px;
+    height: 15px;
+    display: inline-block;
+    background: url("../images/web.png") no-repeat -28px -4px;
+    margin-top: 7px;
+}
+.mainnav .land .land3{
+    text-align: center;
+    width: 26px;
+    height: 28px;
+    border-left: 1px solid #b25415;
+}
+.mainnav .land .land3 i{
+    width: 14px;
+    height: 15px;
+    display: inline-block;
+    background: url("../images/web.png") no-repeat -5px -4px;
+    margin-top: 7px;
+}
+.mainnav .land li:hover{
+    background: #b9560a;
+}
+.subnav{
+    height: 30px;
+    border-bottom: #ccc;
+    background: #f0f0f0;
+}
+.subnav .subnavmain .subnavl{
+    float: left;
+    padding-left: 102px;
+}
+.subnav .subnavmain .subnavl li{
+    float: left;
+    line-height: 30px;
+    padding-right: 33px;
+}
+.subnavmain .subnavl li a{
+    color: #333;
+    font-size: 14px;
+    font-family: 'Hiragino Sans GB','Microsoft Yahei';
+}
+.subnavmain .subnavl li a:hover,.subnavmain .subnavl .hot{
+    color: #ff6600;
+}
+.subnavmain .subnavr{
+    float: right;
+}
+.subnavmain .subnavr li{
+    float: left;
+    line-height: 30px;
+    padding-left: 26px;
+}
+.subnavmain .subnavr li a{
+    color: #333;
+    font-weight: bold;
+}
+.subnavmain .subnavr li i{
+    width: 16px;
+    height: 14px;
+    display: inline-block;
+    background: url("../images/header_icon.png") no-repeat -77px -53px;
+    vertical-align: -3px;
+    margin-right: 5px;
+}
+.subnavmain .subnavr li .i1{
+    background-position: -29px -53px;
+}
+.subnavmain .subnavr li .i2{
+    background-position: -53px -53px;
+}
+.subnavmain .subnavr li a:hover{
+    color: #fa7a19;
+}
+.subnavmain .subnavr li a:hover i{
+    background-position: -77px -77px;
+}
+.subnavmain .subnavr li a:hover .i1{
+    background-position: -29px -77px;
+}
+.subnavmain .subnavr li a:hover .i2{
+    background-position: -53px -77px;
+}
+.content{
+    padding-top: 19px;
+}
+.content .contentL{
+    float: left;
+    width: 740px;
+    border: 1px solid #ebebeb;
+    background: #fff;
+    border-radius: 3px;
+    padding: 15px;
+}
+.banner{
+    position: relative;
+    width: 740px;
+    height: 170px;
+    overflow: hidden;
+}
+.banner img{
+    width: 740px;
+    height: 170px;
+}
+.banner .point{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 70px;
+    height: 18px;
+    background: rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+.banner .point li{
+    float: left;
+    padding: 5px 0 0 5px;
+}
+.banner .point li a{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #fff;
+    display: block;
+}
+.banner .point li a:hover{
+    background: #f60;
+}
+.banner .point .orange a{
+    background: #f60;
+}
+.like{
+    padding-top: 18px;
+}
+.like h4{
+    float: left;
+    font-size: 18px;
+}
+.like a{
+    color: #f60;
+    float: left;
+    padding: 3px 0 0 2px;
+}
+.like i{
+    float: left;
+    color: #f60;
+    padding: 3px 0 0 3px;
+}
+.like a:hover{
+    text-decoration: underline;
+}
+.likelist{
+    padding-top: 16px;
+}
+.likelist .likel{
+    float: left;
+    width: 140px;
+    height: 218px;
+}
+.likelist .likeL{
+    position: relative;
+    float: left;
+    width: 134px;
+    height: 158px;
+    border: 3px solid #3a3935;
+    background: #3a3935;
+}
+.likelist .likeL li{
+    float: left;
+    width: 67px;
+    height: 67px;
+}
+.likelist .likeL li img{
+    width: 67px;
+    width: 67px;
+}
+.likelist .likeL p{
+    float: left;
+    color: #999;
+    padding: 7px 0 0 2px;
+}
+.likelist .likeL i{
+    position: absolute;
+    top: 46px;
+    left: 46px;
+    width: 42px;
+    height: 42px;
+    background: url("../images/play_icon.png") no-repeat -3px -3px;
+}
+.likelist .likeL i:hover{
+    background-position: -51px -3px;
+}
+.likel span{
+    display: block;
+    font-size: 18px;
+    color: #333;
+    padding: 182px 0 0 16px;
+}
+.liker{
+    float: left;
+}
+.liker>li{
+    width: 140px;
+    height: 218px;
+    float: left;
+    margin-left: 10px;
+}
+.liker .likeb{
+    width: 140px;
+    height: 164px;
+
+}
+.liker>li .limg{
+    position: relative;
+    width: 140px;
+    height: 140px;
+}
+.liker>li .limg img{
+    width: 140px;
+    height: 140px;
+}
+.liker>li .limg:hover .limghide{
+    display: block;
+}
+.liker>li .limg .limghide{
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 140px;
+    height: 140px;
+    background: rgba(0,0,0,.7);
+}
+.liker>li .limg .limghide .heart{
+    position: relative;
+    width: 30px;
+    height: 14px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    background: #fefefe;
+    margin: 5px 0 0 5px;
+}
+.limghide .heart i{
+    width: 12px;
+    height: 10px;
+    display: inline-block;
+    background: url("../images/icon.png") no-repeat -6px -127px;
+    margin: 2px 0 0 4px;
+}
+.limghide .heart b{
+    width: 7px;
+    height: 5px;
+    display: inline-block;
+    background: url("../images/icon.png") no-repeat -152px -81px;
+    margin: 0 3px 3px 0;
+}
+.limghide .heart .add{
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 85px;
+    height: 75px;
+    background: #fff;
+    border: 1px solid #555;
+    border-radius: 3px;
+    padding: 5px 0;
+}
+.limghide .heart .add ul li{
+    float: left;
+    width: 85px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+}
+.heart .add ul li a strong{
+    font-weight: normal;
+    color: #333;
+    display: inline-block;
+    width: 40px;
+    text-align: left;
+}
+
+.heart .add ul li a em{
+    width: 14px;
+    height: 12px;
+    display: inline-block;
+    background: url("../images/icon.png") no-repeat -6px -127px;
+    vertical-align: middle;
+    margin-right: 11px;
+}
+.heart .add ul li a .em1{
+    background-position: -30px -126px;
+}
+.heart .add ul li a .em2{
+    background-position: -53px -126px;
+}
+.limghide .heart .add ul li:hover{
+    background: #f5914e;
+}
+.limghide .heart .add ul li:hover em{
+    background-position: -6px -151px;
+}
+.limghide .heart .add ul li:hover .em1{
+    background-position: -30px -149px;
+}
+.limghide .heart .add ul li:hover .em2{
+    background-position: -53px -149px;
+}
+.limghide .heart:hover .add{
+    display: block;
+}
+.limghide>span{
+    width: 24px;
+    height: 24px;
+    display: block;
+    background: url("../images/play_icon.png") no-repeat 0 -48px;
+    margin: 85px 0 0 105px;
+}
+.limghide>span:hover{
+    background-position: -24px -48px;
+}
+
+.liker li .likeB{
+    position: relative;
+    width: 140px;
+    height: 24px;
+    background: #f5f5f5;
+}
+.liker li .likeB p{
+    padding: 4px 0 0 5px;
+    color: #aaa;
+}
+.liker li .likeB .Lhide2{
+    display: none;
+    overflow: hidden;
+    width: 101px;
+    height: 133px;
+    background: rgba(0,0,0,.7);
+    position: absolute;
+    top: -140px;
+    left: 0;
+    padding: 31px 22px 0 17px;
+}
+.liker li .likeB .hidea{
+    width: 68px;
+    height: 30px;
+    display: block;
+    margin: 15px auto 0;
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 2px;
+    background: #999;
+}
+.liker li .likeB .hidea:hover{
+    background: #888;
+}
+.liker li .likeB:hover .Lhide2{
+    display: block;
+}
+.liker li .likeB:hover>p{
+    text-indent: -9999em;
+}
+.liker li .likeone{
+    display: block;
+    color: #333;
+    font-size: 14px;
+    padding-top: 15px;
+}
+.liker li .liketwo{
+    display: block;
+    color: #999;
+    padding-top: 7px;
+}
+.liker>li>a:hover{
+    text-decoration: underline;
+}
+.pic{
+     padding-top: 36px;
+}
+.pic ul li{
+    float: left;
+    width: 175px;
+    height: 60px;
+    margin-right: 13px;
+}
+.pic ul li img{
+    width: 175px;
+    height: 60px;
+}
+.pic ul .picw{
+    margin-right: 0px;
+}
+.new{
+    padding-top: 18px;
+}
+.new h4{
+    float: left;
+    font-size: 18px;
+}
+.new>a{
+    color: #f60;
+    float: left;
+    padding: 3px 0 0 2px;
+}
+.new>i{
+    float: left;
+    color: #f60;
+    padding: 3px 0 0 3px;
+}
+.new>a:hover {
+    text-decoration: underline;
+}
+.new .newlist{
+    float: right;
+    padding-top: 1px;
+}
+.new .newlist li{
+    float: left;
+}
+.new .newlist li:after{
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 11px;
+    background: #eeebee;
+    margin: 0px 11px 0 12px;
+    vertical-align: bottom;
+}
+.new .newlist .neww:after{
+    display: none;
+}
+.new .newlist li a{
+    color: #333;
+}
+.new .newlist li .newf{
+    border-bottom: 3px solid #3a3935;
+}
+.new .newlist li a:hover{
+    border-bottom: 3px solid #3a3935;
+}
+.newmain{
+    position: relative;
+}
+.newmain .imglist{
+    float: left;
+    padding-top: 16px;
+}
+.newmain .imglist img{
+    width: 140px;
+    height: 140px;
+}
+.newmain .imglist li{
+    float: left;
+    width: 140px;
+    height: 225px;
+    padding-right: 10px;
+}
+.newmain .imglist .newteshu{
+    padding-right: 0px;
+}
+
+.newmain .imglist li .newa1{
+    display: block;
+    color: #333;
+    padding-top: 12px;
+}
+.newmain .imglist li .newa2{
+    display: block;
+    color: #999;
+    padding-top: 8px;
+}
+.newmain .imglist li .newa2 .newii1{
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    background: url("../images/glory_icon.png") no-repeat -54px -187px;
+    vertical-align: -2px;
+    margin-left: 4px;
+}
+
+.newmain .imglist li a:hover{
+    text-decoration: underline;
+}
+.imglist li .newbox{
+    position: relative;
+}
+.imglist li .newbox:hover .limghide{
+    display: block;
+}
+.imglist li .newbox .limghide{
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 140px;
+    height: 140px;
+    background: rgba(0,0,0,.7);
+}
+.imglist li .newbox .limghide .heart{
+    position: relative;
+    width: 30px;
+    height: 14px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    background: #fefefe;
+    margin: 5px 0 0 5px;
+}
+.newmain>a>i{
+    position: absolute;
+    top: 63px;
+    left: -15px;
+    width: 25px;
+    height: 48px;
+    background: url("../images/page_icon.png") no-repeat -25px 0;
+}
+.newmain .newi2{
+    background-position: 0 0;
+    top: 63px;
+    left: 730px;
+}
+.newmain .newi1:hover{
+    background-position: -25px -50px;
+}
+.newmain .newi2:hover{
+    background-position: 0px -50px;
+}
+.imglist li .newa2 s{
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    background: url("../images/icons.png") no-repeat -1px -53px;
+    vertical-align: -6px;
+    margin-left: 4px;
+}
+.recommend{
+    padding-top: 16px;
+}
+.recommend ul li{
+
+}
+.recomtop{
+    border-top: 1px solid #ebebeb;
+    height: 28px;
+}
+.recomtop ol .list1{
+    padding-left: 8px;
+    float: left;
+    width: 390px;
+}
+.recomtop ol .list1 i{
+    padding-left: 8px;
+    line-height: 28px;
+    color: #333;
+}
+.recomtop ol .list1 span{
+    color: #999;
+    padding-left: 5px;
+}
+.recomtop ol .list1 s{
+    width: 18px;
+    height: 12px;
+    display: inline-block;
+    background: url("../images/mv.png");
+    vertical-align: middle;
+    margin-left: 6px;
+}
+.recomtop ol .list2{
+    float: left;
+    color: #aaa;
+    line-height: 28px;
+    width: 265px;
+}
+.recomtop ol .list3{
+    float: right;
+    color: #aaa;
+    line-height: 28px;
+    padding-right: 11px;
+}
+.recombottom{
+    height: 75px;
+    display: none;
+    padding: 0px 10px 0 9px;
+    background: #f5f5f5;
+}
+.recombottom .bofang{
+    position: relative;
+    width: 277px;
+    height: 76px;
+}
+.recombottom img{
+    float: left;
+    width: 54px;
+    height: 55px;
+}
+.recombottom .bofang{
+    position: relative;
+    float: left;
+}
+.recombottom .bofang s{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 24px;
+    height: 24px;
+    display: block;
+    background: url("../images/play_icon.png") no-repeat 0 -48px;
+}
+.recombottom .bofang:hover s{
+    background-position: -24px -48px;
+}
+.bofang .bofang1{
+    float: left;
+    width: 212px;
+    padding: 6px 0 0 10px;
+    line-height: 12px;
+    color: #333;
+}
+.bofang .bofang2{
+    float: left;
+    color: #a499b0;
+    padding: 13px 0 0 10px;
+}
+.recombottom .recomhide{
+    float: left;
+    margin-top: 5px;
+    width: 80px;
+}
+.recombottom .recomhide .limghide .heart{
+    position: relative;
+    width: 30px;
+    height: 14px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    background: #fefefe;
+    margin: 5px 0 0 5px;
+}
+.recombottom .touxiang{
+    float: left;
+}
+.recombottom .touxiang img{
+    margin-top: 6px;
+    width: 30px;
+    height: 30px;
+}
+.recombottom>p{
+    padding-top: 6px;
+    float: left;
+    color: #333;
+}
+.recombottom>span{
+    margin-top: 8px;
+    float: right;
+    color: #aaa;
+}
+.recommend li:hover .recombottom{
+    display: block;
+}
+.recommend li:hover .recomtop{
+    display: none;
+}
+.recommend .recomlist{
+    border-bottom: 1px solid #ebebeb;
+}
+.yijian a{
+    margin: 15px 0 15px 10px;
+    float: left;
+    width: 87px;
+    height: 30px;
+    background: #ff6600;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    border-radius: 2px;
+}
+.yijian a s{
+    display: inline-block;
+    width: 10px;
+    height: 12px;
+    background: url("../images/icon.png") no-repeat -9px -33px
+;
+    vertical-align: -5px;
+    margin-right: 7px;
+}
+.contentR .music{
+    position: relative;
+    float: right;
+    width: 300px;
+    height: 185px;
+    background: url("../images/unlogin_mobile.jpg") no-repeat;
+}
+.contentR .music .erwei{
+position: absolute;
+    left: 15px;
+    top: 60px;
+    width: 110px;
+    height: 110px;
+    background: url("../images/erwei.png") no-repeat;
+}
+.music .ios{
+    position: absolute;
+    right: 30px;
+    top: 70px;
+    width: 95px;
+    padding: 2px  10px 2px 5px;
+    border-radius: 4px;
+    background: #4398DE;
+    color: #fff;
+}
+.music .ios span{
+    display: block;
+}
+.music .ios .icon{
+    float: left;
+    width: 18px;
+    height: 20px;
+    margin: 5px 10px 0 10px;
+    background: url("../images/unlogin_icon.png") no-repeat -9px -39px;
+}
+.music .ios:hover{
+    background: #3B87C4;
+}
+.music .android{
+    position: absolute;
+    right: 30px;
+    bottom: 25px;
+    width: 100px;
+    padding: 2px 5px;
+    border-radius: 4px;
+    background: #7CA627;
+    color: #fff;
+}
+.music .android .icon{
+    float: left;
+    width: 18px;
+    height: 20px;
+    margin: 5px 10px 0 10px;
+    background: url("../images/unlogin_icon.png") no-repeat -40px -39px;
+}
+.music .android span{
+    display: block;
+}
+.music .android:hover{
+    background: #688c20;
+}
+.login-thirdparty{
+    overflow: hidden;
+    float: right;
+    width: 270px;
+    margin-top: 20px;
+    padding: 0 15px;
+    border-width: 1px 1px 0;
+    border-style: solid;
+    border-color: #EBEBEB;
+    border-radius: 4px 4px 0 0;
+    background: #fff;
+}
+.login-thirdparty .bigtext{
+    float: left;
+    font-size: 14px;
+    line-height: 80px;
+    color: #333;
+}
+.login-thirdparty ul{
+    float: right;
+    margin-top: 20px;
+}
+.login-thirdparty ul li{
+    float: left;
+    margin-left: 15px;
+}
+.login-thirdparty ul li .qrcode{
+    display: block;
+    width: 42px;
+    height: 38px;
+    background: url("../images/TB1eZrp.jpg") no-repeat;
+}
+.login-thirdparty ul li .qrcode:hover{
+    background-position: 0 -42px;
+}
+.login-xiami{
+    float: right;
+    overflow: hidden;
+    width: 270px;
+    padding: 0 15px;
+    border: 1px solid #EBEBEB;
+    border-radius: 0 0 4px 4px;
+    background: #fcfcfc;
+}
+.login-xiami .login{
+    float: left;
+    margin-top: 8px;
+    padding: 0 10px;
+    border-radius: 4px;
+    background: #f60;
+    color: #fff;
+    line-height: 30px;
+}
+.login-xiami span{
+    float: right;
+    line-height: 46px;
+    color: #666;
+}
+.login-xiami .reg{
+    color: #f60;
+}
+.listen-mod{
+    float: right;
+    border: 1px solid #EBEBEB;
+    border-radius: 4px;
+    background: #fff;
+    margin-top: 20px;
+}
+.listen-cont{
+    width: 270px;
+    padding: 0 15px;
+}
+.listen-cont h2{
+    height: 40px;
+    margin: 0 15px;
+    border-bottom: 1px solid #EBEBEB;
+    line-height: 40px;
+    text-align: left;
+    overflow: hidden;
+
+}
+.listen-cont strong{
+    float: left;
+    margin-top: 12px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 14px;
+    color: #333;
+}
+.listen-cont .chuanyue{
+    float: right;
+}
+.listen-cont .chuanyue .btn{
+    display: block;
+    margin-top: 14px;
+    width: 19px;
+    height: 11px;
+    background: url("../images/icon3.png") no-repeat 0px -1px;
+}
+.listen-cont .chuanyue .btn:hover{
+    background-position: 0 -23px;
+}
+.listen-content{
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
+.item-cover{
+    position: relative;
+    text-align: center;
+}
+.item-cover .img{
+    width: 270px;
+    height: 270px;
+}
+.item-cover img{
+    width: 270px;
+    height: 270px;
+    vertical-align: middle;
+}
+.item-cover .item-date{
+    position: absolute;
+    top: -7px;
+    left: 7px;
+    width: 68px;
+    height: 75px;
+    background: url("../images/icon3.png") no-repeat -41px 0;
+}
+.item-cover .item-date ul{
+    padding: 5px 0 0 7px;
+}
+.item-cover .item-date ul li{
+    display: block;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    font-weight: 700;
+}
+.item-cover .item-date ul .day{
+    font-size: 18px;
+}
+.item-cover s{
+    display: none;
+    position: absolute;
+    top: 113px;
+    left: 113px;
+    width: 44px;
+    height: 44px;
+    background: url("../images/play_icon.png") no-repeat -2px -2px;
+}
+.item-cover:hover s{
+    display: block;
+}
+.item-cover s:hover{
+    background-position: -50px -2px;
+}
+.item-util{
+    overflow: hidden;
+    background: #F5F5F5;
+}
+.item-util .collect{
+    width: 134px;
+    height: 40px;
+    float: left;
+    position: relative;
+}
+.item-util .collect .btn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -13px;
+    margin-top: -11px;
+    width: 25px;
+    height: 21px;
+    display: block;
+    background: url("../images/icon3.png") no-repeat 0 -171px;
+}
+.item-util .share{
+    border-left: 1px solid #EBEBEB;
+    width: 134px;
+    height: 40px;
+    float: left;
+    position: relative;
+}
+.item-util .share .btn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -13px;
+    margin-top: -11px;
+    width: 25px;
+    height: 21px;
+    display: block;
+    background: url("../images/icon3.png") no-repeat 0 -47px;
+}
+.item-util .collect .btn:hover{
+    background-position: 0 -202px;
+}
+.item-util .share .btn:hover{
+    background-position: 0 -73px;
+}
+.item-song{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #EBEBEB;
+}
+.item-song h2{
+    margin-left: 2px;
+    border: 0;
+}
+.item-song h2 a{
+    font-weight: normal;
+    font-style: inherit;
+    float: left;
+    color: #333;
+    font-size: 14px;
+    font-family: 'Hiragino Sans GB','Microsoft Yahei';
+}
+.item-song h2 .name{
+    font-size: 12px;
+    color: #999;
+    margin-left: 5px;
+}
+.item-song h2 a:hover{
+    text-decoration: underline;
+}
+.item-song .desc{
+    color: #999;
+    margin-left: 2px;
+}
+.listen-mod .item-comment{
+    display: block;
+    margin-top: 11px;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    background: #FF6600;
+    border-radius: 4px;
+    text-align: center;
+}
+.listen-mod .item-comment:hover{
+    background: #E55C00;
+}
+.scene{
+    width: 300px;
+    border: 1px solid #EBEBEB;
+    border-radius: 4px;
+    background: #fff;
+    margin-top: 20px;
+    float: right;
+}
+.scene h2{
+    height: 40px;
+    margin: 0 15px;
+    border-bottom: 1px solid #EBEBEB;
+    line-height: 40px;
+    text-align: center;
+}
+.scene h2 b{
+    font-weight: normal;
+    font-size: 14px;
+    font-family: 'Hiragino Sans GB','Microsoft Yahei';
+}
+.scene{
+    padding-bottom: 10px;
+}
+.scene .scene-con{
+    position: relative;
+    /*float: right;*/
+    padding-bottom: 10px;
+}
+.scene .scene-con li{
+    width: 55px;
+    height: 78px;
+    float: left;
+    margin: 10px 0 0 16px;
+    text-align: center;
+}
+.scene .scene-con li img{
+    width: 55px;
+    height: 55px;
+}
+.scene .scene-con li a{
+    position: relative;
+    display: block;
+    color: #aaa;
+    line-height: 24px;
+    text-align: center;
+}
+.scene .scene-con li a:hover{
+    color: #333;
+    text-decoration: underline;
+}
+.scene .scene-con li a s{
+    display: none;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 24px;
+    height: 24px;
+    background: url("../images/play_icon.png") no-repeat 0 -48px;
+}
+.scene .scene-con li a:hover s{
+    display: block;
+}
+.scene .scene-con li a s:hover{
+    background-position: -24px -48px;
+}
+.secondary{
+    float: right;
+}
+.secondary .group{
+    border: 1px solid #EBEBEB;
+    border-radius: 4px;
+    background: #fff;
+    margin-top: 20px;
+    float: right;
+}
+.secondary .group .action{
+    height: 40px;
+    line-height: 40px;
+}
+.secondary .group .action li{
+    float: left;
+    width: 74px;
+    text-align: center;
+    border-bottom: 1px solid #EBEBEB;
+    cursor: pointer;
+}
+.secondary .group .action li span{
+    color: #333;
+    font-size: 12px;
+}
+.secondary .group .action .current-last{
+    width: 151px;
+    border-left: 1px solid #EBEBEB;
+    border-bottom: 1px solid transparent;
+}
+ .action .current-last span{
+     font-size: 14px;
+ }
+.action .current-last b{
+    color: #f60;
+
+}
+.action .current-last a{
+    font-size: 12px;
+    color: #f60;
+}
+.action .current-last a:hover{
+    text-decoration: underline;
+}
+.group .group-con{
+    padding: 15px;
+}
+.group .group-con li{
+    position: relative;
+    overflow: hidden;
+    line-height: 30px;
+}
+.group .group-con li a{
+    float: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 180px;
+    color: #333;
+    font-size: 12px;
+}
+.group .group-con li span{
+    float: right;
+    color: #999;
+}
+.group .group-con li a:hover{
+    text-decoration: underline;
+}
+.group .group-con li b{
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 4px;
+}
+.group .group-con li b a{
+    max-width: 60px;
+    padding: 0 5px;
+    border-radius: 2px;
+    background: #f60;
+    color: #fff;
+    line-height: 22px;
+    float: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.group .group-con li:hover b{
+    display: block;
+}
+.report{
+    float: right;
+    width: 298px;
+    height: 52px;
+    margin-top: 20px;
+    border: 1px solid #EBEBEB;
+    border-radius: 4px;
+}
+.report a{
+    display: block;
+    height: 52px;
+    border-radius: 3px;
+    background: url("../images/jubao.png") no-repeat;
+}
+.report a:hover{
+    background-position: 0 -52px;
+}
+.personalnav{
+    padding-top: 30px;
+    height: 45px;
+}
+.personalnav .personalnav-con{
+    height: 45px;
+    border-top: 2px solid #3A3935;
+    border-bottom: 1px solid #EBEBEB;
+    background: #fff;
+}
+.personalnav .personalnav-con li{
+    float: left;
+}
+.personalnav .personalnav-con .fist{
+    background: #3A3935;
+}
+.personalnav .personalnav-con .fist a{
+    color: #fff;
+    cursor: default;
+    outline: none;
+    height: 42px;
+    padding: 0 20px;
+    line-height: 42px;
+    font-size: 14px;
+}
+.personalnav .personalnav-con li a{
+    color: #333;
+    height: 42px;
+    padding: 0 20px;
+    line-height: 42px;
+    font-size: 14px;
+}
+.personalnav .personalnav-con li a:hover{
+    text-decoration: underline;
+}
+.personalnav .personalnav-con .fist a:hover{
+    text-decoration: none;
+}
+.personalnav .setting{
+    width: 42px;
+    float: right;
+}
+.personalnav .setting a{
+    position: relative;
+    display: block;
+    width: 42px;
+    height: 42px;
+    color: #333;
+}
+.personalnav .setting a s{
+    position: absolute;
+    top: 4px;
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: url("../images/personal_icon.png") no-repeat;
+}
+.personalnav .setting a:hover s{
+    background-position: -32px 0;
+}
+.personal{
+    width: 1084px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+.personal .imglist{
+    float: left;
+    width: 1104px;
+}
+.personal .imglist>li{
+    float: left;
+    background: #fff;
+    position: relative;
+    padding: 10px 10px 0px 10px;
+    margin-right: 15px;
+    height: 292px;
+}
+.personal li .newbox img{
+    width: 185px;
+    height: 185px;
+}
+.personal.imglist li .newa1{
+    display: block;
+    color: #333;
+    padding-top: 12px;
+}
+.personal .imglist li .newa2{
+    display: block;
+    color: #999;
+    padding-top: 8px;
+}
+.personal .imglist li .newa2 .newii1{
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    background: url("../images/glory_icon.png") no-repeat -54px -187px;
+    vertical-align: -2px;
+    margin-left: 4px;
+}
+
+.personal .imglist li a:hover{
+    text-decoration: underline;
+}
+.personal .imglist li .newbox .limghide{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 185px;
+    height: 185px;
+}
+.personal .limghide>span{
+    width: 24px;
+    height: 24px;
+    display: block;
+    background: url("../images/play_icon.png") no-repeat 0 -48px;
+    margin: 130px 0 0 150px;
+}
+.personal .limghide>span:hover{
+    background-position: -24px -48px;
+}
+.personal .imglist li .newa1{
+    display: block;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+    font-size: 14px;
+    height: 24px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 24px;
+    color: #333;
+}
+.personal .imglist li .action1{
+    position: absolute;
+    z-index: 2;
+    left: 10px;
+    bottom: 10px;
+    width: 185px;
+}
+.personal .imglist li .action1 .more{
+    float: left;
+    height: 24px;
+    padding: 0 10px;
+    border-radius: 2px;
+    line-height: 24px;
+    background-color: #3A3935;
+    color: #FFF;
+}
+.personal .imglist li .action1 .more:hover{
+    text-decoration: none;
+    color: #ccc;
+}
+.personal .imglist li .action1 .tochange{
+    float: right;
+    line-height: 24px;
+    color: #999;
+}
+.personal .imglist .teshu{
+    padding: 0;
+}
+.personal .imglist .tupian{
+    position: relative;
+}
+.personal .imglist .tupian img{
+    width: 205px;
+    height: 300px;
+}
+.gap{
+    overflow: hidden;
+    min-width: 984px;
+    padding: 0 20px;
+    border-top: 1px solid #e6e6e6;
+    background-color: #FFF;
+}
+.wrapper{
+    overflow: hidden;
+    width: auto;
+
+    max-width: 1104px;
+    min-width: 980px;
+    margin: 0 auto;
+    padding: 20px 0;
+    color: #999;
+}
+.wrapper .wracon{
+    overflow: hidden;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #CCC;
+}
+.wrapper .wracon .sitemap{
+    float: left;
+}
+.wrapper .wracon .sitemap dl{
+    float: left;
+    padding: 0 30px 0 10px;
+    line-height: 22px;
+}
+.wracon .sitemap dl dt{
+    position: relative;
+    margin: 0 0 5px;
+    font-weight: bold;
+    color: #666;
+}
+.wracon .sitemap dl dd a{
+    color: #999;
+}
+.wracon .sitemap dl a:hover{
+    text-decoration: underline;
+}
+.wracon .sitemap dl .hot{
+    position: absolute;
+    width: 19px;
+    height: 11px;
+    background: url("../images/sup_hot.gif") no-repeat;
+    vertical-align: super;
+}
+.wracon .cooperation{
+    float: right;
+    width: 430px;
+}
+.wracon .cooperation .labels{
+overflow: hidden;
+    background: url("../images/partners_icon.jpg") no-repeat right top;
+}.wracon .cooperation .labels span{
+     float: left;
+     margin-right: 10px;
+     margin-bottom: 150px;
+     padding-top: 15px;
+ }
+.wracon .cooperation .labels a{
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin: 0 0 7px 5px;
+}
+.wrapper .ali-group{
+    overflow: hidden;
+    border-bottom: 1px dashed #CCC;
+}
+.wrapper .ali-group a{
+    float: left;
+    margin: 10px 0 10px -1px;
+    padding: 0 10px;
+    border-left: 1px solid #EEE;
+    color: #999;
+}
+.wrapper .ali-group a:hover{
+    text-decoration: underline;
+}
+.wrapper .extra{
+    clear: both;
+    margin-top: 15px;
+}
+.wrapper .extra .sns{
+    float: left;
+    text-indent: 10px;
+    vertical-align: middle;
+}
+.wrapper .extra .sns .icon{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    background: url("../images/sync-ico_v15.gif") no-repeat;
+    vertical-align: middle;
+}
+.wrapper .extra .sns .sina{
+    background-position: 0 -16px;
+}
+.wrapper .extra .sns .renren{
+    background-position: 0 -80px;
+}
+.wrapper .extra .sns .qzone{
+    background-position: 0 -272px;
+}
+.wrapper .extra .sns .tqq{
+    background-position: 0 -144px;
+}
+.wrapper .extra .sns .douban{
+    background-position: 0 -208px;
+}
+.wrapper .extra .sns .sina:hover{
+    background-position: 0 0;
+}
+.wrapper .extra .sns .renren:hover{
+    background-position: 0 -64px;
+}
+.wrapper .extra .sns .qzone:hover{
+    background-position: 0 -256px;
+}
+.wrapper .extra .sns .tqq:hover{
+    background-position: 0 -128px;
+}
+.wrapper .extra .sns .douban:hover{
+    background-position: 0 -192px;
+}
+.wrapper .emark{
+    float: right;
+    margin-left: 5px;
+}
+.wrapper .emark img{
+    width: 40px;
+    height: 40px;
+}
+.wrapper .copyright{
+    width: 478px;
+    float: right;
+    color: #AAA;
+    text-align: right;
+}
+.wrapper .copyright strong{
+    display: inline-block;
+    overflow: hidden;
+    width: 117px;
+    height: 25px;
+    margin-left: 15px;
+    background: url("../images/xiami_motto.png") no-repeat;
+    text-indent: 100%;
+    line-height: 25px;
+    vertical-align: middle;
+}
+.wrapper .copyright a{
+    padding-left: 5px;
+    color: #aaa;
+}
+.wrapper .copyright a:hover{
+    text-decoration: underline;
+}
+.t-show{
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    z-index: 999;
+    outline: none;
+}
+.t-show a{
+    display: block;
+    width: 38px;
+    height: 34px;
+    padding-top: 4px;
+    border-width: 1px 1px 0 1px;
+    border-style: solid;
+    border-color: #D5D5D5;
+    background: #FEFEFE;
+}
+.t-show .sidebutton-qrcode{
+    position: relative;
+    position: relative;
+    border-radius: 3px 3px 0 0;
+}
+.t-show b{
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 4px 0 0 7px;
+    background: url("../images/footer_icon.png") no-repeat;
+}
+.t-show .sidebutton-qrcode b{
+    background-position: 0 0;
+}
+.t-show .sidebutton-feedback{
+    position: relative;
+}
+.t-show .sidebutton-feedback b{
+    background-position: 0 -24px;
+}
+.t-show .sidebutton-gotop b{
+    background-position: 0 -48px;
+}
+.t-show .sidebutton-gotop{
+    position: relative;
+    border-bottom: 1px solid #D5D5D5;
+    border-radius: 0 0 3px 3px;
+}
+.t-show span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 38px;
+    height: 38px;
+    line-height: 19px;
+    border-color: #E06E16;
+    background-color: #F60;
+    color: #FFF;
+    text-align: center;
+    text-decoration: none;
+    display: none;
+}
+.t-show .sidebutton-gotop:hover span{
+    display: block;
+}
+.t-show .sidebutton-feedback:hover span{
+    display: block;
+}
+.t-show .sidebutton-qrcode:hover span{
+    display: block;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button class="btn1">async:false</button>
+<button class="btn2">setTimeout</button>
+<button class="btn3">deferred</button>
+
+<img class="loadingicon" style="position:fixed;left:50%;top:50%;margin-left:-16px;margin-top:-16px;display:none;" src="loading2.gif" alt="正在加载" />
+<script>
+
+    function getData1(){
+        var result;
+        $.ajax({
+            url : 'p.php',
+            async : false,
+            success: function(data){
+                result = data;
+            }
+        });
+
+        return result;
+    }
+
+    $('.btn1').click(function(){
+        $('.loadingicon').show();
+        var data = getData1();
+        $('.loadingicon').hide();
+        alert(data);
+    });
+
+
+
+    $('.btn2').click(function(){
+        $('.loadingicon').show();
+        setTimeout(function(){
+            $.ajax({
+                url : 'p.php',
+                async : false,
+                success: function(data){
+                    $('.loadingicon').hide();
+                    alert(data);
+                }
+            });
+        }, 0);
+    });
+
+
+
+    function getData3(){
+        var defer = $.Deferred();
+        $.ajax({
+            url : 'p.php',
+            //async : false,
+            success: function(data){
+                defer.resolve(data)
+            }
+        });
+        return defer.promise();
+    }
+
+    $('.btn3').click(function(){
+        $('.loadingicon').show();
+        $.when(getData3()).done(function(data){
+            $('.loadingicon').hide();
+            alert(data);
+        });
+    });</script>
+</body>
+</html>

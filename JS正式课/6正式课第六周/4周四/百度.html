@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        img{
+            display: block;
+            width: 270px;
+            height: 129px;
+            margin: 80px auto 30px;
+        }
+        div{
+            position: relative;
+            width: 640px;
+            height: 40px;
+            line-height: 40px;
+            margin: 0 auto;
+        }
+        div input{
+            display: inline-block;
+            width: 528px;
+            height: 28px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            font-size: 18px;
+        }
+        div span{
+            display: inline-block;
+            width: 100px;
+            height: 40px;
+            background: #3385ff;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+        }
+        div ul{
+            display: none;
+            position: absolute;
+            top: 39px;
+            left: 0;
+            width: 638px;
+            border: 1px solid #ccc;
+        }
+        div ul li{
+            height: 30px;
+            line-height: 30px;
+        }
+        div ul li a{
+            display: block;
+            padding: 0 5px;
+            color: #333;
+        }
+        div ul li a:hover{
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<img src="bd.png" alt="">
+<div class="box" id="box">
+    <input type="text"><span>百度一下</span>
+    <ul>
+        <li><a href="javascript:;">黄渤</a></li>
+        <li><a href="javascript:;">徐峥</a></li>
+        <li><a href="javascript:;">王宝强</a></li>
+        <li><a href="javascript:;">宋小宝</a></li>
+        <li><a href="javascript:;">岳云鹏</a></li>
+    </ul>
+</div>
+<script>
+    var oBox = document.getElementById('box');
+    var oTxt = oBox.getElementsByTagName('input')[0];
+    var oBtn = oBox.getElementsByTagName('span')[0];
+    var oUl = oBox.getElementsByTagName('ul')[0];
+    var aA = oUl.getElementsByTagName('a');
+    //1.聚焦的时候，有内容就显示，没有内容就不显示
+    //2.编辑内容的时候，有内容就显示，没有内容就隐藏
+    //3.点击下拉菜单中的内容，ul隐藏，同时开始搜索
+    //4.点击除了搜索框和下拉单以外的任何地方，ul隐藏
+    //5.
+    var n=-1;
+    var oldValue=null;
+    oTxt.onfocus=oTxt.onkeyup=function(){
+        if (oTxt.value.length){
+            oUl.style.display='block'
+        }else {
+            oUl.style.display='none'
+        }
+    };
+    //当点击文本框的时候，阻止其冒泡，只要当前元素发生事件即可。
+    oTxt.onclick=function(e){//阻止事件的冒泡，
+        e = e||window.event;
+        e.stopPropagation? e.stopPropagation(): e.cancelBubble=true;
+    };
+    document.body.onclick=function(e){
+        e = e||window.event;
+        var target = e.target|| e.srcElement;
+        if (target.tagName.toLowerCase()==='a'){
+            oTxt.value = target.innerHTML;
+            search();
+        }
+        if (target===oBtn){
+            search();
+        }
+        if (target!==oTxt||target!==oBtn){
+            oUl.style.display='none'
+        }
+
+    };
+    oTxt.onkeydown=function(e){
+        e= e||window.event;
+        if (e.keyCode==40){
+            n++;
+            if (n>=aA.length){
+                n=-1;
+            }
+            list();
+        }else if (e.keyCode==38){
+            n--;
+            //当上键已经超出文本框的时候，让他返回到a标签集合的最后一个，在一次循环地走。
+            if (n<=-2){
+                n=aA.length-1;
+            }
+            list();
+            //为了使焦点光标一直在内容的后面。
+            oTxt.keydown + e.preventDefault();
+        }else if (e.keyCode===13){
+            search();
+        }
+    };
+    //方法作用，当我按下上下键时，让a标签的颜色改变，并且让文本框中的内容显示a标签的内容。当n==-1的时候，代表它走到了文本框这一行，让文本框显示原有大的内容。这时就需要在一开保存下原有的内容。创建一个全局变量来，保存。但是只能保存这一个，只能让它走一次而且是在刚进这个方法时就要保存，否则就会保存下其他的值。在按键的时候，循环让其他a标签的背景色为原有样式。
+    function list(){
+        if (!oldValue){
+            oldValue=oTxt.value;
+        }
+        for (var i=0;i<aA.length;i++){
+            aA[i].style.background=null;
+        }
+        if (n==-1){
+            oTxt.value = oldValue;
+        } else {
+            aA[n].style.background='#ccc';
+            oTxt.value = aA[n].innerHTML;
+        }
+    }
+    function search(){
+        window.open('https://www.baidu.com/s?wd='+oTxt.value);
+        oTxt.value=''
+    }
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        span{
+            width: 200px;
+            height: 40px;
+            position: relative;
+            display: block;
+            background: darkgrey;
+            margin:100px auto;
+            text-align: center;
+            line-height: 40px;
+        }
+        span div{
+            width: 400px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            background: #e1e1e1;
+            position: absolute;
+            left:0;
+            top:40px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<span>购物车
+    <div>购物车中还没有商品，赶紧选购吧！</div>
+</span>
+<script>
+    var oS=document.getElementsByTagName('span')[0];
+    var oD=document.getElementsByTagName('div')[0];
+    oS.onmouseover=function(e){
+        e=e||window.event;
+        var oTo= e.fromElement|| e.relatedTarget;
+        if(this.contains(oTo)) return;
+        oD.style.display='block';
+        console.log('ok')
+    };
+    oS.onmouseout=function(e){
+        e=e||window.event;
+        var oTo= e.toElement|| e.relatedTarget;
+        if(this.contains(oTo)) return;
+        oD.style.display='none';
+    };
+</script>
+</body>
+</html>

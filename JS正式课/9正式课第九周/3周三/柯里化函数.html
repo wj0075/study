@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bind</title>
+</head>
+<body>
+<script>
+    function myBind(callback,context) {
+        var outerArg=Array.prototype.slice.call(arguments,1);//类数组转数组，并截取后面的参数
+        if ('bind' in Function.prototype){
+            return this.bind.apply(this,[context].concat(outerArg));
+        }
+        return function () {
+            var innerArg = Array.prototype.slice.call(arguments,0);
+            var arg = outerArg.concat(innerArg);
+            callback.apply(this,arg)
+        }
+    }
+    Function.prototype.myBind=function (context) {
+        var _this = this;
+        var outArg = Array.prototype.slice.call(arguments,1);
+        if ('bind' in Function.prototype){
+            return this.bind.apply(this,[context].concat(outArg))
+        }
+        return function () {
+            var innerArg=Array.prototype.slice.call(arguments,0);
+            var arg=outArg.concat(innerArg);
+            _this.apply(context,arg);
+        }
+    }
+</script>
+</body>
+</html>

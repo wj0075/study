@@ -1,0 +1,111 @@
+css2所有的效果都是即时效果
+css3过渡动画-transition
+    语法：当css属性值发生改变时，由起始值向结束值之间实现平滑过渡的效果
+    特征：1.只有两种状态，一个是起始状态，另一个是结束状态
+         2.不是立马执行，需要有触发条件 可以通过伪类，js,媒体查询等去触发
+
+    transition细分属性
+    transition-property 过渡属性 默认值all
+    transition-duration 动画运行的时间
+    transition-timing-function 动画运行的速度
+     ease(默认值) linear ease-in ease-out ease-in-out
+    transition-delay 延迟时间
+
+    复合写法
+    transition:width 1s linear 1s;
+    transition:width 1s linear 1s,height 1s ease 0.5s;设置多个属性
+    如果仅仅是属性名不一样，其他的属性值都一样
+    transition:all 1s ease 1s;
+    ->transition:1s; 只需要设置运行时间，其他的都是默认值
+
+    做PC端项目时，为了兼容各个浏览器，需要写如下前缀的写法
+    -webkit-transition-property: width;
+    -moz-transition-property: width;
+    -ms-transition-property: width;
+    -o-transition-property: width;
+    transition-property: width;
+    移动项目，只需要写两种写法
+    -webkit-transition-property: width;
+    transition-property: width;
+
+    变形属性 transform  旋转 倾斜 缩放 平移  正负确定方向
+    transform:rotate(45deg)
+        正->顺时针 负->逆时针
+    transform:scale(1,1)
+        默认值1    >1放大 <1 缩小
+    transform:skew(15deg,30deg)
+        第一个参数 正->水平往左 负->水平往右
+        第二个参数 正->垂直往下 负->垂直往上
+    transform:translate(tx,ty)
+        tx,ty默认值是0 如果没有发生平移，tx和ty是0
+        tx:正->右 负->左 ty:正->下 负->上
+
+    transform-origin 发生变形时基准点默认情况下是元素的中心点
+    rotate ,scale,skew可以改变变形基准点，translate不能改变
+    变形的方法可以一起使用，但是注意先后顺序，一旦和translate一起结合时，如果要保证变形的基准点不发生改变，则把translate放最后
+ -------------------------------------------------------------- 帧动画 animation
+    刚好弥补了过渡动画的缺陷
+    特征：1.可以设置多种状态，可以制作复杂的动画效果
+         2.不需要触发条件，立马执行
+    步骤 ：1.通过@keyframes 声明动画的运动轨迹
+        @-webkit-keyframes 动画名{
+            0%{  动画运行时间的百分比
+
+            }
+            50%{
+
+            }
+         }
+
+         @keyframes 动画名{
+            0%{  动画运行时间的百分比
+
+            }
+            50%{
+
+            }
+         }
+         2.通过animation调用声明的帧动画
+            animation-name 动画名称  (必写)
+            animation-duration 执行时间 （必写）
+            animation-timing-function 动画运行的速度 ease(默认值)
+            animation-delay 延迟时间
+            animation-iteration-count [1|infinite] 执行的次数
+            animation-direction:normal（默认值）|reverse(反方向)|alternate（交替）|alternate-reverse（反方向交替）
+            animation-play-state：[running（运行的，默认值）|paused（停止）] 动画运行的状态
+            animation-fill-mode 动画结束后的状态
+               none|backwards(回到起始位置)|forwards(停留在最后一帧)|both(根据方向，可能停留在第一帧或者最后一帧)
+
+          复合写法
+           animation:move 1s ease 1s 2 reverse  both
+           ->animation:move 1s 1 both;
+
+
+           交通职业学院东校区H5青年大赛活动总结
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3D变换
+如果想要实现3D效果，首先得设置如下两个属性
+perspective:2000px;景深（近大远小的效果） 一般设置在800px~2000px  (用户到z轴的距离)  作用在祖先标签（包含父标签）
+transform:perspective(2000px) 直接作用在变形元素上
+transform-style:flat|preserve-3d(3D空间)  作用在变形元素的父标签上
+perspective-origin:center 默认情况下是看到物体中心的位置上
+
+3d方法
+平移
+transform:translate3d(tx,ty,tz)
+transform:translateX()
+transform:translateY()
+transform:translateZ() 正->前->变大 负->后->变小
+缩放
+transform：scale3d(sx,sy,sz) 默认值是1
+transform:scaleX()
+transform:scaleY()
+transform:scaleZ() 不能单独使用，得配合着其他变形方法一起使用
+翻转
+transform：rotate3d(rx,ry,rz,a);rx，ry,rz向量坐标 a角度 矩阵算法
+transform:rotateX(45deg) 围着X轴翻转 正->前翻 负->后翻 transform:rotate3d(1,0,0,45deg)
+transform:rotateY(45deg) 围着Y轴翻转 正->右翻 负->左翻 transform:rotate3d(0,1,0,45deg)
+transform:rotateZ(45deg) 效果等同于2d的rotate(45deg)，但是是在Z轴平面上旋转 transform:rotate3d(0,0,1,45deg)
+transform:rotateX(45deg) rotateY(30deg) rotateZ(30deg);
+

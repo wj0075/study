@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //第一种方式  逻辑冗余，每执行一次都要判断，消耗性能。
+    function getXhr(){
+        if (window.XMLHttpRequest){
+            return new XMLHttpRequest;
+        }
+        else {
+            return new ActiveXObject('Microsoft.XMLHTTP');
+        }
+    }
+    //第二种方式
+    function getXHR2(){
+        var fn;
+        if (window.XMLHttpRequest){
+            fn = function(){
+                return new XMLHttpRequest
+            }
+        }else {
+            fn = function(){
+                return new ActiveXObject('Microsoft.XMLHTTP')
+            }
+        }
+        /*getXHR2=fn;
+        var xhr = fn();
+        return xhr*/
+        return (getXHR2=fn)();
+    }
+    //第三种方式 自执行函数
+    var getXHR3 = ((function(){
+        if (window.XMLHttpRequest){
+            return function (){
+                return new XMLHttpRequest();
+            }
+        }
+        return function (){
+            return new ActiveXObject('Microsoft.XMLHTTP')
+        }
+    })());
+    //第四种方式 超级吊
+    var getXHR4 = (function(){
+        var list = [
+                function(){
+                    return new XMLHttpRequest
+                },
+                function (){
+                    return new ActiveXObject('Microsoft.XMLHTTP')
+                },
+                function(){
+                    return new ActiveXObject('Misxml2.XMLHTTP')
+                },
+            function(){
+                return new ActiveXObject('Misxml3.XMLHTTP')
+            }
+        ];
+        while(list.length){
+            var xhr = list.shift();
+            try {
+                xhr();
+                return xhr
+            }catch (e){
+
+            }
+        }
+        throw new ReferenceError('当前浏览器不知ajax功能')
+    })()
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

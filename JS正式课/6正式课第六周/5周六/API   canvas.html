@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API</title>
+    <style>
+        canvas{
+            border: 1px solid #000;
+        }
+
+
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="800" height="500">sorry!浏览器不支持</canvas>
+<script>
+    var canvas = document.getElementById('canvas');
+    //上下文：创建一个2D环境，以后所有的操作，都依赖于ctx这个对象
+    var ctx = canvas.getContext('2d');
+    /*ctx.beginPath();//开始路径
+    ctx.moveTo(100,100);//把鼠标移动到某个坐标
+    ctx.lineTo(200,200);//从哪个坐标到哪个坐标
+    ctx.lineTo(300,100);
+    ctx.lineTo(400,200);
+    ctx.lineTo(500,400);
+    ctx.closePath();//闭合
+    //ctx.stroke();//画的是线
+    ctx.fillStyle='red';//填充的颜色,写在具体要干事的前面。
+    ctx.fill();//填充*/
+
+    /*ctx.beginPath();
+    ctx.rect(200,200,200,200)//矩形
+    ctx.stroke();*/
+    //第一个参数是x坐标，第二个是y坐标。后面两个是矩形的宽高
+    //ctx.strokeRect(100,200,200,200)
+
+    //弧度：
+    //x\y圆心。radius//半径   startAngle//π弧度制的起点位置   endAngle 弧度制的结束位置  最后一个参数是画的时针顺序，true代表逆时针，，false顺时针
+    ctx.arc(200,200,100,0,Math.PI*2*(3/4),false);
+    ctx.stroke()
+    //ctx.fill()
+
+
+    //1.创建图片对象
+   /* var img = new Image();
+    //2.给对象加载地址
+    img.src = './img/3.jpg';
+    //3.drawImage:把图片展示在画布上
+    img.onload=function(){
+        ctx.drawImage(img,100,130,100,130,200,200,100,130);
+    }*/
+
+    //桃心
+   /* ctx.beginPath();
+    ctx.moveTo(75,40);
+    ctx.bezierCurveTo(75,37,70,25,50,25);
+    ctx.bezierCurveTo(20,25,20,62.5,20,62.5);
+    ctx.bezierCurveTo(20,80,40,102,75,120);
+    ctx.bezierCurveTo(110,102,130,80,130,62.5);
+    ctx.bezierCurveTo(130,62.5,130,25,100,25);
+    ctx.bezierCurveTo(85,25,75,37,75,40);
+    ctx.fillStyle='red';
+    ctx.fill();
+*/
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: -webkit-linear-gradient(top,lightblue,lightgray,lightgoldenrodyellow);
+            text-align: center;
+            line-height: 200px;
+            font-size: 100px;
+            color: orange;
+            margin:100px auto;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+</head>
+<body>
+<div>0</div>
+<script>
+    var oDiv=document.getElementsByTagName('div')[0];
+    //需求：点击oDiv的时候，实现自增；
+    //思路1：全局变量，不建议；
+    /*var n=0;
+    oDiv.onclick=function(){
+        this.innerHTML=++n;
+    }*/
+    //思路2,3：闭包:问题-》闭包中的内存地址被外面变量的属性给占用，闭包所形成的私有作用域无法销毁；
+    /*(function(){
+        var n=0;
+        oDiv.onclick=function(){
+            this.innerHTML=++n;
+        }
+    })();*/
+    /*oDiv.onclick=(function(){
+        var n=0;
+        return function(){
+            this.innerHTML=++n;
+        }
+    })();*/
+    //思路4：DOM操作； DOM比较好性能，也不建议；
+    /*oDiv.onclick=function(){
+        this.innerHTML++;//++:会默认进行数据类型转换，把我们从页面中拿到的字符串转成数字
+        //this.innerHTML=this.innerHTML+1;//计算会优先选择“字符串拼接”
+    }*/
+    //思路5：自定义属性:最常用的就是：当需要全局变量的时候，可以把全局变量要存的东西，存到自定义属性上；
+    oDiv.n=0;
+    oDiv.onclick=function(){
+        this.innerHTML=++this.n;
+    };
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

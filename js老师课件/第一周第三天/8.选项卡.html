@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        #box{
+            width: 306px;
+            margin: 0 auto;
+        }
+        ul{
+            list-style: none;
+            overflow: hidden;
+        }
+        li{
+            float: left;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid orange;
+        }
+        #box div{
+            display: none;
+            width: 304px;
+            height: 200px;
+            border: 1px solid plum;
+            margin-top: -1px;
+            position: relative;
+            font-size: 36px;
+        }
+        li.select{
+            background: -webkit-linear-gradient(top,lightblue,yellow);
+        }
+        #box div.select{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li class="select">选项一</li>
+        <li>选项二</li>
+        <li>选项三</li>
+    </ul>
+    <div class="select">1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+<script>
+    //思路：鼠标经过li时，让所有的li和所有的div去掉select的类名，让当前的li和对应的div设置select的类名
+
+    //    1、获取要操作的元素
+    var box = document.getElementById('box')
+    var lis = box.getElementsByTagName('li');
+    var divs = box.getElementsByTagName('div');
+
+    for(var i=0;i<lis.length;i++){
+        lis[i].zfpx = i;
+        lis[i].onmouseover = function(){
+            for(var j=0;j<lis.length;j++){
+                lis[j].className = '';
+                divs[j].className = '';
+            }
+            this.className = 'select';
+            divs[this.zfpx].className = 'select'
+        }
+    }
+
+
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

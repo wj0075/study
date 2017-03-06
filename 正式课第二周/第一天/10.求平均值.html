@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function average(){
+        //1.类数组转数组；
+        var ary=[];
+        for(var i=0; i<arguments.length; i++){
+            ary.push(arguments[i]);
+        }
+        //2.排序
+        ary.sort(function(a,b){return a-b});
+        //3.掐头去尾
+        ary.pop();
+        ary.shift();
+        //4.求平均数
+        return (eval(ary.join('+'))/ary.length).toFixed(1);
+    }
+   alert(average(9.887,4.777,1.777,6.6677,8.7777))
+</script>
+</body>
+</html>

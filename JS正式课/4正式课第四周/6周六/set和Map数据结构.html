@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Set和Map数据结构</title>
+</head>
+<body>
+<script>
+    var ary = [3,432,2,3,2,4,5,4,5];
+    var set1 = new Set([1,2,3,4,5,5,4,4,3]);
+    //var ary1 = Array.from(set1);
+    console.log(set1);
+    console.log(Object.prototype.toString.call(set1));
+    var ary1 = Array.prototype.slice.call(set1);
+    console.log(ary1);
+    var set2 = new Set(ary);
+    var ary1 = [...set2];
+    console.log(ary1);
+    function unique(ary){
+        return [...new Set(ary)]
+    }
+console.log(unique([2,2,2,3,3,4,4,4,4,1,1,1]));
+
+</script>
+</body>
+</html>

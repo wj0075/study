@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function F(){//构造函数：里面放的都是私有的属性和方法；
+        this.x=100;
+        this.y=200;
+        this.showX=function(){};
+    }
+    F.prototype.aa=function(){};//原型：原型中放的都是公有的属性和方法；
+    var f=new F;
+    console.dir(f);
+
+    function S(){
+        F.call(this);//子类私有继承父类私有；
+    }
+    S.prototype=new F;//new Array;
+    S.prototype.constructor=S;
+    var s=new S;
+    console.dir(s);
+    /*
+    * x:100,
+    * y:200,
+    * showX:function
+    * __proto__:
+    * x:100,
+    * y:200
+    * showX:function
+    * __proto__:
+    * constructor:F
+    * aa:function()
+    * __proto__:Object;
+    *
+    *
+    *
+    *
+    *
+    * */
+</script>
+</body>
+</html>

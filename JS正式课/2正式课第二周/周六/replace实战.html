@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    var str = 'my name is {0},my age is {1},i come form {2}';
+//    var ary = ['zhufeng',8,'beijing'];
+//    str = str.replace(/{(\d)}/g,function(){
+//        return ary[arguments[1]];
+//    });
+    //console.log(str)
+//    str = str.replace(/{(\d)}/g,function($0,$1){
+//        return ary[$1];
+//    });
+//    console.log(str)
+
+
+//    var str = '20160514';
+//    var ary=['零','壹','贰','叁','肆','伍','陆','柒','捌','玖'];
+//    str = str.replace(/\d/g,function(){
+//        console.log(arguments[0]);
+//        return ary[arguments[0]]
+//    });
+//    console.log(str);
+
+
+    var str = '全日制第七期学费:14800';
+    var ary = ['零','壹','贰','叁','肆','伍','陆','柒','捌','玖'];
+    str = str.replace(/\d/g,function($0){
+        return ary[$0];
+    });
+    console.log(str);
+
+
+
+</script>
+</body>
+</html>

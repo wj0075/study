@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            margin: 10px auto;
+            width: 1300px;
+        }
+        ul{
+            list-style: none;
+            float: left;
+            margin: 5px;
+            width: 200px;
+
+            /*height: 30px;
+            background: red;*/
+        }
+        li{
+            width: 100%;
+            background: url("img2/default.gif") no-repeat center #ccc;
+            margin-bottom: 10px;
+        }
+        img{
+            width: 100%;
+        }
+        #go{
+            display: none;
+            text-decoration: none;
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            width: 100px;
+            height: 100px;
+            font-size: 24px;
+            text-align: center;
+            line-height: 100px;
+            border-radius: 50%;
+            background: red;
+            opacity: .4;
+            filter: alpha(opacity=40);
+        }
+        #go:hover{
+            opacity: 1;
+            -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+            filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        }
+    </style>
+</head>
+<body>
+<div>
+    <ul>
+        <!--<li><img src="" realImg="img2/1.jpg" alt=""></li>-->
+    </ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+</div>
+<a href="javascript:;" id="go">TOT</a>
+<script src="../../utils.js"></script>
+<script>
+    var aUl = document.getElementsByTagName('ul');
+    var aImg = document.getElementsByTagName('img');
+    var otop = document.getElementById('go');
+    var timer = null;
+    var bOk = false;
+    //封装一个方法创建li
+    var ary = [
+        {imgSrc:'img2/1.jpg'},
+        {imgSrc:'img2/2.jpg'},
+        {imgSrc:'img2/3.jpg'},
+        {imgSrc:'img2/4.jpg'},
+        {imgSrc:'img2/5.jpg'},
+        {imgSrc:'img2/6.jpg'},
+        {imgSrc:'img2/7.jpg'},
+        {imgSrc:'img2/8.jpg'},
+        {imgSrc:'img2/9.jpg'},
+        {imgSrc:'img2/10.jpg'}
+    ];
+    function createLi(){
+        var oLi = document.createElement('li');
+        oLi.innerHTML = '<img src="" realImg="'+ary[utils.rnd(0,9)].imgSrc+'" alt="">';
+        oLi.style.height = utils.rnd(150,240)+'px';
+        return oLi;
+    }
+    //创建40个li
+    function li40(){
+        for(var i=0;i<40;i++){
+            var oLi = createLi();
+            var ary = utils.makeArray(aUl);
+            ary.sort(function(a,b){
+                return a.offsetHeight- b.offsetHeight
+            });
+            ary[0].appendChild(oLi);
+        }
+    }
+    function showImg(){
+        var scrollBottom = utils.win('scrollTop')+utils.win('clientHeight');
+        for(var i=0;i<aImg.length;i++){
+            //var imgPos = utils.getCss(aImg[i],'height')+utils.offset(aImg[i]).top;
+            var imgPos = aImg[i].offsetTop+aImg[i].offsetHeight;
+            console.log(imgPos);
+            if (imgPos<scrollBottom){
+                lazyImg(aImg[i]);
+            }
+        }
+    }
+    function lazyImg(img){
+        if (img.loaded) return;
+        var tmpImg = new Image;
+        tmpImg.src = img.getAttribute('realImg');
+        tmpImg.onload=function(){
+            img.src = this.src;
+            tmpImg=null;
+            img.loaded = true;
+            img.parentNode.style.height = 'auto';
+        };
+        tmpImg.onerror=function(){
+            img.parentNode.style.background = 'url("img2/error.gif") no-repeat center #ccc';
+            tmpImg=null;
+            img.loaded = true;
+
+        }
+    }
+    li40();
+    showImg();
+    window.onscroll=function(){
+        var scrollBottom = utils.win('scrollTop')+utils.win('clientHeight');
+        if (bOk) clearInterval(timer);
+        bOk = true;
+        if(utils.win('scrollTop')>utils.win('clientHeight')){
+            otop.style.display = 'block'
+        }else {
+            otop.style.display = 'none'
+        }
+
+        if(document.body.scrollHeight-10<scrollBottom){
+            li40();
+        }
+        showImg();
+    };
+    otop.onclick=function(){
+        var target = utils.win('scrollTop'),
+                duration = 500,
+                interval = 30,
+                step = target/duration*interval;
+        timer = window.setInterval(function(){
+            var curTop = utils.win('scrollTop');
+            if (curTop<=0){
+                clearInterval(timer);
+                return;
+            }
+            curTop-=20;
+            utils.win('scrollTop',curTop);
+            bOk = false;
+        },interval)
+
+    }
+
+
+
+</script>
+</body>
+</html>

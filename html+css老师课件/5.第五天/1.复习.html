@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+应用：
+1）让几个盒子在一行显示，宽度达到范围，自动折行
+
+1、float:left
+2、float：right
+3、float：none  设置为不浮动
+4、float：inherit 继承父级元素的浮动方式
+
+子级元素浮动，会影响父级元素的高度
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+   /* ul{
+        list-style: none;
+        background: yellow;
+    }*/
+    /*li{*/
+        /*font-size: 36px;*/
+        /*width: 100px;*/
+        /*height: 100px;*/
+        /*background: red;*/
+        /*margin: 10px;*/
+        /*float: left;*/
+    /*}*/
+
+    /*用伪元素：实现一个空的块级元素*/
+    .clearfix:after{
+        /*:after在元素最末尾的位置 加样式*/
+        content: '123';
+        clear: both;
+        display: block;
+        height: 0;
+        overflow: hidden;
+        /*超出盒子宽度和高度的部分隐藏*/
+    }
+    .clearfix{zoom: 1}
+    /*兼容ie6~ie8*/
+   /* ul.box1{
+        width: 300px;
+    }
+    .box2{
+        width: 500px;
+    }*/
+
+</style>
+<!--一个元素可以设置多个类名，每个类名之间用空格隔开-->
+<ul class="clearfix box1 box2">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <!--<p style="clear: both"></p>-->
+</ul>
+<div style="width: 600px;height: 200px;background: orange"></div>
+
+清除浮动：清除浮动元素对其他元素的影响
+1、overflow:hidden  给父级元素设置
+
+浮动元素的特点：
+1、不区分行内元素还是块级元素，都可以设置宽度、高度、margin、padding，在没有设置宽度和高度情况下，宽高是内容的宽高
+2、脱离文档流，所有浮动的元素都在同一个平面内
+3、可以识别父级元素的宽度
+4、文字、行内元素、input、img会围绕浮动元素的排列
+5、元素浮动，后面的块级元素（没有设置浮动），会霸占浮动元素原来的位置
+
+<!--<style>
+    .main li{
+        font-size: 36px;
+        background: lawngreen;
+        float: left;
+        margin: 10px;
+    }
+</style>
+<ul class="main">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>-->
+<style>
+    .parent{
+        background: yellow;
+        float: left;
+    }
+    .parent div{
+        background: red;
+        margin: 10px;
+        float: left;
+    }
+</style>
+<div class="parent">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>

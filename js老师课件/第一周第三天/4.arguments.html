@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //arguments:存储形参的一个集合
+
+  /*  function sum(){
+        console.log(arguments);//类数组
+    }
+    sum(1,2,3);*/
+
+//    任意数求和
+    function sum(){
+        var total = 0;
+//        console.log(typeof arguments);//'object'
+//        console.log(arguments)
+//        console.log(arguments[0])
+//        length: 长度
+        for(var i=0;i<arguments.length;i++){
+            var cur = Number(arguments[i])
+            if(!isNaN(cur)){
+                total += cur;
+            }
+        }
+        console.log(total);
+    }
+    sum(1,2,3,'4','zfpx');
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

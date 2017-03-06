@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            position: relative;
+            width: 1000px;
+            height: 300px;
+            margin: 30px auto;
+        }
+        .box .boxInner{
+            background: url("images/default.gif") no-repeat center #ccc;
+            width: 1000px;
+            height: 300px;
+        }
+        .box .boxInner div{
+            position: absolute;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+
+
+            opacity: 0;
+            filter: alpha(opacity=0);
+            z-index: 0;
+        }
+        .box .boxInner div img{
+            width: 100%;
+
+        }
+        ul{
+            list-style: none;
+            position: absolute;
+            right: 300px;
+            bottom: 10px;
+            z-index: 10;
+        }
+        ul li{
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #c6c6c6;
+            border-radius: 50%;
+            margin-left: 5px;
+        }
+        ul li.on{
+            background: lightcoral;
+        }
+        .box a{
+            position: absolute;
+            top: 120px;
+            z-index: 10;
+            width: 30px;
+            height: 45px;
+            background-image: url("images/pre.png");
+            background-repeat: no-repeat;
+        }
+        .box .left{
+            left: 20px;
+            background-position: 0 0;
+        }
+        .box .right{
+            right: 20px;
+            background-position: -50px 0;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <div class="boxInner">
+        <!--<div><img src="images/banner1.jpg" alt=""></div>
+        <div><img src="images/banner2.jpg" alt=""></div>
+        <div><img src="images/banner3.jpg" alt=""></div>
+        <div><img src="images/banner4.jpg" alt=""></div>-->
+    </div>
+    <ul>
+        <!--<li class="on"></li>
+        <li></li>
+        <li></li>
+        <li></li>-->
+    </ul>
+    <a href="javascript:;" class="left"></a>
+    <a href="javascript:;" class="right"></a>
+</div>
+<script src="../../utils.js"></script>
+<script src="js/move.js"></script>
+<script src="js/tabnew.js"></script>
+<script>
+    var tab = new MyTabNew('box','data.txt',2000);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            
+        }
+        input{
+            outline: none;
+        }
+        input[type=text]{
+
+            width: 100px;
+            height: 40px;
+            padding:0 10px
+        }
+        /* 伪类选择器
+        ：focus   获取光标时的样式
+        */
+        input[type=text]:focus{
+            background: darkgreen;
+            border: 10px solid red;
+            /*外围线  去掉外维线*/
+            outline: none;
+
+        }
+        input[type=password]{
+            -webkit-border-radius: 10px;
+            /*webkit   谷歌浏览器的内核*/
+            -moz-border-radius: 10px;
+            /*moz  火狐浏览器的内核  */
+            border-radius: 10px;;
+        }
+        input[type=button]{
+            width: 100px;
+            height: 30px;
+            background:orange;
+            border: none;
+        }
+        input[type=radio]{
+            /*单选按钮：宽度和高度  值设置为相同，如果不同，大小由小的决定*/
+            width: 30px;
+            height: 30px;
+
+}
+
+    </style>
+
+
+</head>
+<body>
+<!--表单-->
+<form action="" method="get">
+<!--action  表单中的数据 提交到哪个页面中
+ method   数据的提交方式  get/post/option
+ -->
+    <!-- 文本框 默认高度会加2像素-->
+    <input type="text" placeholder="邮箱/手机号"/>
+    <!-- placeholder  在文本框上默认显示的文字  html属性-->
+    <!-- 密码框  默认高度会加2像素-->
+    <input type="password"/>
+    <!-- 普通按钮   自带的边框 宽度和高度包括边框-->
+    <input type="button" value="登陆"/>
+<!--提交按钮  默认的文字：提交-->
+    <input type="submit"/>
+    <!-- 重置按钮-->
+    <input type="reset"/>
+
+    <!-- 单选按钮-->
+    <!-- label中for 和input中的id是对应的-->
+    <!-- name相同的 可以实现单选的功能-->
+    <label for="man">男</label>
+    <input type="radio" id="man" name="sex"/>
+    <label for="woman">女</label>
+    <input type="radio" id="woman" name="sex"/>
+
+
+    <!-- 复选按钮-->
+    <label for="hh">爱好：</label>
+    <input type="checkbox" id="hh"/>
+    <label for="hh">学习</label>
+    <input type="checkbox" id="hh"/>
+    <label for="hh">篮球</label>
+    <input type="checkbox" id="hh"/>
+
+    <!-- 下拉菜单-->
+    <select name="" id="">
+        <option value="">山西</option>
+        <option value="">河北</option>
+        <option value="">山东</option>
+    </select>
+    
+    <!-- 上传文件-->
+    <input type="file"/>
+
+
+</form>
+
+</body>
+</html>

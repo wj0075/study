@@ -1,0 +1,42 @@
+1.
+每个对象，都是基类Object的实例；
+每个函数，都是Function这个类的实例；
+2.关于Object基类 和 Function类之间的关系：
+1）Object.prototype 是 Function.prototype的爹；
+2）Object.prototype 是 Function这个对象的爹；
+3）Object instanceof Function；-》true；
+4）Function instanceof Object；-》true
+3.函数的三种角色:
+    1)普通函数：形成私有作用域-形参赋值-欲解释-代码从上到下的执行  内存和内存释放；
+    2）类：实例，原型，原型链，constructor
+    3）对象：就跟普通的对象一模一样，都有属性和方法；
+4.严格模式和非严格模式下改变this指向的区别：
+1）非严格模式下：
+    1.不传的时候，默认是window
+    2.传null，默认是window
+    3.传undefined，默认是window
+2)严格模式 'use strict'
+    1.不传的时候，默认是undefined；
+    2.传什么，this就是什么；
+5.call , apply , bind的功能和区别
+1）call和apply用法基本一致，区别就是apply的第二个参数是数组，虽然是数组，但相对于前面函数的传参，也是从左往右一个个的传参的；
+2）bind的传参方式和call一致，但是bind属于预处理机制；
+    预处理机制：先把bind前面函数中的this关键字改了+参数传了，然后返回一个修改好的函数的定义阶段；
+    等我们需要的时候，手动调用；
+6.数字方法：数字.toFixed(要保留小数的个数);
+//////////////////////////////
+考点：
+1）回调函数： 回调函数   forEach封装  map封装
+2）函数的三种角色 及  Object和Function 这两个类之间的关系
+   Function.prototype 匿名函数，具有跟原型一样的功能， call，apply，bind
+3）call-》复习   bind:预处理机制；
+4）考卷-》复习总结；
+
+
+
+
+
+
+
+
+

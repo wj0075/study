@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="按钮一"/>
+<input type="button" value="按钮二"/>
+<input type="button" value="按钮三"/>
+<input type="button" value="按钮四"/>
+
+
+
+<script>
+
+//    var oDiv=document.createElement('div');
+//    document.body.appendChild(oDiv);
+//    oDiv.style.width="200px";
+//    oDiv.style.height="200px";
+//    oDiv.style.backgroundColor="red";
+//    oDiv.style.marginTop="20px";
+//
+//    var clo=oDiv.cloneNode();
+//    document.body.insertBefore(clo,oDiv);
+//
+//    if(document.body) {
+//        alert("ok");
+//    }else{
+//        alert("no")
+//    }
+    /*var ary=["red","yellow","pink","green","blue"];
+    var aBtn=document.getElementsByTagName('input');
+
+    for(var i=0;i<aBtn.length;i++){
+        aBtn[i].zf=ary[i];
+        aBtn[i].onclick=function(){
+            document.body.style.backgroundColor=this.zf;
+        }
+    }*/
+
+
+/*
+var ary=[1,2,3,4];
+function fn(ary){
+    ary[0]=0;
+    ary=[0];
+    ary[0]=100;
+    return ary;
+}
+var res=fn(ary);
+console.log(ary);
+console.log(res);
+*/
+
+/*
+var n=0;
+function a(){
+    var n=10;
+    function b(){
+        n++;
+        alert(n);
+    }
+    b();
+    return b;
+}
+var c=a();
+c();
+alert(n);
+*/
+
+
+/*function a(){
+    var n=10;
+    function b(){
+        n++;
+        alert(n);
+    }
+    b();
+    return b;
+}
+    a();*/
+
+
+/*
+var a=10,b=11,c=12;
+function test(a){
+    a=1;var b=2;c=3;
+}
+test(10);
+alert(a);  alert(b);   alert(c);
+*!/
+if(!("a" in window)){
+    var a=1;
+}
+alert(a);
+*/
+
+var a=4;
+function b(x,y,a) {
+    alert(a);
+    arguments[2]=10;
+    alert(a);
+}
+a=b(1,2,3);   alert(a);
+
+/*var foo='hello';
+(function(foo){
+    console.log(foo);
+    var foo=foo||'world';
+    console.log(foo);
+})(foo);
+console.log(foo);*/
+
+/*var a=9;
+function fn(){
+    a=0;
+    return function(b){ return b+a++; }
+}
+var f=fn();
+var m=f(5);alert(m);
+var n=fn()(5);alert(n);
+var x=f(5);alert(x);
+var d=fn()(6);alert(d);
+var q=f(7);alert(q);
+alert(a);*/
+    console.log(document.parentNode);
+    console.log(document.parentnode);
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

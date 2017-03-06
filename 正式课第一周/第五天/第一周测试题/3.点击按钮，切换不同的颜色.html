@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="按钮1">
+<input type="button" value="按钮2">
+<input type="button" value="按钮3">
+<input type="button" value="按钮4">
+<input type="button" value="按钮5">
+<script>
+    var ary=["red","yellow","pink","green","blue"];
+    var aBtn=document.getElementsByTagName('input');
+    bindEvent(aBtn);
+    function bindEvent(aBtn){
+        for(var i=0; i<aBtn.length; i++){
+            aBtn[i].index=i;
+            aBtn[i].onclick=function(){
+                document.body.style.background=ary[this.index];
+            }
+        }
+    }
+    /*for(var i=0; i<aBtn.length; i++){
+        (function(index){
+            aBtn[i].onclick=function(){
+                document.body.style.background=ary[index];
+            }
+        })(i);
+    }*/
+</script>
+</body>
+</html>

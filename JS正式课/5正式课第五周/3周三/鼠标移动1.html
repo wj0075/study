@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标移动</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 30px auto;
+            background: #ccc;
+        }
+        #mark{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        var oBox = document.getElementById('box');
+        var oM = null;
+        oBox.onmouseover=function(e){
+            e = e || window.event;
+            var oTo = e.fromElement || e.relatedTarget;//关联元素
+            if(this.contains(oTo)) return;
+            oM = document.createElement('div');
+            oM.id='mark';
+            this.appendChild(oM);
+        };
+        oBox.onmousemove=function(e){
+            e = e ||window.event;
+            var l = e.clientX-this.offsetLeft-oM.offsetWidth/2;
+            var t = e.clientY-this.offsetTop-oM.offsetHeight/2;
+            var maxL = this.offsetWidth-oM.offsetWidth;
+            var maxT = this.offsetHeight-oM.offsetHeight;
+            if (l<=0){
+                l=0
+            }else if (l>=maxL){
+                l=maxL
+            }
+            if (t<=0){
+                t=0
+            }else if (t>=maxL){
+                t=maxT
+            }
+            oM.style.left = l+'px';
+            oM.style.top = t+'px';
+        };
+        oBox.onmouseout=function(e){
+            e = e||window.event;
+            var oTo = e.toElement || e.relatedTarget;
+            if (this.contains(oTo)) return;
+            this.removeChild(oM);
+        }
+
+    </script>
+</body>
+</html>

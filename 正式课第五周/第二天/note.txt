@@ -1,0 +1,50 @@
+1)常用事件
+    1.鼠标事件：
+    onclick onmouseover onmouseout onmouseenter onmouseleave ondbclick...
+    2.系统事件
+    onload onscroll onresize...
+    3.表单事件
+    onfocus onblur
+    4.键盘事件
+    onkeydown onkeyup onkeypress...
+2）事件包含两种：DOM0级事件 DOM2级事件
+DOM0级事件：1）属于元素的私有属性 2)DOM0级事件，只能发生冒泡阶段
+DOM2级事件：1)在元素所属的eventTarget这个类的原型上-公有方法2）
+    标准浏览器：addEventListener(type,fn,false)
+3)事件对象:对当前行为的详细描述
+事件对象的兼容处理：e=e||window.event;
+    1.type:当前所触发的行为-兼容
+    2.clientX/Y:当前鼠标落脚点，距离可视区左上角的坐标位置-兼容
+    3.pageX/pageY:当前鼠标落脚点，距离第一屏左上角的坐标位置-不兼容
+    (document.documentElement.scrollTop||document.body.scrollTop)+e.clientY;
+    4.e.keyCode:键码
+    5.阻止默认事件：e.preventDefault? e.preventDefault(): e.returnValue=false;
+    6.阻止冒泡 e.stopPropagation? e.stopPropagation(): e.cancelBubble=true;
+    7.关联元素：
+        onmouseover :e.fromElement||e.relatedTarget;
+        onmouseout :e.toElement||e.relatedTarget;
+
+   //需求：文本框中，只能输入数字，编辑数字；其他都不能操作；
+4)事件流：
+第一种：事件流包含3  阶段：1）捕获阶段 2）事件源 3）冒泡阶段
+第二种：事件流包含2阶段：1）捕获阶段 2）冒泡阶段
+5)事件委托：当一个容器中的n多个元素，都要发生某个行为的时候，我们可以把这个行为委托给他们共同的父级(父容器)；然后通过事件源做不同的区分；
+事件委托->是对事件冒泡的典型运用；
+6)onmouseover和onmouseout：
+  问题：如果里面有子元素的话；会发生冒泡的问题，无法通过阻止冒泡来解决
+  其他解决措施：
+  1）onmosueenter 和 onmouseleave
+  2)用关联元素来解决：如果是关联元素，不做任何操作，如果不是关联元素，才写代码块；
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        p{
+            width: 400px;
+            height: 250px;
+            background: url("img2/default.gif") center no-repeat #cccccc;
+        }
+        p img{
+            width: 100%;
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+<div style="height: 1000px;"></div>
+<p><img src="" realImg="img2/1.jpg" alt=""></p>
+<p><img src="" realImg="img2/2.1.jpg" alt=""></p>
+<p><img src="" realImg="img2/3.jpg" alt=""></p>
+<p><img src="" realImg="img2/4.jpg" alt=""></p>
+<script src="js/utils.js"></script>
+<script>
+    //加载条件：元素自身的高度+offset().top<scrollTop+clientHeight;
+    var aImg=document.getElementsByTagName('img');
+    window.onscroll=function(){
+        var scrollBottom=utils.win('scrollTop')+utils.win('clientHeight');
+        for(var i=0; i<aImg.length; i++){
+            var curPos=aImg[i].offsetHeight+aImg[i].offsetTop;
+            if(curPos<=scrollBottom){
+                lazyImg(aImg[i]);
+            }
+        }
+    };
+    function lazyImg(img){
+        if(img.loaded) return;
+        var tmpImg=document.createElement('img');
+        tmpImg.src=img.getAttribute('realImg');
+        tmpImg.onload=function(){
+            img.src=this.src;
+            tmpImg=null;
+            img.loaded=true;
+        };
+        tmpImg.onerror=function(){
+            img.loaded=true;
+            tmpImg=null;
+            img.parentNode.style.background='url("img2/error.gif") center no-repeat #cccccc'
+        };
+    }
+</script>
+</body>
+</html>

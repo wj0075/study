@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            height: 40px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div class="      box1     box2      box3       box4      ">0</div>
+    <div class="box1 box2 box3">1</div>
+    <div class="box1 box2">2</div>
+    <div class="box1">3</div>
+</div>
+<script src="js/utils.js"></script>
+<script>
+    var oBox=document.getElementById('box');
+    var aDiv=oBox.getElementsByTagName('div');
+    //utils.removeClass(aDiv[0],'box2')
+    /*utils.setCss(aDiv[0],'width','100px');
+    utils.setCss(aDiv[0],'background','red');
+    utils.setCss(aDiv[0],'opacity',0.1);
+    utils.setCss(aDiv[0],'float','right');*/
+    /*utils.setGroupCss(aDiv[0],{
+        width:'100%',
+        background:'green',
+        float:'right'
+    });*/
+    //utils.css(aDiv[0],'background','yellow');
+    utils.css(aDiv[0],{
+        height:100,
+        background:'orange',
+        opacity:0.1
+    });
+    alert(utils.css(aDiv[0],'height'))
+    var obj=[123];
+    /*console.log(typeof obj.toString());//调用时数组原型上的toString;--字符串
+    console.log(Object.prototype.toString.call([]))//基类Object.prototype上的toString--数据类型的验证；*/
+    //基类上的toString()方法：打印出this这个实例所属类的详细信息；
+    //'[object Object]''[object Array]''[object String]'
+
+    /*//var aBox2=oBox.getElementsByClassName('         box2         box3        ');
+    //getByClass：功能：通过class名来获取一组元素
+    //参数：字符串（字符串中可以包含多个class名） 返回值：数组；
+    //alert(document.getElementsByClassName)//IE678不支持；
+    //getComputedStyle IE678不支持，其他浏览器都支持；
+    function getByClass(str,parent){
+        parent=parent||document;
+        var ary=[];
+        if('getComputedStyle' in window){//标准浏览器
+            ary=Array.prototype.slice.call(parent.getElementsByClassName(str));
+        }else{
+            //1.把包含多个class名的字符串，切分成数组；[box2,box3]
+            var aryClass=str.replace(/(^ +)|( +$)/g,'').split(/\s+/g);
+            //2.验证父容器下所有元素的class名，包含数组中的每一项的元素；
+            //1)拿到父容器下所有的元素 2）验证每个元素的class名是否包含数组中的每一项 3）把符合要求的元素，放入数组ary;
+            var nodeList=parent.getElementsByTagName('*');//!*通配符，代表所有元素；
+            for(var i=0; i<nodeList.length; i++){
+                var cur=nodeList[i];
+                var bOk=true;
+                for(var j=0; j<aryClass.length; j++){
+                    var reg=new RegExp('\\b'+aryClass[j]+'\\b');
+                    if(!reg.test(cur.className)){
+                        bOk=false;
+                    }
+                }
+                if(bOk){
+                    ary.push(cur);
+                }
+            }
+        }
+        return ary;
+    }
+
+*/
+    /*var aDiv=utils.getByClass('         box2       ',oBox);
+    for(var i=0; i<aDiv.length; i++){
+        aDiv[i].style.background='red';
+    }
+    //alert(utils.hasClass(aDiv[0],'box5'))
+    alert(utils.addClass(aDiv[0],'box2 box3 box5'))
+    //alert(utils.hasClass(aDiv[0],'box6'))*/
+</script>
+</body>
+</html>

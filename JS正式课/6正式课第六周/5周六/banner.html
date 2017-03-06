@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>左右切换版轮播图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            position: relative;
+            width: 1000px;
+            height: 300px;
+            margin: 30px auto;
+            background: url("img1/default.gif") no-repeat center #ccc;
+            overflow: hidden;
+        }
+        .box .boxBanner{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4000px;
+            height: 300px;
+        }
+        .boxBanner div{
+            float: left;
+            width: 1000px;
+            height: 300px;
+        }
+        .boxBanner div img{
+            width: 100%;
+        }
+        .box ul{
+            list-style: none;
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+        }
+        .box ul li{
+            float: left;
+            width: 20px;
+            height: 20px;
+            margin-left: 5px;
+            border-radius: 50%;
+            background: #a0b3d6;
+        }
+        .box ul li.on{
+            background: lawngreen;
+        }
+        .box a{
+            position: absolute;
+            top: 125px;
+            width: 30px;
+            height: 45px;
+            background-image: url("img1/pre.png");
+            background-repeat: no-repeat;
+        }
+        .box .left{
+            display: none;
+            left: 20px;
+            background-position: 0 0;
+        }
+        .box a.right{
+            display: none;
+            right: 20px;
+            background-position: -50px 0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <div class="boxBanner">
+       <!-- <div><img src="img1/banner1.jpg" alt=""></div>
+        <div><img src="img1/banner2.jpg" alt=""></div>
+        <div><img src="img1/banner3.jpg" alt=""></div>
+        <div><img src="img1/banner4.jpg" alt=""></div>-->
+    </div>
+    <ul>
+       <!-- <li class="on"></li>
+        <li></li>
+        <li></li>
+        <li></li>-->
+    </ul>
+    <a href="javascript:;" class="left"></a>
+    <a href="javascript:;" class="right"></a>
+</div>
+<script src="../../utils.js"></script>
+<script src="../../move.js"></script>
+<script src="js/banner.js"></script>
+<script>
+    var ban = new Banner('box','json/data.txt',2000)
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 0;
+            height: 0;
+            border: 50px solid;
+            /*边框的宽度：三角形的高*/
+            border-color: transparent red  transparent transparent;
+            /*transparent  透明色
+            1、red  white
+            2、#fff
+            3、rgb(255,255,255)  三原色
+            4、rgba(0,0,0,.5)  有透明度的颜色
+
+              a 透明度  0~1之间的数  1 完全不透明   0：完全透明
+
+            */
+        }
+        i{
+            display: block;
+            width: 0;
+            height: 0;
+            border: 30px solid;
+            border-color: transparent transparent black transparent;
+            position: relative;
+        }
+        b{
+            width: 0;
+            height: 0;
+            display: block;
+            border:26px solid ;
+            border-color: transparent transparent #fff transparent;
+            position: absolute;
+            top: -22px;
+            left: -26px;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+
+<i>
+    <b></b>
+</i>
+
+</body>
+</html>

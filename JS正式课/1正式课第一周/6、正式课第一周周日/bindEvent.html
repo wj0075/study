@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="按钮一"/>
+<input type="button" value="按钮二"/>
+<input type="button" value="按钮三"/>
+<input type="button" value="按钮四"/>
+<script>
+    var ary = ["red", "yellow", "pink", "green", "blue"];
+    var aBtn = document.getElementsByTagName('input');
+    function bindEvent(aBtn) {
+        for (var i = 0; i < aBtn.length; i++) {
+            aBtn[i].zf = ary[i];
+            aBtn[i].onclick = function () {
+                document.body.style.backgroundColor = this.zf;
+            }
+        }
+    }
+    bindEvent(aBtn)
+</script>
+</body>
+</html>

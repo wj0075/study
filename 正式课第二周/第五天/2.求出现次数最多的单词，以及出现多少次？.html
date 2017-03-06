@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str='aaaccccbbbdddCCCCCAAAAABbbbAAAAcccDDdDD';
+    //1.把字符串进行排序
+    str=str.split('').sort(function(a,b){return a.localeCompare(b)}).toString();
+    console.log(str);
+    //2.重复子项 和  arguments（字符串replace方法）；
+    var max=0;
+    var maxStr='';
+    str.replace(/(\w)\1+/gi,function($0,$1){
+        //$0:计算出单词出现的次数； $1:找出出现次数对应的单词；
+        if($0.length>max) {
+            max=$0.length;
+            maxStr=$1;
+        }else if($0.length===max){
+            maxStr+=$1;
+        }
+    });
+     /* //思路2：用重复子项；
+    str=str.split('').sort(function(a,b){return a.localeCompare(b)}).join('');
+    var max=0;
+    var maxStr='';
+    str.replace(/(\w)\1+/gi,function($0,$1){
+        if($0.length>max){
+            max=$0.length;
+            maxStr=$1;
+        }else if($0.length==max){
+            maxStr+=','+$1;
+        }
+    });*/
+
+
+    /*//利用对象不重名的特性；求出现次数最多的单词，以及出现多少次？
+    var obj={};
+    for(var i=0; i<str.length; i++){
+        var cur=str[i].toLowerCase();
+        if(obj[cur]){
+            obj[cur]++;
+        }else{
+            obj[cur]=1;
+        }
+    }
+    //2.用假设法求出出现最多的次数；
+    var max=obj.d;
+    for(var attr in obj){
+        if(obj[attr]>max) max=obj[attr];
+    }
+    //3.根据次数求出出现次数最多的单词，出现次数最多的单词可能有多个；
+    var ary=[];
+    for(var attr in obj){
+        if(obj[attr]==max){
+            ary.push(attr);
+        }
+    }
+    console.log('出现次数最多的单词'+ary+'；出现'+max+'次');*/
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function fn() {
+        var i = 6;
+        return function (n) {
+            console.log(n + (i++));
+        }
+    }
+    var f = fn();
+    f(12);//19
+    f(32);//40
+    fn()(18);//25
+    fn()(22);//22+7=29;
+    fn()(80);//80+7=87
+    f(18);//18+9=27;
+</script>
+</body>
+</html>

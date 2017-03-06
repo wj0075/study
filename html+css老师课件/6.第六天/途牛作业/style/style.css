@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+    font:12px "microsoft yahei";
+    /*font-family: "微软雅黑";*/
+}
+ul,ol{
+    list-style: none;
+}
+img{
+    border: none;
+    vertical-align: top;
+    /*去掉img标签自带的边距*/
+    /*display: block;*/
+}
+a{
+    text-decoration: none;
+    /*去掉下划线*/
+    /*text-decoration: underline;   加下划线*/
+}
+.clearfix:after{
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+}
+.clearfix{zoom: 1}
+.top{
+    width: 950px;
+    height: 28px;
+    border-bottom: 3px solid #eceef4;
+}
+.top h3{
+    float: left;
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+    /*文字加粗*/
+    padding-left: 10px;
+    width: 230px;
+}
+.top ul{
+    float: left;
+}
+.top ul li{
+    float: left;
+    padding: 3px 5px 6px;
+    margin-right: 18px;
+}
+.top ul li a{
+    font-size: 14px;
+    color: #222;
+}
+.top ul li a:hover,.top ul .first a{
+    color: #3aa860;
+}
+.top ul li:hover,.top ul .first{
+    border-bottom: 3px solid #3aa860;
+}
+.top>a{
+    color: #999;
+    float: right;
+    padding-top: 3px;
+}
+.content{
+    width: 950px;
+}
+.conLeft{
+    float: left;
+}
+.conLeft h4{
+    color: #222;
+    font-weight: bold;
+    padding: 18px 0 0 10px;
+}
+.conLeft ul{
+    width: 205px;
+    border-bottom: 1px dotted #d7d7d7;
+    padding: 5px 0 7px 10px;
+}
+.conLeft ul li{
+    float: left;
+    color: #c0c0c0;
+    width: 101px;
+    line-height: 24px;
+}
+.conLeft ul li a{
+    color: #333;
+    padding-left: 5px;
+}
+.conLeft img{
+    width: 225px;
+    height: 205px;
+}
+
+
+

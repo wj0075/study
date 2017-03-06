@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小精灵图片</title>
+    <style>
+        canvas{
+            border: 1px solid #000;
+        }
+
+
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="800" height="500"></canvas>
+<script>
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    //把图片放在外部创建和请求地址的话。并且用了定时器来执行渲染的方法。所以又都同时在任务列表中了，这时就可以在render中执行同步的代码ctx.drawImage(img,this.state*96,96*2,96,96,this.x,this.y,192,192)；
+    var img = new Image;
+    img.src = 'img/01.png';
+    function Gril(x,y){
+        this.x=x||600;
+        this.y=y||50;
+        this.state=0;
+        this.flag = -1;
+    }
+    Gril.prototype = {
+        update:function(){
+            //%4解决的就是this.state不会一直加下去，还要用判断来重新复制。而用求%的方式，在已知走几次的情况下，就很好的解决了。
+          this.state=++this.state%4;
+            this.x+=10*(this.flag);
+            if (this.x<=10){
+                this.flag*=-1;
+            }
+            if (this.x>600){
+                this.flag*=-1;
+            }
+
+        },
+        render:function(){
+            //这段代码，有个bug 每一次执行的时候，都会创建一个img对象，这样就会造成图片的闪动。而且img.src = 'img/01.png';这段代码是异步，必须要用img.onload来加载图片。这样就都会在任务队列中。ctx.drawImage(img,this.state*96,96*2,96,96,this.x,this.y,192,192) 这段代码是同步，不用img.onload来加载的话，在执行的时候，就会找不到图片
+           /* var _this = this;
+            var img = new Image;*/
+            /*img.src = 'img/01.png';
+            img.onload=function(){
+            }*/
+            ctx.drawImage(img,this.state*96,96,96,96,this.x,this.y,192,192)
+
+        }
+    };
+    var g = new Gril();
+    setInterval(function(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        g.update();
+        g.render();
+
+
+    },100)
+
+
+
+</script>
+</body>
+</html>

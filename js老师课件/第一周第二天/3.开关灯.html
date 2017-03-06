@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body id="box" style="background-color: white">
+
+<script>
+    //1  获取body
+    var oBody = document.getElementById('box');
+
+//    2、绑定点击事件
+   /* 元素.onclick = function(){
+        点击元素时执行的操作
+    }*/
+
+//    this  指的是当前操作的元素
+    oBody.onclick = function(){
+//        3、点击时换颜色
+//        1）获取当前的背景颜色
+        var bg = this.style.backgroundColor;
+
+//        console.log(bg);//rgb(255, 255, 255)
+       /* if(bg=='white'){
+            this.style.backgroundColor = 'black'
+        }else{
+            this.style.backgroundColor = 'white'
+        }*/
+        bg=='white'? this.style.backgroundColor = 'black': this.style.backgroundColor = 'white'
+
+
+    }
+
+//    var a = {name:'zfpx'}
+//    a.name='zf'
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

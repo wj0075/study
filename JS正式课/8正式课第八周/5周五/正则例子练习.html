@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //有效数字的正则
+    //1.首先可以是正数或负数
+    //2.如果是一位数，前面没有0
+    //3.如果是2位或三位第一位不能为0
+    //4.可以有小数点
+    //5.如果有小数点后面必须有数字
+
+    var reg3 = /^([+-])?(\d|([1-9]\d+))(\.\d+)?$/g;
+
+    //18-65岁，因为中括号的特性，只能用个位数来表示或的关系[18-65] 表示1或8-6或5 所以要把他们分开写
+    //18-19是一档   20-59是一档  60-65是一档
+    var reg = /^(18|19)|([2-5][0-9])|(6[0-5])$/g;
+    //验证手机号
+    //第一位一定是1，后面10位随意了
+    var reg1 =/^1\d{10}$/;
+    //身份证验证  前两个一组，之后4个一组，之后4个为年，后两个月，在后两个日，后面四个
+    let reg2 = /^(\d{2}(\d{4})(\d{4}))(\d{2})(\d{2})(\d{2})\d(\d|X)$/;
+    //验证邮箱   字母，数字，下划线, . - @ 字母数字.字母
+    let reg4 = /^([\w.-]+)@([0-9a-zA-Z]+)(\.[a-z]{2,4}){1,2}$/g;
+    //验证中文
+    let reg5 = /^[\u4e00-\u9fa5]{2,4}$/;
+
+
+    //日期格式化封装
+    var str = '2016-12-16 09:13:34';
+    var strCode = '2016-6-23 00:41:30';
+    var tmp = '{0}年{1}月{2}日';
+    String.prototype.formatDate = function (tmp) {
+        //this -实例
+       var tmpStr = tmp||'{0}年{1}月{2}日 {3}时{4}分{5}秒';
+        //先得到字符串中的数字
+        var ary = this.match(/\d+/g);
+        tmpStr=tmpStr.replace(/{(\d)}/g,function($0,$1){
+            var n = ary[$1];
+            n=n>=0 && n<10? '0'+Number(n):n;
+            return n;
+        });
+        console.log(tmpStr)
+        return tmpStr
+    };
+    console.log(strCode.formatDate())
+
+
+</script>
+</body>
+</html>

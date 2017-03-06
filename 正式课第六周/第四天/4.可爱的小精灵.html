@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="800" height="500"></canvas>
+<script>
+    var canvas=document.getElementById('canvas');
+    var ctx=canvas.getContext('2d');
+    var img=new Image();
+    img.src='img/01.png';//请求在src这里发出；
+    //1.给页面引入图片： ctx.drawImage(img,sx,sy,sw,sh,dx,dy,dw,dh);
+    function Gril(x,y){
+        this.x=x||50;
+        this.y=y||50;
+        this.state=0;
+    }
+    //游戏中，创建一个任务角色，必备的两个方法：1）update--让角色动起来 2)render--显示角色
+    Gril.prototype={
+        update:function(){
+            this.state=++this.state%4;
+            this.x+=10;
+        },
+        render:function(){
+            //如何加载图片：1）创建img对象 2）img.src 3）显示图片
+            ctx.drawImage(img,this.state*96,96*2,96,96,this.x,this.y,192,192);
+        }
+    };
+    var g=new Gril();
+    setInterval(function(){
+        ctx.clearRect(0,0,canvas.width,canvas.height)//清除画布
+        g.update();//更新状态；
+        g.render();//渲染；
+    },60)
+</script>
+</body>
+</html>

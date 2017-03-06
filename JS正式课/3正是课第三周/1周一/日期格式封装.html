@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str = '2016/11/8 18:00:00';
+    String.prototype.formatDate=function(tmp){
+        var tmpStr = tmp || '{0}年{1}月{2}日 {3}时{4}分{5}秒';
+        var ary = str.match(/\d+/g);
+        tmpStr = tmpStr.replace(/{(\d)}/g,function($0,$1){
+            return ary[$1];
+        });
+        return tmpStr;
+    };
+    console.log(str.formatDate());
+
+
+
+</script>
+</body>
+</html>

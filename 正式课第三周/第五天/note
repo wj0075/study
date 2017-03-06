@@ -1,0 +1,141 @@
+1.关于JS获取元素的方式：
+id
+tagName
+className
+name
+document.documentElement.clientWidth||document.body.clientWidth
+querySelector
+querySelectorAll
+2.节点和节点类型
+            nodeType       nodeName       nodeValue
+元素节点        1            大写的标签名     null
+文本节点        3            #text          文本内容
+注释节点        8            #comment       注释内容
+document节点    9            #document      null
+3.节点关系
+parentNode
+children
+childNodes
+previousSibling
+nextSibling
+firstChild
+lastChild
+4.关于元素的动态操作：
+1）元素的动态创建
+    document.createElement
+    obj.cloneNode(布尔值)  true:深度克隆   false/不写:只克隆表皮，不包含子元素
+2）元素的动态插入
+    parent.appendChild(curEle);
+    parent.insertBefore(curEle,oldEle);
+3)元素的动态删除和替换
+    parent.removeChild(curEle);
+    parent.replaceChild(curEle,oldEle);
+5.关于元素属性的操作：
+1）. 和 [];
+2)attribute系列：
+    getAttribute;
+    setAttribute;
+    removeAttribute;
+................................
+元素获取：10个
+1）getByClass  功能：通过class名来获取一组元素
+    getByClass(strClass,parent)
+    参1:'box1 box2 box3' 参2：限定范围的
+    返回值：数组；
+    核心代码：
+        1）是否有浏览器支持-如果有，直接使用浏览器提供的方法getElementsByClassName()
+ 2)浏览器不支持时，自己做兼容处理：
+            1.字符串转数组
+            2.parent下所有的子元素--通配符*
+            3.逐个验证每个子元素的class名，是否包含数组中的每一项；--假设法：
+                假设法：先假设元素的class中包含数组中的每个
+                然后逐个验证，只要有一个class名不包含，该元素作废，立即阻断程序执行；-break跳出循环；
+            4.经过验证后，如果bOk=true;说明元素合格，把该元素放进数组
+            5.最后一定要返回数组；
+ 3）要保证所有浏览器返回的数据类型一致；
+2）hasClass    功能：判断元素身上是否有某个class名
+    hasClass(curEle,cName);
+    返回值：布尔值
+    核心代码：reg.test(curEle.className)//一定要明白，校验的是字符串；
+3）addClass    功能：给元素身上，添加一堆class名；
+    addClass(curEle,strClass);
+    返回值：属于设置，都没有返回值；
+    核心代码：
+        1.字符串转数组（去除首尾空格-按照空格切分成数组）
+        2.逐个验证元素的class名中是否没有包含该class名，如果没有，就添加
+        注意：添加的时候，一定要加空格；
+4）removeClass 功能：移除元素身上的class名（当元素身上有这个class名的时候，才能移出）
+    removeClass(curEle,strClass);
+    1.字符串转数组；
+    2.逐个验证：当元素身上有这个class名的时候，才能移除（有这个class名，就把这个class名替换为‘ ’)
+    3.当标签的class名，展示不规范的时候，通过正则处理规范（去除首尾空格-把多余空格替换为一个空格）;
+
+5）getCss      功能：获取样式
+    getCss(curEle,attr)
+    返回值：拿到的样式值
+    核心代码：
+        1.标准-getComputedStyle IE-currentStyle
+        2.浏览器的兼容处理：1）属性判断：in . typeof 2)try..catch 3)浏览器判断:reg.test str.match  str.search
+        3.升级1：去除单位：通过判断属性名，来决定value去除单位的情况
+        4.升级2：透明度的处理（当用户输入opacity时，其实在IE下，他拿到的是filter的值）；
+6）setCss      功能：给当前元素设置一个样式
+        setCss(curEle,attr,value); 没有返回值
+        核心代码：只能通过行内设置样式；style
+        1)升级1：没有单位自动加上单位（value是否为有效数字正则）
+        2）升级2：透明度兼容处理：
+        3）升级3：浮动兼容处理:styleFloat cssFloat
+        注意：因为只能设置一个样式，所以，每设置完一个样式，都return：不再执行后续代码；
+7）setGroupCss 功能：给当前元素设置一组样式
+        setGroupCss(curEle,opt);
+        核心代码：遍历opt，然后逐个设置；
+
+8）css         功能：既可以获取样式，也可以设置一个样式，还可以设置一组样式
+        下手点：从参数来下手；css(curEle)
+                * 1.如果第二个参数是字符串的话：1）有第三个参数-》设置一个          2）没有第三个参数-》代表获取（有返回值return）
+                * 2.如果第二个参数是对象的话：设置一组；
+9) win         功能：浏览器盒子模型的兼容处理；
+        下手点：从参数来下手：
+        一个参数是获取，两个参数是设置；
+10)offset      功能：元素偏移量的兼容处理；
+        offset(curEle) 返回值：偏移量包含左偏移和上偏移 {left:l,top:t};
+        核心代码：
+            1）先找到第一个offsetLeft和offsetTop,同时找到第一个定位父级
+            2）因为不知道要累加多少次，所以while循环；
+            注意，不要出现死循环--par=par.offsetParent;
+
+节点类型：10个
+1）getChildren()功能：1）拿到当前元素下的所有子元素 2）可以对所有子元素进行过滤；
+2）prev  功能：当前元素的上一个哥哥元素
+3）next  功能：当前元素的下一个弟弟元素
+4）sibling  功能：当前元素的相邻元素 --数组
+5）prevAll 功能：当前元素所有的哥哥元素
+6）nextAll 功能：当前元素所有的弟弟元素
+7)siblings 功能：当前元素所有的兄弟元素
+8）firstChild 功能：第一个子元素
+9）lastChild 功能：最后一个子元素
+10）index    功能：当前元素的索引；
+
+元素的动态创建：4
+1)appendChild 功能：把当前元素插入到父容器的末尾；
+2）prependChild 功能：把当前元素插入到父容器的开头；
+3）insertBefore 功能：把当前元素插入到指定元素的前面；
+4)insertAfter   功能：把当前元素插入到指定元素的后面；
+
+makeArray,jsonParse,rnd+24=27;
+//标注网站：biaonimeia.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

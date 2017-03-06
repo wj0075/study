@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="app">
+    <!--v-for  要遍历谁就将指令放在谁身上-->
+    <!--{{arr}}-->
+    <!--<ul>-->
+        <!--<li v-for="(key,val) in arr " track-by="$index">   v2.0-->
+            <!--{{val}}{{key}}-->
+        <!--</li>-->
+    <!--</ul>-->
+    <ul>
+        <li v-for="(val,key) in arr" :key="key">
+            {{val}}{{key}}
+        </li>
+        <!--没有声明过的变量vue2.0都去掉了-->
+    </ul>
+</div>
+<script src="vue2.js"></script>
+<script>
+    var vm=new Vue({
+        el:".app",
+        data:{// 这里挂载的都是数据
+            arr:["苹果","香蕉","句子","苹果","香蕉","句子"]
+        }
+    })
+</script>
+</body>
+</html>

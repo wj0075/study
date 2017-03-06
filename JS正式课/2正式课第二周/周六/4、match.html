@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //思考题：1）match这个方法在哪里封装？
+    //2）如何用exec封装一个match
+    var str='dfsdfsdfsd2012kj330';
+    var reg = /\d+/g;
+    var ary = [];
+    var res = reg.exec(str);
+    while (res){
+        ary.push(res[0]);
+        res = reg.exec(str);
+    }
+
+    String.prototype.myMatch = function(reg){
+        var ary = [];
+        var res = reg.exec(this);
+        while (res){
+            ary.push(res[0]);
+            res = reg.exec(this)
+        }
+        return ary;
+    }
+
+
+</script>
+</body>
+</html>

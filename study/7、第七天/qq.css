@@ -1,0 +1,98 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    font: 14px Geneva, "宋体", Tahoma, sans-serif;
+}
+ul,ol{
+    list-style: none;
+}
+li:after{
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+
+}
+h3{
+
+    font: 18px "微软雅黑";
+    color: #616161;
+    height: 25px;
+    border-left: 3px solid #59dfdf;
+    padding-left: 6px;
+}
+ul{
+    width: 604px;
+    border-top: 1px solid #ddd;
+    margin-top: 5px;
+}
+ul li{
+    padding-top: 19px;
+}
+li>label{
+    width: 115px;
+    color: #333;
+    font-size: 14px;
+    line-height: 36px;
+    text-align: right;
+    /*右对齐*/
+    float: left;
+}
+li .center{
+    float: left;
+    padding-left: 10px;
+}
+li .center input[type=text],li .center input[type=password]{
+    width: 300px;
+    height: 36px;
+    border: 1px solid #a7b6c4;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background: #f3f9fc;
+    padding: 0 7px;
+}
+li .center input:focus{
+    background: #fff;
+}
+li p{
+    float: left;
+    font-size: 12px;
+    color: #808080;
+    line-height: 35px;
+    padding-left: 11px;
+}
+li .sex label{
+    line-height: 36px;
+    padding-right: 31px;
+
+}
+li .sex input{
+    width: 16px;
+    height: 16px;
+    vertical-align: -3px;
+    margin-right: 4px;
+}
+li .birth{
+    line-height: 36px;
+}
+li .birth select{
+    height: 21px;
+    width: 58px;
+    border: 1px solid #a7b6c4;
+    background: #f3f9fc;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    color: #4199d7;
+}
+li .birth .year{
+    width: 104px;
+}
+li .add select{
+    width: 95px;
+
+}

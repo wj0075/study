@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var reg=/^1\d{10}$/;
+    //有效数字的正则； +20 -20  0.333 1 2.334   （错的：01 02）
+    /*分析思路：
+    * 1. +-二选一、可有可无
+    * 2.一位数字\d 或 多位数字（注意不能以0开头）
+    * 3.小数 可有可无
+    * */
+    //var reg=/^([+-])?(\d|([1-9]\d+))(\.\d+)?$/g;
+    /*var reg=/^(\+|-)?(\d|([1-9]\d+))(\.\d+)?$/g;
+    alert(reg.test('-3.0'));*/
+    //验证年龄 18-65
+    //18 19    20-59  60-65；
+    //var reg=/^((18|19)|([2-5]\d)|(6[0-5]))$/;
+    //验证邮箱的正则 zhang_.x1223xxx@qq163.com.cn
+    /*
+    * 1）数字字母下划线 . -
+    * 2）@
+    * 3）[a-zA-Z0-9]+
+    * 4)(\.[a-z]{2,4}){1,2}
+    * */
+   // var reg=/^([\w.-]+)@([a-zA-Z0-9]+)(\.[a-zA-Z]{2,4}){1,2}$/g;
+    //var reg=/^[\u4e00-\u9fa5]{2,4}$/;
+    alert(reg.test('张蕾'));
+    //alert(reg.test('zhufengpeixun.123@qq.com.cn'))
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

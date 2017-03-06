@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str = 'http://image.baidu.com/search/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=&sf=1&fmq=1462967508128_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E5%88%98%E8%AF%97%E8%AF%97';
+    var reg = /([^?=&]+)=([^?=&]+)/g;
+    String.prototype.queryURLParameter=function(){
+        var reg = /([^?=&]+)=([^?=&]+)/g;
+        var obj = {};
+        this.replace(reg,function($0,$1,$2){
+            obj[$1]=$2;
+        });
+        return obj;
+    };
+
+    var aa=str.queryURLParameter();
+    console.log(aa);
+
+
+</script>
+</body>
+</html>

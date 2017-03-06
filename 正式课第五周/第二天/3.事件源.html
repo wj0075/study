@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        div{
+            padding:100px;
+            font-size: 40px;
+        }
+        #box1{
+            background: red;
+        }
+        #box2{
+            background: green;
+        }
+        #box3{
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="box1">box1
+    <div id="box2">box2
+        <div id="box3">box3</div>
+    </div>
+</div>
+<script>
+    var oBox1=document.getElementById('box1');
+    var oBox2=document.getElementById('box2');
+    var oBox3=document.getElementById('box3');
+    oBox1.addEventListener('click',function(e){
+        alert('box1')
+    },false);
+    oBox2.addEventListener('click',function(e){
+        alert('box2')
+    },false);
+    oBox3.addEventListener('click',function(e){
+        e.stopPropagation();//e.cancelBubble=true;
+
+        alert('box3')
+    },false);
+    /*oBox1.onclick=function(){
+        alert('box1')
+    };
+    oBox2.onclick=function(){
+        alert('box2')
+    };
+    oBox3.onclick=function(){
+        alert('box3')
+    };*/
+    //点击每个div，弹出自己的id;
+    /*oBox1.onclick=function(e){
+        e=e||window.event;
+        var target= e.target|| e.srcElement;
+       alert(target.id)
+    }*/
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function prev(curEle){
+        if(curEle.previousElementSibling){
+            return curEle.previousElementSibling;
+        }else{
+            var pre=curEle.previousSibling;
+            while(pre && pre.nodeType !== 1){
+                pre=pre.previousSibling;
+            }
+            return pre;
+        }
+    }
+</script>
+</body>
+</html>

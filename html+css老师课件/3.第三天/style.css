@@ -1,0 +1,6 @@
+@import "style1.css";
+@import url(style1.css);
+div{
+    border: 1px solid red ;
+}
+

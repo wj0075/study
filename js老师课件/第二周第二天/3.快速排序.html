@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var ary = [4,3,2,5,6,1,7];
+//    1、找到中间的一项
+//    2、将数组中的每一项和中间的这一项比较，如果比中间的这一项小，放到左边，如果比中间的这一项大或等于，放到右边
+//    3、数组拼接
+    function quickSort(ary){
+        if(ary.length<=1){
+            return ary;
+        }
+        var cen = Math.floor(ary.length/2);
+        var cenVal = ary.splice(cen,1)[0];
+        var left = [];//左边
+        var right = [];//右边
+        for(var i=0;i<ary.length;i++){
+            var cur = ary[i];
+            if(cur<cenVal){
+                left.push(cur);
+            }else{
+                right.push(cur);
+            }
+        }
+        return quickSort(left).concat([cenVal],quickSort(right))
+
+    }
+    console.log(quickSort(ary));
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str = 'zhufeng2016zhanwang2017huigu2015';
+    var reg = /\d+/g;
+    console.log(reg.exec(str));
+    //[2016,2017,2015]
+    //lastIndex是正则对象的一个属性：作用-》打印出开始查找的位置；（从找到内容的下一项内容的索引开始查找；）
+    //lastIndex :1）受exec的影响；2)受test的影响；
+    //exec是正则的方法：
+    /*var res=reg.exec(str);
+     var ary=[];
+     while(res){
+     ary.push(res[0]);
+     res=reg.exec(str);
+     }
+     alert(ary)*/
+    //alert(str.match(/\d+/g))
+    //思考题：1）match这个方法在哪里封装？ 2）如何用exec封装一个match？
+   /* String.prototype.myMatch = function (reg) {
+        //this-》str实例
+        var res = reg.exec(this);
+        var ary = [];
+        while (res) {
+            ary.push(res[0]);
+            res = reg.exec(this);
+        }
+        return ary;
+    };
+    alert(str.myMatch(reg));*/
+</script>
+</body>
+</html>

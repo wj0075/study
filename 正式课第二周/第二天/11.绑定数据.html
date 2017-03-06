@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+        ul{
+            width: 500px;
+            margin:100px auto;
+            box-shadow: 0 0 10px #333;
+            border-radius: 4px;
+        }
+        ul li{
+            height: 50px;
+            line-height: 50px;
+            border-bottom: 1px dashed #ccc;
+            padding-left: 10px;
+            font-size: 20px;
+
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        ul li.on{
+            background: lightblue;
+        }
+        ul li span{
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: red;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><span>0</span>习近平总书记１２日上午在十八届中央纪委六次全会上发表重要讲话，深刻分析反腐败斗争依然严峻复杂的形势，提出当前和今后一个时期的目标任务。</li>
+    <li><span>1</span>习近平总书记１２日上午在十八届中央纪委六次全会上发表重要讲话，深刻分析反腐败斗争依然严峻复杂的形势，提出当前和今后一个时期的目标任务。</li>
+</ul>
+</body>
+<script src="json1.js"></script>
+<script>
+    var oUl=document.getElementsByTagName('ul')[0];
+    var aLi=oUl.getElementsByTagName('li');
+    var str='';
+    for(var i=0; i<aLi.length; i++){
+        aLi[i].onmouseover=function(){
+            this.className='on';
+        };
+        aLi[i].onmouseout=function(){
+            this.className='';
+        };
+    }
+    //绑定方式1：字符串拼接
+    /*for(var i=0; i<ary.length; i++){
+        var oLi=ary[i];
+        str+='<li><span>'+(i+2)+'</span>'+oLi.desc+'</li>'
+    }
+    oUl.innerHTML+=str;*/
+    //oUl.innerHTML=oUl.innerHTML+str;
+    //每回流一次，都会导致页面的重新渲染；
+    //思路2：动态创建；
+    for(var i=0; i<ary.length; i++){
+        var oLi=document.createElement('li');
+        oLi.innerHTML='<span>'+(i+2)+'</span>'+ary[i].desc;
+        oUl.appendChild(oLi);
+    }
+    //思路3：文档碎片
+    var frg=document.createDocumentFragment();
+    for(var i=0; i<ary.length; i++){
+        var oLi=document.createElement('li');
+        oLi.innerHTML='<span>'+(i+2)+'</span>'+ary[i].desc;
+        frg.appendChild(oLi);//把创建好的每个新元素，都放入文档碎片中；
+    }
+    oUl.appendChild(frg);
+    frg=null;
+
+</script>
+</html>
+
+
+
+
+

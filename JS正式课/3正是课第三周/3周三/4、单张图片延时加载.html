@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body{
+            height: 2000px;
+        }
+        p{
+            position: absolute;
+            left: 0;
+            top: 1000px;
+            width: 400px;
+            height: 200px;
+            background: url("img2/default.gif") no-repeat center #ccc;
+        }
+        img{
+            width: 400px;
+            height: 200px;
+        }
+
+
+    </style>
+</head>
+<body>
+<p id="box"><img src="" realImg="img2/1.jpg" alt=""></p>
+<script src="utils.js"></script>
+<script>
+    var oP= document.getElementById('box');
+    var oImg = oP.getElementsByTagName('img')[0];
+    window.onscroll = function(){
+        var scrollBottom =utils.win('scrollTop')+utils.win('clientHeight');
+        var imgPos = utils.getCss(oImg,'height')+utils.offset(oImg).top;
+        //显示图片的条件
+        if(imgPos<=scrollBottom){
+            lazyImg();
+        }
+    };
+    //显示图片
+    function lazyImg(){
+        if(oImg.loaded) return;//已经加载过图片后，避免重复加载
+        var tmpImg = new Image;
+        tmpImg.src = oImg.getAttribute('realImg');
+        //tmpImg:这时一个临时创建的img标签，他的作用用来检测图片地址是否正确；
+        tmpImg.onload = function(){
+            oImg.src = this.src;
+            tmpImg = null;
+            oImg.loaded = true;//触发条件后，只只加载一次
+        };
+        tmpImg.onerror = function(){
+            oImg.loaded = true;
+            tmpImg = null;
+            oP.style.background='url("img2/error.gif") no-repeat center #ccc'
+        }
+    }
+
+
+
+
+</script>
+</body>
+</html>

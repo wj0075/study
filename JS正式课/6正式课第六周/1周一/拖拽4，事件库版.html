@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            position: absolute;
+            top:0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script src="js/event2.js"></script>
+<script>
+    var oDiv = document.getElementsByTagName('div')[0];
+    on(oDiv,'mousedown',down);
+    function down(e){
+        e = e||window.event;
+        this.left = this.offsetLeft;
+        this.top = this.offsetTop;
+        this.x = e.clientX;
+        this.y= e.clientY;
+        if (this.setCapture){
+            this.setCapture();
+            on(oDiv,'mousemove',move);
+            on(oDiv,'mouseup',up);
+        }else {
+            var _this = this;
+            this.MOVE = function(e){
+                move.call(_this,e);
+            };
+            this.UP = function(e){
+                up.call(_this,e);
+            };
+            on(document,'mousemove',this.MOVE);
+            on(document,'mouseup',this.UP);
+        }
+    }
+    function move(e){
+        var curL = e.clientX- this.x+this.left;
+        var curT = e.clientY - this.y+this.top;
+        var minL = 0,maxL = (document.documentElement.clientWidth||document.body.clientWidth)-this.offsetWidth;
+        var minT = 0,maxT = (document.documentElement.clientHeight||document.body.clientHeight)-this.offsetHeight;
+        curL = curL<minL?minL:(curL>maxL?maxL:curL);
+        curT = curT<minT?minT:(curT>maxT?maxT:curT);
+        this.style.left = curL+'px';
+        this.style.top = curT+'px';
+
+    }
+    function up(e){
+        if (this.releaseCapture){
+            this.releaseCapture();
+            off(oDiv,'mousemove',move);
+            off(oDiv,'mouseup',up);
+        }else {
+            off(document,'mousemove',this.MOVE);
+            off(document,'mouseup',this.UP);
+        }
+    }
+</script>
+</body>
+</html>

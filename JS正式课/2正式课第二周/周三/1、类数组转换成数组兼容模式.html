@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+<script>
+    function makeArray(arg){
+        var ary = [];
+        try{
+            ary = Array.prototype.slice.call(arg);
+        }catch (e){
+            for(var i = 0; i < arg.length; i++){
+                ary.push(ary[i]);
+            }
+        }
+        return ary;
+    }
+
+    var aLi=document.getElementsByTagName('li');
+    console.log(makeArray(aLi));
+
+
+
+</script>
+</body>
+</html>

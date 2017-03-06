@@ -1,0 +1,134 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font: 14px Geneva,"宋体",Tahoma,sans-serif;
+    background: #f8fdff;
+}
+ul,ol{
+    list-style: none;
+}
+li:after{
+    content:"";
+    display:block;
+    clear:both;
+    height:0;
+    overflow: hidden;
+}
+h3{
+    font: 18px "微软雅黑";
+    color: #616161;
+    height: 25px;
+    border-left: 3px solid #59afe4;
+    padding-left: 6px;
+}
+ul{
+    width: 604px;
+    border-top: 1px solid #ddd;
+    margin-top: 5px;
+}
+li{
+    padding-top: 19px;
+}
+li>label{
+    float: left;
+    color: #333;
+    line-height: 36px;
+    width: 115px;
+    text-align: right;
+    /*右对齐*/
+}
+li .center{
+    float: left;
+    padding-left: 10px;
+}
+li .center input[type=text],li .center input[type=password]{
+    width: 284px;
+    height: 33px;
+    border: 1px solid #c0d0d8;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background: #f3f9fc;
+    padding: 0 7px;
+}
+li .center input:focus{
+    background: #fff;
+}
+li>p{
+    float: left;
+    font-size: 12px;
+    color: #808080;
+    line-height: 36px;
+    padding-left: 11px;
+}
+li .sex label{
+    line-height: 36px;
+    padding-right: 31px;
+}
+li .sex input{
+    width: 16px;
+    height: 16px;
+    vertical-align:-3px ;
+    margin-right: 4px;
+}
+li .birth{
+    line-height: 36px;
+    /*单行文字、行内元素、input、select 垂直居中  */
+}
+li .birth select{
+    width: 58px;
+    height: 21px;
+    border: 1px solid #a7b6c4;
+    background: #f3f9fc;
+    /*边框圆角*/
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    color: #4199d7;
+}
+li .birth .year{
+    width: 104px;
+}
+li .add select{
+    width: 95px;
+}
+li .find{
+    height: 10px;
+}
+.phoneNum{
+    font-size: 12px;
+    color: #808080;
+    line-height: 20px;
+}
+.phoneNum a{
+    color: #4199d7;
+    padding-left: 19px;
+    text-decoration: none;
+}
+.center input[type=submit]{
+    width: 306px;
+    height: 52px;
+    background: #69b946;
+    color: #fff;
+    font: 22px "微软雅黑";
+    font-weight: 400;
+    border: none;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+.check input{
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+.check label{
+    font-size: 12px;
+    color: #333;
+    line-height: 25px;
+}
+
+
+

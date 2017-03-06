@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>炫酷小球</title>
+    <style>
+        canvas{
+            border: 1px solid #ccc;
+        }
+
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="800" height="400">sorry!浏览器不支持</canvas>
+<script>
+    //这两步是用canvas画布的必要步骤。
+    var canvas = document.getElementById('canvas');
+    //给canvas创建上下文。
+    var ctx = canvas.getContext('2d');
+    var ary = [];
+    function Ball(x,y,r){
+        this.x=x;
+        this.y=y;
+        this.r=r||50;
+        this.color = 'rgb('+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+')';
+        ary.push(this);
+        this.dx = Math.random()*10-5;
+        this.dy = Math.random()*10-5;
+        this.dr = Math.random()+0.5
+    }
+    Ball.prototype={
+        update:function(){
+            this.x+=this.dx;
+            this.y+=this.dy;
+            this.r-=this.dr;
+            if (this.r<0){
+                for (var i=0;i<ary.length;i++){
+                    if (ary[i]==this){
+                        ary.splice(i,1);
+                        //clearInterval(timer)
+                    }
+                }
+            }
+
+        },
+        render:function(){//
+                if (this.r<0) return;
+                ctx.beginPath();//开始路径
+                ctx.arc(this.x,this.y,this.r,0,Math.PI*2,false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            //画圆的所有步骤。
+        }
+    };
+canvas.onmousemove=function(e){
+    new Ball(e.clientX, e.clientY);
+};
+    var timer=setInterval(function(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        for (var i=0;i<ary.length;i++){
+            ary[i].update();
+            if (ary[i]){
+                ary[i].render()
+            }
+
+
+
+        }
+    },20)
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

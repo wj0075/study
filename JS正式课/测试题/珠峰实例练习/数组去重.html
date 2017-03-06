@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1.键值对的方法。利用一个空对象
+    function unique(ary){
+        var obj = {};
+        for (var i=0;i<ary.length;i++){
+            var cur = ary[i];
+            if (obj[cur]==cur){
+                ary[i] = ary[ary.length-1]
+                ary.length--;
+                i--;
+            }else {
+                obj[cur]=cur;
+            }
+        }
+        obj=null;
+        return ary;
+    }
+    /*console.log(unique([1,2,1,2,3,3,3,2,2,]))*/
+
+    //2.利用sort排序
+    function unique1(ary){
+        var ary = ary.sort((function(a,b){
+            return a-b
+        }));
+        for (var i=0;i<ary.length;i++){
+            if (ary[i]==ary[i+1]){
+//                ary.splice(i,1);
+                ary[i]=ary[ary.length-1];
+                ary.length--;
+                i--;
+            }
+        }
+        return ary;
+    }
+    //console.log(unique1([1,3,4,3,22,1,1,2,3,3]));
+
+    //3.利用双循环来去重
+    function unique2(ary){
+        for (var i=0;i<ary.length;i++){
+            var cur = ary[i];
+            for (var j=i+1;j<ary.length;j++)
+            if (cur===ary[j]){
+                ary.splice(j,1);
+                j--;
+            }
+        }
+        return ary;
+    }
+    console.log(unique2([1,2,3,2,3,2]));
+    //es6的方法
+    var set1 = new Set([1,2,3,4,5,5,4,4,3]);
+    console.log(Object.prototype.toString.call(set1));
+
+    //利用双循环来去重
+    function rmsame(ary){
+        for(var i= 0;i<ary.length;i++){
+            var cur = ary[i];
+            for (var j=i+1;j<ary.length;j++){
+                if (cur==ary[j]){
+                    ary.splice(j,1);
+                    j--;
+                }
+            }
+        }
+        return ary;
+    }
+    function rmsame1(ary){
+        var ary = ary.sort(function(a,b){return a-b});
+        for (var i=0;i<ary.length;i++){
+            if (ary[i]==ary[i+1]){
+                ary[i]=ary[ary.length-1];
+                ary.length--;
+                i--;
+            }
+        }
+        return ary;
+    }
+
+
+
+
+
+
+</script>
+</body>
+</html>

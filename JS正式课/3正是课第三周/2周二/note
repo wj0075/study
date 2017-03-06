@@ -1,0 +1,26 @@
+1.css盒子模型由四部分构成：设定的宽高+padding+border+margin
+2.JS盒子模型：通过系统提供的属性和方法，来获取当前元素的样式值；
+JS提供的属性和方法：
+    1）client系列：clientWidth clientHeight clientLeft clientTop
+    2）offset系列：offsetWith offsetHeight offsetLeft offsetTop offsetParent
+    3）scroll系列：scrollWith scrollHeight scrollTop scrollLeft
+3.关于父级：
+    parentNode:结构父级 最大的元素是html
+    offsetParent:定位父级  最大的元素是body
+4.JS提供的属性和方法：
+    1）client系列
+    clientWidth/clientHeight:元素设定的宽/高+左右/上下padding；
+    clientLeft/clientTop:左边框/上边框的宽度；
+    跟内容是否溢出：无关
+    2）offset系列：
+    offsetWith/offsetHeight：clientWidth/clientHeight+左右border/上下border
+    offsetLeft/offsetTop：当前元素的外边框距离定位父级元素的内边框的距离
+    跟内容是否溢出：无关
+    3）scroll系列：
+    scrollHeight/scrollWidth:跟内容溢出：有关，约等于上padding+真实的高度；内容不溢出：等于clientWidth/clientHeight;
+    为什么是约等于：1.不同浏览器中，拿到的scrollHeight值是不同的；2.同一浏览器下，内容是否溢出隐藏，拿到的值也不同；
+5.关于JS盒子模型的一些问题：
+    1）通过JS的属性和方法拿到的都是元素的复合样式，拿不到单独的值；--getCss
+    2）通过JS的属性和方法拿到的都是元素的复合样式值都是整数，不会出现小数；
+    3）offsetLeft只能求出当前定位元素的外边框距离定位父级的内边框之间的距离，但无法求出定位元素距离body的距离
+    4）JS盒子模型的兼容性存在问题；

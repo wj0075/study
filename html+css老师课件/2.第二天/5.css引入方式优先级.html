@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+
+
+    <!-- 按ctrl键 检查引入的文件是否正确-->
+
+    <!-- 导入式-->
+    <style>
+        /*@import "style1.css";*/
+    </style>
+
+
+
+    <!-- 内嵌式-->
+    <style>
+        div{
+            color: orange;
+            /*橘黄色*/
+        }
+    </style>
+
+    <!-- 外链式-->
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<!--
+前提：
+同一个css属性作用在同一个标签时的优先级-->
+
+<div>划分结构</div>
+
+<!--
+优先级比较：
+
+行内式>内嵌式
+行内式>外链式
+行内式>导入式
+
+说明：行内式优先级最高
+
+内嵌式、外链式、导入式  谁写在后面，用谁的样式，后面的样式会覆盖掉前面的样式
+
+
+-->
+
+
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            vertical-align: top;
+            border:0;
+        }
+        ul{
+            list-style: none;
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+        #box{
+            position: relative;
+            width: 1000px;
+            height: 300px;
+            margin: 40px auto;
+            overflow: hidden;
+            background: url("images/default.gif") no-repeat center #c6c6c6;
+        }
+        #boxInner{
+            width: 4000px;
+            height: 300px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #boxInner div{
+            float: left;
+            width: 1000px;
+            height: 300px;
+        }
+        #boxInner div img{
+            width: 100%;
+            display: block;
+        }
+        ul li{
+            float: left;
+            width: 30px;
+            height: 30px;
+            margin-left: 5px;
+            background: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        ul li.on{
+            background: lightcoral;
+        }
+        #box a{
+            position: absolute;
+            top: 127.5px;
+            width: 30px;
+            height: 45px;
+            background-image: url("images/pre.png");
+            background-repeat: no-repeat;
+        }
+        #box a.left{
+            display: none;
+            background-position: 0 0;
+            left: 20px;
+        }
+        #box a.right{
+            display: none;
+            background-position: -50px 0;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="boxInner">
+       <!-- <div><img src="images/banner1.jpg" alt=""></div>
+        <div><img src="images/banner2.jpg" alt=""></div>
+        <div><img src="images/banner3.jpg" alt=""></div>
+        <div><img src="images/banner4.jpg" alt=""></div>-->
+    </div>
+    <ul>
+        <!--<li class="on"></li>
+        <li></li>
+        <li></li>
+        <li></li>-->
+    </ul>
+    <a href="javascript:;" class="left"></a>
+    <a href="javascript:;" class="right"></a>
+</div>
+<script src="../../utils1.js"></script>
+<script src="../../move.js"></script>
+<script src="tab3.js"></script>
+<script>
+
+    var tab1 = new MyTap('box','data.txt');
+
+</script>
+</body>
+</html>

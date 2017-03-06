@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //冒充继承：把父类私有+公有的属性，都继承给了 子类私有的；
+    function F(){
+        //this:new F;
+        this.x=100;
+    }
+    F.prototype.aa=function(){};
+    var f=new F;
+
+    function S(){
+        for(var attr in f){
+            this[attr]=f[attr];
+        }
+    }
+</script>
+</body>
+</html>

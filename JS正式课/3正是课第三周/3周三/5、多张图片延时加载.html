@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body{
+            height: 2000px;
+        }
+        #box{
+            position: absolute;
+            left:0;
+            top: 1000px;
+        }
+        p{
+            float: left;
+            width: 400px;
+            height: 200px;
+            background: url("img2/default.gif") no-repeat center #ccc;
+        }
+        img{
+            width: 400px;
+            height: 200px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box">
+<p><img src="" realImg="img2/1.jpg" alt=""></p>
+<p><img src="" realImg="img2/2.jpg" alt=""></p>
+<p><img src="" realImg="img2/3.jpg" alt=""></p>
+<p><img src="" realImg="img2/4.jpg" alt=""></p>
+<p><img src="" realImg="img2/5.jpg" alt=""></p>
+<p><img src="" realImg="img2/6.jpg" alt=""></p>
+</div>
+<script src="utils.js"></script>
+<script>
+    var aP=document.getElementsByTagName('p');
+    var aImg = document.getElementsByTagName('img');
+    window.onscroll = function(){
+        var scrollBottom = utils.win('scrollTop')+utils.win('clientHeight');
+        for (var i=0;i<aImg.length;i++){
+            var curPos = utils.getCss(aImg[i],'height')+utils.offset(aImg[i]).top;
+            if(curPos<=scrollBottom){
+                lazyImg(aImg[i])
+            }
+        }
+    };
+    function lazyImg(img){
+        if (img.lodaed) return;
+        var tmpImg = new Image;
+        tmpImg.src = img.getAttribute('realImg');
+        tmpImg.onload=function(){
+            img.src=tmpImg.src;
+            tmpImg=null;
+            img.loaded = true;
+        };
+        tmpImg.onerror = function(){
+            img.parentNode.style.background='url("img2/default.gif") no-repeat center #ccc';
+            tmpImg = null;
+            img.loaded = true;
+        }
+    }
+
+
+</script>
+
+
+</body>
+</html>

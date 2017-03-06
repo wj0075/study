@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8"/>
+<head>
+    <title>图片放大</title>
+    <style>
+        div { /*控制图片最终大小，防止放大后图片大小溢出*/
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            border: solid 4px #000;
+        }
+
+        img {
+            transition: -webkit-transform 1s; /*延迟效果*/
+        }
+
+        img:hover {
+            transform: scale(1.5, 1.5); /*放大的倍数*/
+        }
+    </style>
+</head>
+<body>
+<div><img src="bg.jpg" width="200" height="200"/></div>
+</body>
+</html>

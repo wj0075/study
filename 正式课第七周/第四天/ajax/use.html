@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用ajax</title>
+    <script>
+        // step 1:获取ajax对象
+        // 具体操作见xhr.html
+        var xhr = new XMLHttpRequest();
+
+        // step 2：打开http请求
+        /**
+         * 参数1：http方法，不区分大小写，支持 get、post、head、delete、put
+         * 参数2：请求地址，会把参数放到请求起始行的第二部分，可以传相对路径（./或者../开头），也可以传绝对路径（以/开头）
+         * 参数3：是否为异步请求，默认为true （选填）
+         * 参数4：用户名，默认值为undefined （选填）
+         * 参数5：密码，默认值为undefined（选填）
+         */
+        xhr.open('http method', 'request　URI', 'isAsync', 'username', 'password');
+
+
+        // step 3：接收http响应
+        /**
+         * 该事件触发的时机
+         * 每当xhr对象readyState属性改变，该事件就会触发一次
+         */
+        xhr.onreadystatechange = function () {
+//            if(xhr.readyState===4){
+            // 判断http事务是否完成
+            if (xhr.readyState === xhr.DONE) {
+
+                // 判断服务器返回的状态码是否成功
+                if (/^2\d{2}$/.test(xhr.status) || xhr.status === 304) {
+                    // 获取响应主体
+
+                    // 方法1 将响应主体格式化为字符串格式并返回
+                    var response1 = xhr.responseText;
+
+                    // 方法2 将响应主体格式化为xml对象并返回
+                    var response2 = xhr.responseXML;
+
+                    // 方法3 直接将响应主体返回，不做任何格式化。
+                    // 缺点：ie10+
+                    var response3 = xhr.response;
+                }
+            }
+        };
+
+        // XMLHTTPRequest对象将readyState进行了枚举
+
+        // xhr.readyState
+        // 标识xhr对象的状态
+        /**
+         * 0 默认值 ajax对象刚刚实例化完成，没有做任何操作。枚举值为xhr.UNSENT
+         * 1 ajax对象执行完open方法之后，该属性变为1，枚举值为xhr.OPENED
+         * 2 浏览器开始接收服务器响应首部，该属性变为2，枚举值为xhr.HEADERS_RECEIVED
+         * 3 开始接收响应主体，该属性变为3，枚举为xhr.LOADING
+         * 4 http事务完成，枚举值为xhr.DONE
+         */
+
+        // step 4 发送http请求
+        /**
+         * 该方法可以传以下几种参数：
+         * 字符串、Blob（h5，不透明的二进制块）、ArrayBuffer（h5，可读写的二进制流）、FormData（h5，封装表单数据）、null、undefined
+         * 注意事项：
+         * 1、该方法会将参数放到请求主体中。
+         * 2、get系方法（get、head、delete）不需要给该方法传参数
+         * 3、ajax的同步是从该方法开始阻塞
+         */
+        xhr.send();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

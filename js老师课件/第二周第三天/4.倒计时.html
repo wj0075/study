@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        p{
+            font-size: 36px;
+        }
+    </style>
+</head>
+<body>
+<p id="box">距离下课：</p>
+
+<script>
+    //2016-10-20 18:00:00
+
+//    window.setInterval(function(){
+//        box.innerHTML = str;
+//    },1000)
+
+
+    box.innerHTML += getTime();
+    window.setInterval(function(){
+        box.innerHTML ='距离下课：'+ getTime();
+    },1000);
+
+    function getTime(){
+        //    当前的时间
+        var now= new Date();
+        //    目标时间
+        var tar = new Date('2016/10/21 13:00:00');
+
+//    目标时间的毫秒数
+        var tarTimes = tar.getTime();//距离1970年1月1日00:00:00
+//    当前时间的毫秒数ms
+        var nowTimes = now.getTime();
+
+//    console.log(tarTimes)
+//    差值times：当前时间距离下课之间有多少毫秒
+        var times = tarTimes-nowTimes;
+
+//    小时  1000ms=1s
+//    1000*60*60
+        var hour = Math.floor(times/(1000*60*60));
+
+//    小时包含的毫秒数
+        var a = hour*(60*60*1000);
+
+//    去掉小时剩余的毫秒数
+        var b = times-a;
+
+//    分钟
+        var min = Math.floor(b/(1000*60));
+
+//    得到的分钟包含的毫秒数
+        var c = min*(1000*60)
+
+//    去掉分钟剩余的毫秒数
+        var d = b-c;
+
+//    秒
+        var second = Math.floor(d/1000);
+
+//    10:10:29
+
+        var str = zero(hour)+':'+zero(min)+':'+zero(second);
+
+        return str;
+
+    }
+
+
+//    补0
+    function zero(num){
+        return num<10?'0'+num:num;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+/*导入式：在一个css文件中引入另一个css文件*/
+/*@import  css文件的第一行
+无论放在哪一行，都是先加载导入式的代码，再加载当前文件下的代码
+*/
+@import "style1.css";
+h1{
+    color: orange;
+    /*文字的颜色*/
+}
+div{
+    color: blue;
+}
+
+

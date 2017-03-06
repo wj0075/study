@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>中介者模式</title>
+    <style>
+        input{
+            width: 100px;
+            height: 40px;
+            /*display: inline-block;*/
+        }
+        canvas{
+            display: block;
+            border: 1px solid #000;
+
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="start" value="开始">
+<input type="button" id="pause" value="暂停">
+
+<canvas id="canvas" width="800" height="500"></canvas>
+<script>
+    var start = document.getElementById('start');
+    var pause = document.getElementById('pause');
+    var canvas =document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    //创建角色
+
+    function Gril(x,y){
+        this.x = x||50;
+        this.y = y||50;
+        this.state = 0;
+    }
+    Gril.prototype={
+      update:function(){
+          this.state = ++this.state%4;
+          this.x+=6
+      }  ,
+        render:function(){
+            ctx.drawImage(g.img,this.state*96,96*2,96,96,this.x,this.y,192,192)
+        }
+    };
+
+
+
+    function Game(){
+        var _this = this;
+        this.img = new Image;
+        this.img.src = 'img/01.png';
+        this.img.onload=function(){//加载完图片，就要开始运行游戏
+            _this.run();
+        };
+        this.gril = new Gril();
+        this.timer = null;
+    }
+    Game.prototype = {
+        mainloop:function(){//游戏的主程序
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            this.gril.update();
+            this.gril.render();
+
+      },
+        run:function(){//开始游戏，就是执行mainloop
+            var _this = this;
+            this.timer = setInterval(function(){
+                _this.mainloop();
+
+            },100)
+        },
+        pause:function(){//暂停游戏
+            clearInterval(this.timer)
+        }
+    };
+    var g = new Game();
+</script>
+</body>
+</html>

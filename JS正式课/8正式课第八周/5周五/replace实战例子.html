@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str = '全日制第十二期学费：14800';
+    var ary = ['零','壹','贰','叁','肆','伍','陆','柒','捌','玖'];
+    var reg = /(\d)+?/g;
+    var str1=str.replace(reg,function ($0,$1) {
+        return ary[$1];
+    });
+console.log(str1);
+
+
+
+
+
+</script>
+
+</body>
+</html>

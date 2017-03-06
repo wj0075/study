@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            padding: 30px;
+        }
+        #s{
+            width: 430px;
+            height: 430px;
+            background: url("img/1.jpg") no-repeat;
+            position: relative;
+            float: left;
+        }
+        #mark{
+            position: absolute;
+            width:215px;
+            height: 215px;
+            background: blue;
+            opacity:0.3;
+            filter:alpha(opacity:30);
+            left:0;
+            top:0;
+            display: none;
+        }
+        #b{
+            margin-left:10px;
+            float: left;
+            width:430px;
+            height:430px;
+            overflow: hidden;
+            position: relative;
+            display: none;
+        }
+        #b img{
+            width:860px;
+            height:860px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="s">
+    <div id="mark"></div>
+</div>
+<div id="b">
+    <img src="img/2.jpg" alt="">
+</div>
+<script>
+    var oS=document.getElementById('s');
+    var oM=document.getElementById('mark');
+    var oB=document.getElementById('b');
+    var oImg=oB.getElementsByTagName('img')[0];
+    oS.onmouseover=function(){
+        oM.style.display='block';
+        oB.style.display='block';
+    };
+    oS.onmousemove=function(e){
+        //当鼠标移动的时候，大图走的方向跟手移动的方向正好相反，同时，因为大图是小图的两倍，所以，小图走一步，大图应该走2步；
+        //注意：mark相对于s定位，大图相对于b定位；
+        e=e||window.event;
+        var l=e.clientX-this.offsetLeft-oM.offsetWidth/2;
+        var t=e.clientY-this.offsetTop-oM.offsetHeight/2;
+        var maxL=this.offsetWidth-oM.offsetWidth;
+        var maxT=this.offsetHeight-oM.offsetHeight;
+        if(l<=0){
+            l=0;
+        }else if(l>=maxL){
+            l=maxL;
+        }
+        if(t<=0){
+            t=0;
+        }else if(t>=maxT){
+            t=maxT;
+        }
+        oM.style.left= l+'px';
+        oM.style.top= t+'px';
+        oImg.style.left=-2*l+'px';//大图走的方向跟手移动的方向正好相反
+        oImg.style.top=-2*t+'px';
+    };
+    oS.onmouseout=function(){
+        oM.style.display='none';
+        oB.style.display='none';
+    };
+
+</script>
+</body>
+</html>
